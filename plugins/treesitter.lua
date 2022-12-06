@@ -1,5 +1,18 @@
 return {
-    ensure_installed = { "vim", "help", "lua", "python", "rust", "javascript", "html", "css", "json", "toml", "yaml" },
+    ensure_installed = {
+        "vim",
+        "help",
+        "lua",
+        "python",
+        "rust",
+        "javascript",
+        "html",
+        "css",
+        "json",
+        "toml",
+        "yaml",
+        "markdown",
+    },
     auto_install = true,
     disable = function(lang, buf)
         local max_filesize = 100 * 1024 -- 100 KB
