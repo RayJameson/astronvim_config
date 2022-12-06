@@ -1,0 +1,16 @@
+-- return function(hl)
+--     -- set the transparency for all of these highlight groups
+--     return {
+--         normal = { bg = "none", ctermbg = "none" },
+--         normalnc = { bg = "none", ctermbg = "none" },
+--         cursorcolumn = { cterm = {}, ctermbg = "none", ctermfg = "none" },
+--         cursorline = { cterm = {}, ctermbg = "none", ctermfg = "none" },
+--         cursorlinenr = { cterm = {}, ctermbg = "none", ctermfg = "none" },
+--         linenr = {},
+--         signcolumn = {},
+--         statusline = {},
+--         neotreenormal = { bg = "none", ctermbg = "none" },
+--         neotreenormalnc = { bg = "none", ctermbg = "none" },
+--     }
+-- end
+return {}

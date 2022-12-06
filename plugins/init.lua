@@ -1,0 +1,151 @@
+--   Packer optional commands for plugins
+--   {"myusername/example",
+---- or
+--   ["myusername/example"] = {        -- The plugin location string
+--   -- The following keys are all optional
+--   disable = boolean,                -- Mark a plugin as inactive
+--   as = string,                      -- Specifies an alias under which to install the plugin
+--   installer = function,             -- Specifies custom installer. See "custom installers" below.
+--   updater = function,               -- Specifies custom updater. See "custom installers" below.
+--   after = string or list,           -- Specifies plugins to load before this plugin. See "sequencing" below
+--   rtp = string,                     -- Specifies a subdirectory of the plugin to add to runtimepath.
+--   opt = boolean,                    -- Manually marks a plugin as optional.
+--   bufread = boolean,                -- Manually specifying if a plugin needs BufRead after being loaded
+--   branch = string,                  -- Specifies a git branch to use
+--   tag = string,                     -- Specifies a git tag to use. Supports '*' for "latest tag"
+--   commit = string,                  -- Specifies a git commit to use
+--   lock = boolean,                   -- Skip updating this plugin in updates/syncs. Still cleans.
+--   run = string, function, or table, -- Post-update/install hook. See "update/install hooks".
+--   requires = string or list,        -- Specifies plugin dependencies. See "dependencies".
+--   rocks = string or list,           -- Specifies Luarocks dependencies for the plugin
+--   config = string or function,      -- Specifies code to run after this plugin is loaded.
+--
+---- The setup key implies opt = true
+--   setup = string or function,       -- Specifies code to run before this plugin is loaded. The code is ran even if
+--
+---- The following keys all imply lazy-loading and imply opt = true
+--   cmd = string or list,             -- Specifies commands which load this plugin. Can be an autocmd pattern.
+--   ft = string or list,              -- Specifies filetypes which load this plugin.
+--   keys = string or list,            -- Specifies maps which load this plugin. See "Keybindings".
+--   event = string or list,           -- Specifies autocommand events which load this plugin.
+--   fn = string or list               -- Specifies functions which load this plugin.
+--   cond = string, function, or list of strings/functions,   -- Specifies a conditional test to load this plugin
+--   module = string or list           -- Specifies Lua module names for require. When requiring a string which starts
+--                                     -- with one of these module names, the plugin will be loaded.
+--   module_pattern = string/list      -- Specifies Lua pattern of Lua module names for require. When
+--                                     -- requiring a string which matches one of these patterns, the plugin will be loaded.
+-- }
+
+return {
+    -- You can disable default plugins as follows:
+    -- [] = { disable = true },
+    ["Darazaki/indent-o-matic"] = { disable = true },
+    -- modify existing cmp sources
+    ["hrsh7th/nvim-cmp"] = { keys = { ":", "/", "?" } },
+
+    -- You can also add new plugins here as well:
+    -- Add plugins, the packer syntax without the "use"
+    -- { "andweeb/presence.nvim" },
+    -- ["andweeb/presence.nvim"] = {},
+    ------------------------------------------------------
+    -- User plugins without config files in user_plugins folder:
+    ------------------------------------------------------
+    ["mbbill/undotree"] = {
+        opt = true,
+        setup = function() table.insert(astronvim.file_plugins, "undotree") end,
+    },
+    ["fedepujol/move.nvim"] = {
+        opt = true,
+        setup = function() table.insert(astronvim.file_plugins, "move.nvim") end,
+    },
+    ["mfussenegger/nvim-dap"] = {
+        opt = true,
+        setup = function() table.insert(astronvim.file_plugins, "nvim-dap") end,
+    },
+    ["mfussenegger/nvim-dap-python"] = {
+        after = "mason-nvim-dap.nvim",
+        config = function() require("dap-python").setup("~/.virtualenvs/debugpy/bin/python") end,
+    },
+    ["folke/trouble.nvim"] = {
+        config = function() require("trouble").setup() end,
+    },
+    ["ray-x/lsp_signature.nvim"] = {
+        opt = true,
+        setup = function() table.insert(astronvim.file_plugins, "lsp_signature.nvim") end,
+        config = function() require("lsp_signature").setup() end,
+    },
+    ["andymass/vim-matchup"] = {
+        config = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end,
+    },
+    ["nvim-treesitter/nvim-treesitter-context"] = {
+        after = "nvim-treesitter",
+    },
+    ["iamcco/markdown-preview.nvim"] = {
+        run = function() vim.fn["mkdp#util#install"]() end,
+        ft = { "markdown" },
+    },
+    ["ThePrimeagen/refactoring.nvim"] = {
+        config = function() require("telescope").load_extension("refactoring") end,
+        cmd = "Refactoring",
+    },
+    ["joechrisellis/lsp-format-modifications.nvim"] = {
+        module = "lsp-format-modifications",
+    },
+    ["WhoIsSethDaniel/mason-tool-installer.nvim"] = {
+        after = "mason.nvim",
+        config = function() require("mason-tool-installer").setup({}) end,
+    },
+    ["sindrets/diffview.nvim"] = {
+        opt = true,
+        setup = function() table.insert(astronvim.git_plugins, "diffview.nvim") end,
+        config = function() require("diffview").setup({}) end,
+    },
+    ["aserowy/tmux.nvim"] = {
+        config = function() require("tmux").setup() end,
+    },
+    ["folke/todo-comments.nvim"] = {
+        opt = true,
+        setup = function() table.insert(astronvim.file_plugins, "todo-comments.nvim") end,
+        config = function() require("todo-comments").setup() end,
+    },
+    ["kylechui/nvim-surround"] = {
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function() require("nvim-surround").setup() end,
+    },
+    ---------------------------------------------------
+    --  Plugins with config set in user_plugins files:
+    ---------------------------------------------------
+    ["f-person/git-blame.nvim"] = {
+        opt = true,
+        setup = function() table.insert(astronvim.git_plugins, "git-blame.nvim") end,
+        config = require("user.user_plugins.git-blame"),
+    },
+    ["ellisonleao/glow.nvim"] = {
+        config = require("user.user_plugins.glow"),
+    },
+    ["phaazon/hop.nvim"] = {
+        opt = true,
+        setup = function() table.insert(astronvim.file_plugins, "hop.nvim") end,
+        config = require("user.user_plugins.hop"),
+    },
+    ["CRAG666/code_runner.nvim"] = {
+        config = require("user.user_plugins.code_runner"),
+    },
+    ["kevinhwang91/nvim-bqf"] = {
+        event = { "BufRead", "BufNew" },
+        config = require("user.user_plugins.nvim-bqf"),
+    },
+    ["jayp0521/mason-nvim-dap.nvim"] = {
+        after = { "mason.nvim", "nvim-dap" },
+        config = require("user.user_plugins.mason-nvim-dap"),
+    },
+    ["rcarriga/nvim-dap-ui"] = {
+        after = "nvim-dap",
+        config = require("user.user_plugins.nvim-dap-ui"),
+    },
+    ["m-demare/hlargs.nvim"] = {
+        opt = true,
+        setup = function() table.insert(astronvim.file_plugins, "hlargs.nvim") end,
+        config = require("user.user_plugins.hlargs"),
+    },
+}
