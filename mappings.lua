@@ -4,7 +4,7 @@ return {
         -- second key is the lefthand side of the map
         -- mappings seen under group name "Buffer"
         ["<C-d>"] = { "<C-d>zz", desc = "Scroll half page down" },
-        ["<C-u>"] = { "<c-d>zz", desc = "Scroll half page up" },
+        ["<C-u>"] = { "<c-u>zz", desc = "Scroll half page up" },
         ["<leader>ll"] = { "<cmd>LinterRestart<CR>", desc = "Linter restart" },
         ["<leader>bb"] = { "<cmd>tabnew<CR>", desc = "New tab" },
         ["<leader>bc"] = { "<cmd>BufferLinePickClose<CR>", desc = "Pick to close" },
