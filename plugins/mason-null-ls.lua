@@ -1,4 +1,5 @@
-return { -- overrides `require("mason-null-ls").setup(...)`
+return {
+    -- overrides `require("mason-null-ls").setup(...)`
     automatic_installation = true,
     ensure_installed = {
         -- Bash
@@ -14,7 +15,6 @@ return { -- overrides `require("mason-null-ls").setup(...)`
         "rustfmt",
         -- Git
         "gitlint",
-        "commitlint",
         -- Lua
         "stylua",
         "luacheck",
