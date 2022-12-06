@@ -1,5 +1,5 @@
 return function()
-    require("bqf").setup({
+    require("bqf").setup {
         auto_enable = true,
         preview = {
             win_height = 12,
@@ -33,5 +33,5 @@ return function()
                 },
             },
         },
-    })
+    }
 end

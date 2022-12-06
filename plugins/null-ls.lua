@@ -9,23 +9,24 @@ return function(config) -- overrides `require("null-ls").setup(config)`
         -- Set a formatter
         null_ls.builtins.code_actions.gitsigns,
         null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.yapf.with({
+        null_ls.builtins.formatting.yapf.with {
             extra_args = { "--style={based_on_style: pep8}" },
-        }),
+        },
         null_ls.builtins.formatting.usort,
-        null_ls.builtins.formatting.stylua.with({
+        null_ls.builtins.formatting.stylua.with {
             extra_args = {
                 "--indent-type=Spaces",
                 "--indent-width=4",
                 "--quote-style=AutoPreferDouble",
-                "--call-parentheses=Always",
+                "--call-parentheses=NoSingleTable",
                 "--column-width=120",
+                "--collapse-simple-statement=FunctionOnly",
             },
-        }),
-        null_ls.builtins.diagnostics.pylint.with({
+        },
+        null_ls.builtins.diagnostics.pylint.with {
             env = function(params) return { PYTHONPATH = params.root } end,
-        }),
-        null_ls.builtins.diagnostics.luacheck.with({
+        },
+        null_ls.builtins.diagnostics.luacheck.with {
             command = "luacheck",
             extra_args = {},
             filetypes = { "lua" },
@@ -43,7 +44,7 @@ return function(config) -- overrides `require("null-ls").setup(config)`
             -- runtime_condition = nls_cache.by_bufnr(function(params)
             --   return path.exists(path.join(params.root, ".luacheckrc"))
             -- end),
-        }),
+        },
     }
     return config -- return final config table
 end

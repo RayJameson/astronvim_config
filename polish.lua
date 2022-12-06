@@ -19,12 +19,12 @@ return function()
 
     vim.api.nvim_create_autocmd({ "TextYankPost" }, {
         pattern = "*",
-        callback = function() vim.highlight.on_yank({ higroup = "IncSearch", timeout = 100 }) end,
+        callback = function() vim.highlight.on_yank { higroup = "IncSearch", timeout = 100 } end,
     })
 
     vim.api.nvim_set_var("python3_host_prog", "$HOME/.pyenv/versions/neovim_base_venv/bin/python3")
     -- Set up custom filetypes
-    vim.filetype.add({
+    vim.filetype.add {
         filename = {
             ["poetry.lock"] = "toml",
         },
@@ -34,5 +34,5 @@ return function()
         -- pattern = {
         --   ["~/%.config/foo/.*"] = "fooscript",
         -- },
-    })
+    }
 end

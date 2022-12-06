@@ -4,9 +4,9 @@ return function(config)
         -- set the fg/bg of the statusline
         hl = { fg = "fg", bg = "bg" },
         -- when adding the mode component, enable the mode text with padding to the left/right of it
-        astronvim.status.component.mode({
+        astronvim.status.component.mode {
             mode_text = { padding = { left = 1, right = 1 } },
-        }),
+        },
         -- add all the other components for the statusline
         astronvim.status.component.git_branch(),
         astronvim.status.component.file_info(),

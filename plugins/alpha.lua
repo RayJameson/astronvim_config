@@ -1,3 +1,1 @@
-return function()
-    return require("alpha.themes.startify").config
-end
+return function() return require("alpha.themes.startify").config end

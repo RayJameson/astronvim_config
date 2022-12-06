@@ -1,5 +1,5 @@
 return function()
-    require("code_runner").setup({
+    require("code_runner").setup {
         -- put here the commands by filetype
         startinsert = false,
         filetype = {
@@ -11,5 +11,5 @@ return function()
             javascript = "node",
             shellscript = "bash",
         },
-    })
+    }
 end

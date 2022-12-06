@@ -1,5 +1,5 @@
 return function()
-    require("hlargs").setup({
+    require("hlargs").setup {
         color = "#FF7A00", --"#ef9062",
         paint_arg_usages = true,
         excluded_argnames = {
@@ -15,5 +15,5 @@ return function()
                 },
             },
         },
-    })
+    }
 end

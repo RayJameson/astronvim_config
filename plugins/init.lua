@@ -93,12 +93,12 @@ return {
     },
     ["WhoIsSethDaniel/mason-tool-installer.nvim"] = {
         after = "mason.nvim",
-        config = function() require("mason-tool-installer").setup({}) end,
+        config = function() require("mason-tool-installer").setup() end,
     },
     ["sindrets/diffview.nvim"] = {
         opt = true,
         setup = function() table.insert(astronvim.git_plugins, "diffview.nvim") end,
-        config = function() require("diffview").setup({}) end,
+        config = function() require("diffview").setup() end,
     },
     ["aserowy/tmux.nvim"] = {
         config = function() require("tmux").setup() end,
