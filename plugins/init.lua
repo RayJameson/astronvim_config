@@ -37,11 +37,11 @@
 -- }
 
 local function add_to_lazy_file_plugins(plugin)
-    return function() table.insert(astronvim.file_plugins, plugin) end
+    table.insert(astronvim.file_plugins, plugin)
 end
 
 local function add_to_lazy_git_plugins(plugin)
-    return function() table.insert(astronvim.git_plugins, plugin) end
+    table.insert(astronvim.git_plugins, plugin)
 end
 
 return {
