@@ -36,6 +36,14 @@
 --                                     -- requiring a string which matches one of these patterns, the plugin will be loaded.
 -- }
 
+local function add_to_lazy_file_plugins(plugin)
+    return function() table.insert(astronvim.file_plugins, plugin) end
+end
+
+local function add_to_lazy_git_plugins(plugin)
+    return function() table.insert(astronvim.git_plugins, plugin) end
+end
+
 return {
     -- You can disable default plugins as follows:
     -- [] = { disable = true },
@@ -52,15 +60,15 @@ return {
     ------------------------------------------------------
     ["mbbill/undotree"] = {
         opt = true,
-        setup = function() table.insert(astronvim.file_plugins, "undotree") end,
+        setup = add_to_lazy_file_plugins("undotree"),
     },
     ["fedepujol/move.nvim"] = {
         opt = true,
-        setup = function() table.insert(astronvim.file_plugins, "move.nvim") end,
+        setup = add_to_lazy_file_plugins("move.nvim"),
     },
     ["mfussenegger/nvim-dap"] = {
         opt = true,
-        setup = function() table.insert(astronvim.file_plugins, "nvim-dap") end,
+        setup = add_to_lazy_file_plugins("nvim-dap"),
     },
     ["mfussenegger/nvim-dap-python"] = {
         opt = true,
@@ -70,17 +78,17 @@ return {
     },
     ["folke/trouble.nvim"] = {
         opt = true,
-        setup = function() table.insert(astronvim.file_plugins, "trouble.nvim") end,
+        setup = add_to_lazy_file_plugins("trouble.nvim"),
         config = function() require("trouble").setup() end,
     },
     ["ray-x/lsp_signature.nvim"] = {
         opt = true,
-        setup = function() table.insert(astronvim.file_plugins, "lsp_signature.nvim") end,
+        setup = add_to_lazy_file_plugins("lsp_signature.nvim"),
         config = function() require("lsp_signature").setup() end,
     },
     ["andymass/vim-matchup"] = {
         opt = true,
-        setup = function() table.insert(astronvim.file_plugins, "vim-matchup") end,
+        setup = add_to_lazy_file_plugins("vim-matchup"),
         config = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end,
     },
     ["nvim-treesitter/nvim-treesitter-context"] = {
@@ -103,7 +111,7 @@ return {
     },
     ["sindrets/diffview.nvim"] = {
         opt = true,
-        setup = function() table.insert(astronvim.git_plugins, "diffview.nvim") end,
+        setup = add_to_lazy_git_plugins("diffview.nvim"),
         config = function() require("diffview").setup() end,
     },
     ["aserowy/tmux.nvim"] = {
@@ -113,7 +121,7 @@ return {
     },
     ["folke/todo-comments.nvim"] = {
         opt = true,
-        setup = function() table.insert(astronvim.file_plugins, "todo-comments.nvim") end,
+        setup = add_to_lazy_file_plugins("todo-comments.nvim"),
         config = function() require("todo-comments").setup() end,
     },
     ["kylechui/nvim-surround"] = {
@@ -125,7 +133,7 @@ return {
     ---------------------------------------------------
     ["f-person/git-blame.nvim"] = {
         opt = true,
-        setup = function() table.insert(astronvim.git_plugins, "git-blame.nvim") end,
+        setup = add_to_lazy_git_plugins("git-blame.nvim"),
         config = require("user.user_plugins.git-blame"),
     },
     ["ellisonleao/glow.nvim"] = {
@@ -135,7 +143,7 @@ return {
     },
     ["phaazon/hop.nvim"] = {
         opt = true,
-        setup = function() table.insert(astronvim.file_plugins, "hop.nvim") end,
+        setup = add_to_lazy_file_plugins("hop.nvim"),
         config = require("user.user_plugins.hop"),
     },
     ["CRAG666/code_runner.nvim"] = {
@@ -143,7 +151,7 @@ return {
     },
     ["kevinhwang91/nvim-bqf"] = {
         opt = true,
-        setup = function() table.insert(astronvim.file_plugins, "nvim-bqf") end,
+        setup = add_to_lazy_file_plugins("nvim-bqf"),
         config = require("user.user_plugins.nvim-bqf"),
     },
     ["jayp0521/mason-nvim-dap.nvim"] = {
@@ -158,7 +166,7 @@ return {
     },
     ["m-demare/hlargs.nvim"] = {
         opt = true,
-        setup = function() table.insert(astronvim.file_plugins, "hlargs.nvim") end,
+        setup = add_to_lazy_file_plugins("hlargs.nvim"),
         config = require("user.user_plugins.hlargs"),
     },
 }
