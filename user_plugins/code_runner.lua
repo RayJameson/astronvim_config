@@ -5,11 +5,12 @@ return function()
         filetype = {
             java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
             python = "python3 -u",
-            lua = "luajit",
+            lua = "lua",
             typescript = "deno run",
             rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
             javascript = "node",
             shellscript = "bash",
+            go = "go run",
         },
     }
 end
