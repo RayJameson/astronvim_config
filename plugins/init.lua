@@ -101,7 +101,9 @@ return {
         config = function() require("diffview").setup() end,
     },
     ["aserowy/tmux.nvim"] = {
-        config = function() require("tmux").setup() end,
+        opt = true,
+        cond = function () return vim.fn.exists("$TMUX") == 1 end,
+        config = require("user.user_plugins.tmux"),
     },
     ["folke/todo-comments.nvim"] = {
         opt = true,
