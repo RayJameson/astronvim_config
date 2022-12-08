@@ -10,7 +10,6 @@ return function(hl) -- or a function that returns a new table of colors to set
     hl["@boolean"] = { fg = "#1BF9C4" }
     hl["@type.builtin"] = { fg = C.blue_1 }
     hl["@keyword"] = { fg = C.purple, italic = true }
-    hl["@keyword"] = { fg = C.purple, italic = true }
     hl["@conditional"] = { fg = C.purple, italic = true }
     hl["@repeat"] = { fg = C.purple, italic = true }
     hl["@exception"] = { fg = C.purple, italic = true }

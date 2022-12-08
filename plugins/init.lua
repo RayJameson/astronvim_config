@@ -72,7 +72,7 @@ return {
     },
     ["mfussenegger/nvim-dap-python"] = {
         opt = true,
-        after = {"mason-nvim-dap.nvim", "nvim-dap"},
+        after = { "mason-nvim-dap.nvim", "nvim-dap" },
         ft = "python",
         config = function() require("dap-python").setup("~/.virtualenvs/debugpy/bin/python") end,
     },
@@ -99,7 +99,7 @@ return {
     },
     ["iamcco/markdown-preview.nvim"] = {
         run = function() vim.fn["mkdp#util#install"]() end,
-        ft = "markdown" ,
+        ft = "markdown",
     },
     ["ThePrimeagen/refactoring.nvim"] = {
         opt = true,
@@ -116,7 +116,7 @@ return {
     },
     ["aserowy/tmux.nvim"] = {
         opt = true,
-        cond = function () return vim.fn.exists("$TMUX") == 1 end,
+        cond = function() return vim.fn.exists("$TMUX") == 1 end,
         config = require("user.user_plugins.tmux"),
     },
     ["folke/todo-comments.nvim"] = {
@@ -168,6 +168,11 @@ return {
         opt = true,
         setup = add_to_lazy_file_plugins("hlargs.nvim"),
         config = require("user.user_plugins.hlargs"),
+    },
+    ["ThePrimeagen/harpoon"] = {
+        opt = true,
+        setup = add_to_lazy_file_plugins("harpoon"),
+        config = require("user.user_plugins.harpoon"),
     },
     ["andweeb/presence.nvim"] = {
         config = require("user.user_plugins.presence"),
