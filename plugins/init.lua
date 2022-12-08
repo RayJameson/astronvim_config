@@ -80,6 +80,9 @@ return {
     ["nvim-treesitter/nvim-treesitter-context"] = {
         after = "nvim-treesitter",
     },
+    ["nvim-treesitter/nvim-treesitter-textobjects"] = {
+        after = "nvim-treesitter",
+    },
     ["iamcco/markdown-preview.nvim"] = {
         run = function() vim.fn["mkdp#util#install"]() end,
         ft = { "markdown" },
