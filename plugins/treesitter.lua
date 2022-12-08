@@ -20,10 +20,12 @@ return {
             enable = true,
             lookahead = true,
             keymaps = {
-                ["of"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["oc"] = "@class.outer",
-                ["ic"] = "@class.inner",
+                ["af"] = { query = "@function.outer", desc = "Select whole function" },
+                ["if"] = { query = "@function.inner", desc = "Select inner part of function" },
+                ["ac"] = { query = "@class.outer", desc = "Select outer part of a class region" },
+                ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+                ["ii"] = { query = "@block.inner", desc = "Select inner part of indent" },
+                ["ai"] = { query = "@block.outer", desc = "Select outer part of indent" },
             },
             selection_modes = {
                 ["@parameter.outer"] = "v", -- charwise
