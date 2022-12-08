@@ -111,7 +111,7 @@ return {
     },
     ["sindrets/diffview.nvim"] = {
         opt = true,
-        setup = add_to_lazy_git_plugins("diffview.nvim"),
+        cmd = {"DiffviewOpen", "DiffviewFileHistory"},
         config = function() require("diffview").setup() end,
     },
     ["aserowy/tmux.nvim"] = {
@@ -125,8 +125,10 @@ return {
         config = function() require("todo-comments").setup() end,
     },
     ["kylechui/nvim-surround"] = {
+        opt = true,
         tag = "*", -- Use for stability; omit to use `main` branch for the latest features
         config = function() require("nvim-surround").setup() end,
+        setup = add_to_lazy_file_plugins("nvim-surround")
     },
     ---------------------------------------------------
     --  Plugins with config set in user_plugins files:
@@ -147,6 +149,8 @@ return {
         config = require("user.user_plugins.hop"),
     },
     ["CRAG666/code_runner.nvim"] = {
+        opt = true,
+        cmd = {"RunCode", "RunFile"},
         config = require("user.user_plugins.code_runner"),
     },
     ["kevinhwang91/nvim-bqf"] = {
