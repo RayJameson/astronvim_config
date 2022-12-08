@@ -63,10 +63,14 @@ return {
         setup = function() table.insert(astronvim.file_plugins, "nvim-dap") end,
     },
     ["mfussenegger/nvim-dap-python"] = {
-        after = "mason-nvim-dap.nvim",
+        opt = true,
+        after = {"mason-nvim-dap.nvim", "nvim-dap"},
+        ft = "python",
         config = function() require("dap-python").setup("~/.virtualenvs/debugpy/bin/python") end,
     },
     ["folke/trouble.nvim"] = {
+        opt = true,
+        setup = function() table.insert(astronvim.file_plugins, "trouble.nvim") end,
         config = function() require("trouble").setup() end,
     },
     ["ray-x/lsp_signature.nvim"] = {
@@ -75,6 +79,8 @@ return {
         config = function() require("lsp_signature").setup() end,
     },
     ["andymass/vim-matchup"] = {
+        opt = true,
+        setup = function() table.insert(astronvim.file_plugins, "vim-matchup") end,
         config = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end,
     },
     ["nvim-treesitter/nvim-treesitter-context"] = {
@@ -85,9 +91,10 @@ return {
     },
     ["iamcco/markdown-preview.nvim"] = {
         run = function() vim.fn["mkdp#util#install"]() end,
-        ft = { "markdown" },
+        ft = "markdown" ,
     },
     ["ThePrimeagen/refactoring.nvim"] = {
+        opt = true,
         config = function() require("telescope").load_extension("refactoring") end,
         cmd = "Refactoring",
     },
@@ -122,6 +129,8 @@ return {
         config = require("user.user_plugins.git-blame"),
     },
     ["ellisonleao/glow.nvim"] = {
+        opt = true,
+        ft = "markdown",
         config = require("user.user_plugins.glow"),
     },
     ["phaazon/hop.nvim"] = {
@@ -133,14 +142,17 @@ return {
         config = require("user.user_plugins.code_runner"),
     },
     ["kevinhwang91/nvim-bqf"] = {
-        event = { "BufRead", "BufNew" },
+        opt = true,
+        setup = function() table.insert(astronvim.file_plugins, "nvim-bqf") end,
         config = require("user.user_plugins.nvim-bqf"),
     },
     ["jayp0521/mason-nvim-dap.nvim"] = {
+        opt = true,
         after = { "mason.nvim", "nvim-dap" },
         config = require("user.user_plugins.mason-nvim-dap"),
     },
     ["rcarriga/nvim-dap-ui"] = {
+        opt = true,
         after = "nvim-dap",
         config = require("user.user_plugins.nvim-dap-ui"),
     },
