@@ -36,13 +36,9 @@
 --                                     -- requiring a string which matches one of these patterns, the plugin will be loaded.
 -- }
 
-local function add_to_lazy_file_plugins(plugin)
-    table.insert(astronvim.file_plugins, plugin)
-end
+local function add_to_lazy_file_plugins(plugin) table.insert(astronvim.file_plugins, plugin) end
 
-local function add_to_lazy_git_plugins(plugin)
-    table.insert(astronvim.git_plugins, plugin)
-end
+local function add_to_lazy_git_plugins(plugin) table.insert(astronvim.git_plugins, plugin) end
 
 return {
     -- You can disable default plugins as follows:
@@ -111,7 +107,7 @@ return {
     },
     ["sindrets/diffview.nvim"] = {
         opt = true,
-        cmd = {"DiffviewOpen", "DiffviewFileHistory"},
+        cmd = { "DiffviewOpen", "DiffviewFileHistory" },
         config = function() require("diffview").setup() end,
     },
     ["aserowy/tmux.nvim"] = {
@@ -128,7 +124,7 @@ return {
         opt = true,
         tag = "*", -- Use for stability; omit to use `main` branch for the latest features
         config = function() require("nvim-surround").setup() end,
-        setup = add_to_lazy_file_plugins("nvim-surround")
+        setup = add_to_lazy_file_plugins("nvim-surround"),
     },
     ---------------------------------------------------
     --  Plugins with config set in user_plugins files:
@@ -150,7 +146,7 @@ return {
     },
     ["CRAG666/code_runner.nvim"] = {
         opt = true,
-        cmd = {"RunCode", "RunFile"},
+        cmd = { "RunCode", "RunFile" },
         config = require("user.user_plugins.code_runner"),
     },
     ["kevinhwang91/nvim-bqf"] = {
