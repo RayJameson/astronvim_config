@@ -12,7 +12,7 @@ return function(config) -- overrides `require("null-ls").setup(config)`
         null_ls.builtins.formatting.yapf.with {
             extra_args = { "--style={based_on_style: pep8}" },
         },
-        null_ls.builtins.formatting.usort,
+        null_ls.builtins.formatting.reorder_python_imports,
         null_ls.builtins.formatting.stylua.with {
             extra_args = {
                 "--indent-type=Spaces",

@@ -3,15 +3,12 @@ return {
     automatic_installation = true,
     ensure_installed = {
         -- Bash
-        "bash-language-server",
         "beutysh",
         -- Python
-        "python-lsp-server",
         "pylint",
-        "usort",
+        "reorder-python-imports",
         "yapf",
         -- Rust
-        "rust-analyzer",
         "rustfmt",
         -- Git
         "gitlint",
