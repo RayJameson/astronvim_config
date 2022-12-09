@@ -1,11 +1,10 @@
--- Create file nvim/lua/user/presence_blacklist.lua and put there your ignore list like so: return { "secret_path", "example_path"}
--- This file in my .gitignore for privacy reasons
-local status_ok, ignore_list = pcall(require, "user.presence_blacklist")
-if not status_ok then
-    ignore_list = {}
-end
-
 return function()
+    -- Create file nvim/lua/user/presence_blacklist.lua and put there your ignore list like so: return { "secret_path", "example_path"}
+    -- This file in my .gitignore for privacy reasons
+    local status_ok, ignore_list = pcall(require, "user.presence_blacklist")
+    if not status_ok then
+        ignore_list = {}
+    end
     require("presence"):setup {
         -- General options
         auto_update = true, -- Update activity based on autocmd events (if `false`, map or manually execute `:lua package.loaded.presence:update()`)
