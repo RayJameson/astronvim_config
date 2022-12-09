@@ -173,11 +173,6 @@ return {
         setup = add_to_lazy_file_plugins("hlargs.nvim"),
         config = require("user.user_plugins.hlargs"),
     },
-    ["ThePrimeagen/harpoon"] = {
-        opt = true,
-        setup = add_to_lazy_file_plugins("harpoon"),
-        config = require("user.user_plugins.harpoon"),
-    },
     ["andweeb/presence.nvim"] = {
         config = require("user.user_plugins.presence"),
     },
