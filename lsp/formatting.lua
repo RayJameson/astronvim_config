@@ -11,6 +11,7 @@ return {
     },
     disabled = { -- disable formatting capabilities for the listed language servers
         "sumneko_lua",
+        "yamlls"
     },
     timeout_ms = 3000, -- default format timeout
     -- filter = function(client) -- fully override the default formatting function
