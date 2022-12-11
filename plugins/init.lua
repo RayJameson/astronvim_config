@@ -54,6 +54,10 @@ return {
     ------------------------------------------------------
     -- User plugins without config files in user_plugins folder:
     ------------------------------------------------------
+    ["ThePrimeagen/vim-be-good"] = {
+        opt = true,
+        cmd = "VimBeGood"
+    },
     ["mbbill/undotree"] = {
         opt = true,
         setup = add_to_lazy_file_plugins("undotree"),
