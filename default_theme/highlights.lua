@@ -18,8 +18,8 @@ return function(hl) -- or a function that returns a new table of colors to set
     hl["@function.builtin"] = { fg = C.blue_1 }
     hl["@class_variable"] = { fg = C.red }
     hl.Normal = { fg = C.fg, bg = C.bg }
-    hl["Folded"] = { fg = "#25BE83" }
-    hl["FoldColumn"] = { fg = "#25BE83" }
+    -- hl["Folded"] = { fg = "#25BE83" }
+    -- hl["FoldColumn"] = { fg = "#25BE83" }
 
     -- New approach instead of diagnostic_style
     hl.DiagnosticError.italic = true
