@@ -37,6 +37,7 @@ return function()
         },
         extension = {
             tlua = "lua",
+            html = "htmldjango"
         },
         -- pattern = {
         --   ["~/%.config/foo/.*"] = "fooscript",
