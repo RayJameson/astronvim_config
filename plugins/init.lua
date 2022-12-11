@@ -140,11 +140,6 @@ return {
         ft = "markdown",
         config = require("user.user_plugins.glow"),
     },
-    ["phaazon/hop.nvim"] = {
-        opt = true,
-        setup = add_to_lazy_file_plugins("hop.nvim"),
-        config = require("user.user_plugins.hop"),
-    },
     ["CRAG666/code_runner.nvim"] = {
         opt = true,
         cmd = { "RunCode", "RunFile" },
