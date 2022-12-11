@@ -33,20 +33,15 @@ end
 
 if is_available("move.nvim") then
     -- Normal mode
-    keymaps.n["<M-j>"] = "<cmd>MoveLine(1)<CR>"
-    keymaps.n["<M-k>"] = "<cmd>MoveLine(-1)<CR>"
-    keymaps.n["<M-h>"] = "<cmd>MoveHChar(-1)<CR>"
-    keymaps.n["<M-l>"] = "<cmd>MoveHChar(1)<CR>"
+    keymaps.n["<M-j>"] = { ":MoveLine(1)<CR>", desc = "Move line down" }
+    keymaps.n["<M-k>"] = { ":MoveLine(-1)<CR>", desc = "Move line up" }
+    keymaps.n["<M-h>"] = { ":MoveHChar(-1)<CR>", desc = "Move char left" }
+    keymaps.n["<M-l>"] = { ":MoveHChar(1)<CR>", desc = "Move char right" }
     -- Visual mode
-    keymaps.v["<M-j>"] = ":MoveBlock(1)<CR>"
-    keymaps.v["<M-k>"] = ":MoveBlock(-1)<CR>"
-    keymaps.v["<M-h>"] = ":MoveHBlock(-1)<CR>"
-    keymaps.v["<M-l>"] = ":MoveHBlock(1)<CR>"
-end
-
-if is_available("hop.nvim") then
-    keymaps.n["\\"] = { "<cmd>HopChar1<CR>", desc = "Hop to char" }
-    keymaps.n["|"] = { "<cmd>HopPattern<CR>", desc = "Hop pattern" }
+    keymaps.v["<M-j>"] = { ":MoveBlock(1)<CR>", desc = "Move block down" }
+    keymaps.v["<M-k>"] = { ":MoveBlock(-1)<CR>", desc = "Move block up" }
+    keymaps.v["<M-h>"] = { ":MoveHBlock(-1)<CR>", desc = "Move block left" }
+    keymaps.v["<M-l>"] = { ":MoveHBlock(1)<CR>", desc = "Move block right" }
 end
 
 -- Smart Splits (remapped on Meta key)
