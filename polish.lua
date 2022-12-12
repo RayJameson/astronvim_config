@@ -1,6 +1,6 @@
 return function()
     local is_available = astronvim.is_available
-    if is_available("null-ls") then
+    if is_available("null-ls.nvim") then
         vim.api.nvim_create_user_command("LinterRestart", function()
             require("null-ls.client")._reset()
             vim.cmd.edit()
@@ -11,11 +11,6 @@ return function()
         pattern = "*",
         callback = function() vim.highlight.on_yank { higroup = "IncSearch", timeout = 100 } end,
     })
-
-    if is_available("harpoon") then
-        vim.api.nvim_create_user_command("HarpoonToggle", function() require("harpoon.ui").toggle_quick_menu() end, {})
-        vim.api.nvim_create_user_command("HarpoonAddFile", function() require("harpoon.mark").add_file() end, {})
-    end
 
     vim.api.nvim_set_var("python3_host_prog", "$HOME/.pyenv/versions/neovim_base_venv/bin/python3")
     -- Set up custom filetypes
@@ -37,7 +32,7 @@ return function()
         },
         extension = {
             tlua = "lua",
-            html = "htmldjango"
+            html = "htmldjango",
         },
         -- pattern = {
         --   ["~/%.config/foo/.*"] = "fooscript",
