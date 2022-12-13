@@ -230,16 +230,12 @@ local headers = {
     },
 }
 
-local header_meta = setmetatable(headers, {
-    __index = {
-        random = function()
-            local keys = {}
-            for k, _ in pairs(headers) do
-                table.insert(keys, k)
-            end
-            return headers[keys[math.random(#keys)]]
-        end,
-    },
-})
+local function random_header()
+    local header_names = {}
+    for header_name, _ in pairs(headers) do
+        table.insert(header_names, header_name)
+    end
+    return headers[header_names[math.random(#header_names)]]
+end
 
-return header_meta.random()
+return random_header()

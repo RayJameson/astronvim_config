@@ -9,10 +9,10 @@ return function(config) -- overrides `require("null-ls").setup(config)`
         -- Set a formatter
         null_ls.builtins.code_actions.gitsigns,
         null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.reorder_python_imports,
         null_ls.builtins.formatting.yapf.with {
             extra_args = { "--style={based_on_style: pep8}" },
         },
-        null_ls.builtins.formatting.reorder_python_imports,
         null_ls.builtins.formatting.stylua.with {
             extra_args = {
                 "--indent-type=Spaces",

@@ -20,6 +20,8 @@ return {
         autochdir = false,
         list = true,
         showbreak = "↪ ",
+        title = true,
+        titlestring = "%<%F%=%l/%L - nvim",
         listchars = {
             tab = "→ ",
             eol = "↲",
