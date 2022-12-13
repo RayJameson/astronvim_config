@@ -1,4 +1,21 @@
 return {
+    yati = {
+        enable = true,
+        -- Whether to enable lazy mode (recommend to enable this if bad indent happens frequently)
+        default_lazy = false,
+        -- Determine the fallback method used when we cannot calculate indent by tree-sitter
+        --   "auto": fallback to vim auto indent
+        --   "asis": use current indent as-is
+        --   "cindent": see `:h cindent()`
+        -- Or a custom function return the final indent result.
+        default_fallback = "auto",
+        -- And optionally, disable the conflict warning emitted by plugin
+        suppress_conflict_warning = true,
+    },
+    indent = {
+        enable = true,
+        disable = { "python" },
+    },
     ensure_installed = {
         "vim",
         "help",
@@ -60,7 +77,7 @@ return {
         },
     },
     disable = function(lang, buf)
-        local max_filesize = 100 * 1024 -- 100 KB
+        local max_filesize = 500 * 1024 -- 500 KB
         local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
         if ok and stats and stats.size > max_filesize then
             return true

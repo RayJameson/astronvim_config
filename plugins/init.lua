@@ -56,6 +56,10 @@ return {
     ------------------------------------------------------
     -- User plugins without config files in user_plugins folder:
     ------------------------------------------------------
+    ["yioneko/nvim-yati"] = {
+        tag = "*",
+        after = "nvim-treesitter",
+    },
     ["ahmedkhalf/project.nvim"] = {
         opt = true,
         after = "telescope.nvim",
