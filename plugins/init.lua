@@ -60,11 +60,6 @@ return {
         -- settings up this plugin in lsp/server-settings/sumneko_lua
         "folke/neodev.nvim",
     },
-    ["sitiom/nvim-numbertoggle"] = {
-        opt = true,
-        setup = "nvim-numbertoggle",
-        config = function() require("numbertoggle").setup() end,
-    },
     ["yioneko/nvim-yati"] = {
         tag = "*",
         after = "nvim-treesitter",
