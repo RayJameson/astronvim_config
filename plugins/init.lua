@@ -56,6 +56,10 @@ return {
     ------------------------------------------------------
     -- User plugins without config files in user_plugins folder:
     ------------------------------------------------------
+    {
+        -- settings up this plugin in lsp/server-settings/sumneko_lua
+        "folke/neodev.nvim",
+    },
     ["sitiom/nvim-numbertoggle"] = {
         opt = true,
         setup = "nvim-numbertoggle",
