@@ -56,6 +56,11 @@ return {
     ------------------------------------------------------
     -- User plugins without config files in user_plugins folder:
     ------------------------------------------------------
+    ["ahmedkhalf/project.nvim"] = {
+        opt = true,
+        after = "telescope.nvim",
+        config = require("user.user_plugins.project"),
+    },
     ["ThePrimeagen/vim-be-good"] = {
         opt = true,
         cmd = "VimBeGood",
