@@ -1,6 +1,7 @@
 local is_available = astronvim.is_available
 local keymaps = { n = {}, c = {}, i = {}, v = {}, t = {} }
 
+keymaps.n["<leader>."] = { ":cd %:p:h<CR>", desc = "CD to current file" }
 keymaps.n["<leader>ll"] = { "<cmd>LinterRestart<CR>", desc = "Linter restart" }
 keymaps.n["<leader>bb"] = { "<cmd>tabnew<CR>", desc = "New tab" }
 keymaps.n["<leader>bc"] = { "<cmd>BufferLinePickClose<CR>", desc = "Pick to close" }
