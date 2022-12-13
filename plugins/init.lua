@@ -61,6 +61,10 @@ return {
         after = "telescope.nvim",
         config = require("user.user_plugins.project"),
     },
+    ["kevinhwang91/rnvimr"] = {
+        opt = true,
+        cmd = { "RnvimrToggle", "RnvimrResize" },
+    },
     ["ThePrimeagen/vim-be-good"] = {
         opt = true,
         cmd = "VimBeGood",
