@@ -60,6 +60,10 @@ return {
         tag = "*",
         after = "nvim-treesitter",
     },
+    ["xiyaowong/virtcolumn.nvim"] = {
+        opt = true,
+        setup = add_to_lazy_file_plugins("virtcolumn.nvim"),
+    },
     ["ahmedkhalf/project.nvim"] = {
         opt = true,
         after = "telescope.nvim",
