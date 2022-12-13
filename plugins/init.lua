@@ -56,6 +56,11 @@ return {
     ------------------------------------------------------
     -- User plugins without config files in user_plugins folder:
     ------------------------------------------------------
+    ["sitiom/nvim-numbertoggle"] = {
+        opt = true,
+        setup = "nvim-numbertoggle",
+        config = function() require("numbertoggle").setup() end,
+    },
     ["yioneko/nvim-yati"] = {
         tag = "*",
         after = "nvim-treesitter",
