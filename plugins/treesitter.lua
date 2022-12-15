@@ -12,9 +12,11 @@ return {
         -- And optionally, disable the conflict warning emitted by plugin
         suppress_conflict_warning = true,
     },
-    indent = {
+    matchup = {
         enable = true,
-        disable = { "python" },
+    },
+    indent = {
+        enable = false
     },
     ensure_installed = {
         "vim",
