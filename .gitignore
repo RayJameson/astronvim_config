@@ -40,3 +40,4 @@ luac.out
 *.hex
 
 presence_blacklist.lua
+.metals

@@ -61,7 +61,10 @@ return {
         "folke/neodev.nvim",
     },
     ["scalameta/nvim-metals"] = {
-        config = require("user.user_plugins.nvim-metals")
+        opt = true,
+        config = require("user.user_plugins.nvim-metals"),
+        -- Without sequencing Mason UI doens't work
+        after = {"mason.nvim", "mason-lspconfig.nvim", "mason-null-ls.nvim"}
     },
     ["theHamsta/nvim-dap-virtual-text"] = {
         after = "nvim-dap",
