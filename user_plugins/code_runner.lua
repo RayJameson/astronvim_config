@@ -11,6 +11,7 @@ return function()
             javascript = "node",
             shellscript = "bash",
             go = "go run",
+            scala = "scala",
         },
     }
 end

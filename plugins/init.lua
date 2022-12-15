@@ -60,6 +60,9 @@ return {
         -- settings up this plugin in lsp/server-settings/sumneko_lua
         "folke/neodev.nvim",
     },
+    ["scalameta/nvim-metals"] = {
+        config = require("user.user_plugins.nvim-metals")
+    },
     ["theHamsta/nvim-dap-virtual-text"] = {
         after = "nvim-dap",
         config = function() require("nvim-dap-virtual-text").setup() end,
