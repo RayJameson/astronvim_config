@@ -97,12 +97,6 @@ return {
         opt = true,
         setup = add_to_lazy_file_plugins("nvim-dap"),
     },
-    ["mfussenegger/nvim-dap-python"] = {
-        opt = true,
-        after = { "mason-nvim-dap.nvim", "nvim-dap" },
-        ft = "python",
-        config = function() require("dap-python").setup("~/.virtualenvs/debugpy/bin/python") end,
-    },
     ["folke/trouble.nvim"] = {
         opt = true,
         setup = add_to_lazy_file_plugins("trouble.nvim"),
@@ -180,16 +174,6 @@ return {
         opt = true,
         setup = add_to_lazy_file_plugins("nvim-bqf"),
         config = require("user.user_plugins.nvim-bqf"),
-    },
-    ["jayp0521/mason-nvim-dap.nvim"] = {
-        opt = true,
-        after = { "mason.nvim", "nvim-dap" },
-        config = require("user.user_plugins.mason-nvim-dap"),
-    },
-    ["rcarriga/nvim-dap-ui"] = {
-        opt = true,
-        after = "nvim-dap",
-        config = require("user.user_plugins.nvim-dap-ui"),
     },
     ["m-demare/hlargs.nvim"] = {
         opt = true,
