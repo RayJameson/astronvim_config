@@ -72,6 +72,8 @@ return {
         config = require("user.user_plugins.rust_tools"),
     },
     ["yioneko/nvim-yati"] = {
+        opt = true,
+        requires = { "nvim-treesitter/nvim-treesitter" },
         tag = "*",
         after = "nvim-treesitter",
     },
@@ -120,13 +122,18 @@ return {
         config = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end,
     },
     ["nvim-treesitter/nvim-treesitter-context"] = {
+        opt = true,
+        requires = { "nvim-treesitter/nvim-treesitter" },
         after = "nvim-treesitter",
         config = function() require("treesitter-context").setup() end,
     },
     ["nvim-treesitter/nvim-treesitter-textobjects"] = {
+        opt = true,
+        requires = { "nvim-treesitter/nvim-treesitter" },
         after = "nvim-treesitter",
     },
     ["iamcco/markdown-preview.nvim"] = {
+        opt = true,
         run = function() vim.fn["mkdp#util#install"]() end,
         ft = "markdown",
     },
@@ -183,7 +190,9 @@ return {
         config = require("user.user_plugins.nvim-bqf"),
     },
     ["m-demare/hlargs.nvim"] = {
+        requires = { "nvim-treesitter/nvim-treesitter" },
         opt = true,
+        after = "nvim-treesitter",
         setup = add_to_lazy_file_plugins("hlargs.nvim"),
         config = require("user.user_plugins.hlargs"),
     },
