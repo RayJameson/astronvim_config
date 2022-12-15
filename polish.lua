@@ -9,7 +9,6 @@ return function()
     vim.cmd([[
             " autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=100}
             :set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
-            command! Refactoring execute "lua require('telescope').extensions.refactoring.refactors()"
             augroup remember_folds
             autocmd!
             autocmd BufWinLeave *.* mkview

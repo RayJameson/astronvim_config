@@ -131,7 +131,7 @@ return {
     },
     ["ThePrimeagen/refactoring.nvim"] = {
         opt = true,
-        config = function() require("telescope").load_extension("refactoring") end,
+        config = require("user.user_plugins.refactoring"),
         cmd = "Refactoring",
     },
     ["joechrisellis/lsp-format-modifications.nvim"] = {
