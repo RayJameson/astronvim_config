@@ -1,12 +1,4 @@
 return function()
-    local is_available = astronvim.is_available
-    if is_available("null-ls.nvim") then
-        vim.api.nvim_create_user_command("LinterRestart", function()
-            require("null-ls.client")._reset()
-            vim.cmd.edit()
-        end, {})
-    end
-
     vim.api.nvim_create_autocmd({ "TextYankPost" }, {
         pattern = "*",
         callback = function() vim.highlight.on_yank { higroup = "IncSearch", timeout = 100 } end,

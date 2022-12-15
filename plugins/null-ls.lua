@@ -46,5 +46,9 @@ return function(config) -- overrides `require("null-ls").setup(config)`
             -- end),
         },
     }
+    vim.api.nvim_create_user_command("LinterRestart", function()
+        require("null-ls.client")._reset()
+        vim.cmd.edit()
+    end, {})
     return config -- return final config table
 end
