@@ -6,10 +6,13 @@ return function(config)
             hint = {
                 enable = true,
             },
+            workspace = {
+                checkThirdParty = false,
+            },
             runtime = {
-                    version = "Lua 5.4",
-                    -- version = "LuaJIT",
-                }
+                version = "Lua 5.4",
+                -- version = "LuaJIT",
+            },
         },
     }
     return config
