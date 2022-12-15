@@ -60,6 +60,10 @@ return {
         -- settings up this plugin in lsp/server-settings/sumneko_lua
         "folke/neodev.nvim",
     },
+    ["lvimuser/lsp-inlayhints.nvim"] = {
+        module = "lsp-inlayhints",
+        config = require("user.user_plugins.lsp-inlayhints"),
+    },
     ["yioneko/nvim-yati"] = {
         tag = "*",
         after = "nvim-treesitter",
