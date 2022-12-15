@@ -60,6 +60,10 @@ return {
         -- settings up this plugin in lsp/server-settings/sumneko_lua
         "folke/neodev.nvim",
     },
+    ["theHamsta/nvim-dap-virtual-text"] = {
+        after = "nvim-dap",
+        config = function() require("nvim-dap-virtual-text").setup() end,
+    },
     ["nanotee/sqls.nvim"] = {
         module = "sqls",
     },
