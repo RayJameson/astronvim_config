@@ -64,6 +64,10 @@ return {
         module = "lsp-inlayhints",
         config = require("user.user_plugins.lsp-inlayhints"),
     },
+    ["simrat39/rust-tools.nvim"] = {
+        after = "mason-lspconfig.nvim",
+        config = require("user.user_plugins.rust_tools"),
+    },
     ["yioneko/nvim-yati"] = {
         tag = "*",
         after = "nvim-treesitter",
