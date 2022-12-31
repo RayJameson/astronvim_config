@@ -28,7 +28,7 @@ return function(config) -- overrides `require("null-ls").setup(config)`
         },
         null_ls.builtins.diagnostics.luacheck.with {
             command = "luacheck",
-            extra_args = {},
+            extra_args = {"-d"},
             filetypes = { "lua" },
 
             -- force luacheck to find its '.luacheckrc' file

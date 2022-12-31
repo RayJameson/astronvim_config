@@ -13,6 +13,9 @@ return function(config)
                 version = "Lua 5.4",
                 -- version = "LuaJIT",
             },
+            diagnostics = {
+                disable = { "lowercase-global" },
+            },
         },
     }
     return config

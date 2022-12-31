@@ -1,9 +1,10 @@
 return function(hl) -- or a function that returns a new table of colors to set
     local C = require("default_theme.colors")
     hl.TelescopeResultsVariable = { fg = C.fg }
-    hl["CursorLineNr"] = { fg = C.blue_1 }
-    hl["LineNrAbove"] = { fg = C.red_1 }
-    hl["LineNrBelow"] = { fg = C.toml }
+    hl.CursorLineNr = { fg = C.blue_1 }
+    hl.LineNrAbove = { fg = C.red_1 }
+    hl.LineNrBelow = { fg = C.toml }
+    hl.Visual = { fg = C.none, bg = C.grey_5, reverse = true } -- invert visual selection
     hl["@variable"] = { fg = C.fg }
     hl["@float"] = { fg = C.orange }
     hl["@attribute"] = { fg = C.gold }
@@ -18,14 +19,15 @@ return function(hl) -- or a function that returns a new table of colors to set
     hl["@function.builtin"] = { fg = C.blue_1 }
     hl["@class_variable"] = { fg = C.red }
     hl.Normal = { fg = C.fg, bg = C.bg }
-    -- hl["Folded"] = { fg = "#25BE83" }
-    -- hl["FoldColumn"] = { fg = "#25BE83" }
+    hl.Folded = { fg = "#25BE83" }
+    hl.FoldColumn = { fg = "#25BE83" }
 
     -- New approach instead of diagnostic_style
     hl.DiagnosticError.italic = true
     hl.DiagnosticHint.italic = true
     hl.DiagnosticInfo.italic = true
     hl.DiagnosticWarn.italic = true
+    vim.cmd("hi! TreesitterContextLineNumber guifg=#c678dd")
 
     return hl
 end
