@@ -175,9 +175,21 @@ return {
         config = function() require("nvim-surround").setup() end,
         setup = add_to_lazy_file_plugins("nvim-surround"),
     },
-    ---------------------------------------------------
-    --  Plugins with config set in user_plugins files:
-    ---------------------------------------------------
+    ["xiyaowong/nvim-transparent"] = {
+        config = require("user.user_plugins.nvim-transparent"),
+    },
+    ["amrbashir/nvim-docs-view"] = {
+        opt = true,
+        cmd = { "DocsViewToggle" },
+        config = require("user.user_plugins.docs-view"),
+    },
+    ["scalameta/nvim-metals"] = {
+        disable = vim.fn.executable("coursier") <= 0,
+        opt = true,
+        config = require("user.user_plugins.nvim-metals"),
+        -- Without sequencing Mason UI doens't work
+        after = { "mason.nvim", "mason-lspconfig.nvim", "mason-null-ls.nvim" },
+    },
     ["f-person/git-blame.nvim"] = {
         opt = true,
         setup = add_to_lazy_git_plugins("git-blame.nvim"),
