@@ -21,6 +21,7 @@ return {
         list = true,
         showbreak = "↪ ",
         title = true,
+        lazyredraw = false,
         titlestring = "%<%F%=%l/%L - nvim",
         listchars = {
             tab = "→ ",
@@ -44,6 +45,7 @@ return {
         foldmethod = "manual",
     },
     g = {
+        heirline_bufferline = true, -- enable heirline bufferline (TODO v3: remove this option and make it default)
         mapleader = " ", -- sets vim.g.mapleader
         autoformat_enabled = false, -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
         cmp_enabled = true, -- enable completion at start

@@ -12,6 +12,7 @@ return {
             },
             ["T"] = { name = "Trouble" },
             ["D"] = { name = "Debug" },
+            ["M"] = { name = "Mind Notes" }
         },
     },
     v = {
