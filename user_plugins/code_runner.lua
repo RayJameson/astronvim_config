@@ -15,6 +15,13 @@ return function()
             c = "cd $dir && gcc $fileName -o $fileNameWithoutExt -Wall && time ./$fileNameWithoutExt && rm $fileNameWithoutExt",
             markdown = "rich"
         },
+        term = {
+            --  Position to open the terminal, this option is ignored if mode is tab
+            mode = "toggleterm",
+            position = "bot",
+            -- position = "vert",
+            -- window size, this option is ignored if tab is true
+            size = 20,
         },
     }
 end
