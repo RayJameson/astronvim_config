@@ -36,7 +36,7 @@ return {
         filtered_items = {
             visible = true,
         },
-        follow_current_file = true,
+        follow_current_file = false,
         window = {
             mappings = {
                 ["/"] = "noop",
