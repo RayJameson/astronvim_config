@@ -122,8 +122,6 @@ return {
         config = function() require("trouble").setup() end,
     },
     ["ray-x/lsp_signature.nvim"] = {
-        opt = true,
-        setup = add_to_lazy_file_plugins("lsp_signature.nvim"),
         config = function() require("lsp_signature").setup() end,
     },
     ["andymass/vim-matchup"] = {

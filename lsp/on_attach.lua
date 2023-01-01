@@ -14,4 +14,14 @@ return function(client, bufnr)
             vim.cmd("hi! link LspInlayHint Comment")
         end
     end
+
+    -- local is_available, lsp_signature = pcall(require, "lsp_signature")
+    -- if is_available then
+    --     lsp_signature.on_attach({
+    --         bind = true, -- This is mandatory, otherwise border config won't get registered.
+    --         handler_opts = {
+    --             border = "rounded",
+    --         },
+    --     }, bufnr)
+    -- end
 end
