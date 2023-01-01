@@ -178,6 +178,12 @@ return {
         cmd = { "DocsViewToggle" },
         config = require("user.user_plugins.docs-view"),
     },
+    ["phaazon/mind.nvim"] = {
+        opt = true,
+        cmd = { "MindOpenMain", "MindOpenProject", "MindOpenSmartProject" },
+        requires = { "nvim-lua/plenary.nvim" },
+        config = require("user.user_plugins.mind"),
+    },
     ["scalameta/nvim-metals"] = {
         disable = vim.fn.executable("coursier") <= 0,
         opt = true,
