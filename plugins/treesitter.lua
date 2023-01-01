@@ -16,7 +16,7 @@ return {
         enable = true,
     },
     indent = {
-        enable = false
+        enable = false,
     },
     ensure_installed = {
         "vim",
