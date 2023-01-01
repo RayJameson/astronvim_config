@@ -198,7 +198,7 @@ return {
     },
     ["ellisonleao/glow.nvim"] = {
         opt = true,
-        ft = "markdown",
+        cmd = "Glow",
         config = require("user.user_plugins.glow"),
     },
     ["CRAG666/code_runner.nvim"] = {
