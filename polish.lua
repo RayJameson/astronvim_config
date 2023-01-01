@@ -29,6 +29,14 @@ return function()
         end,
     })
 
+    if vim.fn.has("mac") then
+        vim.cmd([[
+            function OpenMarkdownPreview (url)
+                execute "silent ! open -a 'Brave Browser' -n --args --new-window " . a:url
+            endfunction
+            let g:mkdp_browserfunc = 'OpenMarkdownPreview'
+        ]])
+    end
     vim.api.nvim_create_autocmd("InsertLeave", {
         pattern = "*",
         group = "relative_number_switch",
