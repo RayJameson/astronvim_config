@@ -68,4 +68,11 @@ return function()
             ["%.gitconfig.*"] = "gitconfig",
         },
     }
+
+    local better_luafile = require("user.user_plugins.better_luafile")
+    vim.api.nvim_create_user_command(
+        "BetterLuafile",
+        function(opts) better_luafile.call(opts.fargs, "horizontal", 15, true) end,
+        { nargs = "?" }
+    )
 end
