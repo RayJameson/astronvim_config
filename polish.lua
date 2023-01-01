@@ -17,6 +17,29 @@ return function()
             autocmd BufWritePost *.* TSDisable rainbow | TSEnable rainbow
         ]])
 
+    vim.api.nvim_create_augroup("relative_number_switch", { clear = true })
+    vim.api.nvim_create_autocmd("InsertEnter", {
+        pattern = "*",
+        group = "relative_number_switch",
+        callback = function()
+            if vim.wo.relativenumber then
+                vim.wo.relativenumber = false
+                vim.w.adaptive_relative_number_state = true
+            end
+        end,
+    })
+
+    vim.api.nvim_create_autocmd("InsertLeave", {
+        pattern = "*",
+        group = "relative_number_switch",
+        callback = function()
+            if vim.w.adaptive_relative_number_state then
+                vim.wo.relativenumber = true
+                vim.w.adaptive_relative_number_state = nil
+            end
+        end,
+    })
+
     vim.filetype.add {
         filename = {
             ["poetry.lock"] = "toml",
