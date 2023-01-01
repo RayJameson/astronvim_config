@@ -66,9 +66,6 @@ return {
         after = "nvim-dap",
         config = function() require("nvim-dap-virtual-text").setup() end,
     },
-    ["nanotee/sqls.nvim"] = {
-        module = "sqls",
-    },
     ["yioneko/nvim-yati"] = {
         opt = true,
         requires = { "nvim-treesitter/nvim-treesitter" },
