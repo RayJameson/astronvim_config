@@ -48,6 +48,8 @@ return {
     ["Darazaki/indent-o-matic"] = { disable = true },
     -- modify existing cmp sources
     ["hrsh7th/nvim-cmp"] = { keys = { ":", "/", "?" } },
+    -- add more custom sources
+    ["hrsh7th/cmp-cmdline"] = { after = "nvim-cmp" },
 
     -- You can also add new plugins here as well:
     -- Add plugins, the packer syntax without the "use"
