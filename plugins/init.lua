@@ -191,13 +191,6 @@ return {
         cmd = { "DocsViewToggle" },
         config = require("user.user_plugins.docs-view"),
     },
-    ["scalameta/nvim-metals"] = {
-        disable = vim.fn.executable("coursier") <= 0,
-        opt = true,
-        config = require("user.user_plugins.nvim-metals"),
-        -- Without sequencing Mason UI doens't work
-        after = { "mason.nvim", "mason-lspconfig.nvim", "mason-null-ls.nvim" },
-    },
     ["f-person/git-blame.nvim"] = {
         opt = true,
         setup = add_to_lazy_git_plugins("git-blame.nvim"),
