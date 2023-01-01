@@ -20,13 +20,15 @@ return function()
     vim.filetype.add {
         filename = {
             ["poetry.lock"] = "toml",
+            ["%.?zshrc"] = "sh",
         },
         extension = {
             tlua = "lua",
             html = "htmldjango",
         },
-        -- pattern = {
-        --   ["~/%.config/foo/.*"] = "fooscript",
-        -- },
+        pattern = {
+            -- ["~/%.config/foo/.*"] = "fooscript",
+            ["%.gitconfig.*"] = "gitconfig",
+        },
     }
 end
