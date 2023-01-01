@@ -4,14 +4,17 @@ return function()
         startinsert = false,
         filetype = {
             java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
-            python = "python3 -u",
-            lua = "lua",
-            typescript = "deno run",
-            rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
-            javascript = "node",
-            shellscript = "bash",
-            go = "go run",
-            scala = "scala",
+            python = "time python3 -u",
+            lua = "time lua",
+            typescript = "time deno run",
+            rust = "cd $dir && time rustc $fileName && $dir/$fileNameWithoutExt",
+            javascript = "time node",
+            shellscript = "time bash",
+            go = "time go run",
+            scala = "time scala",
+            c = "cd $dir && gcc $fileName -o $fileNameWithoutExt -Wall && time ./$fileNameWithoutExt && rm $fileNameWithoutExt",
+            markdown = "rich"
+        },
         },
     }
 end
