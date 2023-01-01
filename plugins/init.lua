@@ -55,7 +55,8 @@ return {
 
     ------------------------------------------------------------
     -- User plugins without config files in user_plugins folder:
-    ------------------------------------------------------
+    ------------------------------------------------------------
+
     {
         -- settings up this plugin in lsp/server-settings/sumneko_lua
         "folke/neodev.nvim",
@@ -158,6 +159,11 @@ return {
         setup = add_to_lazy_file_plugins("todo-comments.nvim"),
         config = require("user.user_plugins.todo-comments"),
     },
+
+    ------------------------------------------------------------
+    --     Plugins with config set in "user_plugins" folder:
+    ------------------------------------------------------------
+
     ["sindrets/diffview.nvim"] = {
         disable = vim.fn.executable("git") <= 0,
         opt = true,
