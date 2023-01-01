@@ -47,8 +47,9 @@ return {
 
     -- You can disable default plugins as follows:
     -- [] = { disable = true },
-    ["Darazaki/indent-o-matic"] = { disable = true },
-    -- modify existing cmp sources
+
+    -- I don't like this plugin
+    -- ["Darazaki/indent-o-matic"] = { disable = true },
     ["hrsh7th/nvim-cmp"] = { keys = { ":", "/", "?" } },
     -- add more custom sources
     ["hrsh7th/cmp-cmdline"] = { after = "nvim-cmp" },
