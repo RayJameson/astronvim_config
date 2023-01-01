@@ -95,10 +95,6 @@ return {
         opt = true,
         setup = add_to_lazy_file_plugins("move.nvim"),
     },
-    ["mfussenegger/nvim-dap"] = {
-        opt = true,
-        setup = add_to_lazy_file_plugins("nvim-dap"),
-    },
     ["folke/trouble.nvim"] = {
         opt = true,
         setup = add_to_lazy_file_plugins("trouble.nvim"),
