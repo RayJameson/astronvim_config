@@ -1,48 +1,50 @@
---[[   Packer optional commands for plugins
-  {"myusername/example",
-  or
-  ["myusername/example"] = {        -- The plugin location string
+--[[
+    Add plugins, the packer syntax without the "use":
+      { "andweeb/presence.nvim" },
+      ["andweeb/presence.nvim"] = {},
 
-  The following keys are all optional
-  disable = boolean,                -- Mark a plugin as inactive
-  as = string,                      -- Specifies an alias under which to install the plugin
-  installer = function,             -- Specifies custom installer. See "custom installers" below.
-  updater = function,               -- Specifies custom updater. See "custom installers" below.
-  after = string or list,           -- Specifies plugins to load before this plugin. See "sequencing" below
-  rtp = string,                     -- Specifies a subdirectory of the plugin to add to runtimepath.
-  opt = boolean,                    -- Manually marks a plugin as optional.
-  bufread = boolean,                -- Manually specifying if a plugin needs BufRead after being loaded
-  branch = string,                  -- Specifies a git branch to use
-  tag = string,                     -- Specifies a git tag to use. Supports '*' for "latest tag"
-  commit = string,                  -- Specifies a git commit to use
-  lock = boolean,                   -- Skip updating this plugin in updates/syncs. Still cleans.
-  run = string, function, or table, -- Post-update/install hook. See "update/install hooks".
-  requires = string or list,        -- Specifies plugin dependencies. See "dependencies".
-  rocks = string or list,           -- Specifies Luarocks dependencies for the plugin
-  config = string or function,      -- Specifies code to run after this plugin is loaded.
+    Packer optional commands for plugins:
+    disable = boolean,                -- Mark a plugin as inactive
+    as = string,                      -- Specifies an alias under which to install the plugin
+    installer = function,             -- Specifies custom installer. See "custom installers" below.
+    updater = function,               -- Specifies custom updater. See "custom installers" below.
+    after = string or list,           -- Specifies plugins to load before this plugin. See "sequencing" below
+    rtp = string,                     -- Specifies a subdirectory of the plugin to add to runtimepath.
+    opt = boolean,                    -- Manually marks a plugin as optional.
+    bufread = boolean,                -- Manually specifying if a plugin needs BufRead after being loaded
+    branch = string,                  -- Specifies a git branch to use
+    tag = string,                     -- Specifies a git tag to use. Supports '*' for "latest tag"
+    commit = string,                  -- Specifies a git commit to use
+    lock = boolean,                   -- Skip updating this plugin in updates/syncs. Still cleans.
+    run = string, function, or table, -- Post-update/install hook. See "update/install hooks".
+    requires = string or list,        -- Specifies plugin dependencies. See "dependencies".
+    rocks = string or list,           -- Specifies Luarocks dependencies for the plugin
+    config = string or function,      -- Specifies code to run after this plugin is loaded.
 
-  The setup key implies opt = true
-  setup = string or function,       -- Specifies code to run before this plugin is loaded. The code is ran even if
+    The setup key implies opt = true
+    setup = string or function,       -- Specifies code to run before this plugin is loaded. The code is ran even if
 
-  The following keys all imply lazy-loading and imply opt = true
-  cmd = string or list,             -- Specifies commands which load this plugin. Can be an autocmd pattern.
-  ft = string or list,              -- Specifies filetypes which load this plugin.
-  keys = string or list,            -- Specifies maps which load this plugin. See "Keybindings".
-  event = string or list,           -- Specifies autocommand events which load this plugin.
-  fn = string or list               -- Specifies functions which load this plugin.
-  cond = string, function, or list of strings/functions,   -- Specifies a conditional test to load this plugin
-  module = string or list           -- Specifies Lua module names for require. When requiring a string which starts
-                                    -- with one of these module names, the plugin will be loaded.
-  module_pattern = string/list      -- Specifies Lua pattern of Lua module names for require. When
-                                    -- requiring a string which matches one of these patterns, the plugin will be loaded.
-}
+    The following keys all imply lazy-loading and imply opt = true
+    cmd = string or list,             -- Specifies commands which load this plugin. Can be an autocmd pattern.
+    ft = string or list,              -- Specifies filetypes which load this plugin.
+    keys = string or list,            -- Specifies maps which load this plugin. See "Keybindings".
+    event = string or list,           -- Specifies autocommand events which load this plugin.
+    fn = string or list               -- Specifies functions which load this plugin.
+    cond = string, function, or list of strings/functions,   -- Specifies a conditional test to load this plugin
+    module = string or list           -- Specifies Lua module names for require. When requiring a string which starts
+                                      -- with one of these module names, the plugin will be loaded.
+    module_pattern = string/list      -- Specifies Lua pattern of Lua module names for require. When
+                                      -- requiring a string which matches one of these patterns, the plugin will be loaded.
 --]]
 
 local function add_to_lazy_file_plugins(plugin) table.insert(astronvim.file_plugins, plugin) end
-
 local function add_to_lazy_git_plugins(plugin) table.insert(astronvim.git_plugins, plugin) end
 
 return {
+    ------------------------------------------------------------
+    --           Core plugins modifying configuration:
+    ------------------------------------------------------------
+
     -- You can disable default plugins as follows:
     -- [] = { disable = true },
     ["Darazaki/indent-o-matic"] = { disable = true },
@@ -51,11 +53,7 @@ return {
     -- add more custom sources
     ["hrsh7th/cmp-cmdline"] = { after = "nvim-cmp" },
 
-    -- You can also add new plugins here as well:
-    -- Add plugins, the packer syntax without the "use"
-    -- { "andweeb/presence.nvim" },
-    -- ["andweeb/presence.nvim"] = {},
-    ------------------------------------------------------
+    ------------------------------------------------------------
     -- User plugins without config files in user_plugins folder:
     ------------------------------------------------------
     {
