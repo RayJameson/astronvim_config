@@ -59,14 +59,8 @@ return {
     ------------------------------------------------------------
 
     {
-        -- settings up this plugin in lsp/server-settings/sumneko_lua
+        -- setting up this plugin in lsp/server-settings/sumneko_lua
         "folke/neodev.nvim",
-    },
-    ["scalameta/nvim-metals"] = {
-        opt = true,
-        config = require("user.user_plugins.nvim-metals"),
-        -- Without sequencing Mason UI doens't work
-        after = {"mason.nvim", "mason-lspconfig.nvim", "mason-null-ls.nvim"}
     },
     ["theHamsta/nvim-dap-virtual-text"] = {
         after = "nvim-dap",
@@ -74,14 +68,6 @@ return {
     },
     ["nanotee/sqls.nvim"] = {
         module = "sqls",
-    },
-    ["lvimuser/lsp-inlayhints.nvim"] = {
-        module = "lsp-inlayhints",
-        config = require("user.user_plugins.lsp-inlayhints"),
-    },
-    ["simrat39/rust-tools.nvim"] = {
-        after = "mason-lspconfig.nvim",
-        config = require("user.user_plugins.rust_tools"),
     },
     ["yioneko/nvim-yati"] = {
         opt = true,
@@ -92,11 +78,6 @@ return {
     ["xiyaowong/virtcolumn.nvim"] = {
         opt = true,
         setup = add_to_lazy_file_plugins("virtcolumn.nvim"),
-    },
-    ["ahmedkhalf/project.nvim"] = {
-        opt = true,
-        after = "telescope.nvim",
-        config = require("user.user_plugins.project"),
     },
     ["kevinhwang91/rnvimr"] = {
         opt = true,
@@ -147,11 +128,6 @@ return {
         run = function() vim.fn["mkdp#util#install"]() end,
         ft = "markdown",
     },
-    ["ThePrimeagen/refactoring.nvim"] = {
-        opt = true,
-        config = require("user.user_plugins.refactoring"),
-        cmd = "Refactoring",
-    },
     ["joechrisellis/lsp-format-modifications.nvim"] = {
         module = "lsp-format-modifications",
     },
@@ -159,6 +135,12 @@ return {
         opt = true,
         setup = add_to_lazy_file_plugins("todo-comments.nvim"),
         config = require("user.user_plugins.todo-comments"),
+    },
+    ["kylechui/nvim-surround"] = {
+        opt = true,
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function() require("nvim-surround").setup() end,
+        setup = add_to_lazy_file_plugins("nvim-surround"),
     },
 
     ------------------------------------------------------------
@@ -176,13 +158,23 @@ return {
         cond = function() return vim.fn.exists("$TMUX") == 1 end,
         config = require("user.user_plugins.tmux"),
     },
+    ["ThePrimeagen/refactoring.nvim"] = {
         opt = true,
+        config = require("user.user_plugins.refactoring"),
+        cmd = "Refactoring",
     },
-    ["kylechui/nvim-surround"] = {
+    ["ahmedkhalf/project.nvim"] = {
         opt = true,
-        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-        config = function() require("nvim-surround").setup() end,
-        setup = add_to_lazy_file_plugins("nvim-surround"),
+        after = "telescope.nvim",
+        config = require("user.user_plugins.project"),
+    },
+    ["lvimuser/lsp-inlayhints.nvim"] = {
+        module = "lsp-inlayhints",
+        config = require("user.user_plugins.lsp-inlayhints"),
+    },
+    ["simrat39/rust-tools.nvim"] = {
+        after = "mason-lspconfig.nvim",
+        config = require("user.user_plugins.rust_tools"),
     },
     ["xiyaowong/nvim-transparent"] = {
         config = require("user.user_plugins.nvim-transparent"),
@@ -191,6 +183,13 @@ return {
         opt = true,
         cmd = { "DocsViewToggle" },
         config = require("user.user_plugins.docs-view"),
+    },
+    ["scalameta/nvim-metals"] = {
+        disable = vim.fn.executable("coursier") <= 0,
+        opt = true,
+        config = require("user.user_plugins.nvim-metals"),
+        -- Without sequencing Mason UI doens't work
+        after = { "mason.nvim", "mason-lspconfig.nvim", "mason-null-ls.nvim" },
     },
     ["f-person/git-blame.nvim"] = {
         opt = true,
