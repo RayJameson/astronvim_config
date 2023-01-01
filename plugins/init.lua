@@ -153,6 +153,11 @@ return {
     ["joechrisellis/lsp-format-modifications.nvim"] = {
         module = "lsp-format-modifications",
     },
+    ["folke/todo-comments.nvim"] = {
+        opt = true,
+        setup = add_to_lazy_file_plugins("todo-comments.nvim"),
+        config = require("user.user_plugins.todo-comments"),
+    },
     ["sindrets/diffview.nvim"] = {
         disable = vim.fn.executable("git") <= 0,
         opt = true,
@@ -164,10 +169,7 @@ return {
         cond = function() return vim.fn.exists("$TMUX") == 1 end,
         config = require("user.user_plugins.tmux"),
     },
-    ["folke/todo-comments.nvim"] = {
         opt = true,
-        setup = add_to_lazy_file_plugins("todo-comments.nvim"),
-        config = function() require("todo-comments").setup() end,
     },
     ["kylechui/nvim-surround"] = {
         opt = true,
