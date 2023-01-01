@@ -77,6 +77,7 @@ return {
         setup = add_to_lazy_file_plugins("virtcolumn.nvim"),
     },
     ["kevinhwang91/rnvimr"] = {
+        disable = vim.fn.executable("ranger") == 0,
         opt = true,
         cmd = { "RnvimrToggle", "RnvimrResize" },
     },
@@ -147,8 +148,8 @@ return {
         config = require("user.user_plugins.diffview"),
     },
     ["aserowy/tmux.nvim"] = {
+        disable = vim.fn.exists("$TMUX") == 0,
         opt = true,
-        cond = function() return vim.fn.exists("$TMUX") == 1 end,
         config = require("user.user_plugins.tmux"),
     },
     ["ThePrimeagen/refactoring.nvim"] = {
