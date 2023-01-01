@@ -154,9 +154,10 @@ return {
         module = "lsp-format-modifications",
     },
     ["sindrets/diffview.nvim"] = {
+        disable = vim.fn.executable("git") <= 0,
         opt = true,
         cmd = { "DiffviewOpen", "DiffviewFileHistory" },
-        config = function() require("diffview").setup() end,
+        config = require("user.user_plugins.diffview"),
     },
     ["aserowy/tmux.nvim"] = {
         opt = true,
