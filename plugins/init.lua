@@ -77,7 +77,7 @@ return {
         setup = add_to_lazy_file_plugins("virtcolumn.nvim"),
     },
     ["kevinhwang91/rnvimr"] = {
-        disable = vim.fn.executable("ranger") == 0,
+        disable = vim.fn.executable("ranger") <= 0,
         opt = true,
         cmd = { "RnvimrToggle", "RnvimrResize" },
     },
