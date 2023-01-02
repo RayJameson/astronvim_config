@@ -147,11 +147,6 @@ return {
         cmd = { "DiffviewOpen", "DiffviewFileHistory" },
         config = require("user.user_plugins.diffview"),
     },
-    ["aserowy/tmux.nvim"] = {
-        opt = true,
-        cond = function() return vim.fn.exists("$TMUX") == 1 end,
-        config = require("user.user_plugins.tmux"),
-    },
     ["ThePrimeagen/refactoring.nvim"] = {
         opt = true,
         config = require("user.user_plugins.refactoring"),
