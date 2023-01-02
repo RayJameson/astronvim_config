@@ -2,10 +2,6 @@
 
 ## Some differences with base AstroNvim config
 
-- Disabled ident-o-matic because I like 4 spaces indentation and don't want to
-  conform others formatting style.
-  When I write code on my job it's 4 spaces anyway and when I use others code I
-  prefer it formatted my way.
 - I changed colors for default theme, because I don't like red colored variables,
   I want them to be
   ![#abb2bf](https://placehold.co/15x15/abb2bf/abb2bf.png)
