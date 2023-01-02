@@ -35,6 +35,8 @@ function M.call(fargs, orientation, size, focus)
     -- Disable number and relativenumber for better look
     vim.api.nvim_win_set_option(new_window_number, "number", false)
     vim.api.nvim_win_set_option(new_window_number, "relativenumber", false)
+    -- Prevent edit as we only outputting information
+    vim.api.nvim_buf_set_option(new_buffer_number, "modifiable", false)
     -- Focus on original window if needed
     if not focus then
         vim.api.nvim_set_current_win(original_window_number)
