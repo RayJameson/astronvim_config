@@ -5,14 +5,13 @@ return {
         ["<leader>"] = {
             -- third key is the key to bring up next level and its displayed
             -- group name in which-key top level menu
-            ["b"] = { name = "Buffer" },
             ["m"] = { name = "Markdown" },
             ["r"] = {
                 name = "Code runner",
             },
             ["T"] = { name = "Trouble" },
             ["D"] = { name = "Debug" },
-            ["M"] = { name = "Mind Notes" }
+            ["M"] = { name = "Mind Notes" },
         },
     },
     v = {
