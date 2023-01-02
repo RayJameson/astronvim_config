@@ -148,8 +148,8 @@ return {
         config = require("user.user_plugins.diffview"),
     },
     ["aserowy/tmux.nvim"] = {
-        disable = vim.fn.exists("$TMUX") == 0,
         opt = true,
+        cond = vim.fn.exists("$TMUX") == 0,
         config = require("user.user_plugins.tmux"),
     },
     ["ThePrimeagen/refactoring.nvim"] = {
