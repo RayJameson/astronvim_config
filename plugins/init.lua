@@ -187,6 +187,7 @@ return {
         after = { "mason.nvim", "mason-lspconfig.nvim", "mason-null-ls.nvim" },
     },
     ["f-person/git-blame.nvim"] = {
+        disable = vim.fn.executable("git") <= 0,
         opt = true,
         setup = add_to_lazy_git_plugins("git-blame.nvim"),
         config = require("user.user_plugins.git-blame"),
