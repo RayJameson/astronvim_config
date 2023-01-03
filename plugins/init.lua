@@ -66,6 +66,10 @@ return {
         -- setting up this plugin in lsp/server-settings/sumneko_lua
         "folke/neodev.nvim",
     },
+    ["kevinhwang91/nvim-ufo"] = {
+        requires = "kevinhwang91/promise-async",
+        config = require("user.user_plugins.nvim-ufo"),
+    },
     ["theHamsta/nvim-dap-virtual-text"] = {
         after = "nvim-dap",
         config = function() require("nvim-dap-virtual-text").setup({}) end,
