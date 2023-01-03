@@ -150,9 +150,6 @@ if is_available("markdown-preview.nvim") then
     keymaps.n["<leader>mm"] = { "<CMD>MarkdownPreview<CR>", desc = "MarkdownPreview" }
     keymaps.n["<leader>mt"] = { "<CMD>MarkdownPreviewToggle<CR>", desc = "MarkdownPreview Toggle" }
     keymaps.n["<leader>ms"] = { "<CMD>MarkdownPreviewStop<CR>", desc = "MarkdownPreview Stop" }
-    if vim.fn.executable("rich") == 1 then
-        keymaps.n["<leader>rr"] = { "<CMD>RunFile tab<CR>", desc = "Rich output" }
-    end
 end
 
 if is_available("undotree") then
