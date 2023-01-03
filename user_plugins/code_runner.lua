@@ -7,7 +7,7 @@ return function()
             python = "time python3 -u",
             lua = "time lua",
             typescript = "time deno run",
-            rust = "cd $dir && time rustc $fileName && $dir/$fileNameWithoutExt",
+            rust = "cd $dir && rustc $fileName && time $dir/$fileNameWithoutExt",
             javascript = "time node",
             shellscript = "time bash",
             go = "time go run",
