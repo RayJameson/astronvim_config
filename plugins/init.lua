@@ -68,7 +68,7 @@ return {
     },
     ["theHamsta/nvim-dap-virtual-text"] = {
         after = "nvim-dap",
-        config = function() require("nvim-dap-virtual-text").setup() end,
+        config = function() require("nvim-dap-virtual-text").setup({}) end,
     },
     ["yioneko/nvim-yati"] = {
         opt = true,
