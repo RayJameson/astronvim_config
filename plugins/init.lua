@@ -1,4 +1,7 @@
 --[[
+    {{{
+    vim: set foldmethod=marker :
+    vim: set foldlevel=0 :
     Add plugins, the packer syntax without the "use":
       { "andweeb/presence.nvim" },
       ["andweeb/presence.nvim"] = {},
@@ -35,6 +38,7 @@
                                       -- with one of these module names, the plugin will be loaded.
     module_pattern = string/list      -- Specifies Lua pattern of Lua module names for require. When
                                       -- requiring a string which matches one of these patterns, the plugin will be loaded.
+    }}}
 --]]
 
 local function add_to_lazy_file_plugins(plugin) table.insert(astronvim.file_plugins, plugin) end
@@ -44,7 +48,7 @@ return {
     ------------------------------------------------------------
     --           Core plugins modifying configuration:
     ------------------------------------------------------------
-
+    -- {{{
     -- You can disable default plugins as follows:
     -- [] = { disable = true },
 
@@ -53,11 +57,11 @@ return {
     ["hrsh7th/nvim-cmp"] = { keys = { ":", "/", "?" } },
     -- add more custom sources
     ["hrsh7th/cmp-cmdline"] = { after = "nvim-cmp" },
-
+    -- }}}
     ------------------------------------------------------------
     -- User plugins without config files in user_plugins folder:
     ------------------------------------------------------------
-
+    -- {{{
     {
         -- setting up this plugin in lsp/server-settings/sumneko_lua
         "folke/neodev.nvim",
@@ -137,10 +141,11 @@ return {
         setup = add_to_lazy_file_plugins("nvim-surround"),
     },
 
+    -- }}}
     ------------------------------------------------------------
     --     Plugins with config set in "user_plugins" folder:
     ------------------------------------------------------------
-
+    -- {{{
     ["sindrets/diffview.nvim"] = {
         disable = vim.fn.executable("git") <= 0,
         opt = true,
@@ -217,4 +222,5 @@ return {
     ["andweeb/presence.nvim"] = {
         config = require("user.user_plugins.presence"),
     },
+    -- }}}
 }
