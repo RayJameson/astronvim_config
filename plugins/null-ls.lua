@@ -1,6 +1,8 @@
 return function(config) -- overrides `require("null-ls").setup(config)`
     -- config variable is the default configuration table for the setup function call
-    local null_ls = require("null-ls")
+    -- local null_ls = require("null-ls")
+    local is_available, null_ls = pcall(require, "null-ls")
+    if not is_available then return {} end
 
     -- Check supported formatters and linters
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
@@ -9,10 +11,6 @@ return function(config) -- overrides `require("null-ls").setup(config)`
         -- Set a formatter
         null_ls.builtins.code_actions.gitsigns,
         null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.reorder_python_imports,
-        null_ls.builtins.formatting.yapf.with {
-            extra_args = { "--style={based_on_style: pep8}" },
-        },
         null_ls.builtins.formatting.stylua.with {
             extra_args = {
                 "--indent-type=Spaces",
@@ -20,7 +18,6 @@ return function(config) -- overrides `require("null-ls").setup(config)`
                 "--quote-style=AutoPreferDouble",
                 "--call-parentheses=NoSingleTable",
                 "--column-width=120",
-                "--collapse-simple-statement=FunctionOnly",
             },
         },
         null_ls.builtins.diagnostics.pylint.with {
@@ -28,7 +25,7 @@ return function(config) -- overrides `require("null-ls").setup(config)`
         },
         null_ls.builtins.diagnostics.luacheck.with {
             command = "luacheck",
-            extra_args = {"-d"},
+            extra_args = { "-d" },
             filetypes = { "lua" },
 
             -- force luacheck to find its '.luacheckrc' file
