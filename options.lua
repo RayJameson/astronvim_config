@@ -2,7 +2,7 @@ return {
     opt = {
         -- set to true or false etc.
         spell = false, -- sets vim.opt.spell
-        signcolumn = "auto", -- sets vim.opt.signcolumn to auto
+        signcolumn = "auto:9", -- sets vim.opt.signcolumn to auto
         colorcolumn = "120",
         tabstop = 4,
         softtabstop = 4,
@@ -32,7 +32,6 @@ return {
             foldclose = "",
         },
         foldcolumn = "1", -- '0' is not bad
-        foldlevel = 99, -- Using ufo provider need a large value, feel free to decrease the value
         foldlevelstart = 99,
         foldenable = true,
         foldmethod = "manual",
