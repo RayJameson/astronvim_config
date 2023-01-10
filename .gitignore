@@ -42,3 +42,4 @@ luac.out
 presence_blacklist.lua
 .metals
 .mind
+.luarc.json
