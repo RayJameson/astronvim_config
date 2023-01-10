@@ -20,9 +20,6 @@ return function(config) -- overrides `require("null-ls").setup(config)`
                 "--column-width=120",
             },
         },
-        null_ls.builtins.diagnostics.pylint.with {
-            env = function(params) return { PYTHONPATH = params.root } end,
-        },
         null_ls.builtins.diagnostics.luacheck.with {
             command = "luacheck",
             extra_args = { "-d" },

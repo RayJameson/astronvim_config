@@ -62,6 +62,7 @@ return function()
         extension = {
             tlua = "lua",
             html = "htmldjango",
+            htmldjango = "html",
         },
         pattern = {
             -- ["~/%.config/foo/.*"] = "fooscript",
@@ -79,7 +80,7 @@ return function()
     vim.api.nvim_create_autocmd("BufWinEnter", {
         pattern = "*",
         callback = function()
-            vim.api.nvim_win_set_option(0, "foldlevel", 99)
+            -- vim.api.nvim_win_set_option(0, "foldlevel", 99)
             vim.api.nvim_win_set_option(0, "foldcolumn", "auto:9")
         end,
     })

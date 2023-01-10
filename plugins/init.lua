@@ -66,13 +66,33 @@ return {
         -- setting up this plugin in lsp/server-settings/sumneko_lua
         "folke/neodev.nvim",
     },
+    -- ["nvim-neotest/neotest"] = {
+    --     after = "nvim-treesitter",
+    --     requires = {
+    --         "antoinemadec/FixCursorHold.nvim",
+    --         "nvim-neotest/neotest-python"
+    --     },
+    --     config = function()
+    --         require("neotest").setup {
+    --             adapters = {
+    --                 require("neotest-python"),
+    --             },
+    --         }
+    --     end,
+    -- },
+    ["saecki/crates.nvim"] = {
+        tag = "v0.3.0",
+        after = "nvim-cmp",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = function() require("crates").setup() end,
+    },
     ["kevinhwang91/nvim-ufo"] = {
         requires = "kevinhwang91/promise-async",
         config = require("user.user_plugins.nvim-ufo"),
     },
     ["theHamsta/nvim-dap-virtual-text"] = {
         after = "nvim-dap",
-        config = function() require("nvim-dap-virtual-text").setup({}) end,
+        config = function() require("nvim-dap-virtual-text").setup {} end,
     },
     ["yioneko/nvim-yati"] = {
         opt = true,
@@ -171,6 +191,7 @@ return {
         config = require("user.user_plugins.lsp-inlayhints"),
     },
     ["simrat39/rust-tools.nvim"] = {
+        ft = "rust",
         after = "mason-lspconfig.nvim",
         config = require("user.user_plugins.rust_tools"),
     },

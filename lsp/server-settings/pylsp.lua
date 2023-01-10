@@ -9,6 +9,9 @@ return {
                     enabled = true,
                     maxLineLength = 120,
                 },
+                yapf = {
+                    enabled = false,
+                },
                 flake8 = {
                     enabled = false,
                     maxLineLength = 120,
@@ -19,7 +22,10 @@ return {
                 pylint = {
                     enabled = false,
                 },
-                yapf = {
+                mypy = {
+                    enabled = false,
+                },
+                autopep8 = {
                     enabled = false,
                 },
             },

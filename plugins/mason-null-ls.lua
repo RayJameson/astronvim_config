@@ -5,9 +5,8 @@ return {
         -- Bash
         "beutysh",
         -- Python
-        "pylint",
-        "reorder-python-imports",
-        "yapf",
+        -- "pylint",
+        -- "yapf",
         -- Rust
         "rustfmt",
         -- Git
