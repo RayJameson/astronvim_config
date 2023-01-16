@@ -17,4 +17,8 @@ return function(client, bufnr)
             vim.keymap.set("n", "<leader>lF", "<CMD>FormatModifications<CR>", { desc = "Format changed code" })
         end
     end
+
+    if client.name == "ruff_lsp" then
+        client.server_capabilities.hoverProvider = false
+    end
 end
