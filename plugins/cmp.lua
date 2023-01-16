@@ -10,10 +10,10 @@ return function(opts)
         end
     end
 
-    -- opts.sources = {
-    --     { name = "crates", priority = 150 }
-    -- }
-    --
+    opts.sources = {
+        { name = "crates", priority = 150 }
+    }
+
     local cmd_mappings = cmp.mapping.preset.cmdline {
         ["<C-j>"] = { c = fallback_func("select_next_item") },
         ["<C-k>"] = { c = fallback_func("select_prev_item") },
