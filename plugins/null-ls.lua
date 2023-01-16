@@ -42,13 +42,6 @@ return function(config) -- overrides `require("null-ls").setup(config)`
             -- end),
         },
     }
-    config.on_attach = function(client, bufnr)
-        local lsp_format_modifications_ok, lsp_format_modifications = pcall(require, "lsp-format-modifications")
-        if lsp_format_modifications_ok then
-            lsp_format_modifications.attach(client, bufnr, { format_on_save = false })
-            vim.keymap.set("n", "<leader>lF", "<CMD>FormatModifications<CR>", { desc = "Format changed code" })
-        end
-    end
     vim.api.nvim_create_user_command("NullLsRestart", function()
         require("null-ls.client")._reset()
         vim.cmd.edit()
