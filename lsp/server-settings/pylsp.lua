@@ -2,31 +2,15 @@ return {
     settings = {
         pylsp = {
             plugins = {
-                pyflakes = {
-                    enabled = true,
-                },
+                pyflakes = { enabled = true },
+                autopep8 = { enabled = false },
                 pycodestyle = {
                     enabled = true,
                     maxLineLength = 120,
                 },
-                yapf = {
-                    enabled = false,
-                },
                 flake8 = {
                     enabled = false,
                     maxLineLength = 120,
-                },
-                pydocstyle = {
-                    enabled = false,
-                },
-                pylint = {
-                    enabled = false,
-                },
-                mypy = {
-                    enabled = false,
-                },
-                autopep8 = {
-                    enabled = false,
                 },
             },
         },
