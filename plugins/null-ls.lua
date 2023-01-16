@@ -20,7 +20,16 @@ return function(config) -- overrides `require("null-ls").setup(config)`
                 "--quote-style=AutoPreferDouble",
                 "--call-parentheses=NoSingleTable",
                 "--column-width=120",
+                "--collapse-simple-statement=Never",
             },
+        },
+        null_ls.builtins.formatting.autopep8.with {
+            extra_args = { "--max-line-length", 120 },
+        },
+        null_ls.builtins.diagnostics.pylint.with {
+            env = function(params)
+                return { PYTHONPATH = params.root }
+            end,
         },
         null_ls.builtins.diagnostics.luacheck.with {
             command = "luacheck",
@@ -32,14 +41,6 @@ return function(config) -- overrides `require("null-ls").setup(config)`
                 -- falls back to root if return value is nil
                 return params.root:match(".luacheckrc")
             end,
-
-            -- cwd = nls_cache.by_bufnr(function(params)
-            --   return root_pattern ".luacheckrc" (params.bufname)
-            -- end),
-
-            -- runtime_condition = nls_cache.by_bufnr(function(params)
-            --   return path.exists(path.join(params.root, ".luacheckrc"))
-            -- end),
         },
     }
     vim.api.nvim_create_user_command("NullLsRestart", function()
