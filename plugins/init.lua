@@ -41,8 +41,12 @@
     }}}
 --]]
 
-local function add_to_lazy_file_plugins(plugin) table.insert(astronvim.file_plugins, plugin) end
-local function add_to_lazy_git_plugins(plugin) table.insert(astronvim.git_plugins, plugin) end
+local function add_to_lazy_file_plugins(plugin)
+    table.insert(astronvim.file_plugins, plugin)
+end
+local function add_to_lazy_git_plugins(plugin)
+    table.insert(astronvim.git_plugins, plugin)
+end
 
 return {
     ------------------------------------------------------------
@@ -70,7 +74,9 @@ return {
         tag = "v0.3.0",
         after = "nvim-cmp",
         requires = { "nvim-lua/plenary.nvim" },
-        config = function() require("crates").setup() end,
+        config = function()
+            require("crates").setup()
+        end,
     },
     ["kevinhwang91/nvim-ufo"] = {
         requires = "kevinhwang91/promise-async",
@@ -78,7 +84,9 @@ return {
     },
     ["theHamsta/nvim-dap-virtual-text"] = {
         after = "nvim-dap",
-        config = function() require("nvim-dap-virtual-text").setup {} end,
+        config = function()
+            require("nvim-dap-virtual-text").setup {}
+        end,
     },
     ["yioneko/nvim-yati"] = {
         opt = true,
@@ -110,21 +118,29 @@ return {
     ["folke/trouble.nvim"] = {
         opt = true,
         setup = add_to_lazy_file_plugins("trouble.nvim"),
-        config = function() require("trouble").setup() end,
+        config = function()
+            require("trouble").setup()
+        end,
     },
     ["ray-x/lsp_signature.nvim"] = {
-        config = function() require("lsp_signature").setup() end,
+        config = function()
+            require("lsp_signature").setup()
+        end,
     },
     ["andymass/vim-matchup"] = {
         opt = true,
         setup = add_to_lazy_file_plugins("vim-matchup"),
-        config = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end,
+        config = function()
+            vim.g.matchup_matchparen_offscreen = { method = "popup" }
+        end,
     },
     ["nvim-treesitter/nvim-treesitter-context"] = {
         opt = true,
         requires = { "nvim-treesitter/nvim-treesitter" },
         after = "nvim-treesitter",
-        config = function() require("treesitter-context").setup() end,
+        config = function()
+            require("treesitter-context").setup()
+        end,
     },
     ["nvim-treesitter/nvim-treesitter-textobjects"] = {
         opt = true,
@@ -133,7 +149,9 @@ return {
     },
     ["iamcco/markdown-preview.nvim"] = {
         opt = true,
-        run = function() vim.fn["mkdp#util#install"]() end,
+        run = function()
+            vim.fn["mkdp#util#install"]()
+        end,
         ft = "markdown",
     },
     ["joechrisellis/lsp-format-modifications.nvim"] = {
@@ -147,7 +165,9 @@ return {
     ["kylechui/nvim-surround"] = {
         opt = true,
         tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-        config = function() require("nvim-surround").setup() end,
+        config = function()
+            require("nvim-surround").setup()
+        end,
         setup = add_to_lazy_file_plugins("nvim-surround"),
     },
 
