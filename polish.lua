@@ -29,14 +29,6 @@ return function()
         end,
     })
 
-    if vim.fn.has("mac") then
-        vim.cmd([[
-            function OpenMarkdownPreview (url)
-                execute "silent ! open -a 'Brave Browser' -n --args --new-window " . a:url
-            endfunction
-            let g:mkdp_browserfunc = 'OpenMarkdownPreview'
-        ]])
-    end
     vim.api.nvim_create_autocmd("InsertLeave", {
         pattern = "*",
         group = "relative_number_switch",
@@ -48,6 +40,14 @@ return function()
         end,
     })
 
+    if vim.fn.has("mac") then
+        vim.cmd([[
+            function OpenMarkdownPreview (url)
+                execute "silent ! open -a 'Brave Browser' -n --args --new-window " . a:url
+            endfunction
+            let g:mkdp_browserfunc = 'OpenMarkdownPreview'
+        ]])
+    end
     vim.lsp.handlers["workspace/diagnostic/refresh"] = function(_, _, ctx)
         local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
         pcall(vim.diagnostic.reset, ns)
@@ -79,10 +79,7 @@ return function()
 
     vim.api.nvim_create_autocmd("BufWinEnter", {
         pattern = "*",
-        callback = function()
-            -- vim.api.nvim_win_set_option(0, "foldlevel", 99)
-            vim.api.nvim_win_set_option(0, "foldcolumn", "auto:9")
-        end,
+        callback = function() vim.api.nvim_win_set_option(0, "foldcolumn", "auto:9") end,
     })
 
     local function leave_snippet()
@@ -96,8 +93,10 @@ return function()
     end
 
     -- stop snippets when you leave to normal mode
+    vim.api.nvim_create_augroup("ModeChangedGroup", { clear = true })
     vim.api.nvim_create_autocmd("ModeChanged", {
         pattern = "*",
+        group = "ModeChangedGroup",
         callback = function() leave_snippet() end,
     })
 end

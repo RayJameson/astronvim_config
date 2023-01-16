@@ -2,7 +2,9 @@ return function(config) -- overrides `require("null-ls").setup(config)`
     -- config variable is the default configuration table for the setup function call
     -- local null_ls = require("null-ls")
     local is_available, null_ls = pcall(require, "null-ls")
-    if not is_available then return {} end
+    if not is_available then
+        return {}
+    end
 
     -- Check supported formatters and linters
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting

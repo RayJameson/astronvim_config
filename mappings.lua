@@ -1,4 +1,3 @@
-local better_luafile = require "user.user_plugins.better_luafile"
 local is_available = astronvim.is_available
 local keymaps = { n = {}, c = {}, i = {}, v = {}, t = {} }
 
@@ -18,7 +17,7 @@ keymaps.v["<leader>d"] = { '"_d', desc = "Delete noregister" }
 keymaps.v["<leader>p"] = { '"_dP', desc = "Paste noregister" }
 --]
 
-keymaps.n["<leader>."] = { ":cd %:p:h<CR>", desc = "CD to current file" }
+keymaps.n["<leader>."] = { ":lcd %:p:h<CR>", desc = "CD to current file" }
 keymaps.n["<leader>ll"] = { "<CMD>NullLsRestart<CR>", desc = "Null-ls restart" }
 keymaps.n["<leader>F"] = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/g<Left><Left>", desc = "Find and replace" }
 keymaps.v["<leader>F"] = { '<Esc>"fyiw<CR>gv:s/<C-r>f/<C-r>f/g<Left><Left>', desc = "Find and replace visual" }
@@ -37,20 +36,32 @@ keymaps.i["<C-l>"] = { "<Right>", desc = "Right" }
 --]
 
 --[ buf keymaps
-keymaps.n["<leader>bl"] =
-    { function() astronvim.move_buf(vim.v.count > 0 and vim.v.count or 1) end, desc = "Move buffer tab right" }
-keymaps.n["<leader>bh"] =
-    { function() astronvim.move_buf(-(vim.v.count > 0 and vim.v.count or 1)) end, desc = "Move buffer tab left" }
+keymaps.n["<leader>bl"] = {
+    function()
+        astronvim.move_buf(vim.v.count > 0 and vim.v.count or 1)
+    end,
+    desc = "Move buffer tab right",
+}
+keymaps.n["<leader>bh"] = {
+    function()
+        astronvim.move_buf(-(vim.v.count > 0 and vim.v.count or 1))
+    end,
+    desc = "Move buffer tab left",
+}
 
 keymaps.n["<leader>bj"] = {
     function()
-        astronvim.status.heirline.buffer_picker(function(bufnr) vim.api.nvim_win_set_buf(0, bufnr) end)
+        astronvim.status.heirline.buffer_picker(function(bufnr)
+            vim.api.nvim_win_set_buf(0, bufnr)
+        end)
     end,
     desc = "Jump to buffer from tabline",
 }
 keymaps.n["<leader>bc"] = {
     function()
-        astronvim.status.heirline.buffer_picker(function(bufnr) astronvim.close_buf(bufnr) end)
+        astronvim.status.heirline.buffer_picker(function(bufnr)
+            astronvim.close_buf(bufnr)
+        end)
     end,
     desc = "Close buffer from tabline",
 }
@@ -85,13 +96,20 @@ local function ui_notify(str)
         astronvim.notify(str)
     end
 end
-local function bool2str(bool) return bool and "on" or "off" end
+local function bool2str(bool)
+    return bool and "on" or "off"
+end
 local function toggle_lazyreadraw()
     vim.opt.lazyredraw = not vim.opt.lazyredraw:get()
     ui_notify(("lazy redraw %s"):format(bool2str(vim.opt.lazyredraw:get())))
 end
 
-keymaps.n["<leader>ur"] = { function() toggle_lazyreadraw() end, desc = "Toggle lazyredraw" }
+keymaps.n["<leader>ur"] = {
+    function()
+        toggle_lazyreadraw()
+    end,
+    desc = "Toggle lazyredraw",
+}
 
 if is_available("mind.nvim") then
     keymaps.n["<leader>Mo"] = { "<CMD>MindOpenMain<CR>", desc = "Open Main" }
@@ -181,10 +199,30 @@ end
 -- Smart Splits (remapped on Meta key)
 if is_available("smart-splits.nvim") then
     -- Resize with arrows
-    keymaps.n["<M-Up>"] = { function() require("smart-splits").resize_up() end, desc = "Resize split up" }
-    keymaps.n["<M-Down>"] = { function() require("smart-splits").resize_down() end, desc = "Resize split down" }
-    keymaps.n["<M-Left>"] = { function() require("smart-splits").resize_left() end, desc = "Resize split left" }
-    keymaps.n["<M-Right>"] = { function() require("smart-splits").resize_right() end, desc = "Resize split right" }
+    keymaps.n["<M-Up>"] = {
+        function()
+            require("smart-splits").resize_up()
+        end,
+        desc = "Resize split up",
+    }
+    keymaps.n["<M-Down>"] = {
+        function()
+            require("smart-splits").resize_down()
+        end,
+        desc = "Resize split down",
+    }
+    keymaps.n["<M-Left>"] = {
+        function()
+            require("smart-splits").resize_left()
+        end,
+        desc = "Resize split left",
+    }
+    keymaps.n["<M-Right>"] = {
+        function()
+            require("smart-splits").resize_right()
+        end,
+        desc = "Resize split right",
+    }
 else
     keymaps.n["<M-Up>"] = { "<CMD>resize -2<CR>", desc = "Resize split up" }
     keymaps.n["<M-Down>"] = { "<CMD>resize +2<CR>", desc = "Resize split down" }

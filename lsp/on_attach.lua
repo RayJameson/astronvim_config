@@ -3,7 +3,9 @@ return function(client, bufnr)
         local is_available, inlayhints = pcall(require, "lsp-inlayhints")
         if is_available then
             inlayhints.on_attach(client, bufnr, false)
-            vim.keymap.set("n", "<leader>uH", function() inlayhints.toggle() end, { desc = "Toggle inlay hints" })
+            vim.keymap.set("n", "<leader>uH", function()
+                inlayhints.toggle()
+            end, { desc = "Toggle inlay hints" })
             vim.cmd("hi! link LspInlayHint Comment")
         end
     end
