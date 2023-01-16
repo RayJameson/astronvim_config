@@ -1,7 +1,7 @@
 return { -- overrides `require("mason-lspconfig").setup(...)`
     ensure_installed = {
         "sumneko_lua",
-        -- "pylsp",
+        "pyright",
         "rust_analyzer",
         "html",
         "vimls",
