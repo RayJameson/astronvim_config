@@ -1,10 +1,14 @@
 return function()
     -- Create file nvim/lua/user/presence_blacklist.lua and put there your ignore list like so: return { "secret_path", "example_path"}
     -- This file in my .gitignore for privacy reasons
-     local function get_presence_blacklist()
+    local function get_presence_blacklist()
         local status_ok, ignore_list = pcall(require, "user.presence_blacklist")
         if not status_ok then
             ignore_list = {}
+            astronvim.notify(
+                'presence.nvim blacklist is not set in separate file!\nCheck user_plugins/presence.lua\nIf you don\'t need blacklist set "blacklist = {}"',
+                vim.log.levels.INFO
+            )
         end
         return ignore_list
     end
