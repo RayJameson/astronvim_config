@@ -2,9 +2,11 @@ return function()
     require("code_runner").setup {
         -- put here the commands by filetype
         startinsert = false,
+        filetype_path = "", -- No default path define
+        project_path = "", -- No default path defined
         filetype = {
             java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
-            python = "time python3 -u",
+            python = "export PYTHONPATH=$PYTHONPATH:. && time python3 -u",
             lua = "time lua",
             typescript = "time deno run",
             rust = "cd $dir && rustc $fileName && time $dir/$fileNameWithoutExt",
