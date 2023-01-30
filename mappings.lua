@@ -131,7 +131,7 @@ if is_available("nvim-transparent") then
 end
 
 if is_available("refactoring.nvim") then
-    keymaps.v["<leader>r"] = { "<CMD>Refactoring<CR>", desc = "Refactoring" }
+    keymaps.v["<leader>r"] = { "<Esc><CMD>Refactoring<CR>", desc = "Refactoring", silent = true, expr = false }
 end
 
 if is_available("nvim-docs-view") then
