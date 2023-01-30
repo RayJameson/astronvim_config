@@ -70,6 +70,20 @@ return {
         -- setting up this plugin in lsp/server-settings/sumneko_lua
         "folke/neodev.nvim",
     },
+    -- ["nvim-neotest/neotest"] = {
+    --     after = "nvim-treesitter",
+    --     requires = {
+    --         "antoinemadec/FixCursorHold.nvim",
+    --         "nvim-neotest/neotest-python"
+    --     },
+    --     config = function()
+    --         require("neotest").setup {
+    --             adapters = {
+    --                 require("neotest-python"),
+    --             },
+    --         }
+    --     end,
+    -- },
     ["saecki/crates.nvim"] = {
         tag = "v0.3.0",
         after = "nvim-cmp",
