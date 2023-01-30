@@ -119,11 +119,42 @@ keymaps.n["<leader>ur"] = {
 }
 
 if is_available("mind.nvim") then
-    keymaps.n["<leader>Mo"] = { "<CMD>MindOpenMain<CR>", desc = "Open Main" }
-    keymaps.n["<leader>Mp"] = { "<CMD>MindOpenProject<CR>", desc = "Open Project" }
-    keymaps.n["<leader>Ms"] = { "<CMD>MindOpenSmartProject<CR>", desc = "Open Smart Project" }
-    keymaps.n["<leader>Mr"] = { "<CMD>MindReloadState<CR>", desc = "Reload state" }
-    keymaps.n["<leader>Mc"] = { "<CMD>MindClose<CR>", desc = "Close" }
+    local function open_without_folds(ufo_command)
+        vim.cmd(ufo_command)
+        if is_available("nvim-ufo") then
+            vim.cmd("UfoDetach")
+        end
+    end
+    keymaps.n["<leader>Ms"] = {
+        function()
+            open_without_folds("MindOpenSmartProject")
+        end,
+        desc = "Open Smart Project",
+    }
+    keymaps.n["<leader>Mo"] = {
+        function()
+            open_without_folds("MindOpenMain")
+        end,
+        desc = "Open Main",
+    }
+    keymaps.n["<leader>Mp"] = {
+        function()
+            open_without_folds("MindOpenProject")
+        end,
+        desc = "Open Project",
+    }
+    keymaps.n["<leader>Mr"] = {
+        function()
+            vim.cmd("MindReloadState")
+        end,
+        desc = "Reload state",
+    }
+    keymaps.n["<leader>Mc"] = {
+        function()
+            vim.cmd("MindClose")
+        end,
+        desc = "Close",
+    }
 end
 
 if is_available("nvim-transparent") then
