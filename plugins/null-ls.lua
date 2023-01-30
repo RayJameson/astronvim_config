@@ -9,6 +9,7 @@ return function(config) -- overrides `require("null-ls").setup(config)`
     -- Check supported formatters and linters
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
+    config.diagnostics_format = "#{m} [#{c}] "
     config.sources = {
         -- Set a formatter
         null_ls.builtins.code_actions.gitsigns,
