@@ -17,7 +17,7 @@ keymaps.v["<leader>d"] = { '"_d', desc = "Delete noregister" }
 keymaps.v["<leader>p"] = { '"_dP', desc = "Paste noregister" }
 --]
 
-keymaps.n["<leader>."] = { ":lcd %:p:h<CR>", desc = "CD to current file" }
+keymaps.n["<leader>."] = { ":tcd %:p:h<CR>", desc = "CD to current file" }
 keymaps.n["<leader>ll"] = { "<CMD>NullLsRestart<CR>", desc = "Null-ls restart" }
 keymaps.n["<leader>F"] = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/g<Left><Left>", desc = "Find and replace" }
 keymaps.v["<leader>F"] = { '<Esc>"fyiw<CR>gv:s/<C-r>f/<C-r>f/g<Left><Left>', desc = "Find and replace visual" }

@@ -49,4 +49,7 @@ return {
             },
         },
     },
+    buffers = {
+        follow_current_file = false,
+    },
 }
