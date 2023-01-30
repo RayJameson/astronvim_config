@@ -6,7 +6,7 @@ return {
         "beutysh",
         -- Python
         -- "pylint",
-        -- "yapf",
+        "autopep8",
         -- Rust
         "rustfmt",
         -- Git
