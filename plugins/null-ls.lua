@@ -31,6 +31,10 @@ return function(config) -- overrides `require("null-ls").setup(config)`
             env = function(params)
                 return { PYTHONPATH = params.root }
             end,
+            extra_args = {
+                "--init-hook='import sys; sys.path.append(\".\")'",
+                "--recursive=y",
+            },
         },
         null_ls.builtins.diagnostics.luacheck.with {
             command = "luacheck",
