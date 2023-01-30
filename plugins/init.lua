@@ -111,7 +111,7 @@ return {
         opt = true,
         setup = add_to_lazy_file_plugins("undotree"),
     },
-    ["Fau818/move.nvim"] = {
+    ["fedepujol/move.nvim"] = {
         opt = true,
         setup = add_to_lazy_file_plugins("move.nvim"),
     },
