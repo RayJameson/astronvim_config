@@ -212,10 +212,6 @@ if is_available("undotree") then
     keymaps.n["<leader>U"] = { "<CMD>UndotreeToggle<CR>", desc = "Undotree toggle" }
 end
 
-if is_available("rnvimr") then
-    keymaps.n["<leader>R"] = { "<CMD>RnvimrToggle<CR>", desc = "Toggle Ranger" }
-end
-
 if is_available("project.nvim") then
     keymaps.n["<leader>sp"] = { "<CMD>Telescope projects<CR>", desc = "Search projects" }
 end
