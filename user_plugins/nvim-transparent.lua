@@ -6,6 +6,8 @@ return function()
             "NeoTreeNormal",
             "NeoTreeNormalNC",
             "NeoTreePreview",
+            "NeoTreeTabInactive",
+            "NeoTreeTabSeparatorInactive",
             "CursorLine",
             "FloatBorder",
             "WinBar",
