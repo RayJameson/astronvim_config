@@ -35,6 +35,13 @@ keymaps.i["<C-k>"] = { "<Up>", desc = "Up" }
 keymaps.i["<C-l>"] = { "<Right>", desc = "Right" }
 --]
 
+--[ Better ^ and $
+keymaps.n["gh"] = { "^", desc = "go to beginning of the line (^)" }
+keymaps.n["gl"] = { "$", desc = "go to end of the line ($)" }
+keymaps.v["gh"] = { "^", desc = "go to beginning of the line (^)" }
+keymaps.v["gl"] = { "$", desc = "go to end of the line ($)" }
+--]
+
 --[ buf keymaps
 keymaps.n["<leader>bl"] = {
     function()

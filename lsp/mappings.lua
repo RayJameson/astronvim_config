@@ -3,5 +3,6 @@ return {
     n = {
         ["gr"] = { "<cmd>Trouble lsp_references<CR>", desc = "References" },
         ["gd"] = { "<cmd>Trouble lsp_definitions<CR>", desc = "Definitions" },
+        ["gl"] = false
     },
 }
