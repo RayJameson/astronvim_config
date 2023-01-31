@@ -70,115 +70,24 @@ return {
         -- setting up this plugin in lsp/server-settings/sumneko_lua
         "folke/neodev.nvim",
     },
-    -- ["nvim-neotest/neotest"] = {
-    --     after = "nvim-treesitter",
-    --     requires = {
-    --         "antoinemadec/FixCursorHold.nvim",
-    --         "nvim-neotest/neotest-python"
-    --     },
-    --     config = function()
-    --         require("neotest").setup {
-    --             adapters = {
-    --                 require("neotest-python"),
-    --             },
-    --         }
-    --     end,
-    -- },
-    ["saecki/crates.nvim"] = {
-        tag = "v0.3.0",
-        after = "nvim-cmp",
-        requires = { "nvim-lua/plenary.nvim" },
-        config = function()
-            require("crates").setup()
-        end,
-    },
-    ["kevinhwang91/nvim-ufo"] = {
-        requires = "kevinhwang91/promise-async",
-        config = require("user.user_plugins.nvim-ufo"),
-    },
-    ["theHamsta/nvim-dap-virtual-text"] = {
-        after = "nvim-dap",
-        config = function()
-            require("nvim-dap-virtual-text").setup {}
-        end,
-    },
-    ["yioneko/nvim-yati"] = {
-        opt = true,
-        requires = { "nvim-treesitter/nvim-treesitter" },
-        tag = "*",
-        after = "nvim-treesitter",
-    },
-    ["xiyaowong/virtcolumn.nvim"] = {
-        opt = true,
-        setup = add_to_lazy_file_plugins("virtcolumn.nvim"),
-    },
-    ["ThePrimeagen/vim-be-good"] = {
-        opt = true,
-        cmd = "VimBeGood",
-    },
-    ["mbbill/undotree"] = {
-        opt = true,
-        setup = add_to_lazy_file_plugins("undotree"),
-    },
-    ["fedepujol/move.nvim"] = {
-        opt = true,
-        setup = add_to_lazy_file_plugins("move.nvim"),
-    },
-    ["folke/trouble.nvim"] = {
-        opt = true,
-        setup = add_to_lazy_file_plugins("trouble.nvim"),
-        config = function()
-            require("trouble").setup()
-        end,
-    },
-    ["ray-x/lsp_signature.nvim"] = {
-        config = function()
-            require("lsp_signature").setup()
-        end,
-    },
-    ["andymass/vim-matchup"] = {
-        opt = true,
-        setup = add_to_lazy_file_plugins("vim-matchup"),
-        config = function()
-            vim.g.matchup_matchparen_offscreen = { method = "popup" }
-        end,
-    },
-    ["nvim-treesitter/nvim-treesitter-context"] = {
-        opt = true,
-        requires = { "nvim-treesitter/nvim-treesitter" },
-        after = "nvim-treesitter",
-        config = function()
-            require("treesitter-context").setup()
-        end,
-    },
-    ["nvim-treesitter/nvim-treesitter-textobjects"] = {
-        opt = true,
-        requires = { "nvim-treesitter/nvim-treesitter" },
-        after = "nvim-treesitter",
-    },
-    ["iamcco/markdown-preview.nvim"] = {
-        opt = true,
-        run = function()
-            vim.fn["mkdp#util#install"]()
-        end,
-        ft = "markdown",
-    },
-    ["joechrisellis/lsp-format-modifications.nvim"] = {
-        module = "lsp-format-modifications",
-    },
-    ["folke/todo-comments.nvim"] = {
-        opt = true,
-        setup = add_to_lazy_file_plugins("todo-comments.nvim"),
-        config = require("user.user_plugins.todo-comments"),
-    },
-    ["kylechui/nvim-surround"] = {
-        opt = true,
-        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-        config = function()
-            require("nvim-surround").setup()
-        end,
-        setup = add_to_lazy_file_plugins("nvim-surround"),
-    },
+    ["nvim-neotest/neotest"] = require("user.user_plugins.neotest"),
+    ["saecki/crates.nvim"] = require("user.user_plugins.crates"),
+    ["kevinhwang91/nvim-ufo"] = require("user.user_plugins.nvim-ufo"),
+    ["theHamsta/nvim-dap-virtual-text"] = require("user.user_plugins.nvim-dap-virtual-text"),
+    ["yioneko/nvim-yati"] = require("user.user_plugins.nvim-yati"),
+    ["xiyaowong/virtcolumn.nvim"] = require("user.user_plugins.virtcolumn"),
+    ["ThePrimeagen/vim-be-good"] = require("user.user_plugins.vim-be-good"),
+    ["mbbill/undotree"] = require("user.user_plugins.undotree"),
+    ["fedepujol/move.nvim"] = require("user.user_plugins.move"),
+    ["folke/trouble.nvim"] = require("user.user_plugins.trouble"),
+    ["ray-x/lsp_signature.nvim"] = require("user.user_plugins.lsp_signature"),
+    ["andymass/vim-matchup"] = require("user.user_plugins.vim-mathup"),
+    ["nvim-treesitter/nvim-treesitter-context"] = require("user.user_plugins.nvim-treesitter-context"),
+    ["nvim-treesitter/nvim-treesitter-textobjects"] = require("user.user_plugins.nvim-treesitter-textobjects"),
+    ["iamcco/markdown-preview.nvim"] = require("user.user_plugins.markdown-preview"),
+    ["joechrisellis/lsp-format-modifications.nvim"] = require("user.user_plugins.lsp-format-modifications"),
+    ["folke/todo-comments.nvim"] = require("user.user_plugins.todo-comments"),
+    ["kylechui/nvim-surround"] = require("user.user_plugins.nvim-surround"),
 
     -- }}}
     ------------------------------------------------------------
