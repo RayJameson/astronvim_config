@@ -186,6 +186,19 @@ if is_available("code_runner.nvim") then
     keymaps.n["<leader>rp"] = { "<CMD>RunFile toggleterm<CR>", desc = "Run file pop up (toggleterm)" }
 end
 
+if is_available("neotest") then
+    keymaps.n["<leader>nr"] = { "<CMD>NeotestRun<CR>", desc = "Run nearest test" }
+    keymaps.n["<leader>nf"] = { "<CMD>NeotestRunFile<CR>", desc = "Run tests in current file" }
+    keymaps.n["<leader>nS"] = { "<CMD>NeotestStop<CR>", desc = "Stop running test" }
+    keymaps.n["<leader>nd"] = { "<CMD>NeotestRunDap<CR>", desc = "Run test in debugger" }
+    keymaps.n["<leader>na"] = { "<CMD>NeotestAttach<CR>", desc = "Attach to running test" }
+    keymaps.n["<leader>ns"] = { "<CMD>NeotestSummaryToggle<CR>", desc = "Toggle test summary window" }
+    keymaps.n["<leader>no"] = { "<CMD>NeotestOutput<CR>", desc = "Show test output" }
+    keymaps.n["<leader>nO"] = { "<CMD>NeotestOutputToggle<CR>", desc = "Toggle test output window" }
+    keymaps.n["<leader>nk"] = { "<CMD>NeotestJumpPreviousFailed<CR>", desc = "Jump to previous failed test" }
+    keymaps.n["<leader>nj"] = { "<CMD>NeotestJumpNextFailed<CR>", desc = "Jump to next failed test" }
+end
+
 keymaps.n["<leader>rn"] = { "<CMD>BetterLuafile<CR>", desc = "Run lua file with nvim-lua" }
 
 if is_available("trouble.nvim") then
@@ -216,7 +229,7 @@ if is_available("project.nvim") then
     keymaps.n["<leader>sp"] = { "<CMD>Telescope projects<CR>", desc = "Search projects" }
 end
 
--- Move (remapped on Meta key)
+-- Move
 if is_available("move.nvim") then
     -- Normal mode
     keymaps.n["<M-j>"] = { ":MoveLine(1)<CR>", desc = "Move line down" }
