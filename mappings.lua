@@ -42,6 +42,13 @@ keymaps.v["gh"] = { "^", desc = "go to beginning of the line (^)" }
 keymaps.v["gl"] = { "$", desc = "go to end of the line ($)" }
 --]
 
+--[ Better gg and G
+keymaps.n["gj"] = { "G", desc = "go to last line" }
+keymaps.n["gk"] = { "gg", desc = "go to first line" }
+keymaps.v["gj"] = { "G", desc = "go to last line" }
+keymaps.v["gk"] = { "gg", desc = "go to first line" }
+--]
+
 --[ buf keymaps
 keymaps.n["<leader>bl"] = {
     function()
