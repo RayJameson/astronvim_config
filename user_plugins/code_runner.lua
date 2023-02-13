@@ -7,15 +7,16 @@ return function()
         filetype = {
             java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
             python = "export PYTHONPATH=$PYTHONPATH:. && time python3 -X dev -u",
-            lua = "time lua",
+            lua = "time luaj",
             typescript = "time deno run",
             rust = "cd $dir && rustc $fileName && time $dir/$fileNameWithoutExt",
             javascript = "time node",
             shellscript = "time bash",
+            zsh = "time zsh -i",
             go = "time go run",
             scala = "time scala",
             c = "cd $dir && gcc $fileName -o $fileNameWithoutExt -Wall && time ./$fileNameWithoutExt && rm $fileNameWithoutExt",
-            markdown = "rich"
+            markdown = "rich",
         },
         term = {
             --  Position to open the terminal, this option is ignored if mode is tab
