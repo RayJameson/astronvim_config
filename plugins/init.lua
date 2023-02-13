@@ -167,8 +167,5 @@ return {
         setup = add_to_lazy_file_plugins("hlargs.nvim"),
         config = require("user.user_plugins.hlargs"),
     },
-    ["andweeb/presence.nvim"] = {
-        config = require("user.user_plugins.presence"),
-    },
     -- }}}
 }
