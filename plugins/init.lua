@@ -75,7 +75,6 @@ return {
     ["kevinhwang91/nvim-ufo"] = require("user.user_plugins.nvim-ufo"),
     ["theHamsta/nvim-dap-virtual-text"] = require("user.user_plugins.nvim-dap-virtual-text"),
     ["yioneko/nvim-yati"] = require("user.user_plugins.nvim-yati"),
-    ["xiyaowong/virtcolumn.nvim"] = require("user.user_plugins.virtcolumn"),
     ["ThePrimeagen/vim-be-good"] = require("user.user_plugins.vim-be-good"),
     ["mbbill/undotree"] = require("user.user_plugins.undotree"),
     ["fedepujol/move.nvim"] = require("user.user_plugins.move"),
