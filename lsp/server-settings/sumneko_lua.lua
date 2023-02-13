@@ -7,14 +7,13 @@ return function(config)
                 enable = true,
             },
             workspace = {
-                checkThirdParty = false,
-            },
-            runtime = {
-                version = "Lua 5.4",
-                -- version = "LuaJIT",
+                checkThirdParty = true,
             },
             diagnostics = {
                 disable = { "lowercase-global" },
+            },
+            codelens = {
+                enable = true,
             },
         },
     }
