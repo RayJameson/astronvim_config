@@ -36,6 +36,7 @@ return function(config) -- overrides `require("null-ls").setup(config)`
                 "--recursive=y",
             },
         },
+        null_ls.builtins.diagnostics.mypy.with { command = { "python", "-m", "mypy" } },
         null_ls.builtins.diagnostics.luacheck.with {
             command = "luacheck",
             extra_args = { "-d" },
