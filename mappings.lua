@@ -92,12 +92,22 @@ keymaps.n["<leader>bs"] = {
 }
 --]
 
---[ Terminal {{{
+--[ ToggleTerm
 if is_available("toggleterm.nvim") then
     keymaps.n["<leader>th"] =
         { "<CMD>ToggleTerm size=15 direction=horizontal<cr>", desc = "ToggleTerm horizontal split" }
+    if vim.fn.executable("lnav") == 1 then
+        keymaps.n["<leader>tL"] = {
+            function()
+                astronvim.toggle_term_cmd("lnav " .. vim.fn.expand("%:p"))
+            end,
+            silent = true,
+            desc = "ToggleTerm lnav",
+        }
+    end
 end
---] }}}
+
+--]
 local function ui_notify(str)
     if vim.g.ui_notifications_enabled then
         astronvim.notify(str)
