@@ -20,10 +20,10 @@ function M.call(fargs, orientation, size, focus)
     elseif orientation == "vertical" then
         vim.cmd(("%i vsplit"):format(size))
     else
-        local error_msg = ("Wrong orientation settings: '%s'\nShould be 'vertical' or 'horizontal'"):format(
-            orientation
-        )
-        vim.schedule(function() vim.notify(error_msg, error, { title = "BetterLuafile" }) end)
+        local error_msg = ("Wrong orientation settings: '%s'\nShould be 'vertical' or 'horizontal'"):format(orientation)
+        vim.schedule(function()
+            vim.notify(error_msg, error, { title = "BetterLuafile" })
+        end)
         return
     end
     local new_window_number = vim.api.nvim_get_current_win()
