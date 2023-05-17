@@ -32,19 +32,10 @@ return {
   {
     "lvimuser/lsp-inlayhints.nvim",
     event = "User Astrofile",
-    config = function()
-      require("lsp-inlayhints").setup()
-    end,
   },
   {
     "fedepujol/move.nvim",
     event = "BufRead",
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    config = function()
-      require("treesitter-context").setup()
-    end,
   },
   {
     "CRAG666/code_runner.nvim",
@@ -238,5 +229,17 @@ return {
       opts.mapping["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" })
       opts.mapping["<M-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" })
     end,
+  },
+  {
+    "joechrisellis/lsp-format-modifications.nvim",
+    event = "User Astrofile",
+  },
+  {
+    "m-demare/hlargs.nvim",
+    event = "User Astrofile",
+    opts = {
+      color = "#FF7A00", --"#ef9062",
+      paint_arg_usages = true,
+    },
   },
 }

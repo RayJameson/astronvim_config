@@ -63,4 +63,43 @@ return {
   --   end,
   -- },
   { "nvim-neo-tree/neo-tree.nvim", opts = require("user.neo-tree") },
+  {
+    "rebelot/heirline.nvim",
+    opts = function(_, opts)
+      local status = require("astronvim.utils.status")
+      opts.statusline = {
+        -- statusline
+        -- set the fg/bg of the statusline
+        hl = { fg = "fg", bg = "bg" },
+        -- when adding the mode component, enable the mode text with padding to the left/right of it
+        status.component.mode {
+          mode_text = { padding = { left = 1, right = 1 } },
+        },
+        -- add all the other components for the statusline
+        status.component.git_branch(),
+        status.component.file_info(),
+        status.component.git_diff(),
+        status.component.diagnostics(),
+        status.component.fill(),
+        status.component.cmd_info(),
+        status.component.fill(),
+        status.component.lsp(),
+        status.component.treesitter(),
+        status.component.nav(),
+        -- remove the 2nd mode indicator on the right
+      }
+
+      -- return the final configuration table
+      return opts
+    end,
+  },
+  {
+    "max397574/better-escape.nvim",
+    opts = {
+      mapping = { "JK", "JJ", "jk", "jj" },
+      keys = function()
+        return vim.api.nvim_win_get_cursor(0)[2] > 1 and "<esc>l" or "<esc>"
+      end,
+    },
+  },
 }
