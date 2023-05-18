@@ -102,4 +102,61 @@ return {
       end,
     },
   },
+  {
+    "onsails/lspkind.nvim",
+    opts = function(_, opts)
+      -- use codicons preset
+      opts.preset = "codicons"
+      -- set some missing symbol types
+      opts.symbol_map = {
+        Array = "",
+        Boolean = "",
+        Key = "",
+        Namespace = "",
+        Null = "",
+        Number = "",
+        Object = "",
+        Package = "",
+        String = "",
+      }
+      return opts
+    end,
+  },
+  {
+    -- override nvim-cmp plugin
+    "hrsh7th/nvim-cmp",
+    keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
+    dependencies = {
+      "hrsh7th/cmp-cmdline", -- add cmp-cmdline as dependency of cmp
+    },
+    config = function(plugin, opts)
+      local cmp = require("cmp")
+      -- run cmp setup
+      cmp.setup(opts)
+
+      -- configure `cmp-cmdline` as described in their repo: https://github.com/hrsh7th/cmp-cmdline#setup
+      cmp.setup.cmdline("/", {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = "buffer" },
+        },
+      })
+      cmp.setup.cmdline(":", {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = "path" },
+        }, {
+          {
+            name = "cmdline",
+            option = {
+              ignore_cmds = { "Man", "!" },
+            },
+          },
+        }),
+      })
+      opts.mapping["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" })
+      opts.mapping["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" })
+      opts.mapping["<M-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" })
+    end,
+  },
 }
