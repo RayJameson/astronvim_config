@@ -25,7 +25,7 @@ return {
       null_ls.builtins.formatting.stylua.with {
         extra_args = {
           "--indent-type=Spaces",
-          "--indent-width=2",
+          "--indent-width=4",
           "--quote-style=AutoPreferDouble",
           "--call-parentheses=NoSingleTable",
           "--column-width=120",

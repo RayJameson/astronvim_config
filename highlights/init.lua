@@ -17,8 +17,15 @@ return function(hl) -- or a function that returns a new table of colors to set
   hl["@keyword.function"] = { fg = C.purple, italic = true }
   hl["@keyword.operator"] = { fg = C.purple, italic = true }
   hl["@function.builtin"] = { fg = C.blue_1 }
+  hl["@lsp.typemod.function.global"] = { fg = C.blue }
+  hl["@lsp.typemod.function.defaultLibrary"] = { fg = C.blue_1 }
   hl["@class_variable"] = { fg = C.red }
+  hl["@method"] = { fg = "#61afef" }
+  hl.Keyword = { fg = C.purple, italic = true }
+  hl.Define = { fg = C.purple, italic = true }
+  hl.Include = { fg = C.purple, italic = true }
   hl.Normal = { fg = C.fg, bg = C.bg }
+  hl.DapUIVariable = { fg = C.fg }
   hl.Folded = { bg = "#3c4855" }
   -- Normal
   -- hl.NormalFloat = { bg = "none" }
