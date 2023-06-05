@@ -266,5 +266,14 @@ return {
             "rouge8/neotest-rust",
             "antoinemadec/FixCursorHold.nvim",
         },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "User Astrofile",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
     },
+    config = function()
+      require("treesitter-context").setup {}
+    end,
+  },
 }

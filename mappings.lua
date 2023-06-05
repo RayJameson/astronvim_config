@@ -194,6 +194,13 @@ if is_available("mind.nvim") then
         end,
         desc = "Close",
     }
+if is_available("nvim-treesitter-context") then
+  maps.n["[c"] = {
+    function()
+      require("treesitter-context").go_to_context()
+    end,
+    desc = "Go to context",
+  }
 end
 
 if is_available("nvim-transparent") then

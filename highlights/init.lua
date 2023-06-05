@@ -27,40 +27,9 @@ return function(hl) -- or a function that returns a new table of colors to set
   hl.Normal = { fg = C.fg, bg = C.bg }
   hl.DapUIVariable = { fg = C.fg }
   hl.Folded = { bg = "#3c4855" }
-  -- Normal
-  -- hl.NormalFloat = { bg = "none" }
-  -- hl.NormalNC = { bg = "none" }
-  -- hl.FloatBorder = { bg = "none" }
-  -- WinBar
-  -- hl.WinBarNC = { bg = "none" }
-  -- hl.WhichKeyFloat = { bg = "none" }
-  -- Telescope
-  -- hl.TelescopeBorder = { bg = "none" }
-  -- hl.TelescopeNormal = { bg = "none" }
-  -- Diagnosis
+  hl.TreesitterContextLineNumber = { fg = C.purple }
   hl.DiagnosticVirtualTextHint = { fg = "#E0E1E4", bg = "none" }
   hl.DiagnosticVirtualTextWarn = { fg = "#e0af68", bg = "none" }
   hl.DiagnosticVirtualTextInfo = { fg = "#9ece6a", bg = "none" }
-  -- hl.DiagnosticVirtualTextError = { fg = "#c53b53", bg = "none" }
-  -- StatusLine
-  -- hl.StatusLine = { bg = "none" }
-  -- hl.StatusLineNC = { bg = "none" }
-  -- hl.StatusLineTerm = { bg = "none" }
-  -- hl.StatusLineTermNC = { bg = "none" }
-  -- TabLine
-  -- hl.TabLine = { bg = "none" }
-  -- hl.TabLineSel = { bg = "none" }
-  -- hl.TabLineFill = { bg = "none" }
-  -- Cursor
-  -- hl.CursorLineNr = { bg = "none" }
-  -- hl.CursorLine = { bg = "none" }
-  -- hl.ColorColumn = { bg = "none" }
-  -- Search
-  -- hl.Search = { fg = "red" }
-  -- hl.IncSearch = { fg = "red" }
-  -- hl.FoldColumn = { bg = "#25BE83" }
-
-  vim.cmd("hi! TreesitterContextLineNumber guifg=#c678dd")
-
   return hl
 end
