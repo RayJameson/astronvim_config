@@ -12,11 +12,6 @@ return {
     -- Check supported formatters and linters
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-    config.sources = {
-      -- Set a formatter
-      -- null_ls.builtins.formatting.stylua,
-      -- null_ls.builtins.formatting.prettier,
-    }
     config.diagnostics_format = "#{m} [#{c}] "
     config.sources = {
       -- Set a formatter
@@ -25,15 +20,17 @@ return {
       null_ls.builtins.formatting.stylua.with {
         extra_args = {
           "--indent-type=Spaces",
-          "--indent-width=4",
+          "--indent-width=2",
           "--quote-style=AutoPreferDouble",
           "--call-parentheses=NoSingleTable",
-          "--column-width=120",
+          "--column-width=79",
           "--collapse-simple-statement=Never",
         },
       },
-      null_ls.builtins.formatting.autopep8.with {
-        extra_args = { "--max-line-length", 120 },
+      null_ls.builtins.formatting.black.with {
+        extra_args = {
+          "--line-length=79",
+        },
       },
       null_ls.builtins.diagnostics.pylint.with {
         env = function(params)
