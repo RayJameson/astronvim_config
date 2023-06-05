@@ -162,9 +162,12 @@ return {
           },
         }),
       })
-      opts.mapping["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" })
-      opts.mapping["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" })
-      opts.mapping["<M-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" })
+      opts.mapping["<C-d>"] =
+        cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" })
+      opts.mapping["<C-u>"] =
+        cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" })
+      opts.mapping["<M-Space>"] =
+        cmp.mapping(cmp.mapping.complete(), { "i", "c" })
     end,
   },
 }
