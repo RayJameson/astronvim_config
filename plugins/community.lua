@@ -105,5 +105,4 @@ return {
   { import = "astrocommunity.motion.nvim-surround" },
   { import = "astrocommunity.motion.vim-matchup" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
-  { import = "astrocommunity.git.git-blame-nvim" },
 }
