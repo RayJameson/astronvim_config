@@ -65,12 +65,12 @@ return {
   { "nvim-neo-tree/neo-tree.nvim", opts = require("user.neo-tree") },
   {
     "max397574/better-escape.nvim",
-    opts = {
-      mapping = { "JK", "JJ", "jk", "jj" },
-      keys = function()
+    opts = function(_, opts)
+      opts.mapping = { "JK", "JJ", "jk", "jj" }
+      opts.keys = function()
         return vim.api.nvim_win_get_cursor(0)[2] > 1 and "<esc>l" or "<esc>"
-      end,
-    },
+      end
+    end,
   },
   {
     "onsails/lspkind.nvim",
@@ -107,7 +107,7 @@ return {
     dependencies = {
       "hrsh7th/cmp-cmdline", -- add cmp-cmdline as dependency of cmp
     },
-    config = function(plugin, opts)
+    config = function(_, opts)
       local cmp = require("cmp")
       -- run cmp setup
       cmp.setup(opts)
@@ -138,6 +138,13 @@ return {
         cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" })
       opts.mapping["<M-Space>"] =
         cmp.mapping(cmp.mapping.complete(), { "i", "c" })
+    end,
+  },
+  {
+    "stevearc/dressing.nvim",
+    opts = function(_, opts)
+      opts.input.win_options.winblend = 0
+      opts.select.builtin.winblend = 0
     end,
   },
 }
