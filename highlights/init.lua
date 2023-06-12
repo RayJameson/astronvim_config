@@ -27,9 +27,15 @@ return function(hl) -- or a function that returns a new table of colors to set
   hl.Normal = { fg = C.fg, bg = C.bg }
   hl.DapUIVariable = { fg = C.fg }
   hl.Folded = { bg = "#3c4855" }
-  hl.TreesitterContextLineNumber = { fg = C.purple }
   hl.DiagnosticVirtualTextHint = { fg = "#E0E1E4", bg = "none" }
   hl.DiagnosticVirtualTextWarn = { fg = "#e0af68", bg = "none" }
   hl.DiagnosticVirtualTextInfo = { fg = "#9ece6a", bg = "none" }
+  -- TreesitterContext need conditional check because highlights loads before plugins,
+  -- that leads to non transparent bg color when Transparent is enabled
+  if vim.g.transparent_enabled then
+    hl.TreesitterContextLineNumber = { fg = C.purple }
+  else
+    hl.TreesitterContextLineNumber = { fg = C.purple, bg = C.bg }
+  end
   return hl
 end
