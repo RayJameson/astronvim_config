@@ -83,18 +83,6 @@ return {
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
   { import = "astrocommunity.editing-support.nvim-ts-rainbow2" },
   { import = "astrocommunity.editing-support.todo-comments-nvim" },
-  {
-    "todo-comments.nvim",
-    opts = {
-      keywords = {
-        TEST = {
-          icon = " ",
-          color = "test",
-          alt = { "TESTING", "PASSED", "FAILED" },
-        },
-      },
-    },
-  },
   { import = "astrocommunity.editing-support.nvim-regexplainer" },
   {
     "nvim-regexplainer",
