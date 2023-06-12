@@ -60,6 +60,7 @@ return {
         "TelescopePreviewNormal",
         "TelescopeResultsNormal",
         "TelescopePromptNormal",
+        "TablineFill",
         "QuickFixLine",
         "Pmenu",
         "PmenuSel",
