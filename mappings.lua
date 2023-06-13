@@ -88,6 +88,7 @@ maps.n["<leader>bl"] = {
   end,
   desc = "Move buffer tab right",
 }
+
 maps.n["<leader>bh"] = {
   function()
     astronvim.move_buf(-(vim.v.count > 0 and vim.v.count or 1))
@@ -103,6 +104,7 @@ maps.n["<leader>bj"] = {
   end,
   desc = "Jump to buffer from tabline",
 }
+
 maps.n["<leader>bc"] = {
   function()
     buffer_picker(function(bufnr)
@@ -111,6 +113,7 @@ maps.n["<leader>bc"] = {
   end,
   desc = "Close buffer from tabline",
 }
+
 maps.n["<leader>bv"] = {
   function()
     buffer_picker(function(bufnr)
@@ -120,6 +123,7 @@ maps.n["<leader>bv"] = {
   end,
   desc = "Vertical file diff pick buffer",
 }
+
 maps.n["<leader>bs"] = {
   function()
     buffer_picker(function(bufnr)
