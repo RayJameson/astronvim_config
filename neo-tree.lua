@@ -52,4 +52,7 @@ return {
   buffers = {
     follow_current_file = false,
   },
+  source_selector = {
+    separator = { left = "", right = "" },
+  },
 }
