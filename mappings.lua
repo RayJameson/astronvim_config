@@ -274,6 +274,7 @@ if is_available("gitsigns.nvim") then
 end
 
 if is_available("code_runner.nvim") then
+  maps.n["<leader>r"] = { desc = "󰐍 Code runner" }
   maps.n["<leader>rr"] = { "<CMD>RunCode<CR>", desc = "Run code" }
   maps.n["<leader>rf"] = { "<CMD>RunFile<CR>", desc = "Run file" }
   maps.n["<leader>rt"] = { "<CMD>RunFile tab<CR>", desc = "Run file tab" }
@@ -312,26 +313,24 @@ maps.n["<leader>rn"] =
   { "<CMD>BetterLuafile<CR>", desc = "Run lua file with nvim-lua" }
 
 if is_available("trouble.nvim") then
-  maps.n["<leader>Tr"] =
-    { "<CMD>Trouble lsp_references<CR>", desc = "References" }
-  maps.n["<leader>Tf"] =
-    { "<CMD>Trouble lsp_definitions<CR>", desc = "Definitions" }
-  maps.n["<leader>Td"] =
-    { "<CMD>Trouble document_diagnostics<CR>", desc = "Diagnostics" }
-  maps.n["<leader>Tq"] = { "<CMD>Trouble quickfix<CR>", desc = "QuickFix" }
-  maps.n["<leader>Tl"] = { "<CMD>Trouble loclist<CR>", desc = "LocationList" }
-  maps.n["<leader>Tw"] = {
-    "<CMD>Trouble workspace_diagnostics<CR>",
-    desc = "Wordspace Diagnostics",
-  }
-  maps.n["<leader>Tt"] = { "<CMD>TodoTrouble<CR>", desc = "TODO list" }
+  maps.n["<leader>xr"] =
+    { "<CMD>Trouble lsp_references<CR>", desc = "References (Trouble)" }
+  maps.n["<leader>xf"] =
+    { "<CMD>Trouble lsp_definitions<CR>", desc = "Definitions (Trouble)" }
+  maps.n["<leader>xq"] =
+    { "<CMD>Trouble quickfix<CR>", desc = "QuickFix (Trouble)" }
+  maps.n["<leader>xl"] =
+    { "<CMD>Trouble loclist<CR>", desc = "LocationList (Trouble)" }
+  maps.n["<leader>xt"] = { "<CMD>TodoTrouble<CR>", desc = "TODO list" }
 end
 
 if is_available("glow.nvim") then
+  maps.n["<leader>m"] = { desc = "󰽛 Markdown" }
   maps.n["<leader>mM"] = { "<CMD>Glow<CR>", desc = "Markdown Glow" }
 end
 
 if is_available("markdown-preview.nvim") then
+  maps.n["<leader>m"] = { desc = "󰽛 Markdown" }
   maps.n["<leader>mm"] =
     { "<CMD>MarkdownPreview<CR>", desc = "MarkdownPreview" }
   maps.n["<leader>mt"] =

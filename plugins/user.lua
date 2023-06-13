@@ -64,7 +64,7 @@ return {
 
       utils.set_mappings {
         n = {
-          [prefix] = { name = "Diff View" },
+          [prefix] = { name = " Diff View" },
           [prefix .. "<cr>"] = {
             "<cmd>DiffviewOpen<cr>",
             desc = "Open DiffView",
