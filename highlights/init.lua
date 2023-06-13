@@ -22,7 +22,6 @@ return function(hl) -- or a function that returns a new table of colors to set
   hl.Define = { fg = C.purple, italic = true }
   hl.Include = { fg = C.purple, italic = true }
   hl.DapUIVariable = { fg = C.fg }
-  hl.Folded = { bg = "#3c4855" }
   hl.DiagnosticVirtualTextHint = { fg = "#E0E1E4", bg = "none" }
   hl.DiagnosticVirtualTextWarn = { fg = "#e0af68", bg = "none" }
   hl.DiagnosticVirtualTextInfo = { fg = "#9ece6a", bg = "none" }
