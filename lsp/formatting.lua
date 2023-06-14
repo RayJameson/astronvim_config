@@ -14,4 +14,10 @@ return {
     -- "lua_ls",
   },
   timeout_ms = 1000, -- default format timeout
+  filter = function(client)
+    if client.supports_method("textDocument/formatting") then
+      return client.name == "null-ls"
+    end
+    return false
+  end,
 }
