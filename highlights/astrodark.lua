@@ -9,8 +9,6 @@ return function(hl) -- or a function that returns a new table of colors to set
   hl["@keyword.function"] = { fg = C.purple, italic = true }
   hl["@keyword.operator"] = { fg = C.purple, italic = true }
   hl["@function.builtin"] = { fg = C.blue_1 }
-  hl["@lsp.typemod.function.global"] = { fg = C.blue }
-  hl["@lsp.typemod.function.defaultLibrary"] = { fg = C.blue_1 }
   hl["@class_variable"] = { fg = C.red }
   hl["@method"] = { fg = "#61afef" }
   hl.Normal = { fg = C.fg, bg = C.bg }
