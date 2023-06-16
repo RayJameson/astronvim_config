@@ -43,7 +43,7 @@ maps.v["<leader>p"] = { '"_dP', desc = "Paste noregister" }
 --]
 
 maps.n["<leader>."] = { ":tcd %:p:h<CR>", desc = "CD to current file" }
-maps.n["<leader>ll"] = { "<CMD>NullLsRestart<CR>", desc = "Null-ls restart" }
+maps.n["<leader>ln"] = { "<CMD>NullLsRestart<CR>", desc = "Null-ls restart" }
 maps.n["<leader>F"] = {
   ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/g<Left><Left>",
   desc = "Find and replace",
@@ -282,7 +282,6 @@ if is_available("code_runner.nvim") then
   maps.n["<leader>rr"] = { "<CMD>RunCode<CR>", desc = "Run code" }
   maps.n["<leader>rf"] = { "<CMD>RunFile<CR>", desc = "Run file" }
   maps.n["<leader>rt"] = { "<CMD>RunFile tab<CR>", desc = "Run file tab" }
-  maps.n["<leader>rb"] = { "<CMD>RunFile buf<CR>", desc = "Run file buf" }
   maps.n["<leader>rc"] = { "<CMD>RunClose<CR>", desc = "Close runner" }
   maps.n["<leader>rp"] =
     { "<CMD>RunFile toggleterm<CR>", desc = "Run file pop up (toggleterm)" }
