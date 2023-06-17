@@ -9,7 +9,7 @@ local buffer_picker = require("astronvim.utils.status").heirline.buffer_picker
 local buffer_closer = require("astronvim.utils.buffer").close
 local notify = require("astronvim.utils").notify
 local toggle_term_cmd = require("astronvim.utils").toggle_term_cmd
-local maps = { n = {}, c = {}, i = {}, v = {}, t = {} }
+local maps = { n = {}, c = {}, i = {}, v = {}, t = {}, x = {}, o = {} }
 
 -- disbale defaults:
 -- Makes more sense to use "\" as vert split and "|" as split, because I use vert split more often
@@ -399,6 +399,16 @@ else
     { "<CMD>vertical resize -2<CR>", desc = "Resize split left" }
   maps.n["<M-Right>"] =
     { "<CMD>vertical resize +2<CR>", desc = "Resize split right" }
+end
+
+-- add more text objects for "in" and "around"
+for _, char in ipairs { "_", ".", ":", ",", ";", "|", "/", "\\", "*", "+", "%", "`", "?" } do
+  for _, mode in ipairs { "x", "o" } do
+    maps[mode]["i" .. char] =
+      { string.format(":<C-u>silent! normal! f%sF%slvt%s<CR>", char, char, char), desc = "between " .. char }
+    maps[mode]["a" .. char] =
+      { string.format(":<C-u>silent! normal! f%sF%svf%s<CR>", char, char, char), desc = "around " .. char }
+  end
 end
 
 return maps
