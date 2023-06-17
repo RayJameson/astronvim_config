@@ -107,6 +107,7 @@ return {
       "rust",
     },
   },
+  { import = "astrocommunity.project.nvim-spectre" },
   { import = "astrocommunity.motion.nvim-surround" },
   { import = "astrocommunity.motion.vim-matchup" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
