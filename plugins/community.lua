@@ -83,6 +83,17 @@ return {
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
   { import = "astrocommunity.editing-support.nvim-ts-rainbow2" },
   { import = "astrocommunity.editing-support.todo-comments-nvim" },
+  { import = "astrocommunity.editing-support.neogen" },
+  {
+    "neogen",
+    opts = {
+      languages = {
+        python = { template = { annotation_convention = "reST" } },
+        rust = { template = { annotation_convention = "rustdoc" } },
+        sh = { template = { annotation_convention = "google_bash" } },
+      },
+    },
+  },
   { import = "astrocommunity.editing-support.nvim-regexplainer" },
   {
     "nvim-regexplainer",
