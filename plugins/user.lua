@@ -5,9 +5,12 @@ return {
   {
     "lvimuser/lsp-inlayhints.nvim",
     event = "User Astrofile",
-    config = function()
-      require("lsp-inlayhints").setup()
-    end,
+    config = true,
+  },
+  {
+    "simrat39/rust-tools.nvim",
+    optional = true,
+    opts = { tools = { inlay_hints = { auto = false } } },
   },
   {
     "fedepujol/move.nvim",
