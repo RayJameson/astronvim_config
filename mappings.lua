@@ -316,6 +316,7 @@ maps.n["<leader>rn"] =
   { "<CMD>BetterLuafile<CR>", desc = "Run lua file with nvim-lua" }
 
 if is_available("trouble.nvim") then
+  maps.n["<leader>x"] = { desc = "󱠪 Trouble" }
   maps.n["<leader>xr"] =
     { "<CMD>Trouble lsp_references<CR>", desc = "References (Trouble)" }
   maps.n["<leader>xf"] =
