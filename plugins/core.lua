@@ -1,3 +1,5 @@
+local get_icon = require("astronvim.utils").get_icon
+
 return {
   -- customize alpha options
   {
@@ -179,5 +181,9 @@ return {
       end
       opts.fold_virt_text_handler = handler
     end,
+  },
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = { "theHamsta/nvim-dap-virtual-text", config = true },
   },
 }
