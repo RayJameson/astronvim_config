@@ -167,50 +167,9 @@ local function toggle_lazyreadraw()
 end
 
 maps.n["<leader>ur"] = {
-  function()
-    toggle_lazyreadraw()
-  end,
+  toggle_lazyreadraw,
   desc = "Toggle lazyredraw",
 }
-
-if is_available("mind.nvim") then
-  local function open_without_folds(ufo_command)
-    vim.cmd(ufo_command)
-    if is_available("nvim-ufo") then
-      vim.cmd("UfoDetach")
-    end
-  end
-  maps.n["<leader>Ms"] = {
-    function()
-      open_without_folds("MindOpenSmartProject")
-    end,
-    desc = "Open Smart Project",
-  }
-  maps.n["<leader>Mo"] = {
-    function()
-      open_without_folds("MindOpenMain")
-    end,
-    desc = "Open Main",
-  }
-  maps.n["<leader>Mp"] = {
-    function()
-      open_without_folds("MindOpenProject")
-    end,
-    desc = "Open Project",
-  }
-  maps.n["<leader>Mr"] = {
-    function()
-      vim.cmd("MindReloadState")
-    end,
-    desc = "Reload state",
-  }
-  maps.n["<leader>Mc"] = {
-    function()
-      vim.cmd("MindClose")
-    end,
-    desc = "Close",
-  }
-end
 
 if is_available("nvim-treesitter-context") then
   maps.n["[c"] = {
@@ -403,12 +362,30 @@ else
 end
 
 -- add more text objects for "in" and "around"
-for _, char in ipairs { "_", ".", ":", ",", ";", "|", "/", "\\", "*", "+", "%", "`", "?" } do
+for _, char in ipairs {
+  "_",
+  ".",
+  ":",
+  ",",
+  ";",
+  "|",
+  "/",
+  "\\",
+  "*",
+  "+",
+  "%",
+  "`",
+  "?",
+} do
   for _, mode in ipairs { "x", "o" } do
-    maps[mode]["i" .. char] =
-      { string.format(":<C-u>silent! normal! f%sF%slvt%s<CR>", char, char, char), desc = "between " .. char }
-    maps[mode]["a" .. char] =
-      { string.format(":<C-u>silent! normal! f%sF%svf%s<CR>", char, char, char), desc = "around " .. char }
+    maps[mode]["i" .. char] = {
+      string.format(":<C-u>silent! normal! f%sF%slvt%s<CR>", char, char, char),
+      desc = "between " .. char,
+    }
+    maps[mode]["a" .. char] = {
+      string.format(":<C-u>silent! normal! f%sF%svf%s<CR>", char, char, char),
+      desc = "around " .. char,
+    }
   end
 end
 
