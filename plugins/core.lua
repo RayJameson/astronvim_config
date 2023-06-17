@@ -64,7 +64,6 @@ return {
   --     }, { mode = "n", prefix = "<leader>" })
   --   end,
   -- },
-  { "nvim-neo-tree/neo-tree.nvim", opts = require("user.neo-tree") },
   {
     "max397574/better-escape.nvim",
     opts = function(_, opts)
