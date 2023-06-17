@@ -325,4 +325,20 @@ return {
     },
     config = true,
   },
+  {
+    "danymat/neogen",
+    cmd = "Neogen",
+    opts = {
+      snippet_engine = "luasnip",
+      languages = {
+        lua = { template = { annotation_convention = "emmylua" } },
+        typescript = { template = { annotation_convention = "tsdoc" } },
+        typescriptreact = { template = { annotation_convention = "tsdoc" } },
+        python = { template = { annotation_convention = "reST" } },
+        rust = { template = { annotation_convention = "rustdoc" } },
+        sh = { template = { annotation_convention = "google_bash" } },
+      },
+    },
+    config = true,
+  },
 }
