@@ -18,9 +18,8 @@ return {
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.docker" },
-  {
-    import = "astrocommunity.utility.transparent-nvim",
-  },
+  { import = "astrocommunity.utility.transparent-nvim" },
+  { import = "astrocommunity.utility.neodim" },
   {
     "transparent.nvim",
     priority = 1000,
