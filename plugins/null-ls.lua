@@ -32,15 +32,7 @@ return {
           "--line-length=79",
         },
       },
-      null_ls.builtins.diagnostics.pylint.with {
-        env = function(params)
-          return { PYTHONPATH = params.root }
-        end,
-        extra_args = {
-          "--init-hook='import sys; sys.path.append(\".\")'",
-          "--recursive=y",
-        },
-      },
+      null_ls.builtins.diagnostics.pylint,
       null_ls.builtins.diagnostics.luacheck.with {
         command = "luacheck",
         extra_args = { "-d" },
