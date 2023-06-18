@@ -13,7 +13,12 @@ return {
   },
   {
     "folke/noice.nvim",
-    init = function() vim.g.lsp_handlers_enabled = false end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    init = function()
+      vim.g.lsp_handlers_enabled = false
+    end,
     event = "VeryLazy",
     cond = not vim.g.neovide,
     opts = {
@@ -51,6 +56,10 @@ return {
           filter = { event = "msg_show", find = "^%d+ line[s]? yanked$" },
           opts = { skip = true },
         }, -- skip yank notifications
+        {
+          filter = { event = "msg_show", kind = "search_count" },
+          opts = { skip = true },
+        },
       },
       presets = { lsp_doc_border = true },
       popupmenu = { backend = "cmp" },
