@@ -6,10 +6,10 @@ return {
     "lvimuser/lsp-inlayhints.nvim",
     event = "User Astrofile",
     config = true,
+    branch = "anticonceal",
   },
   {
     "simrat39/rust-tools.nvim",
-    optional = true,
     opts = { tools = { inlay_hints = { auto = false } } },
   },
   {
