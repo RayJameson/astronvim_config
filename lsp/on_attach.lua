@@ -8,6 +8,9 @@ return function(client, bufnr)
       end, { desc = "Toggle inlay hints" })
       vim.cmd("hi! link LspInlayHint Comment")
     end
+
+    -- this will be enabled in the future if neovim implements inline hints
+    -- vim.lsp.buf_inlay_hint_toggle(bufnr)
   end
 
   if client.server_capabilities.documentRangeFormattingProvider then
