@@ -19,6 +19,7 @@ return function(hl) -- or a function that returns a new table of colors to set
   hl["@class_variable"] = { fg = C.red }
   hl["@method"] = { fg = "#61afef" }
   hl["@lsp.typemod.function.global"] = { fg = C.blue }
+  hl["@punctuation.special.markdown"] = { fg = C.fg }
   hl["@lsp.typemod.function.defaultLibrary"] = { fg = C.blue_1 }
   hl.Keyword = { fg = C.purple, italic = true }
   hl.Define = { fg = C.purple, italic = true }
