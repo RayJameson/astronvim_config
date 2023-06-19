@@ -1,5 +1,3 @@
-local get_icon = require("astronvim.utils").get_icon
-
 return {
   -- customize alpha options
   {
