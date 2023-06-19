@@ -38,7 +38,7 @@ maps.n["<leader>Y"] = { '"+y$', desc = "Yank +clipboard" }
 maps.v["<leader>y"] = { '"+y', desc = "yank +clipboard" }
 maps.v["<leader>Y"] = { '"+y$', desc = "Yank +clipboard" }
 maps.n["<leader>d"] = { '"_d', desc = "Delete noregister" }
-maps.v["<leader>d"] = { '"_d', desc = "Delete noregister" }
+maps.v["<leader>D"] = { '"_d', desc = "Delete noregister" }
 maps.v["<leader>p"] = { '"_dP', desc = "Paste noregister" }
 --]
 
