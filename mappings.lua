@@ -35,11 +35,11 @@ maps.n["H"] = {
 --[ register + clipboard
 maps.n["<leader>y"] = { '"+y', desc = "yank +clipboard" }
 maps.n["<leader>Y"] = { '"+y$', desc = "Yank +clipboard" }
-maps.v["<leader>y"] = { '"+y', desc = "yank +clipboard" }
-maps.v["<leader>Y"] = { '"+y$', desc = "Yank +clipboard" }
+maps.x["<leader>y"] = { '"+y', desc = "yank +clipboard" }
+maps.x["<leader>Y"] = { '"+y$', desc = "Yank +clipboard" }
 maps.n["<leader>d"] = { '"_d', desc = "Delete noregister" }
-maps.v["<leader>D"] = { '"_d', desc = "Delete noregister" }
-maps.v["<leader>p"] = { '"_dP', desc = "Paste noregister" }
+maps.x["<leader>D"] = { '"_d', desc = "Delete noregister" }
+maps.x["<leader>p"] = { '"_dP', desc = "Paste noregister" }
 --]
 
 maps.n["<leader>."] = { ":tcd %:p:h<CR>", desc = "CD to current file" }
@@ -48,7 +48,7 @@ maps.n["<leader>F"] = {
   ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/g<Left><Left>",
   desc = "Find and replace",
 }
-maps.v["<leader>F"] = {
+maps.x["<leader>F"] = {
   '<Esc>"fyiw<CR>gv:s/<C-r>f/<C-r>f/g<Left><Left>',
   desc = "Find and replace visual",
 }
@@ -70,15 +70,15 @@ maps.i["<C-l>"] = { "<Right>", desc = "Right" }
 --[ Better ^ and $
 maps.n["gh"] = { "^", desc = "go to beginning of the line (^)" }
 maps.n["gl"] = { "$", desc = "go to end of the line ($)" }
-maps.v["gh"] = { "^", desc = "go to beginning of the line (^)" }
-maps.v["gl"] = { "$", desc = "go to end of the line ($)" }
+maps.x["gh"] = { "^", desc = "go to beginning of the line (^)" }
+maps.x["gl"] = { "$", desc = "go to end of the line ($)" }
 --]
 
 --[ Better gg and G
 maps.n["gj"] = { "G", desc = "go to last line" }
 maps.n["gk"] = { "gg", desc = "go to first line" }
-maps.v["gj"] = { "G", desc = "go to last line" }
-maps.v["gk"] = { "gg", desc = "go to first line" }
+maps.x["gj"] = { "G", desc = "go to last line" }
+maps.x["gk"] = { "gg", desc = "go to first line" }
 --]
 
 --[ buf keymaps
@@ -186,7 +186,7 @@ if is_available("nvim-transparent") then
 end
 
 if is_available("refactoring.nvim") then
-  maps.v["<leader>r"] = {
+  maps.x["<leader>r"] = {
     "<Esc><CMD>Refactoring<CR>",
     desc = "Refactoring",
     silent = true,
@@ -216,7 +216,7 @@ if is_available("diffview.nvim") then
     desc = "Open branch history",
     silent = true,
   }
-  maps.v["<leader>gh"] =
+  maps.x["<leader>gh"] =
     { ":DiffviewFileHistory<CR>", desc = "Open line history", silent = true }
 end
 
@@ -319,10 +319,10 @@ if is_available("move.nvim") then
   maps.n["<M-h>"] = { ":MoveHChar(-1)<CR>", desc = "Move char left" }
   maps.n["<M-l>"] = { ":MoveHChar(1)<CR>", desc = "Move char right" }
   -- Visual mode
-  maps.v["<M-j>"] = { ":MoveBlock(1)<CR>", desc = "Move block down" }
-  maps.v["<M-k>"] = { ":MoveBlock(-1)<CR>", desc = "Move block up" }
-  maps.v["<M-h>"] = { ":MoveHBlock(-1)<CR>", desc = "Move block left" }
-  maps.v["<M-l>"] = { ":MoveHBlock(1)<CR>", desc = "Move block right" }
+  maps.x["<M-j>"] = { ":MoveBlock(1)<CR>", desc = "Move block down" }
+  maps.x["<M-k>"] = { ":MoveBlock(-1)<CR>", desc = "Move block up" }
+  maps.x["<M-h>"] = { ":MoveHBlock(-1)<CR>", desc = "Move block left" }
+  maps.x["<M-l>"] = { ":MoveHBlock(1)<CR>", desc = "Move block right" }
 end
 
 -- Smart Splits (remapped on Meta key)
