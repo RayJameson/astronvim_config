@@ -29,8 +29,11 @@ return function(hl) -- or a function that returns a new table of colors to set
   hl.DiagnosticVirtualTextWarn = { fg = "#e0af68", bg = "none" }
   hl.DiagnosticVirtualTextInfo = { fg = "#9ece6a", bg = "none" }
   hl.NeoTreeTabActive = { fg = C.fg, bold = true, italic = true }
+  hl.QuickFixLine = { fg = C.white }
+  hl.BqfPreviewFloat = { fg = C.fg, bg = C.bg }
   if vim.g.transparent_enabled then
     hl.TreesitterContextLineNumber = { fg = C.red_1 }
+    hl.Normal = { fg = C.fg }
   else
     hl.TreesitterContextLineNumber = { fg = C.red_1, bg = C.bg }
   end

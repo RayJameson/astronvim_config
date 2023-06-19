@@ -1,6 +1,5 @@
 return function(hl) -- or a function that returns a new table of colors to set
-  local C = require("highlights.colors")
-  hl["@variable"] = { fg = C.fg }
+  local C = require("user.highlights.colors")
   hl["@attribute"] = { fg = C.gold }
   hl["@keyword"] = { fg = C.purple, italic = true }
   hl["@conditional"] = { fg = C.purple, italic = true }
@@ -11,6 +10,5 @@ return function(hl) -- or a function that returns a new table of colors to set
   hl["@function.builtin"] = { fg = C.blue_1 }
   hl["@class_variable"] = { fg = C.red }
   hl["@method"] = { fg = "#61afef" }
-  hl.Normal = { fg = C.fg, bg = C.bg }
   return hl
 end
