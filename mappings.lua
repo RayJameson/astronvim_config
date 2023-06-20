@@ -89,6 +89,20 @@ maps.n["<leader>bl"] = {
   desc = "Move buffer tab right",
 }
 
+if is_available("telescope.nvim") then
+  local telescope_undo_available, _ = pcall(require, "telescope-undo")
+  maps.n["<leader>fg"] ={
+    require("telescope.builtin").git_files,
+    desc = "Find git files",
+  }
+  if telescope_undo_available then
+    maps.n["<leader>fu"] = {
+      require("telescope").extensions.undo.undo,
+      desc = "Find undos",
+    }
+  end
+end
+
 maps.n["<leader>bh"] = {
   function()
     astronvim.move_buf(-(vim.v.count > 0 and vim.v.count or 1))
