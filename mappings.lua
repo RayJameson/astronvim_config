@@ -242,6 +242,10 @@ if is_available("gitsigns.nvim") then
     end,
     desc = "Reset Git hunk",
   }
+  maps.n["<leader>gD"] = {
+    require("gitsigns").toggle_deleted,
+    desc = "Toggle deleted lines",
+  }
 end
 
 if is_available("code_runner.nvim") then
