@@ -1,18 +1,10 @@
 return function()
-  vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-    pattern = "*",
-    callback = function()
-      vim.highlight.on_yank { higroup = "IncSearch", timeout = 100 }
-    end,
-  })
-
   vim.api.nvim_set_var(
     "python3_host_prog",
     "$HOME/.pyenv/versions/neovim_base_venv/bin/python3"
   )
   -- Set up custom filetypes
   vim.cmd([[
-            " autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=100}
             :set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
             augroup remember_folds
             autocmd!
@@ -21,29 +13,6 @@ return function()
             augroup END
             autocmd BufWritePost *.* TSDisable rainbow | TSEnable rainbow
         ]])
-
-  vim.api.nvim_create_augroup("relative_number_switch", { clear = true })
-  vim.api.nvim_create_autocmd("InsertEnter", {
-    pattern = "*",
-    group = "relative_number_switch",
-    callback = function()
-      if vim.wo.relativenumber then
-        vim.wo.relativenumber = false
-        vim.w.adaptive_relative_number_state = true
-      end
-    end,
-  })
-
-  vim.api.nvim_create_autocmd("InsertLeave", {
-    pattern = "*",
-    group = "relative_number_switch",
-    callback = function()
-      if vim.w.adaptive_relative_number_state then
-        vim.wo.relativenumber = true
-        vim.w.adaptive_relative_number_state = nil
-      end
-    end,
-  })
 
   if vim.fn.has("mac") then
     vim.cmd([[
@@ -83,34 +52,5 @@ return function()
   vim.api.nvim_create_user_command("BetterLuafile", function(opts)
     better_luafile.call(opts.fargs, "horizontal", 15, true)
   end, { nargs = "?" })
-
-  vim.api.nvim_create_autocmd("BufWinEnter", {
-    pattern = "*",
-    callback = function()
-      vim.api.nvim_win_set_option(0, "foldcolumn", "auto:9")
-    end,
-  })
-
-  local function leave_snippet()
-    if
-      (
-        (vim.v.event.old_mode == "s" and vim.v.event.new_mode == "n")
-        or vim.v.event.old_mode == "i"
-      )
-      and require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
-      and not require("luasnip").session.jump_active
-    then
-      require("luasnip").unlink_current()
-    end
-  end
-
-  -- stop snippets when you leave to normal mode
-  vim.api.nvim_create_augroup("ModeChangedGroup", { clear = true })
-  vim.api.nvim_create_autocmd("ModeChanged", {
-    pattern = "*",
-    group = "ModeChangedGroup",
-    callback = function()
-      leave_snippet()
-    end,
-  })
+  require("user.autocmds")
 end
