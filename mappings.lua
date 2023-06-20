@@ -33,13 +33,13 @@ maps.n["H"] = {
 --]
 
 --[ register + clipboard
-maps.n["<leader>y"] = { '"+y', desc = "yank +clipboard" }
-maps.n["<leader>Y"] = { '"+y$', desc = "Yank +clipboard" }
-maps.x["<leader>y"] = { '"+y', desc = "yank +clipboard" }
-maps.x["<leader>Y"] = { '"+y$', desc = "Yank +clipboard" }
-maps.n["<leader>d"] = { '"_d', desc = "Delete noregister" }
-maps.x["<leader>D"] = { '"_d', desc = "Delete noregister" }
-maps.x["<leader>p"] = { '"_dP', desc = "Paste noregister" }
+maps.n["gy"] = { '"+y', desc = "yank +clipboard" }
+maps.n["gY"] = { '"+y$', desc = "Yank +clipboard" }
+maps.x["gy"] = { '"+y', desc = "yank +clipboard" }
+maps.x["gY"] = { '"+y$', desc = "Yank +clipboard" }
+maps.n["gD"] = { '"_d', desc = "Delete noregister" }
+maps.x["gD"] = { '"_d', desc = "Delete noregister" }
+maps.x["gp"] = { '"_dP', desc = "Paste noregister" }
 --]
 
 maps.n["<leader>."] = { ":tcd %:p:h<CR>", desc = "CD to current file" }
