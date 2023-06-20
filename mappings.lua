@@ -258,7 +258,9 @@ if is_available("gitsigns.nvim") then
 end
 
 if is_available("code_runner.nvim") then
-  maps.n["<leader>r"] = { desc = "󰐍 Code runner" }
+  local icon
+  if vim.g.icons_enabled then icon = "󰐍 "  else icon = "" end
+  maps.n["<leader>r"] = { desc = icon .. "Code runner" }
   maps.n["<leader>rr"] = { "<CMD>RunCode<CR>", desc = "Run code" }
   maps.n["<leader>rf"] = { "<CMD>RunFile<CR>", desc = "Run file" }
   maps.n["<leader>rt"] = { "<CMD>RunFile tab<CR>", desc = "Run file tab" }
@@ -268,7 +270,9 @@ if is_available("code_runner.nvim") then
 end
 
 if is_available("neotest") then
-  maps.n["<leader>n"] = { false, desc = " Neotest" }
+  local icon
+  if vim.g.icons_enabled then icon = " "  else icon = "" end
+  maps.n["<leader>n"] = { false, desc = icon .. "Neotest" }
   maps.n["<leader>nr"] = { "<CMD>NeotestRun<CR>", desc = "Run nearest test" }
   maps.n["<leader>nf"] =
     { "<CMD>NeotestRunFile<CR>", desc = "Run tests in current file" }
@@ -295,7 +299,9 @@ maps.n["<leader>rn"] =
   { "<CMD>BetterLuafile<CR>", desc = "Run lua file with nvim-lua" }
 
 if is_available("trouble.nvim") then
-  maps.n["<leader>x"] = { desc = "󱠪 Trouble" }
+  local icon
+  if vim.g.icons_enabled then icon = "󱠪 "  else icon = "" end
+  maps.n["<leader>x"] = { desc = icon .. "Trouble" }
   maps.n["<leader>xr"] =
     { "<CMD>Trouble lsp_references<CR>", desc = "References (Trouble)" }
   maps.n["<leader>xf"] =
@@ -308,12 +314,16 @@ if is_available("trouble.nvim") then
 end
 
 if is_available("glow.nvim") then
-  maps.n["<leader>m"] = { desc = "󰽛 Markdown" }
+  local icon
+  if vim.g.icons_enabled then icon = "󰽛 "  else icon = "" end
+  maps.n["<leader>m"] = { desc = icon .. "Markdown" }
   maps.n["<leader>mM"] = { "<CMD>Glow<CR>", desc = "Markdown Glow" }
 end
 
 if is_available("markdown-preview.nvim") then
-  maps.n["<leader>m"] = { desc = "󰽛 Markdown" }
+  local icon
+  if vim.g.icons_enabled then icon = "󰽛 "  else icon = "" end
+  maps.n["<leader>m"] = { desc = icon .. "Markdown" }
   maps.n["<leader>mm"] =
     { "<CMD>MarkdownPreview<CR>", desc = "MarkdownPreview" }
   maps.n["<leader>mt"] =

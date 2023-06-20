@@ -57,10 +57,11 @@ return {
       local actions = require("diffview.actions")
       local utils = require("astronvim.utils")
       local prefix = "<leader>D"
-
+      local icon
+      if vim.g.icons_enabled then icon = " " else icon = "" end
       utils.set_mappings {
         n = {
-          [prefix] = { name = " Diff View" },
+          [prefix] = { name = icon .. "Diff View" },
           [prefix .. "<cr>"] = {
             "<cmd>DiffviewOpen<cr>",
             desc = "Open DiffView",
