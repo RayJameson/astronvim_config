@@ -88,9 +88,18 @@ maps.n["<leader>bl"] = {
   desc = "Move buffer tab right",
 }
 
+if is_available("nvim-notify") then
+  maps.n["<leader>uD"] = {
+    function()
+      require("notify").dismiss { silent = true }
+    end,
+    desc = "Dismiss notification",
+  }
+end
+
 if is_available("telescope.nvim") then
   local telescope_undo_available, _ = pcall(require, "telescope-undo")
-  maps.n["<leader>fg"] ={
+  maps.n["<leader>fg"] = {
     require("telescope.builtin").git_files,
     desc = "Find git files",
   }
