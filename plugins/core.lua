@@ -184,6 +184,43 @@ return {
     dependencies = { "theHamsta/nvim-dap-virtual-text", config = true },
   },
   {
+    "rebelot/heirline.nvim",
+    opts = function(_, opts)
+      local status = require("astronvim.utils.status")
+      local harpoon_index = {
+        provider = function()
+          local Marked = require("harpoon.mark")
+          local filename = vim.api.nvim_buf_get_name(0)
+          local ok, index = pcall(Marked.get_index_of, filename)
+          if ok and index and index > 0 then
+            return "󱡀 " .. index .. " "
+          else
+            return
+          end
+        end,
+      }
+
+      opts.tabline = nil
+      opts.statusline = {
+        -- statusline
+        hl = { fg = "fg", bg = "bg" },
+        status.component.mode {
+          mode_text = { padding = { left = 1, right = 1 } },
+        }, -- add the mode text
+        status.component.git_branch(),
+        harpoon_index,
+        status.component.diagnostics(),
+        status.component.fill(),
+        -- lsp causes issue on mac with tokyonight(https://discord.com/channels/939594913560031363/1100223017017163826)
+        status.component.lsp(),
+        status.component.treesitter(),
+        status.component.nav(),
+      }
+
+      return opts
+    end,
+  },
+  {
     "nvim-telescope/telescope.nvim",
     dependencies = { -- add a new dependency to telescope that is our new plugin
       "debugloop/telescope-undo.nvim",
