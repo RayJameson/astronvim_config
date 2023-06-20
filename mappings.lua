@@ -15,7 +15,6 @@ local maps = { n = {}, c = {}, i = {}, v = {}, t = {}, x = {}, o = {} }
 -- Makes more sense to use "\" as vert split and "|" as split, because I use vert split more often
 maps.n["<leader>bb"] = false
 maps.n["<leader>bd"] = false
-maps.n["<leader>n"] = false
 maps.n["L"] = {
   function()
     require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1)
@@ -208,11 +207,6 @@ if is_available("refactoring.nvim") then
   }
 end
 
-if is_available("nvim-docs-view") then
-  maps.n["<leader>lv"] =
-    { "<CMD>DocsViewToggle<CR>", desc = "Toggle docs view" }
-end
-
 if is_available("diffview.nvim") then
   maps.n["<leader>gd"] = {
     "<CMD>DiffviewOpen<CR>",
@@ -261,8 +255,7 @@ if is_available("code_runner.nvim") then
 end
 
 if is_available("neotest") then
-  maps.n["<leader>n"] = nil
-  maps.n["<leader>n"] = { desc = "Neotest" }
+  maps.n["<leader>n"] = { false, desc = " Neotest" }
   maps.n["<leader>nr"] = { "<CMD>NeotestRun<CR>", desc = "Run nearest test" }
   maps.n["<leader>nf"] =
     { "<CMD>NeotestRunFile<CR>", desc = "Run tests in current file" }
@@ -314,15 +307,6 @@ if is_available("markdown-preview.nvim") then
     { "<CMD>MarkdownPreviewToggle<CR>", desc = "MarkdownPreview Toggle" }
   maps.n["<leader>ms"] =
     { "<CMD>MarkdownPreviewStop<CR>", desc = "MarkdownPreview Stop" }
-end
-
-if is_available("undotree") then
-  maps.n["<leader>U"] = { "<CMD>UndotreeToggle<CR>", desc = "Undotree toggle" }
-end
-
-if is_available("project.nvim") then
-  maps.n["<leader>sp"] =
-    { "<CMD>Telescope projects<CR>", desc = "Search projects" }
 end
 
 -- Move
