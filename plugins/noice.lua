@@ -1,5 +1,4 @@
 return {
-  { "rcarriga/nvim-notify", init = false, config = true },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
@@ -61,7 +60,7 @@ return {
           opts = { skip = true },
         },
       },
-      presets = { lsp_doc_border = true },
+      presets = { lsp_doc_border = true, long_message_to_split = true },
       popupmenu = { backend = "cmp" },
     },
   },
