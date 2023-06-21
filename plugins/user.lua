@@ -4,7 +4,7 @@ return {
   -- "andweeb/presence.nvim",
   {
     "lvimuser/lsp-inlayhints.nvim",
-    event = "User Astrofile",
+    event = "LspAttach",
     config = true,
     branch = "anticonceal",
   },
@@ -226,10 +226,11 @@ return {
   {
     "joechrisellis/lsp-format-modifications.nvim",
     event = "User Astrofile",
+    cmd = "FormatModifications",
   },
   {
     "m-demare/hlargs.nvim",
-    event = "User Astrofile",
+    event = "LspAttach",
     opts = {
       color = "#FF7A00", --"#ef9062",
       paint_arg_usages = true,
@@ -237,7 +238,7 @@ return {
   },
   {
     "Exafunction/codeium.vim",
-    event = "User Astrofile",
+    event = "LspAttach",
     config = function()
       -- Change '<C-g>' here to any keycode you like.
       vim.keymap.set("i", "<C-g>", function()
