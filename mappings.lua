@@ -32,13 +32,12 @@ maps.n["H"] = {
 --]
 
 --[ register + clipboard
-maps.n["gy"] = { '"+y', desc = "yank +clipboard" }
-maps.n["gY"] = { '"+y$', desc = "Yank +clipboard" }
-maps.x["gy"] = { '"+y', desc = "yank +clipboard" }
-maps.x["gY"] = { '"+y$', desc = "Yank +clipboard" }
-maps.n["gD"] = { '"_d', desc = "Delete noregister" }
-maps.x["gD"] = { '"_d', desc = "Delete noregister" }
-maps.x["gp"] = { '"_dP', desc = "Paste noregister" }
+for _, mode in ipairs { "n", "x" } do
+  maps[mode]["gy"] = { '"+y', desc = "yank +clipboard" }
+  maps[mode]["gY"] = { '"+y$', desc = "Yank +clipboard (y$)" }
+  maps[mode]["gD"] = { '"_d', desc = "Delete noregister" }
+end
+maps.x["p"] = { "P", desc = "Paste noregister" }
 --]
 
 maps.n["<leader>."] = { ":tcd %:p:h<CR>", desc = "CD to current file" }
@@ -98,15 +97,19 @@ if is_available("nvim-notify") then
 end
 
 if is_available("telescope.nvim") then
-  local telescope_undo_available, _ = pcall(require, "telescope-undo")
   maps.n["<leader>fg"] = {
     require("telescope.builtin").git_files,
     desc = "Find git files",
   }
+  maps.n["<leader>fs"] = {
+    require("telescope.builtin").spell_suggest,
+    desc = "Show spell suggestions",
+  }
+  local telescope_undo_available, _ = pcall(require, "telescope-undo")
   if telescope_undo_available then
     maps.n["<leader>fu"] = {
       require("telescope").extensions.undo.undo,
-      desc = "Find undos",
+      desc = "Show undo history",
     }
   end
 end
@@ -259,7 +262,11 @@ end
 
 if is_available("code_runner.nvim") then
   local icon
-  if vim.g.icons_enabled then icon = "󰐍 "  else icon = "" end
+  if vim.g.icons_enabled then
+    icon = "󰐍 "
+  else
+    icon = ""
+  end
   maps.n["<leader>r"] = { desc = icon .. "Code runner" }
   maps.n["<leader>rr"] = { "<CMD>RunCode<CR>", desc = "Run code" }
   maps.n["<leader>rf"] = { "<CMD>RunFile<CR>", desc = "Run file" }
@@ -271,7 +278,11 @@ end
 
 if is_available("neotest") then
   local icon
-  if vim.g.icons_enabled then icon = " "  else icon = "" end
+  if vim.g.icons_enabled then
+    icon = " "
+  else
+    icon = ""
+  end
   maps.n["<leader>n"] = { false, desc = icon .. "Neotest" }
   maps.n["<leader>nr"] = { "<CMD>NeotestRun<CR>", desc = "Run nearest test" }
   maps.n["<leader>nf"] =
@@ -300,7 +311,11 @@ maps.n["<leader>rn"] =
 
 if is_available("trouble.nvim") then
   local icon
-  if vim.g.icons_enabled then icon = "󱠪 "  else icon = "" end
+  if vim.g.icons_enabled then
+    icon = "󱠪 "
+  else
+    icon = ""
+  end
   maps.n["<leader>x"] = { desc = icon .. "Trouble" }
   maps.n["<leader>xr"] =
     { "<CMD>Trouble lsp_references<CR>", desc = "References (Trouble)" }
@@ -315,14 +330,22 @@ end
 
 if is_available("glow.nvim") then
   local icon
-  if vim.g.icons_enabled then icon = "󰽛 "  else icon = "" end
+  if vim.g.icons_enabled then
+    icon = "󰽛 "
+  else
+    icon = ""
+  end
   maps.n["<leader>m"] = { desc = icon .. "Markdown" }
   maps.n["<leader>mM"] = { "<CMD>Glow<CR>", desc = "Markdown Glow" }
 end
 
 if is_available("markdown-preview.nvim") then
   local icon
-  if vim.g.icons_enabled then icon = "󰽛 "  else icon = "" end
+  if vim.g.icons_enabled then
+    icon = "󰽛 "
+  else
+    icon = ""
+  end
   maps.n["<leader>m"] = { desc = icon .. "Markdown" }
   maps.n["<leader>mm"] =
     { "<CMD>MarkdownPreview<CR>", desc = "MarkdownPreview" }
