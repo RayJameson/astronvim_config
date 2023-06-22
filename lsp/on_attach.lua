@@ -1,5 +1,5 @@
 return function(client, bufnr)
-  if client.server_capabilities.documentRangeFormattingProvider then
+  if client.supports_method("textDocument/rangeFormatting") then
     local lsp_format_modifications_ok, lsp_format_modifications =
       pcall(require, "lsp-format-modifications")
     if lsp_format_modifications_ok then
