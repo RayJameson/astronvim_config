@@ -3,16 +3,6 @@ return {
   -- Add plugins, the lazy syntax
   -- "andweeb/presence.nvim",
   {
-    "lvimuser/lsp-inlayhints.nvim",
-    event = "LspAttach",
-    config = true,
-    branch = "anticonceal",
-  },
-  {
-    "simrat39/rust-tools.nvim",
-    opts = { tools = { inlay_hints = { auto = false } } },
-  },
-  {
     "fedepujol/move.nvim",
     event = "User Astrofile",
   },

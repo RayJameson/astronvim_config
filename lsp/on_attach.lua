@@ -1,18 +1,4 @@
 return function(client, bufnr)
-  if client.server_capabilities.inlayHintProvider then
-    local is_available, inlayhints = pcall(require, "lsp-inlayhints")
-    if is_available then
-      require("lsp-inlayhints").on_attach(client, bufnr, false)
-      vim.keymap.set("n", "<leader>uH", function()
-        inlayhints.toggle()
-      end, { desc = "Toggle inlay hints" })
-      vim.cmd("hi! link LspInlayHint Comment")
-    end
-
-    -- this will be enabled in the future if neovim implements inline hints
-    -- vim.lsp.buf_inlay_hint_toggle(bufnr)
-  end
-
   if client.server_capabilities.documentRangeFormattingProvider then
     local lsp_format_modifications_ok, lsp_format_modifications =
       pcall(require, "lsp-format-modifications")
