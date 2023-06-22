@@ -3,6 +3,10 @@ return {
   -- Add plugins, the lazy syntax
   -- "andweeb/presence.nvim",
   {
+    "simrat39/rust-tools.nvim",
+    opts = { tools = { inlay_hints = { auto = false } } },
+  },
+  {
     "fedepujol/move.nvim",
     event = "User Astrofile",
   },
