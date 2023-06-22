@@ -4,6 +4,7 @@ return function(hl) -- or a function that returns a new table of colors to set
   hl.CursorLineNr = { fg = C.blue_1 }
   hl.LineNrAbove = { fg = C.red_1 }
   hl.LineNrBelow = { fg = C.toml }
+  hl.LspInlayHint = { link = "Comment" }
   hl.Visual = { fg = C.none, bg = C.grey_5, reverse = true } -- invert visual selection
   -- hl["@variable"] = { fg = C.fg }
   hl["@float"] = { fg = C.orange }
