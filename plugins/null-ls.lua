@@ -19,12 +19,13 @@ return {
       null_ls.builtins.formatting.prettier,
       null_ls.builtins.formatting.stylua.with {
         extra_args = {
+          "--column-width=120",
+          "--line_endings=Unix",
           "--indent-type=Spaces",
           "--indent-width=2",
           "--quote-style=AutoPreferDouble",
-          "--call-parentheses=NoSingleTable",
-          "--column-width=79",
-          "--collapse-simple-statement=Never",
+          "--call-parentheses=None",
+          "--collapse-simple-statement=Always",
         },
       },
       null_ls.builtins.formatting.black.with {
