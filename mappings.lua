@@ -52,7 +52,9 @@ maps.x["<leader>F"] = {
 }
 maps.n["<C-d>"] = { "<C-d>zz", desc = "Scroll half page down" }
 maps.n["<C-u>"] = { "<C-u>zz", desc = "Scroll half page up" }
-maps.n["<leader>w"] = { ":w<CR>:e<CR>", desc = "Save" }
+maps.n["<leader>w"] = { "<CMD>w<CR><ESC>", desc = "Save" }
+maps.v["<"] = { "<gv", desc = "Deindent line" }
+maps.v[">"] = { ">gv", desc = "Indent line" }
 
 --[ Move cursor with CTRL in insert, command modes
 maps.c["<C-h>"] = { "<Left>", desc = "Left" }
