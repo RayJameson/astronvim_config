@@ -21,7 +21,6 @@ return {
       null_ls.builtins.formatting.black.with {
         extra_args = {
           "--line-length=79",
-          "--skip-magic-trailing-comma"
         },
       },
       null_ls.builtins.diagnostics.pylint,
