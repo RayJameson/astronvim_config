@@ -38,6 +38,7 @@ for _, mode in ipairs { "n", "x" } do
   maps[mode]["gD"] = { '"_d', desc = "Delete noregister" }
 end
 maps.x["p"] = { "P", desc = "Paste noregister" }
+maps.n["S"] = { "0Di", desc = "S+" }
 --]
 
 maps.n["<leader>."] = { ":tcd %:p:h<CR>", desc = "CD to current file" }
