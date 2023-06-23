@@ -17,17 +17,7 @@ return {
       -- Set a formatter
       null_ls.builtins.code_actions.gitsigns,
       null_ls.builtins.formatting.prettier,
-      null_ls.builtins.formatting.stylua.with {
-        extra_args = {
-          "--column-width=120",
-          "--line_endings=Unix",
-          "--indent-type=Spaces",
-          "--indent-width=2",
-          "--quote-style=AutoPreferDouble",
-          "--call-parentheses=None",
-          "--collapse-simple-statement=Always",
-        },
-      },
+      null_ls.builtins.formatting.stylua,
       null_ls.builtins.formatting.black.with {
         extra_args = {
           "--line-length=79",
