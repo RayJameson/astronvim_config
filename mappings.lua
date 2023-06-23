@@ -357,20 +357,14 @@ if is_available("markdown-preview.nvim") then
     { "<CMD>MarkdownPreviewStop<CR>", desc = "MarkdownPreview Stop" }
 end
 
--- Move
-if is_available("move.nvim") then
-  -- Normal mode
-  maps.n["<M-j>"] = { ":MoveLine(1)<CR>", desc = "Move line down" }
-  maps.n["<M-k>"] = { ":MoveLine(-1)<CR>", desc = "Move line up" }
-  maps.n["<M-h>"] = { ":MoveHChar(-1)<CR>", desc = "Move char left" }
-  maps.n["<M-l>"] = { ":MoveHChar(1)<CR>", desc = "Move char right" }
-  -- Visual mode
-  maps.x["<M-j>"] = { ":MoveBlock(1)<CR>", desc = "Move block down" }
-  maps.x["<M-k>"] = { ":MoveBlock(-1)<CR>", desc = "Move block up" }
-  maps.x["<M-h>"] = { ":MoveHBlock(-1)<CR>", desc = "Move block left" }
-  maps.x["<M-l>"] = { ":MoveHBlock(1)<CR>", desc = "Move block right" }
-end
-
+  -- Move Lines
+maps.n["<A-j>"] = {"<cmd>m .+1<cr>==",  desc = "Move down" }
+maps.n["<A-k>"] = {"<cmd>m .-2<cr>==",  desc = "Move up" }
+maps.i["<A-j>"] = {"<esc><cmd>m .+1<cr>==gi",  desc = "Move down" }
+maps.i["<A-k>"] = {"<esc><cmd>m .-2<cr>==gi",  desc = "Move up" }
+maps.v["<A-j>"] = {":m '>+1<cr>gv=gv",  desc = "Move down" }
+maps.v["<A-k>"] = {":m '<-2<cr>gv=gv",  desc = "Move up" }
+maps.t["<esc><esc>"] = {"<c-\\><c-n>", desc = "Enter Normal Mode" }
 -- Smart Splits (remapped on Meta key)
 if is_available("smart-splits.nvim") then
   -- Resize with arrows

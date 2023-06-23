@@ -7,10 +7,6 @@ return {
     opts = { tools = { inlay_hints = { auto = false } } },
   },
   {
-    "fedepujol/move.nvim",
-    event = "User Astrofile",
-  },
-  {
     "CRAG666/code_runner.nvim",
     cmd = { "RunCode", "RunFile" },
     config = function()
