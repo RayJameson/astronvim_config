@@ -8,7 +8,10 @@ return {
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = list_insert_unique(opts.ensure_installed, {
-        -- "lua_ls",
+        "lua_ls",
+        "ruff_lsp",
+        "pyright",
+        "jedi_language_server",
       })
     end,
   },
@@ -20,14 +23,15 @@ return {
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = list_insert_unique(opts.ensure_installed, {
         -- "prettier",
-        -- "stylua",
+        "stylua",
+        "black",
       })
     end,
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
     -- overrides `require("mason-nvim-dap").setup(...)`
-    ft = { "python", "go", "rust", "js" },
+    ft = { "python", "go", "rust", "javascript" },
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = list_insert_unique(opts.ensure_installed, {
