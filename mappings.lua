@@ -35,8 +35,9 @@ maps.n["H"] = {
 for _, mode in ipairs { "n", "x" } do
   maps[mode]["gy"] = { '"+y', desc = "yank +clipboard" }
   maps[mode]["gY"] = { '"+y$', desc = "Yank +clipboard (y$)" }
-  maps[mode]["gD"] = { '"_d', desc = "Delete noregister" }
 end
+maps.n["gD"] = { '"_d', desc = "Delete noregister" }
+maps.x["gd"] = { '"_d', desc = "Delete noregister" }
 maps.x["p"] = { "P", desc = "Paste noregister" }
 maps.n["S"] = { "0Di", desc = "S+" }
 --]
