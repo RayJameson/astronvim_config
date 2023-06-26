@@ -3,6 +3,11 @@ return function()
     "python3_host_prog",
     "$HOME/.pyenv/versions/neovim_base_venv/bin/python3"
   )
+  vim.api.nvim_set_var(
+    "node_host_prog",
+    "/usr/local/bin/neovim-node-host"
+    -- nvm doesn't work with this variable, make symlink to destination above
+  )
   -- Set up custom filetypes
   vim.cmd([[
             :set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
