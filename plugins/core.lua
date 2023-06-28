@@ -207,6 +207,11 @@ return {
         status.component.mode {
           mode_text = { padding = { left = 1, right = 1 } },
         }, -- add the mode text
+        status.component.file_info {
+          filetype = {},
+          filename = false,
+          file_modified = false,
+        },
         status.component.git_branch(),
         harpoon_index,
         status.component.git_diff(),
