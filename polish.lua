@@ -8,7 +8,6 @@ return function()
     "/usr/local/bin/neovim-node-host"
     -- nvm doesn't work with this variable, make symlink to destination above
   )
-  -- Set up custom filetypes
   vim.cmd([[
             :set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
             augroup remember_folds
@@ -36,6 +35,7 @@ return function()
     return true
   end
 
+  -- Set up custom filetypes
   vim.filetype.add {
     filename = {
       ["poetry.lock"] = "toml",
@@ -46,6 +46,8 @@ return function()
       html = "htmldjango",
       htmldjango = "html",
       log = "log",
+      bash = "sh",
+      zsh = "sh",
     },
     pattern = {
       -- ["~/%.config/foo/.*"] = "fooscript",
