@@ -40,6 +40,13 @@ maps.n["gD"] = { '"_d', desc = "Delete noregister" }
 maps.x["gd"] = { '"_d', desc = "Delete noregister" }
 maps.x["p"] = { "P", desc = "Paste noregister" }
 maps.n["S"] = { "0Di", desc = "S+" }
+maps.n["gp"] = { "v$p", desc = "Paste over rest of the line" }
+--]
+
+--[ command window
+maps.n["q:"] = { "q:i", desc = "Command window"}
+maps.n["q/"] = { "q/i", desc = "Command search down window"}
+maps.n["q?"] = { "q?i", desc = "Command search up window"}
 --]
 
 maps.n["<leader>."] = { ":tcd %:p:h<CR>", desc = "CD to current file" }
