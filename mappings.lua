@@ -44,9 +44,9 @@ maps.n["gp"] = { "v$p", desc = "Paste over rest of the line" }
 --]
 
 --[ command window
-maps.n["q:"] = { "q:i", desc = "Command window"}
-maps.n["q/"] = { "q/i", desc = "Command search down window"}
-maps.n["q?"] = { "q?i", desc = "Command search up window"}
+maps.n["q:"] = { "q:i", desc = "Command window" }
+maps.n["q/"] = { "q/i", desc = "Command search down window" }
+maps.n["q?"] = { "q?i", desc = "Command search up window" }
 --]
 
 maps.n["<leader>."] = { ":tcd %:p:h<CR>", desc = "CD to current file" }
@@ -366,14 +366,14 @@ if is_available("markdown-preview.nvim") then
     { "<CMD>MarkdownPreviewStop<CR>", desc = "MarkdownPreview Stop" }
 end
 
-  -- Move Lines
-maps.n["<A-j>"] = {"<cmd>m .+1<cr>==",  desc = "Move down" }
-maps.n["<A-k>"] = {"<cmd>m .-2<cr>==",  desc = "Move up" }
-maps.i["<A-j>"] = {"<esc><cmd>m .+1<cr>==gi",  desc = "Move down" }
-maps.i["<A-k>"] = {"<esc><cmd>m .-2<cr>==gi",  desc = "Move up" }
-maps.v["<A-j>"] = {":m '>+1<cr>gv=gv",  desc = "Move down" }
-maps.v["<A-k>"] = {":m '<-2<cr>gv=gv",  desc = "Move up" }
-maps.t["<esc><esc>"] = {"<c-\\><c-n>", desc = "Enter Normal Mode" }
+-- Move Lines
+maps.n["<A-j>"] = { "<cmd>m .+1<cr>==", desc = "Move down" }
+maps.n["<A-k>"] = { "<cmd>m .-2<cr>==", desc = "Move up" }
+maps.i["<A-j>"] = { "<esc><cmd>m .+1<cr>==gi", desc = "Move down" }
+maps.i["<A-k>"] = { "<esc><cmd>m .-2<cr>==gi", desc = "Move up" }
+maps.v["<A-j>"] = { ":m '>+1<cr>gv=gv", desc = "Move down" }
+maps.v["<A-k>"] = { ":m '<-2<cr>gv=gv", desc = "Move up" }
+maps.t["<esc><esc>"] = { "<c-\\><c-n>", desc = "Enter Normal Mode" }
 -- Smart Splits (remapped on Meta key)
 if is_available("smart-splits.nvim") then
   -- Resize with arrows
