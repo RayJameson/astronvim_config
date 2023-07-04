@@ -56,10 +56,9 @@ local function leave_snippet()
 end
 
 -- stop snippets when you leave to normal mode
-vim.api.nvim_create_augroup("ModeChangedGroup", { clear = true })
 vim.api.nvim_create_autocmd("ModeChanged", {
   pattern = "*",
-  group = "ModeChangedGroup",
+  group = vim.api.nvim_create_augroup("ModeChangedGroup", { clear = true }),
   callback = function()
     leave_snippet()
   end,
