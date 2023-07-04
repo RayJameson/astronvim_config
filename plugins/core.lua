@@ -106,12 +106,15 @@ return {
     dependencies = {
       "hrsh7th/cmp-cmdline", -- add cmp-cmdline as dependency of cmp
     },
-    config = function(_, opts)
+    opts = function(_, opts)
       local cmp = require("cmp")
-      -- run cmp setup
-      cmp.setup(opts)
-
       -- configure `cmp-cmdline` as described in their repo: https://github.com/hrsh7th/cmp-cmdline#setup
+      opts.sources = cmp.config.sources {
+        { name = "nvim_lsp", priority = 1000 },
+        { name = "luasnip", priority = 750 },
+        { name = "buffer", priority = 500 },
+        { name = "path", priority = 250 },
+      }
       cmp.setup.cmdline("/", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
@@ -137,6 +140,7 @@ return {
         cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" })
       opts.mapping["<M-Space>"] =
         cmp.mapping(cmp.mapping.complete(), { "i", "c" })
+      return opts
     end,
   },
   {
