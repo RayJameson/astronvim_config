@@ -501,6 +501,18 @@ return {
     build = ":Neorg sync-parsers",
     dependencies = { "nvim-lua/plenary.nvim" },
     event = "VeryLazy",
+    init = function()
+      vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+        pattern = "*.norg",
+        group = vim.api.nvim_create_augroup(
+          "norg_ft_conceal",
+          { clear = true }
+        ),
+        callback = function()
+          vim.wo.conceallevel = 3
+        end,
+      })
+    end,
     opts = {
       load = {
         ["core.defaults"] = {}, -- Loads default behaviour
@@ -517,8 +529,6 @@ return {
           config = {
             workspaces = {
               root = "~/neorg",
-              work = "~/neorg/work",
-              personal = "~/neorg/personal",
             },
             default_workspace = "root",
           },
@@ -536,8 +546,13 @@ return {
         ["core.qol.todo_items"] = {},
         ["core.qol.toc"] = {},
         ["core.export"] = {},
-        ["core.export.markdown"] = {},
-        ["core.manoeuvre"] = {},
+        ["core.export.markdown"] = {
+          config = {
+            extensions = "all",
+          },
+        },
+        ["core.upgrade"] = {},
+        ["core.promo"] = {},
         ["core.summary"] = {},
         ["core.ui.calendar"] = {},
       },
