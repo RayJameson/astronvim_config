@@ -1,13 +1,11 @@
 local prefix = "<leader><leader>"
-local dynamic_tmux_keymap_desc
-local running_tmux_seesion = vim.fn.exists("$TMUX") == 1
-if running_tmux_seesion then
-  dynamic_tmux_keymap_desc = "Goto to TMUX window"
-else
-  dynamic_tmux_keymap_desc = "Goto to terminal window"
-end
+local term_string = vim.fn.exists("$TMUX") == 1 and "tmux" or "terminal"
 local icon
-if vim.g.icons_enabled then icon = "󱡀 " else icon = "" end
+if vim.g.icons_enabled then
+  icon = "󱡀 "
+else
+  icon = ""
+end
 return {
   "ThePrimeagen/harpoon",
   dependencies = {
@@ -37,15 +35,16 @@ return {
       desc = "Toggle quick menu",
     },
     {
-      "<C-t>",
+      "<C-x>",
       function()
-        local num = tonumber(vim.fn.input("Go to mark index: "))
-        if num == nil then
-          return
-        end
-        require("harpoon.ui").nav_file(num)
+        vim.ui.input({ prompt = "Harpoon mark index: " }, function(input)
+          local num = tonumber(input)
+          if num then
+            require("harpoon.ui").nav_file(num)
+          end
+        end)
       end,
-      desc = "Go to index of mark",
+      desc = "Goto index of mark",
     },
     {
       "<C-p>",
@@ -69,21 +68,17 @@ return {
     {
       prefix .. "t",
       function()
-        if running_tmux_seesion then
-          local num = tonumber(vim.fn.input("Go to TMUX window number: "))
-          if num == nil then
-            return
+        vim.ui.input(
+          { prompt = term_string .. " window number: " },
+          function(input)
+            local num = tonumber(input)
+            if num then
+              require("harpoon." .. term_string).gotoTerminal(num)
+            end
           end
-          require("harpoon.tmux").gotoTerminal(num)
-        else
-          local num = tonumber(vim.fn.input("Go to terminal window number: "))
-          if num == nil then
-            return
-          end
-          require("harpoon.term").gotoTerminal(num)
-        end
+        )
       end,
-      desc = dynamic_tmux_keymap_desc,
+      desc = "Go to " .. term_string .. " window",
     },
   },
 }
