@@ -404,6 +404,13 @@ return {
     end,
   },
   {
+    "echasnovski/mini.ai",
+    event = { "User AstroFile", "InsertEnter" },
+    opts = {
+      n_lines = 500,
+    },
+  },
+  {
     "mechatroner/rainbow_csv",
     ft = { "csv", "tsv" },
     event = "User AstroFile",
