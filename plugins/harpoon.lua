@@ -1,11 +1,6 @@
 local prefix = "<leader><leader>"
 local term_string = vim.fn.exists("$TMUX") == 1 and "tmux" or "terminal"
-local icon
-if vim.g.icons_enabled then
-  icon = "󱡀 "
-else
-  icon = ""
-end
+local icon = vim.g.icons_enabled and "󱡀 " or ""
 return {
   "ThePrimeagen/harpoon",
   dependencies = {
