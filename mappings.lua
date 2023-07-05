@@ -30,6 +30,13 @@ maps.x["p"] = { "P", desc = "Paste noregister" }
 maps.n["S"] = { "0Di", desc = "S+" }
 maps.n["gp"] = { "v$p", desc = "Paste over rest of the line" }
 --]
+-- Repeat macros across visual selection
+
+maps.x["@"] = {
+  ":<C-u>call ExecuteMacroOverVisualRange()<CR>",
+  desc = "Repeat macros across visual selection",
+  silent = false,
+}
 
 --[ command window
 maps.n["q:"] = { "q:i", desc = "Command window" }
