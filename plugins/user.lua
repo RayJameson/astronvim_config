@@ -505,10 +505,7 @@ return {
     init = function()
       vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
         pattern = "*.norg",
-        group = vim.api.nvim_create_augroup(
-          "norg_ft_conceal",
-          { clear = true }
-        ),
+        group = vim.api.nvim_create_augroup("NeorgConceal", { clear = true }),
         callback = function()
           vim.wo.conceallevel = 3
         end,
