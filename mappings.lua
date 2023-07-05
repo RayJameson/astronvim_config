@@ -5,30 +5,13 @@
 -- automatically pick-up stored data by this setting.)
 
 local is_available = require("astronvim.utils").is_available
-local buffer_picker = require("astronvim.utils.status").heirline.buffer_picker
-local buffer_closer = require("astronvim.utils.buffer").close
 local notify = require("astronvim.utils").notify
 local toggle_term_cmd = require("astronvim.utils").toggle_term_cmd
 local maps = { n = {}, c = {}, i = {}, v = {}, t = {}, x = {}, o = {} }
-
 -- disbale defaults:
 -- Makes more sense to use "\" as vert split and "|" as split, because I use vert split more often
 maps.n["<leader>bb"] = false
 maps.n["<leader>bd"] = false
-maps.n["L"] = {
-  function()
-    require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1)
-  end,
-  desc = "Next buffer",
-}
-maps.n["H"] = {
-  function()
-    require("astronvim.utils.buffer").nav(
-      -(vim.v.count > 0 and vim.v.count or 1)
-    )
-  end,
-  desc = "Previous buffer",
-}
 --]
 
 --[ register + clipboard
@@ -90,14 +73,6 @@ maps.x["gj"] = { "G", desc = "go to last line" }
 maps.x["gk"] = { "gg", desc = "go to first line" }
 --]
 
---[ buf keymaps
-maps.n["<leader>bl"] = {
-  function()
-    astronvim.move_buf(vim.v.count > 0 and vim.v.count or 1)
-  end,
-  desc = "Move buffer tab right",
-}
-
 if is_available("nvim-notify") then
   maps.n["<leader>uD"] = {
     function()
@@ -124,52 +99,6 @@ if is_available("telescope.nvim") then
     }
   end
 end
-
-maps.n["<leader>bh"] = {
-  function()
-    astronvim.move_buf(-(vim.v.count > 0 and vim.v.count or 1))
-  end,
-  desc = "Move buffer tab left",
-}
-
-maps.n["<leader>bj"] = {
-  function()
-    buffer_picker(function(bufnr)
-      vim.api.nvim_win_set_buf(0, bufnr)
-    end)
-  end,
-  desc = "Jump to buffer from tabline",
-}
-
-maps.n["<leader>bc"] = {
-  function()
-    buffer_picker(function(bufnr)
-      buffer_closer(bufnr)
-    end)
-  end,
-  desc = "Close buffer from tabline",
-}
-
-maps.n["<leader>bv"] = {
-  function()
-    buffer_picker(function(bufnr)
-      local filename = vim.api.nvim_buf_get_name(bufnr)
-      vim.cmd("vertical diffsplit " .. filename)
-    end)
-  end,
-  desc = "Vertical file diff pick buffer",
-}
-
-maps.n["<leader>bs"] = {
-  function()
-    buffer_picker(function(bufnr)
-      local filename = vim.api.nvim_buf_get_name(bufnr)
-      vim.cmd("diffsplit " .. filename)
-    end)
-  end,
-  desc = "Horisontal file diff pick buffer",
-}
---]
 
 --[ ToggleTerm
 if is_available("toggleterm.nvim") then
