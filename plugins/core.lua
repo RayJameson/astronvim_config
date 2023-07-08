@@ -95,7 +95,8 @@ return {
         luasnip = "[LuaSnip]",
         nvim_lua = "[Lua]",
         latex_symbols = "[Latex]",
-        neorg = "[Neorg]"
+        neorg = "[Neorg]",
+        orgmode = "[Org]",
       }
       return opts
     end,
@@ -114,6 +115,7 @@ return {
         { name = "nvim_lsp", priority = 1000 },
         { name = "luasnip", priority = 750 },
         { name = "neorg", priority = 700 },
+        { name = "orgmode", priority = 650 },
         { name = "buffer", priority = 500 },
         { name = "path", priority = 250 },
       }

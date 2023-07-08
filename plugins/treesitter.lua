@@ -6,6 +6,11 @@ return {
   },
   opts = function(_, opts)
     -- add more things to the ensure_installed table protecting against community packs modifying it
+    require("orgmode").setup_ts_grammar()
+    opts.highlight = {
+      enable = true,
+      additional_vim_regex_highlighting = { "org" },
+    }
     opts.ensure_installed =
       require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
         "lua",
@@ -25,6 +30,7 @@ return {
         "gitignore",
         "git_config",
         "git_rebase",
+        "org",
       })
     opts.auto_install = vim.fn.executable("tree-sitter") == 1
     opts.matchup = { enable = true }

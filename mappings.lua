@@ -94,6 +94,11 @@ if is_available("nvim-notify") then
   }
 end
 
+if is_available("orgmode") then
+  local icon = vim.g.icons_enabled and " " or ""
+  maps.n["<leader>o"] = { desc = icon .. "Orgmode" }
+end
+
 -- mini.ai
 if is_available("mini.ai") then
   local a_maps = {
