@@ -24,7 +24,7 @@ return {
       opts.ensure_installed = list_insert_unique(opts.ensure_installed, {
         -- "prettier",
         "stylua",
-        "black",
+        "pyink",
       })
     end,
   },
