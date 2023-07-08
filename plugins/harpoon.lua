@@ -1,6 +1,9 @@
 local prefix = "<leader><leader>"
 local term_string = vim.fn.exists("$TMUX") == 1 and "tmux" or "terminal"
 local icon = vim.g.icons_enabled and "󱡀 " or ""
+local maps = { n = {}}
+maps.n[prefix] = { desc = icon .. "Harpoon" }
+require("astronvim.utils").set_mappings(maps)
 return {
   "ThePrimeagen/harpoon",
   dependencies = {
@@ -14,7 +17,6 @@ return {
     },
   },
   keys = {
-    { prefix, function() end, desc = icon .. "Harpoon" },
     {
       prefix .. "a",
       function()
