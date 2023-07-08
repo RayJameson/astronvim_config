@@ -15,7 +15,7 @@ maps.n["<leader>bd"] = false
 --]
 
 --[ register + clipboard
-for _, mode in ipairs { "n", "x" } do
+for _, mode in ipairs { "n", "v" } do
   maps[mode]["gy"] = { '"+y', desc = "yank +clipboard" }
   maps[mode]["gY"] = { '"+y$', desc = "Yank +clipboard (y$)" }
   maps[mode]["<M-y>"] = { '"+y', desc = "yank +clipboard" }
@@ -25,14 +25,14 @@ for _, mode in ipairs { "n", "x" } do
   maps[mode]["<M-p>"] = { "v$p", desc = "Paste over rest of the line" }
 end
 maps.n["gD"] = { '"_d', desc = "Delete noregister" }
-maps.x["gd"] = { '"_d', desc = "Delete noregister" }
-maps.x["p"] = { "P", desc = "Paste noregister" }
+maps.v["gd"] = { '"_d', desc = "Delete noregister" }
+maps.v["p"] = { "P", desc = "Paste noregister" }
 maps.n["S"] = { "0Di", desc = "S+" }
 maps.n["gp"] = { "v$p", desc = "Paste over rest of the line" }
 --]
 -- Repeat macros across visual selection
 
-maps.x["@"] = {
+maps.v["@"] = {
   ":<C-u>call ExecuteMacroOverVisualRange()<CR>",
   desc = "Repeat macros across visual selection",
   silent = false,
@@ -50,7 +50,7 @@ maps.n["<leader>F"] = {
   ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/g<Left><Left>",
   desc = "Find and replace",
 }
-maps.x["<leader>F"] = {
+maps.v["<leader>F"] = {
   '<Esc>"fyiw<CR>gv:s/<C-r>f/<C-r>f/g<Left><Left>',
   desc = "Find and replace visual",
 }
@@ -81,8 +81,8 @@ maps.x["gl"] = { "$", desc = "go to end of the line ($)" }
 --[ Better gg and G
 maps.n["gj"] = { "G", desc = "go to last line" }
 maps.n["gk"] = { "gg", desc = "go to first line" }
-maps.x["gj"] = { "G", desc = "go to last line" }
-maps.x["gk"] = { "gg", desc = "go to first line" }
+maps.v["gj"] = { "G", desc = "go to last line" }
+maps.v["gk"] = { "gg", desc = "go to first line" }
 --]
 
 if is_available("nvim-notify") then
@@ -185,7 +185,7 @@ if is_available("nvim-transparent") then
 end
 
 if is_available("refactoring.nvim") then
-  maps.x["<leader>r"] = {
+  maps.v["<leader>r"] = {
     "<Esc><CMD>Refactoring<CR>",
     desc = "Refactoring",
     silent = true,
@@ -210,7 +210,7 @@ if is_available("diffview.nvim") then
     desc = "Open branch history",
     silent = true,
   }
-  maps.x["<leader>gh"] =
+  maps.v["<leader>gh"] =
     { ":DiffviewFileHistory<CR>", desc = "Open line history", silent = true }
 end
 
