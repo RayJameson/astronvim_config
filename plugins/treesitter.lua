@@ -1,6 +1,9 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  dependencies = { "nvim-treesitter/nvim-treesitter-textobjects", "nvim-treesitter/playground" },
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    "nvim-treesitter/playground",
+  },
   opts = function(_, opts)
     -- add more things to the ensure_installed table protecting against community packs modifying it
     opts.ensure_installed =
