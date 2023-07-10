@@ -106,4 +106,5 @@ return {
   { import = "astrocommunity.project.nvim-spectre" },
   { import = "astrocommunity.motion.vim-matchup" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
+  { import = "astrocommunity.code-runner.sniprun" },
 }

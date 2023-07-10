@@ -255,6 +255,14 @@ if is_available("code_runner.nvim") then
     { "<CMD>RunFile toggleterm<CR>", desc = "Run file pop up (toggleterm)" }
 end
 
+if is_available("sniprun") then
+  -- for some reason there is error when using "<CR>" instead of ":"
+  for _, mode in pairs { "n", "v" } do
+  maps[mode]["<leader>rs"] = { ":SnipRun<CR>", desc = "Run snippet" }
+  maps[mode]["<leader>rC"] = { ":SnipClose<CR>", desc = "Close SnipRun" }
+  end
+end
+
 if is_available("neotest") then
   local icon
   if vim.g.icons_enabled then
