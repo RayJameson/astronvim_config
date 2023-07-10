@@ -421,7 +421,8 @@ return {
     init = function()
       vim.env.PATH = vim.env.PATH
         .. ":"
-        .. vim.fn.expand("$HOME/.cache/nvim/nvim-metals")
+        .. vim.fn.stdpath("data")
+        .. "/nvim-metals"
       vim.api.nvim_create_autocmd("FileType", {
         pattern = { "scala", "sbt", "java" },
         callback = function()
