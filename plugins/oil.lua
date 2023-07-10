@@ -47,20 +47,9 @@ return {
           local cwd = oil.get_current_dir()
           local entry = oil.get_cursor_entry()
           if cwd and entry then
-            local os_name = vim.uv.os_uname().sysname
-            if os_name == "Darwin" then
-              vim.fn.jobstart {
-                "open",
-                string.format("%s/%s", cwd, entry.name),
-              }
-            elseif os_name == "Linux" then
-              vim.fn.jobstart {
-                "xdg-open",
-                string.format("%s/%s", cwd, entry.name),
-              }
-            else
-              return
-            end
+            require("astronvim.utils").system_open(
+              string.format("%s/%s", cwd, entry.name)
+            )
           end
         end,
         desc = "Open file under cursor",
