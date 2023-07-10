@@ -62,7 +62,7 @@ return {
           template = "* TODO %?\n  DEADLINE: %T",
         },
         T = {
-          description = "Todo",
+          description = "Todo (no category)",
           template = "* TODO %?\n  DEADLINE: %T",
           target = org_path("todos.org"),
         },
@@ -70,12 +70,6 @@ return {
           description = "Work todo",
           template = "* TODO %?\n  DEADLINE: %T",
           target = org_path("work.org"),
-        },
-        d = {
-          description = "Daily",
-          template = "* Daily %U \n  %?",
-          target = org_path("work.org"),
-          headline = "Meetings",
         },
       },
     }
