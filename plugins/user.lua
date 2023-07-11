@@ -1,4 +1,3 @@
-local C = require("user.highlights.colors")
 return {
   -- You can also add new plugins here as well:
   -- Add plugins, the lazy syntax
@@ -433,61 +432,6 @@ return {
         group = vim.api.nvim_create_augroup("nvim-metals", { clear = true }),
       })
     end,
-  },
-  {
-    "folke/zen-mode.nvim",
-    cmd = "ZenMode",
-    opts = {
-      window = {
-        backdrop = 1,
-        width = function()
-          return math.min(120, vim.o.columns * 0.75)
-        end,
-        height = 0.9,
-        options = {
-          -- number = false,
-          -- relativenumber = false,
-          foldcolumn = "0",
-          list = false,
-          showbreak = "NONE",
-          signcolumn = "no",
-        },
-      },
-      plugins = {
-        options = {
-          cmdheight = 1,
-          laststatus = 0,
-        },
-        gitsigns = { enabled = true },
-        tmux = { enabled = true }, -- disables the tmux statusline
-      },
-      on_open = function() -- disable diagnostics and indent blankline
-        vim.g.CursorLineNr_old =
-          vim.api.nvim_get_hl(0, { name = "CursorLineNr" })
-        vim.g.LineNrAbove_old =
-          vim.api.nvim_get_hl(0, { name = "LineNrAbove" })
-        vim.g.LineNrBelow_old =
-          vim.api.nvim_get_hl(0, { name = "LineNrBelow" })
-        vim.g.diagnostics_mode_old = vim.g.diagnostics_mode
-        vim.api.nvim_set_hl(0, "CursorLineNr", { fg = C.fg })
-        vim.api.nvim_set_hl(0, "LineNrAbove", { link = "Comment" })
-        vim.api.nvim_set_hl(0, "LineNrBelow", { link = "Comment" })
-        vim.g.diagnostics_mode = 0
-        vim.diagnostic.config(require("astronvim.utils.lsp").diagnostics[0])
-        vim.g.indent_blankline_enabled_old = vim.g.indent_blankline_enabled
-        vim.g.indent_blankline_enabled = false
-      end,
-      on_close = function() -- restore diagnostics and indent blankline
-        vim.api.nvim_set_hl(0, "CursorLineNr", vim.g.CursorLineNr_old)
-        vim.api.nvim_set_hl(0, "LineNrAbove", vim.g.LineNrAbove_old)
-        vim.api.nvim_set_hl(0, "LineNrBelow", vim.g.LineNrBelow_old)
-        vim.g.diagnostics_mode = vim.g.diagnostics_mode_old
-        vim.diagnostic.config(
-          require("astronvim.utils.lsp").diagnostics[vim.g.diagnostics_mode]
-        )
-        vim.g.indent_blankline_enabled = vim.g.indent_blankline_enabled_old
-      end,
-    },
   },
   {
     "HiPhish/rainbow-delimiters.nvim",
