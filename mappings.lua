@@ -25,8 +25,8 @@ for _, mode in ipairs { "n", "v" } do
   maps[mode]["<M-p>"] = { "v$p", desc = "Paste over rest of the line" }
 end
 maps.n["gD"] = { '"_d', desc = "Delete noregister" }
-maps.v["gd"] = { '"_d', desc = "Delete noregister" }
-maps.v["p"] = { "P", desc = "Paste noregister" }
+maps.x["gd"] = { '"_d', desc = "Delete noregister" }
+maps.x["p"] = { "P", desc = "Paste noregister" }
 maps.n["S"] = { "0Di", desc = "S+" }
 maps.n["gp"] = { "v$p", desc = "Paste over rest of the line" }
 --]
@@ -74,8 +74,8 @@ maps.i["<C-l>"] = { "<Right>", desc = "Right" }
 --[ Better ^ and $
 maps.n["gh"] = { "^", desc = "go to beginning of the line (^)" }
 maps.n["gl"] = { "$", desc = "go to end of the line ($)" }
-maps.x["gh"] = { "^", desc = "go to beginning of the line (^)" }
-maps.x["gl"] = { "$", desc = "go to end of the line ($)" }
+maps.v["gh"] = { "^", desc = "go to beginning of the line (^)" }
+maps.v["gl"] = { "$", desc = "go to end of the line ($)" }
 --]
 
 --[ Better gg and G
@@ -215,7 +215,7 @@ if is_available("diffview.nvim") then
     desc = "Open branch history",
     silent = true,
   }
-  maps.v["<leader>gh"] =
+  maps.x["<leader>gh"] =
     { ":DiffviewFileHistory<CR>", desc = "Open line history", silent = true }
 end
 
@@ -343,12 +343,12 @@ if is_available("markdown-preview.nvim") then
 end
 
 -- Move Lines
-maps.n["<A-j>"] = { "<cmd>m .+1<cr>==", desc = "Move down" }
-maps.n["<A-k>"] = { "<cmd>m .-2<cr>==", desc = "Move up" }
-maps.i["<A-j>"] = { "<esc><cmd>m .+1<cr>==gi", desc = "Move down" }
-maps.i["<A-k>"] = { "<esc><cmd>m .-2<cr>==gi", desc = "Move up" }
-maps.v["<A-j>"] = { ":m '>+1<cr>gv=gv", desc = "Move down" }
-maps.v["<A-k>"] = { ":m '<-2<cr>gv=gv", desc = "Move up" }
+maps.n["<M-j>"] = { "<cmd>m .+1<cr>==", desc = "Move down" }
+maps.n["<M-k>"] = { "<cmd>m .-2<cr>==", desc = "Move up" }
+maps.i["<M-j>"] = { "<esc><cmd>m .+1<cr>==gi", desc = "Move down" }
+maps.i["<M-k>"] = { "<esc><cmd>m .-2<cr>==gi", desc = "Move up" }
+maps.x["<M-j>"] = { ":m '>+1<cr>gv=gv", desc = "Move down" }
+maps.x["<M-k>"] = { ":m '<-2<cr>gv=gv", desc = "Move up" }
 maps.t["<esc><esc>"] = { "<c-\\><c-n>", desc = "Enter Normal Mode" }
 -- Smart Splits (remapped on Meta key)
 if is_available("smart-splits.nvim") then
