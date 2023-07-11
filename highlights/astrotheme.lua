@@ -21,12 +21,6 @@ return function(hl) -- or a function that returns a new table of colors to set
   hl["@lsp.typemod.function.global"] = { fg = C.blue_1 }
   hl["@function.builtin"] = { fg = C.blue_1 }
   hl["@variable.builtin"] = { fg = C.red_3 }
-  hl["@neorg.todo_items.on_hold"] = { fg = C.blue, bg = C.none }
-  hl["@neorg.todo_items.pending"] = { fg = C.purple, bg = C.none }
-  hl["@neorg.todo_items.recurring"] = { fg = C.equator, bg = C.none }
-  hl["@neorg.todo_items.urgent"] = { fg = C.red, bg = C.none }
-  hl["@neorg.headings.4.title"] = { fg = C.cyan, bg = C.none }
-  hl["@neorg.headings.4.prefix"] = { fg = C.cyan, bg = C.none }
   if vim.g.transparent_enabled then
     hl.TreesitterContextLineNumber = { fg = C.pale_red }
     hl.Normal = { fg = C.fg }
