@@ -189,15 +189,6 @@ if is_available("nvim-transparent") then
     { "<CMD>TransparentToggle<CR>", desc = "Toggle tranparency" }
 end
 
-if is_available("refactoring.nvim") then
-  maps.v["<leader>r"] = {
-    "<Esc><CMD>Refactoring<CR>",
-    desc = "Refactoring",
-    silent = true,
-    expr = false,
-  }
-end
-
 if is_available("diffview.nvim") then
   maps.n["<leader>gd"] = {
     "<CMD>DiffviewOpen<CR>",
