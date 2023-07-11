@@ -1,5 +1,4 @@
 local prefix = "<leader><leader>"
-local term_string = vim.fn.exists("$TMUX") == 1 and "tmux" or "terminal"
 local icon = vim.g.icons_enabled and "󱡀 " or ""
 local maps = { n = {}}
 maps.n[prefix] = { desc = icon .. "Harpoon" }
@@ -66,16 +65,16 @@ return {
       prefix .. "t",
       function()
         vim.ui.input(
-          { prompt = term_string .. " window number: " },
+          { prompt = "Terminal window number: " },
           function(input)
             local num = tonumber(input)
             if num then
-              require("harpoon." .. term_string).gotoTerminal(num)
+              require("harpoon.term").gotoTerminal(num)
             end
           end
         )
       end,
-      desc = "Go to " .. term_string .. " window",
+      desc = "Go to terminal window",
     },
   },
 }
