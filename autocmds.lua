@@ -63,3 +63,15 @@ vim.api.nvim_create_autocmd("ModeChanged", {
     leave_snippet()
   end,
 })
+
+-- remove colorcolumn for qf
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qf",
+  group = vim.api.nvim_create_augroup("QuickFixGroup", { clear = true }),
+  callback = function()
+    vim.wo.colorcolumn = ""
+    vim.wo.signcolumn = "auto:9"
+    vim.wo.relativenumber = true
+    vim.wo.list = false
+  end,
+})
