@@ -1,7 +1,7 @@
 return function(hl) -- or a function that returns a new table of colors to set
   local C = require("user.highlights.colors")
   hl.CursorLineNr = { fg = C.blue_1 }
-  hl.LineNrAbove = { fg = C.pale_red}
+  hl.LineNrAbove = { fg = C.pale_red }
   hl.LineNrBelow = { fg = C.pale_green }
   hl.DiagnosticVirtualTextHint = { fg = C.white, bg = "none" }
   hl.DiagnosticVirtualTextWarn = { fg = C.equator, bg = "none" }
