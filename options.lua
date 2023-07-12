@@ -13,7 +13,7 @@ return {
     tabstop = 4,
     softtabstop = 4,
     shiftwidth = 4,
-    foldcolumn = "1", -- '0' is not bad
+    foldcolumn = "auto:9", -- '0' is not bad
     foldlevelstart = 99,
     foldenable = true,
     foldmethod = "manual",
