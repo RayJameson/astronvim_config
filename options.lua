@@ -10,6 +10,7 @@ return {
     -- set to true or false etc.
     signcolumn = "auto:9", -- sets vim.opt.signcolumn to auto
     colorcolumn = "80",
+    mouse = "",
     tabstop = 4,
     softtabstop = 4,
     shiftwidth = 4,
