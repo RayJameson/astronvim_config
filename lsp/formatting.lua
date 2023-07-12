@@ -15,7 +15,5 @@ return {
     "jedi_language_server",
   },
   timeout_ms = 1000, -- default format timeout
-  filter = function(client)
-    return client.name == "null-ls"
-  end,
+  filter = function(client) return client.name == "null-ls" end,
 }

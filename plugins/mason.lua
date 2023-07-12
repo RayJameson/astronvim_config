@@ -47,9 +47,7 @@ return {
               program = "${file}",
               justMyCode = false,
               console = "integratedTerminal",
-              pythonPath = function()
-                return "python"
-              end,
+              pythonPath = function() return "python" end,
             },
             {
               type = "python",
@@ -60,9 +58,7 @@ return {
                 "main:app",
                 "--use-colors",
               },
-              pythonPath = function()
-                return "python"
-              end,
+              pythonPath = function() return "python" end,
               console = "integratedTerminal",
             },
           }

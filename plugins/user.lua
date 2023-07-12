@@ -92,9 +92,7 @@ return {
           local rhs = def
           local mode = { "n" }
           if type(def) == "table" then
-            if def.mode then
-              mode = def.mode
-            end
+            if def.mode then mode = def.mode end
             rhs = def[1]
             def[1] = nil
             def.mode = nil
@@ -230,18 +228,10 @@ return {
     event = "LspAttach",
     config = function()
       -- Change '<C-g>' here to any keycode you like.
-      vim.keymap.set("i", "<C-g>", function()
-        return vim.fn["codeium#Accept"]()
-      end, { expr = true })
-      vim.keymap.set("i", "<C-;>", function()
-        return vim.fn["codeium#CycleCompletions"](1)
-      end, { expr = true })
-      vim.keymap.set("i", "<C-,>", function()
-        return vim.fn["codeium#CycleCompletions"](-1)
-      end, { expr = true })
-      vim.keymap.set("i", "<C-x>", function()
-        return vim.fn["codeium#Clear"]()
-      end, { expr = true })
+      vim.keymap.set("i", "<C-g>", function() return vim.fn["codeium#Accept"]() end, { expr = true })
+      vim.keymap.set("i", "<C-;>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true })
+      vim.keymap.set("i", "<C-,>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true })
+      vim.keymap.set("i", "<C-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
     end,
   },
   {
@@ -252,11 +242,7 @@ return {
       vim.diagnostic.config({
         virtual_text = {
           format = function(diagnostic)
-            local message = diagnostic.message
-              :gsub("\n", " ")
-              :gsub("\t", " ")
-              :gsub("%s+", " ")
-              :gsub("^%s+", "")
+            local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
             return message
           end,
         },
@@ -269,38 +255,40 @@ return {
         },
         log_level = vim.log.levels.DEBUG,
       }
+      vim.api.nvim_create_user_command("NeotestRun", require("neotest").run.run, {})
       vim.api.nvim_create_user_command(
-        "NeotestRun",
-        require("neotest").run.run,
+        "NeotestRunFile",
+        function() require("neotest").run.run(vim.fn.expand("%")) end,
         {}
       )
-      vim.api.nvim_create_user_command("NeotestRunFile", function()
-        require("neotest").run.run(vim.fn.expand("%"))
-      end, {})
-      vim.api.nvim_create_user_command("NeotestRunDap", function()
-        require("neotest").run.run { strategy = "dap" }
-      end, {})
-      vim.api.nvim_create_user_command("NeotestStop", function()
-        require("neotest").run.stop()
-      end, {})
-      vim.api.nvim_create_user_command("NeotestAttach", function()
-        require("neotest").run.attach()
-      end, {})
-      vim.api.nvim_create_user_command("NeotestSummaryToggle", function()
-        require("neotest").summary.toggle()
-      end, {})
-      vim.api.nvim_create_user_command("NeotestOutput", function()
-        require("neotest").output.open { enter = true }
-      end, {})
-      vim.api.nvim_create_user_command("NeotestOutputToggle", function()
-        require("neotest").output_panel.toggle()
-      end, {})
-      vim.api.nvim_create_user_command("NeotestJumpPreviousFailed", function()
-        require("neotest").jump.prev { status = "failed" }
-      end, {})
-      vim.api.nvim_create_user_command("NeotestJumpNextFailed", function()
-        require("neotest").jump.next { status = "failed" }
-      end, {})
+      vim.api.nvim_create_user_command(
+        "NeotestRunDap",
+        function() require("neotest").run.run { strategy = "dap" } end,
+        {}
+      )
+      vim.api.nvim_create_user_command("NeotestStop", function() require("neotest").run.stop() end, {})
+      vim.api.nvim_create_user_command("NeotestAttach", function() require("neotest").run.attach() end, {})
+      vim.api.nvim_create_user_command("NeotestSummaryToggle", function() require("neotest").summary.toggle() end, {})
+      vim.api.nvim_create_user_command(
+        "NeotestOutput",
+        function() require("neotest").output.open { enter = true } end,
+        {}
+      )
+      vim.api.nvim_create_user_command(
+        "NeotestOutputToggle",
+        function() require("neotest").output_panel.toggle() end,
+        {}
+      )
+      vim.api.nvim_create_user_command(
+        "NeotestJumpPreviousFailed",
+        function() require("neotest").jump.prev { status = "failed" } end,
+        {}
+      )
+      vim.api.nvim_create_user_command(
+        "NeotestJumpNextFailed",
+        function() require("neotest").jump.next { status = "failed" } end,
+        {}
+      )
     end,
     ft = { "go", "rust", "python" },
     dependencies = {
@@ -392,12 +380,7 @@ return {
       }
       -- Remap adding surrounding to Visual mode selection
       vim.keymap.del("x", "ys")
-      vim.keymap.set(
-        "x",
-        "S",
-        [[:<C-u>lua MiniSurround.add('visual')<CR>]],
-        { silent = true }
-      )
+      vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
       -- Make special mapping for "add surrounding for line"
       vim.keymap.set("n", "yss", "ys_", { remap = true })
     end,
@@ -418,17 +401,10 @@ return {
     "scalameta/nvim-metals",
     dependencies = "nvim-lua/plenary.nvim",
     init = function()
-      vim.env.PATH = vim.env.PATH
-        .. ":"
-        .. vim.fn.stdpath("data")
-        .. "/nvim-metals"
+      vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.stdpath("data") .. "/nvim-metals"
       vim.api.nvim_create_autocmd("FileType", {
         pattern = { "scala", "sbt", "java" },
-        callback = function()
-          require("metals").initialize_or_attach(
-            require("astronvim.utils.lsp").config("metals")
-          )
-        end,
+        callback = function() require("metals").initialize_or_attach(require("astronvim.utils.lsp").config("metals")) end,
         group = vim.api.nvim_create_augroup("nvim-metals", { clear = true }),
       })
     end,

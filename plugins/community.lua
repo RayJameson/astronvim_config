@@ -74,6 +74,7 @@ return {
         "NotifyERRORBorder",
         "NotifyDEBUGBorder",
         "NotifyTRACEBorder",
+        "WhichKeyFloat",
       },
     },
   },

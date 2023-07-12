@@ -1,8 +1,5 @@
 return function()
-  vim.api.nvim_set_var(
-    "python3_host_prog",
-    "$HOME/.pyenv/versions/neovim_base_venv/bin/python3"
-  )
+  vim.api.nvim_set_var("python3_host_prog", "$HOME/.pyenv/versions/neovim_base_venv/bin/python3")
   vim.api.nvim_set_var(
     "node_host_prog",
     "/usr/local/bin/neovim-node-host"
@@ -95,8 +92,10 @@ return function()
   }
 
   local better_luafile = require("user.better_luafile")
-  vim.api.nvim_create_user_command("BetterLuafile", function(opts)
-    better_luafile.call(opts.fargs, "horizontal", 15, true)
-  end, { nargs = "?" })
+  vim.api.nvim_create_user_command(
+    "BetterLuafile",
+    function(opts) better_luafile.call(opts.fargs, "horizontal", 15, true) end,
+    { nargs = "?" }
+  )
   require("user.autocmds")
 end

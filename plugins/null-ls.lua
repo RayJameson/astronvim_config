@@ -1,7 +1,5 @@
 local is_available, null_ls = pcall(require, "null-ls")
-if not is_available then
-  return {}
-end
+if not is_available then return {} end
 
 return {
   "jose-elias-alvarez/null-ls.nvim",
@@ -21,7 +19,7 @@ return {
       null_ls.builtins.formatting.pyink.with {
         extra_args = {
           "--line-length=79",
-        }
+        },
       },
       null_ls.builtins.diagnostics.pylint,
       null_ls.builtins.diagnostics.luacheck.with {

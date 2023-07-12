@@ -71,9 +71,7 @@ return {
     "max397574/better-escape.nvim",
     opts = function(_, opts)
       opts.mapping = { "JK", "JJ", "jk", "jj" }
-      opts.keys = function()
-        return vim.api.nvim_win_get_cursor(0)[2] > 1 and "<esc>l" or "<esc>"
-      end
+      opts.keys = function() return vim.api.nvim_win_get_cursor(0)[2] > 1 and "<esc>l" or "<esc>" end
     end,
   },
   {
@@ -141,12 +139,9 @@ return {
           },
         }),
       })
-      opts.mapping["<C-d>"] =
-        cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" })
-      opts.mapping["<C-u>"] =
-        cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" })
-      opts.mapping["<M-Space>"] =
-        cmp.mapping(cmp.mapping.complete(), { "i", "c" })
+      opts.mapping["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" })
+      opts.mapping["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" })
+      opts.mapping["<M-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" })
       return opts
     end,
   },

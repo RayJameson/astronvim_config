@@ -12,21 +12,15 @@ local get_week_nr = function()
   local week_map = {}
   local current_week = 1
   for i = 1, date.day do
-    local i_date = monday_start(
-      os.date("*t", os.time { year = date.year, month = date.month, day = i })
-    )
+    local i_date = monday_start(os.date("*t", os.time { year = date.year, month = date.month, day = i }))
     week_map[i] = current_week
-    if i_date.wday == 7 then
-      current_week = current_week + 1
-    end
+    if i_date.wday == 7 then current_week = current_week + 1 end
   end
   date.wnum = week_map[date.day]
   return tostring(date.wnum)
 end
 
-local current_week = function()
-  return os.date("%Y/%m/") .. "W" .. get_week_nr()
-end
+local current_week = function() return os.date("%Y/%m/") .. "W" .. get_week_nr() end
 
 return {
   "nvim-orgmode/orgmode",
@@ -52,9 +46,7 @@ return {
     vim.api.nvim_create_autocmd({ "FileType" }, {
       pattern = "org",
       group = "OrgSetup",
-      callback = function()
-        vim.wo.foldlevel = package.loaded["ufo"] and 99 or vim.wo.foldlevel
-      end,
+      callback = function() vim.wo.foldlevel = package.loaded["ufo"] and 99 or vim.wo.foldlevel end,
     })
     vim.api.nvim_create_autocmd({ "FileType" }, {
       pattern = { "org", "orgagenda" },

@@ -20,12 +20,8 @@ function M.call(fargs, orientation, size, focus)
   elseif orientation == "vertical" then
     vim.cmd(("%i vsplit"):format(size))
   else
-    local error_msg = ("Wrong orientation settings: '%s'\nShould be 'vertical' or 'horizontal'"):format(
-      orientation
-    )
-    vim.schedule(function()
-      vim.notify(error_msg, error, { title = "BetterLuafile" })
-    end)
+    local error_msg = ("Wrong orientation settings: '%s'\nShould be 'vertical' or 'horizontal'"):format(orientation)
+    vim.schedule(function() vim.notify(error_msg, error, { title = "BetterLuafile" }) end)
     return
   end
   local new_window_number = vim.api.nvim_get_current_win()
@@ -33,22 +29,14 @@ function M.call(fargs, orientation, size, focus)
   local new_buffer_number = vim.api.nvim_create_buf(false, true)
   vim.api.nvim_win_set_buf(new_window_number, new_buffer_number)
   -- Write code_output_table to new buffer
-  vim.api.nvim_buf_set_lines(
-    new_buffer_number,
-    0,
-    -1,
-    false,
-    code_output_table
-  )
+  vim.api.nvim_buf_set_lines(new_buffer_number, 0, -1, false, code_output_table)
   -- Disable number and relativenumber for better look
   vim.api.nvim_win_set_option(new_window_number, "number", false)
   vim.api.nvim_win_set_option(new_window_number, "relativenumber", false)
   -- Prevent edit as we only outputting information
   vim.api.nvim_buf_set_option(new_buffer_number, "modifiable", false)
   -- Focus on original window if needed
-  if not focus then
-    vim.api.nvim_set_current_win(original_window_number)
-  end
+  if not focus then vim.api.nvim_set_current_win(original_window_number) end
 end
 
 return M

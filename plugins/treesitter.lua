@@ -11,27 +11,26 @@ return {
       enable = true,
       additional_vim_regex_highlighting = { "org" },
     }
-    opts.ensure_installed =
-      require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
-        "lua",
-        "luadoc",
-        "python",
-        "rust",
-        "vim",
-        "markdown",
-        "make",
-        "json",
-        "json5",
-        "yaml",
-        "toml",
-        "bash",
-        "gitcommit",
-        "gitattributes",
-        "gitignore",
-        "git_config",
-        "git_rebase",
-        "org",
-      })
+    opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
+      "lua",
+      "luadoc",
+      "python",
+      "rust",
+      "vim",
+      "markdown",
+      "make",
+      "json",
+      "json5",
+      "yaml",
+      "toml",
+      "bash",
+      "gitcommit",
+      "gitattributes",
+      "gitignore",
+      "git_config",
+      "git_rebase",
+      "org",
+    })
     opts.auto_install = vim.fn.executable("tree-sitter") == 1
     opts.matchup = { enable = true }
     opts.rainbow = { enable = true }

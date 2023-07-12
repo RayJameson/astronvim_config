@@ -15,9 +15,7 @@ return {
     dependencies = {
       "MunifTanjim/nui.nvim",
     },
-    init = function()
-      vim.g.lsp_handlers_enabled = false
-    end,
+    init = function() vim.g.lsp_handlers_enabled = false end,
     event = "VeryLazy",
     cond = not vim.g.neovide,
     opts = {

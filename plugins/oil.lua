@@ -5,9 +5,7 @@ return {
   keys = {
     {
       "-",
-      function()
-        return require("oil").open()
-      end,
+      function() return require("oil").open() end,
       desc = "Open parent directory",
     },
   },
@@ -46,11 +44,7 @@ return {
           local oil = require("oil")
           local cwd = oil.get_current_dir()
           local entry = oil.get_cursor_entry()
-          if cwd and entry then
-            require("astronvim.utils").system_open(
-              string.format("%s/%s", cwd, entry.name)
-            )
-          end
+          if cwd and entry then require("astronvim.utils").system_open(string.format("%s/%s", cwd, entry.name)) end
         end,
         desc = "Open file under cursor",
         nowait = true,
