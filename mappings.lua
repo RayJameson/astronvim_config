@@ -86,7 +86,7 @@ maps.v["gk"] = { "gg", desc = "go to first line" }
 --]
 
 if is_available("nvim-notify") then
-  maps.n["<leader>uD"] = { function() require("notify").dismiss { silent = true } end, desc = "Dismiss notification", }
+  maps.n["<leader>uD"] = { function() require("notify").dismiss { silent = true } end, desc = "Dismiss notification" }
 end
 
 if is_available("orgmode") then
@@ -109,34 +109,30 @@ if is_available("mini.ai") then
   }
   maps.o = {
     a = a_maps,
-    i = vim.tbl_map(function(m)
-      return m:gsub("^around", "inside")
-    end, a_maps),
+    i = vim.tbl_map(function(m) return m:gsub("^around", "inside") end, a_maps),
   }
   maps.x = vim.deepcopy(maps.o)
 end
 
 if is_available("telescope.nvim") then
-  maps.n["<leader>fg"] = { require("telescope.builtin").git_files, desc = "Find git files", }
-  maps.n["<leader>fs"] = { require("telescope.builtin").spell_suggest, desc = "Show spell suggestions", }
+  maps.n["<leader>fg"] = { require("telescope.builtin").git_files, desc = "Find git files" }
+  maps.n["<leader>fs"] = { require("telescope.builtin").spell_suggest, desc = "Show spell suggestions" }
   local telescope_undo_available, _ = pcall(require, "telescope-undo")
   if telescope_undo_available then
-    maps.n["<leader>fu"] = { require("telescope").extensions.undo.undo, desc = "Show undo history", }
+    maps.n["<leader>fu"] = { require("telescope").extensions.undo.undo, desc = "Show undo history" }
   end
   local telescope_project_available, _ = pcall(require, "project_nvim")
   if telescope_project_available then
-    maps.n["<leader>fp"] = { require("telescope").extensions.projects.projects, desc = "Find projects", }
+    maps.n["<leader>fp"] = { require("telescope").extensions.projects.projects, desc = "Find projects" }
   end
 end
 
 --[ ToggleTerm
 if is_available("toggleterm.nvim") then
-  maps.n["<leader>th"] = { "<CMD>ToggleTerm size=15 direction=horizontal<cr>", desc = "ToggleTerm horizontal split", }
+  maps.n["<leader>th"] = { "<CMD>ToggleTerm size=15 direction=horizontal<cr>", desc = "ToggleTerm horizontal split" }
   if vim.fn.executable("lnav") == 1 then
     maps.n["<leader>tL"] = {
-      function()
-        toggle_term_cmd("lnav " .. vim.fn.expand("%:p"))
-      end,
+      function() toggle_term_cmd("lnav " .. vim.fn.expand("%:p")) end,
       silent = true,
       desc = "ToggleTerm lnav",
     }
@@ -148,19 +144,17 @@ local function ui_notify(str)
   if vim.g.ui_notifications_enabled then notify(str) end
 end
 
-local function bool2str(bool)
-  return bool and "on" or "off"
-end
+local function bool2str(bool) return bool and "on" or "off" end
 
 local function toggle_lazyreadraw()
   vim.opt.lazyredraw = not vim.opt.lazyredraw:get()
   ui_notify(("lazy redraw %s"):format(bool2str(vim.opt.lazyredraw:get())))
 end
 
-maps.n["<leader>ur"] = { toggle_lazyreadraw, desc = "Toggle lazyredraw", }
+maps.n["<leader>ur"] = { toggle_lazyreadraw, desc = "Toggle lazyredraw" }
 
 if is_available("nvim-treesitter-context") then
-  maps.n["[c"] = { function() require("treesitter-context").go_to_context() end, desc = "Go to context", }
+  maps.n["[c"] = { function() require("treesitter-context").go_to_context() end, desc = "Go to context" }
 end
 
 if is_available("nvim-transparent") then
@@ -182,22 +176,21 @@ end
 -- stylua: ignore end
 
 if is_available("diffview.nvim") then
-  maps.n["<leader>gd"] = { "<CMD>DiffviewOpen<CR>", desc = "Open diff view (g? help)", silent = true, }
+  maps.n["<leader>gd"] = { "<CMD>DiffviewOpen<CR>", desc = "Open diff view (g? help)", silent = true }
   maps.n["<leader>gC"] = { "<CMD>DiffviewClose<CR>", desc = "Close diff view" }
-  maps.n["<leader>gh"] = { "<CMD>DiffviewFileHistory % -f<CR>", desc = "Open file history", silent = true, }
-  maps.n["<leader>gH"] = { "<CMD>DiffviewFileHistory<CR>", desc = "Open branch history", silent = true, }
+  maps.n["<leader>gh"] = { "<CMD>DiffviewFileHistory % -f<CR>", desc = "Open file history", silent = true }
+  maps.n["<leader>gH"] = { "<CMD>DiffviewFileHistory<CR>", desc = "Open branch history", silent = true }
   maps.x["<leader>gh"] = { ":DiffviewFileHistory<CR>", desc = "Open line history", silent = true }
 end
 -- GitSigns
 if is_available("gitsigns.nvim") then
-  maps.n["<leader>gR"] = { function() require("gitsigns").reset_buffer() end, desc = "Reset Git buffer", }
-  maps.n["<leader>gr"] = { function() require("gitsigns").reset_hunk() end, desc = "Reset Git hunk", }
-  maps.n["<leader>gD"] = { require("gitsigns").toggle_deleted, desc = "Toggle deleted lines", }
+  maps.n["<leader>gR"] = { function() require("gitsigns").reset_buffer() end, desc = "Reset Git buffer" }
+  maps.n["<leader>gr"] = { function() require("gitsigns").reset_hunk() end, desc = "Reset Git hunk" }
+  maps.n["<leader>gD"] = { require("gitsigns").toggle_deleted, desc = "Toggle deleted lines" }
 end
 
 if is_available("code_runner.nvim") then
-  local icon
-  if vim.g.icons_enabled then icon = "󰐍 " else icon = "" end
+  local icon = vim.g.icons_enabled and "󰐍 " or ""
   maps.n["<leader>r"] = { desc = icon .. "Code runner" }
   maps.n["<leader>rr"] = { "<CMD>RunCode<CR>", desc = "Run code" }
   maps.n["<leader>rf"] = { "<CMD>RunFile<CR>", desc = "Run file" }
@@ -215,8 +208,7 @@ if is_available("sniprun") then
 end
 
 if is_available("neotest") then
-  local icon
-  if vim.g.icons_enabled then icon = " " else icon = "" end
+  local icon = vim.g.icons_enabled and " " or ""
   maps.n["<leader>n"] = { false, desc = icon .. "Neotest" }
   maps.n["<leader>nr"] = { "<CMD>NeotestRun<CR>", desc = "Run nearest test" }
   maps.n["<leader>nf"] = { "<CMD>NeotestRunFile<CR>", desc = "Run tests in current file" }
@@ -226,15 +218,14 @@ if is_available("neotest") then
   maps.n["<leader>ns"] = { "<CMD>NeotestSummaryToggle<CR>", desc = "Toggle test summary window" }
   maps.n["<leader>no"] = { "<CMD>NeotestOutput<CR>", desc = "Show test output" }
   maps.n["<leader>nO"] = { "<CMD>NeotestOutputToggle<CR>", desc = "Toggle test output window" }
-  maps.n["<leader>nk"] = { "<CMD>NeotestJumpPreviousFailed<CR>", desc = "Jump to previous failed test", }
+  maps.n["<leader>nk"] = { "<CMD>NeotestJumpPreviousFailed<CR>", desc = "Jump to previous failed test" }
   maps.n["<leader>nj"] = { "<CMD>NeotestJumpNextFailed<CR>", desc = "Jump to next failed test" }
 end
 
 maps.n["<leader>rn"] = { "<CMD>BetterLuafile<CR>", desc = "Run lua file with nvim-lua" }
 
 if is_available("trouble.nvim") then
-  local icon
-  if vim.g.icons_enabled then icon = "󱠪 " else icon = "" end
+  local icon = vim.g.icons_enabled and "󱠪 " or ""
   maps.n["<leader>x"] = { desc = icon .. "Trouble" }
   maps.n["<leader>xr"] = { "<CMD>Trouble lsp_references<CR>", desc = "References (Trouble)" }
   maps.n["<leader>xf"] = { "<CMD>Trouble lsp_definitions<CR>", desc = "Definitions (Trouble)" }
@@ -244,15 +235,13 @@ if is_available("trouble.nvim") then
 end
 
 if is_available("glow.nvim") then
-  local icon
-  if vim.g.icons_enabled then icon = "󰽛 " else icon = "" end
+  local icon = vim.g.icons_enabled and "󰽛 " or ""
   maps.n["<leader>m"] = { desc = icon .. "Markdown" }
   maps.n["<leader>mM"] = { "<CMD>Glow<CR>", desc = "Markdown Glow" }
 end
 
 if is_available("markdown-preview.nvim") then
-  local icon
-  if vim.g.icons_enabled then icon = "󰽛 " else icon = "" end
+  local icon = vim.g.icons_enabled and "󰽛 " or ""
   maps.n["<leader>m"] = { desc = icon .. "Markdown" }
   maps.n["<leader>mm"] = { "<CMD>MarkdownPreview<CR>", desc = "MarkdownPreview" }
   maps.n["<leader>mt"] = { "<CMD>MarkdownPreviewToggle<CR>", desc = "MarkdownPreview Toggle" }
@@ -270,10 +259,10 @@ maps.t["<esc><esc>"] = { "<c-\\><c-n>", desc = "Enter Normal Mode" }
 -- Smart Splits (remapped on Meta key)
 if is_available("smart-splits.nvim") then
   -- Resize with arrows
-  maps.n["<M-Up>"] = { function() require("smart-splits").resize_up() end, desc = "Resize split up", }
-  maps.n["<M-Down>"] = { function() require("smart-splits").resize_down() end, desc = "Resize split down", }
-  maps.n["<M-Left>"] = { function() require("smart-splits").resize_left() end, desc = "Resize split left", }
-  maps.n["<M-Right>"] = { function() require("smart-splits").resize_right() end, desc = "Resize split right", }
+  maps.n["<M-Up>"] = { function() require("smart-splits").resize_up() end, desc = "Resize split up" }
+  maps.n["<M-Down>"] = { function() require("smart-splits").resize_down() end, desc = "Resize split down" }
+  maps.n["<M-Left>"] = { function() require("smart-splits").resize_left() end, desc = "Resize split left" }
+  maps.n["<M-Right>"] = { function() require("smart-splits").resize_right() end, desc = "Resize split right" }
 else
   maps.n["<M-Up>"] = { "<CMD>resize -2<CR>", desc = "Resize split up" }
   maps.n["<M-Down>"] = { "<CMD>resize +2<CR>", desc = "Resize split down" }
@@ -282,7 +271,7 @@ else
 end
 
 -- add more text objects for "in" and "around"
-for _, char in ipairs { "_", ".", ":", ",", ";", "|", "/", "\\", "*", "+", "%", "`", "?", } do
+for _, char in ipairs { "_", ".", ":", ",", ";", "|", "/", "\\", "*", "+", "%", "`", "?" } do
   for _, mode in ipairs { "x", "o" } do
     maps[mode]["i" .. char] = {
       string.format(":<C-u>silent! normal! f%sF%slvt%s<CR>", char, char, char),
