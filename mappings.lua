@@ -94,26 +94,6 @@ return function(maps)
     maps.n["<leader>o"] = { desc = icon .. "Orgmode" }
   end
 
-  -- mini.ai
-  if is_available("mini.ai") then
-    local a_maps = {
-      [" "] = "around whitespace",
-      ["?"] = "around user prompt",
-      _ = "around underscore",
-      a = "around argument",
-      c = "around class",
-      f = "around function",
-      k = "around block",
-      o = "around conditional or loop",
-      q = "around quote `, \", '",
-    }
-    maps.o = {
-      a = a_maps,
-      i = vim.tbl_map(function(m) return m:gsub("^around", "inside") end, a_maps),
-    }
-    maps.x = vim.deepcopy(maps.o)
-  end
-
   if is_available("telescope.nvim") then
     local prefix = "<leader>f"
     maps.n[prefix .. "g"] = { require("telescope.builtin").git_files, desc = "Find git files" }
@@ -221,7 +201,7 @@ end
   if is_available("neotest") then
     local icon = vim.g.icons_enabled and " " or ""
     local prefix = "<leader>n"
-    maps.n[prefix] = nil
+    -- maps.n[prefix] = nil
     maps.n[prefix] = { desc = icon .. "Neotest" }
     maps.n[prefix .. "r"] = { "<CMD>NeotestRun<CR>", desc = "Run nearest test" }
     maps.n[prefix .. "f"] = { "<CMD>NeotestRunFile<CR>", desc = "Run tests in current file" }
