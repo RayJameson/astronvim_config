@@ -1,6 +1,7 @@
 local prefix = "<leader>O"
 local maps = { n = {} }
-maps.n[prefix] = { desc = "Octo" }
+local icon = vim.g.icons_enabled and " " or ""
+maps.n[prefix] = { desc = icon .. "Octo" }
 maps.n[prefix .. "c"] = { desc = "Comments" }
 maps.n[prefix .. "t"] = { desc = "Threads" }
 maps.n[prefix .. "i"] = { desc = "Issues" }
