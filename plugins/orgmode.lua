@@ -80,16 +80,16 @@ return {
       org_capture_templates = {
         r = {
           description = "Refile",
-          template = "* TODO %?\n  DEADLINE: %T",
+          template = "\n* TODO %?\n  DEADLINE: %T",
         },
         t = {
           description = "Todo (no category)",
-          template = "* TODO %?\n  DEADLINE: %T",
+          template = "\n* TODO %?\n  DEADLINE: %T",
           target = org_path("todos.org"),
         },
         w = {
           description = "Work week todo",
-          template = "* TODO %?\n  DEADLINE: %T",
+          template = "\n* TODO %?\n  DEADLINE: %T",
           target = org_path("work/" .. current_week() .. "/work.org"),
         },
         j = {
