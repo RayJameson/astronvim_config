@@ -20,7 +20,7 @@ local get_week_nr = function()
   return tostring(date.wnum)
 end
 
-local current_week = function() return os.date("%Y/%m/") .. "W" .. get_week_nr() end
+local date_with_current_week = function() return os.date("%Y/%m/") .. "W" .. get_week_nr() end
 
 return {
   "nvim-orgmode/orgmode",
@@ -90,7 +90,7 @@ return {
         w = {
           description = "Work week todo",
           template = "\n* TODO %?\n  DEADLINE: %T",
-          target = org_path("work/" .. current_week() .. "/work.org"),
+          target = org_path("work/" .. date_with_current_week() .. "/work.org"),
         },
         j = {
           description = "Journal",
