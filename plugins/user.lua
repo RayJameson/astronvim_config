@@ -372,6 +372,7 @@ return {
     event = { "User AstroFile", "InsertEnter" },
     opts = {
       n_lines = 500,
+      silent = true,
     },
   },
   {
