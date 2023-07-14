@@ -117,6 +117,7 @@ return {
           headline = "Birthdays",
         },
       },
+      org_log_done = "note",
     }
   end,
 }
