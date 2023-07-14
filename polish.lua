@@ -98,4 +98,19 @@ return function()
     { nargs = "?" }
   )
   require("user.autocmds")
+  if vim.g.neovide then
+    -- local alpha = function() return string.format("%x", math.floor((255 * vim.g.neovide_transparency_point) or 0.8)) end
+    -- Set transparency and background color (title bar color)
+    if vim.loop.os_uname().sysname == "Darwin" then
+      -- vim.g.neovide_transparency = 0.0
+      -- vim.g.neovide_transparency_point = 0.8
+      -- vim.g.neovide_background_color = "#0f1117" .. alpha()
+      vim.g.neovide_input_macos_alt_is_meta = true
+    end
+    vim.g.neovide_cursor_antialiasing = true
+    vim.o.guifont = "LigaMesloLGSDZ Nerd Font Mono,Source Code Pro:h20"
+    vim.g.neovide_floating_blur_amount_x = 2.0
+    vim.g.neovide_floating_blur_amount_y = 2.0
+    vim.g.neovide_refresh_rate_idle = 5
+  end
 end

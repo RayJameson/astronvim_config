@@ -19,6 +19,7 @@ return {
   { import = "astrocommunity.utility.transparent-nvim" },
   {
     "transparent.nvim",
+    cond = not vim.g.neovide,
     priority = 1000,
     opts = {
       extra_groups = { -- table/string: additional groups that should be cleared
