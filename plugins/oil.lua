@@ -49,6 +49,16 @@ return {
         desc = "Open file under cursor",
         nowait = true,
       },
+      ["gy"] = {
+        desc = "Copy the filepath of the entry under the cursor to the + register",
+        callback = function()
+          local oil = require("oil")
+          local entry = oil.get_cursor_entry()
+          local dir = oil.get_current_dir()
+          if not entry or not dir then return end
+          vim.fn.setreg("+", dir .. entry.name)
+        end,
+      },
     },
   },
 }
