@@ -23,7 +23,6 @@ return {
   cmd = { "Octo" },
   opts = {
     use_diagnostic_signs = true,
-    mappings = {},
   },
   keys = {
     { prefix .. "ca", "<cmd>Octo comment add<CR>", desc = "Add a new comment" },
