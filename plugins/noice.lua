@@ -57,6 +57,10 @@ return {
           filter = { event = "msg_show", kind = "search_count" },
           opts = { skip = true },
         },
+        {
+          filter = { event = "msg_show", find = "Hop 1 char:" },
+          opts = { skip = true },
+        }, -- skip hop notifications
       },
       presets = { lsp_doc_border = true, long_message_to_split = true },
       popupmenu = { backend = "cmp" },
