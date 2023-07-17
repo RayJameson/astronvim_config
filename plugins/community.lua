@@ -60,7 +60,6 @@ return {
         "TreesitterContextLineNumber",
         "QuickFixLine",
         "Pmenu",
-        "PmenuSel",
         "PmenuSbar",
         "PmenuThumb",
         "NotifyINFOBody",
