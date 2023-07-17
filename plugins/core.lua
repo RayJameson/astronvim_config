@@ -144,13 +144,6 @@ return {
     end,
   },
   {
-    "stevearc/dressing.nvim",
-    opts = function(_, opts)
-      opts.input.win_options.winblend = 0
-      opts.select.builtin.winblend = 0
-    end,
-  },
-  {
     "kevinhwang91/nvim-ufo",
     opts = function(_, opts)
       local handler = function(virtText, lnum, endLnum, width, truncate)
