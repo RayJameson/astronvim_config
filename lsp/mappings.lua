@@ -1,5 +1,6 @@
 return function(maps)
   maps.n["gl"] = false
+  maps.n["gy"] = false
   if maps.n.gd then maps.n.gd[1] = function() vim.lsp.buf.definition() end end
   if maps.n.gI then maps.n.gI[1] = function() vim.lsp.buf.implementation() end end
   if maps.n.gr then maps.n.gr[1] = function() vim.lsp.buf.references() end end
