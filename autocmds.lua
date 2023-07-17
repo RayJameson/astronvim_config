@@ -1,7 +1,10 @@
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-  pattern = "*",
-  callback = function() vim.highlight.on_yank { higroup = "IncSearch", timeout = 100 } end,
-})
+local is_available = require("astronvim.utils").is_available
+if not is_available("yanky.nvim") then
+  vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+    pattern = "*",
+    callback = function() vim.highlight.on_yank { higroup = "IncSearch", timeout = 100 } end,
+  })
+end
 
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
   pattern = "*",

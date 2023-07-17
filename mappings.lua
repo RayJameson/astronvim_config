@@ -18,11 +18,6 @@ return function(maps)
   for _, mode in ipairs { "n", "v" } do
     maps[mode]["gy"] = { '"+y', desc = "yank +clipboard" }
     maps[mode]["gY"] = { '"+y$', desc = "Yank +clipboard (y$)" }
-    maps[mode]["<M-y>"] = { '"+y', desc = "yank +clipboard" }
-    maps[mode]["<M-Y>"] = { '"+y$', desc = "Yank +clipboard (y$)" }
-    maps[mode]["<M-c>"] = { '"_d', desc = "Change noregister" }
-    maps[mode]["<M-d>"] = { '"_d', desc = "Delete noregister" }
-    maps[mode]["<M-p>"] = { "v$p", desc = "Paste over rest of the line" }
   end
   maps.n["gD"] = { '"_d', desc = "Delete noregister" }
   maps.x["gd"] = { '"_d', desc = "Delete noregister" }

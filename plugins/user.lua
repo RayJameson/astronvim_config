@@ -429,4 +429,45 @@ return {
       }
     end,
   },
+  {
+    "gbprod/yanky.nvim",
+    dependencies = { "kkharji/sqlite.lua" },
+    opts = {
+      highlight = {
+        on_put = true,
+        on_yank = true,
+        timer = 100,
+      },
+      ring = {
+        history_length = 1000,
+        storage = "sqlite",
+        sync_with_numbered_registers = true,
+        cancel_event = "update",
+        ignore_registers = { "_" },
+      },
+      system_clipboard = {
+        sync_with_ring = false,
+      },
+    },
+    init = function()
+      vim.api.nvim_set_hl(0, "YankyYanked", { link = "IncSearch" })
+      vim.api.nvim_set_hl(0, "YankyPut", { link = "IncSearch" })
+    end,
+    keys = {
+      { "y", "<Plug>(YankyYank)", desc = "Yank", mode = { "n", "x" } },
+      { "p", "<Plug>(YankyPutAfter)", desc = "Put after", mode = { "n", "x" } },
+      { "P", "<Plug>(YankyPutBefore)", desc = "Put before", mode = { "n", "x" } },
+      { "gp", "<Plug>(YankyGPutAfter)", desc = "gPut after", mode = { "n", "x" } },
+      { "gp", "<Plug>(YankyGPutBefore)", desc = "gPut before", mode = { "n", "x" } },
+      { "<M-p>", "<Plug>(YankyCycleBackward)", desc = "Cycle back yanks", mode = "n" },
+      { "<M-n>", "<Plug>(YankyCycleForward)", desc = "Cycle forward yanks", mode = "n" },
+      { "]p", "<Plug>(YankyPutIndentAfterLinewise)", desc = "Put indent after linewise", mode = "n" },
+      { "[p", "<Plug>(YankyPutIndentBeforeLinewise)", desc = "Put indent before linewise", mode = "n" },
+      { ">p", "<Plug>(YankyPutIndentAfterShiftRight)", desc = "Put indent after shift right", mode = "n" },
+      { "<p", "<Plug>(YankyPutIndentAfterShiftLeft)", desc = "Put indent after shift left", mode = "n" },
+      { "=p", "<Plug>(YankyPutAfterFilter)", desc = "Put after filter", mode = "n" },
+      { "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put before filter", mode = "n" },
+      { "<leader>fy", "<CMD>Telescope yank_history<CR>", desc = "Yank history" },
+    },
+  },
 }
