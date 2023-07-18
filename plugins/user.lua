@@ -8,7 +8,7 @@ return {
   },
   {
     "joechrisellis/lsp-format-modifications.nvim",
-    event = "User Astrofile",
+    event = "User AstroGitfile",
     cmd = "FormatModifications",
   },
   {
@@ -69,7 +69,6 @@ return {
   {
     "mechatroner/rainbow_csv",
     ft = { "csv", "tsv" },
-    event = "User AstroFile",
   },
   {
     "HiPhish/rainbow-delimiters.nvim",
