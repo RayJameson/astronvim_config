@@ -69,3 +69,11 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.wo.list = false
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "lua",
+  group = vim.api.nvim_create_augroup("DynamicColorColumn", { clear = true }),
+  callback = function()
+    vim.wo.colorcolumn = "120"
+  end,
+})
