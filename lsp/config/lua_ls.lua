@@ -6,7 +6,6 @@ return {
       },
       hint = {
         enable = true,
-        setType = true,
         arrayIndex = "Disable",
       },
       workspace = {
