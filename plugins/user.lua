@@ -36,7 +36,7 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
-    opts = {}
+    opts = {},
   },
   {
     "kevinhwang91/nvim-bqf",
