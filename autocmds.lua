@@ -78,3 +78,11 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.wo.colorcolumn = "120"
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  group = "DynamicColorColumn",
+  callback = function()
+    vim.wo.colorcolumn = ""
+  end,
+})
