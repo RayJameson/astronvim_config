@@ -113,4 +113,13 @@ return function()
     vim.g.neovide_floating_blur_amount_y = 2.0
     vim.g.neovide_refresh_rate_idle = 5
   end
+  vim.api.nvim_create_user_command("Scratch", function()
+    vim.cmd([[
+      15split
+      noswapfile hide enew
+      setlocal buftype=nofile
+      setlocal bufhidden=hide
+      setlocal nobuflisted
+    ]])
+  end, {})
 end
