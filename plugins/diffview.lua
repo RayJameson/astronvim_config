@@ -22,6 +22,13 @@ return {
           desc = "Open DiffView Branch History",
         },
       },
+      x = {
+        [prefix] = { name = icon .. "Diff View" },
+        [prefix .. "h"] = {
+          ":DiffviewFileHistory<cr>",
+          desc = "Open DiffView Line History",
+        },
+      }
     }
 
     local build_keymaps = function(maps)
