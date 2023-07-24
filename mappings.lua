@@ -152,14 +152,6 @@ if is_available("nvim-dap") then
 end
   -- stylua: ignore end
 
-  if is_available("diffview.nvim") then
-    local prefix = "<leader>g"
-    maps.n[prefix .. "d"] = { "<CMD>DiffviewOpen<CR>", desc = "Open diff view (g? help)", silent = true }
-    maps.n[prefix .. "C"] = { "<CMD>DiffviewClose<CR>", desc = "Close diff view" }
-    maps.n[prefix .. "h"] = { "<CMD>DiffviewFileHistory % -f<CR>", desc = "Open file history", silent = true }
-    maps.n[prefix .. "H"] = { "<CMD>DiffviewFileHistory<CR>", desc = "Open branch history", silent = true }
-    maps.x[prefix .. "h"] = { ":DiffviewFileHistory<CR>", desc = "Open line history", silent = true }
-  end
   -- GitSigns
   if is_available("gitsigns.nvim") then
     local prefix = "<leader>g"
