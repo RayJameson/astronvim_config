@@ -28,7 +28,7 @@ return {
           ":DiffviewFileHistory<cr>",
           desc = "Open DiffView Line History",
         },
-      }
+      },
     }
 
     local build_keymaps = function(maps)
@@ -127,49 +127,49 @@ return {
           }, -- Obtain the diff hunk from the THEIRS version of the file
         },
         file_panel = build_keymaps {
-          j = actions.next_entry, -- Bring the cursor to the next file entry
-          k = actions.prev_entry, -- Bring the cursor to the previous file entry.
-          o = actions.select_entry,
-          S = actions.stage_all, -- Stage all entries.
-          U = actions.unstage_all, -- Unstage all entries.
-          X = actions.restore_entry, -- Restore entry to the state on the left side.
-          L = actions.open_commit_log, -- Open the commit log panel.
-          Cf = { actions.toggle_flatten_dirs, desc = "Flatten" }, -- Flatten empty subdirectories in tree listing style.
-          R = actions.refresh_files, -- Update stats and entries in the file list.
-          ["-"] = actions.toggle_stage_entry, -- Stage / unstage the selected entry.
-          ["<down>"] = actions.next_entry,
-          ["<up>"] = actions.prev_entry,
-          ["<cr>"] = actions.select_entry, -- Open the diff for the selected entry.
-          ["<2-LeftMouse>"] = actions.select_entry,
-          ["<c-b>"] = actions.scroll_view(-0.25), -- Scroll the view up
-          ["<c-f>"] = actions.scroll_view(0.25), -- Scroll the view down
-          ["<tab>"] = actions.select_next_entry,
-          ["<s-tab>"] = actions.select_prev_entry,
+          j = { actions.select_next_entry, desc = "Next entry" },
+          k = { actions.select_prev_entry, desc = "Previous entry" },
+          o = { actions.select_entry, desc = "Select entry" }, -- Open the diff for the selected entry.
+          S = { actions.stage_all, desc = "Stage all entries." },
+          U = { actions.unstage_all, desc = "Unstage all entries" },
+          X = { actions.restore_entry, desc = "Restore entry to the state on the left side" },
+          L = { actions.open_commit_log, desc = "Open the commit log panel" },
+          Cf = { actions.toggle_flatten_dirs, desc = "Flatten empty subdirectories" },
+          R = { actions.refresh_files, desc = "Update stats and entries in the file list" },
+          ["-"] = { actions.toggle_stage_entry, desc = "Stage / unstage the selected entry" },
+          ["<down>"] = { actions.select_next_entry, desc = "Next entry" },
+          ["<up>"] = { actions.select_prev_entry, desc = "Previous entry" },
+          ["<cr>"] = { actions.select_entry, desc = "Select entry" },
+          ["<2-LeftMouse>"] = { actions.select_entry, desc = "Select entry" },
+          ["<c-b>"] = { actions.scroll_view(-0.25), desc = "Scroll up" },
+          ["<c-f>"] = { actions.scroll_view(0.25), desc = "Scroll down" },
+          ["<tab>"] = { actions.select_next_entry, desc = "Next entry" },
+          ["<s-tab>"] = { actions.select_prev_entry, desc = "Previous entry" },
         },
         file_history_panel = build_keymaps {
-          j = actions.next_entry,
-          k = actions.prev_entry,
-          o = actions.select_entry,
-          y = actions.copy_hash, -- Copy the commit hash of the entry under the cursor
-          L = actions.open_commit_log,
+          j = { actions.select_next_entry, desc = "Next entry" },
+          k = { actions.select_prev_entry, desc = "Previous entry" },
+          o = { actions.select_entry, desc = "Select entry" },
+          y = { actions.copy_hash, desc = "Copy the commit hash" },
+          L = { actions.open_commit_log, desc = "Open commit log" },
           zR = { actions.open_all_folds, desc = "Open all folds" },
           zM = { actions.close_all_folds, desc = "Close all folds" },
-          ["?"] = { actions.options, desc = "Options" }, -- Open the option panel
-          ["<down>"] = actions.next_entry,
-          ["<up>"] = actions.prev_entry,
-          ["<cr>"] = actions.select_entry,
-          ["<2-LeftMouse>"] = actions.select_entry,
-          ["<C-A-d>"] = actions.open_in_diffview, -- Open the entry under the cursor in a diffview
-          ["<c-b>"] = actions.scroll_view(-0.25),
-          ["<c-f>"] = actions.scroll_view(0.25),
-          ["<tab>"] = actions.select_next_entry,
-          ["<s-tab>"] = actions.select_prev_entry,
+          ["?"] = { actions.options, desc = "Options" },
+          ["<down>"] = { actions.select_next_entry, desc = "Next entry" },
+          ["<up>"] = { actions.select_prev_entry, desc = "Previous entry" },
+          ["<cr>"] = { actions.select_entry, desc = "Select entry" },
+          ["<2-LeftMouse>"] = { actions.select_entry, desc = "Select entry" },
+          ["<C-A-d>"] = { actions.open_in_diffview, desc = "Open in diffview" },
+          ["<c-b>"] = { actions.scroll_view(-0.25), desc = "Scroll up" },
+          ["<c-f>"] = { actions.scroll_view(0.25), desc = "Scroll down" },
+          ["<tab>"] = { actions.select_next_entry, desc = "Next entry" },
+          ["<s-tab>"] = { actions.select_prev_entry, desc = "Previous entry" },
         },
         option_panel = {
-          q = actions.close,
-          o = actions.select_entry,
-          ["<cr>"] = actions.select_entry,
-          ["<2-LeftMouse"] = actions.select_entry,
+          q = { actions.close, desc = "Close option panel" },
+          o = { actions.select_entry, desc = "Select entry" },
+          ["<cr>"] = { actions.select_entry, desc = "Select entry" },
+          ["<2-LeftMouse"] = { actions.select_entry, desc = "Select entry" },
         },
       },
     }
