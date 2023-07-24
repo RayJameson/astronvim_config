@@ -21,9 +21,8 @@ return function(maps)
   end
   maps.n["gD"] = { '"_d', desc = "Delete noregister" }
   maps.x["gd"] = { '"_d', desc = "Delete noregister" }
-  maps.x["p"] = { "P", desc = "Paste noregister" }
+  maps.x["gp"] = { "P", desc = "Paste noregister" }
   maps.n["S"] = { "0Di", desc = "S+" }
-  maps.n["gp"] = { "v$p", desc = "Paste over rest of the line" }
   --]
   -- Repeat macros across visual selection
 
