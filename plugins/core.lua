@@ -211,7 +211,6 @@ return {
         status.component.file_info {
           filetype = {},
           filename = false,
-          file_modified = false,
         },
         status.component.git_branch(),
         harpoon_index,
