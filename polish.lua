@@ -81,8 +81,6 @@ return function()
       tlua = "lua",
       html = "htmldjango",
       htmldjango = "html",
-      log = "log",
-      bash = "sh",
       zsh = "sh",
     },
     pattern = {
