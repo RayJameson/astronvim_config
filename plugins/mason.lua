@@ -26,6 +26,9 @@ return {
         "stylua",
         "pyink",
       })
+      opts.handlers = {
+        luacheck = function() end
+      }
     end,
   },
   {
