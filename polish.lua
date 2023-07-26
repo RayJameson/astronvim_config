@@ -88,6 +88,7 @@ return function()
     pattern = {
       -- ["~/%.config/foo/.*"] = "fooscript",
       ["%.gitconfig.*"] = "gitconfig",
+      [".*/%.vscode/.+%.json"] = "jsonc",
     },
   }
 
