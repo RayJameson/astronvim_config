@@ -27,7 +27,8 @@ return {
         "pyink",
       })
       opts.handlers = {
-        luacheck = function() end
+        luacheck = function() end,
+        mypy = function() end,
       }
     end,
   },
