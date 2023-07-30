@@ -124,12 +124,14 @@ return {
         { name = "buffer", priority = 500 },
         { name = "path", priority = 250 },
       }
+      ---@diagnostic disable-next-line: missing-fields
       cmp.setup.cmdline("/", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
           { name = "buffer" },
         },
       })
+      ---@diagnostic disable-next-line: missing-fields
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
