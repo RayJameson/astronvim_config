@@ -22,8 +22,12 @@ return {
           "--line-length=79",
         },
       },
-      null_ls.builtins.diagnostics.pylint,
-      null_ls.builtins.diagnostics.mypy,
+      null_ls.builtins.diagnostics.pylint.with {
+        command = { "python3", "-m", "pylint" },
+      },
+      null_ls.builtins.diagnostics.mypy.with {
+        command = { "python3", "-m", "mypy" },
+      },
       null_ls.builtins.diagnostics.luacheck.with {
         args = function(params)
           local args = {
