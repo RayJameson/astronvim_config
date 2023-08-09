@@ -84,3 +84,9 @@ vim.api.nvim_create_autocmd("FileType", {
   group = "DynamicColorColumn",
   callback = function() vim.wo.colorcolumn = "" end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "gitcommit",
+  group = "DynamicColorColumn",
+  callback = function() vim.wo.colorcolumn = "71" end,
+})
