@@ -106,5 +106,30 @@ return {
   { import = "astrocommunity.project.nvim-spectre" },
   { import = "astrocommunity.motion.vim-matchup" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
+  {
+    "trouble.nvim",
+    opts = {
+      include_declaration = { "lsp_definitions" },
+      auto_jump = {"lsp_definitions", "lsp_references", "lsp_implementations" },
+    },
+    init = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "trouble",
+        callback = function()
+          local maps = { n = {} }
+          maps.n["J"] = {
+            function() require("trouble").next { skip_groups = true } end,
+            desc = "Jump to next entry",
+          }
+          maps.n["K"] = {
+            function() require("trouble").previous { skip_groups = true } end,
+            desc = "Jump to previous entry",
+          }
+          require("astronvim.utils").set_mappings(maps, { buffer = 0 })
+        end,
+        group = vim.api.nvim_create_augroup("TroubleMappings", { clear = true }),
+      })
+    end,
+  },
   { import = "astrocommunity.code-runner.sniprun" },
 }
