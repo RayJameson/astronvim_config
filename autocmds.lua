@@ -80,9 +80,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
+  pattern = { "markdown", "dockerfile", "make" },
   group = "DynamicColorColumn",
-  callback = function()
-    vim.wo.colorcolumn = ""
-  end,
+  callback = function() vim.wo.colorcolumn = "" end,
 })
