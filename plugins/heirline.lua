@@ -15,7 +15,28 @@ return {
         end,
       }
 
-      opts.tabline = nil
+      opts.tabline = { -- bufferline
+        { -- file tree padding
+          condition = function(self)
+            self.winid = vim.api.nvim_tabpage_list_wins(0)[1]
+            return status.condition.buffer_matches(
+              { filetype = { "aerial", "dapui_.", "dap-repl", "neo%-tree", "NvimTree", "edgy" } },
+              vim.api.nvim_win_get_buf(self.winid)
+            )
+          end,
+          provider = function(self) return string.rep(" ", vim.api.nvim_win_get_width(self.winid) + 1) end,
+          hl = { bg = "tabline_bg" },
+        },
+        status.component.fill { hl = { bg = "tabline_bg" } }, -- fill the rest of the tabline with background color
+        { -- tab list
+          condition = function() return #vim.api.nvim_list_tabpages() >= 2 end, -- only show tabs if there are more than one
+          status.heirline.make_tablist { -- component for each tab
+            provider = status.provider.tabnr(),
+            hl = function(self) return status.hl.get_attributes(status.heirline.tab_type(self, "tab"), true) end,
+          },
+        },
+      }
+
       opts.statusline = {
         -- statusline
         hl = { fg = "fg", bg = "bg" },
