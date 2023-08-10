@@ -1,3 +1,4 @@
+local extend_tbl = require("astronvim.utils").extend_tbl
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = { -- add a new dependency to telescope that is our new plugin
@@ -27,7 +28,7 @@ return {
     end
 
     for _, mode in ipairs { "i", "n" } do
-      opts.defaults.mappings[mode] = require("astronvim.utils").extend_tbl(opts.defaults.mappings[mode], {
+      opts.defaults.mappings[mode] = extend_tbl(opts.defaults.mappings[mode], {
         ["<C-t>"] = smart_add_to_qf_trouble,
         ["<M-t>"] = smart_send_to_qf_trouble,
         ["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
