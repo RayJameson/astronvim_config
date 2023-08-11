@@ -1,6 +1,5 @@
 return {
   "stevearc/oil.nvim",
-  config = true,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
     {
@@ -10,6 +9,8 @@ return {
     },
   },
   init = function()
+    -- yoinked it from this comment
+    -- https://github.com/folke/lazy.nvim/issues/533#issuecomment-1489174249
     if vim.fn.argc() == 1 then
       local stat = vim.loop.fs_stat(vim.fn.argv(0))
       -- Capture the protocol and lazy load oil if it is "oil-ssh", besides also lazy
