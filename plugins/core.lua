@@ -186,4 +186,12 @@ return {
     "mfussenegger/nvim-dap",
     dependencies = { "theHamsta/nvim-dap-virtual-text", config = true },
   },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    opts = {
+      filetype_exclude = {
+        "oil",
+      },
+    },
+  },
 }
