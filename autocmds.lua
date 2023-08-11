@@ -87,3 +87,23 @@ vim.api.nvim_create_autocmd("FileType", {
   group = "DynamicColorColumn",
   callback = function() vim.wo.colorcolumn = "71" end,
 })
+
+vim.api.nvim_create_augroup("FileSkeletons", { clear = true })
+local extension_cmd_map = {
+  sh = "bash",
+  zsh = "zsh",
+  fish = "fish",
+  ksh = "ksh",
+  awk = "awk",
+}
+for file_extension, command in pairs(extension_cmd_map) do
+  vim.api.nvim_create_autocmd("BufNewFile", {
+    pattern = "*." .. file_extension,
+    group = "FileSkeletons",
+    callback = function()
+      vim.api.nvim_buf_set_lines(0, 0, 0, true, {
+        "#!/usr/bin/env " .. command,
+      })
+    end
+  })
+end
