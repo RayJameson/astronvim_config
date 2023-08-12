@@ -1,0 +1,7 @@
+{
+    "setup": {
+        "prefix": "shebang",
+        "body": "#!/usr/bin/env python3",
+        "description": "add python3 shebang"
+    }
+}
