@@ -1,0 +1,7 @@
+{
+    "setup": {
+        "prefix": "remove",
+        "body": ["remove(${1:scope}): ${2:title}", "", "$0"],
+        "description": "remove conventional commit"
+    }
+}
