@@ -1,9 +1,11 @@
+local is_available = require("astronvim.utils").is_available
 return {
   "RayJameson/hop.nvim",
   opts = {
     case_insensitive = false,
   },
   keys = function()
+    if not is_available("hop.nvim") then return {} end
     local hop = require("hop")
     local directions = require("hop.hint").HintDirection
     return {
