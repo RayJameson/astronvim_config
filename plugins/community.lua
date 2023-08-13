@@ -110,7 +110,11 @@ return {
     "trouble.nvim",
     opts = {
       include_declaration = { "lsp_definitions" },
-      auto_jump = {"lsp_definitions", "lsp_references", "lsp_implementations" },
+      auto_jump = { "lsp_definitions", "lsp_references", "lsp_implementations" },
+      action_keys = {
+        jump_close = { "o", "<CR>" },
+        jump = { "<tab>", "<2-leftmouse>" },
+      },
     },
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
