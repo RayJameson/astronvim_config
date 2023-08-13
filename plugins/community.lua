@@ -120,13 +120,23 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "trouble",
         callback = function()
+          local next = require("trouble").next
+          local previous = require("trouble").previous
           local maps = { n = {} }
-          maps.n["J"] = {
-            function() require("trouble").next { skip_groups = true } end,
+          maps.n["<M-j>"] = {
+            function() next{} end,
             desc = "Jump to next entry",
           }
-          maps.n["K"] = {
-            function() require("trouble").previous { skip_groups = true } end,
+          maps.n["<M-k>"] = {
+            function() previous {} end,
+            desc = "Jump to previous entry",
+          }
+          maps.n["j"] = {
+            function() next { skip_groups = true } end,
+            desc = "Jump to next entry",
+          }
+          maps.n["k"] = {
+            function() previous { skip_groups = true } end,
             desc = "Jump to previous entry",
           }
           require("astronvim.utils").set_mappings(maps, { buffer = 0 })
