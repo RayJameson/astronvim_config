@@ -17,6 +17,22 @@ return {
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.utility.neodim" },
+  { import = "astrocommunity.file-explorer.mini-files" },
+  {
+    "mini.files",
+    opts = {
+      windows = {
+        preview = true,
+        width_preview = 80,
+      },
+      mappings = {
+        go_in_plus = "<CR>",
+        go_in = "",
+        go_out = "H",
+        go_out_plus = "",
+      },
+    },
+  },
   { import = "astrocommunity.utility.transparent-nvim" },
   {
     "transparent.nvim",
