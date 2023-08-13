@@ -10,6 +10,14 @@ return {
   { import = "astrocommunity.bars-and-lines.heirline-mode-text-statusline" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.go" },
+  {
+    "ray-x/go.nvim",
+    opts = {
+      lsp_inlay_hints = {
+        enable = false,
+      },
+    },
+  },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.yaml" },
   { import = "astrocommunity.pack.toml" },
@@ -140,7 +148,7 @@ return {
           local previous = require("trouble").previous
           local maps = { n = {} }
           maps.n["<M-j>"] = {
-            function() next{} end,
+            function() next {} end,
             desc = "Jump to next entry",
           }
           maps.n["<M-k>"] = {
