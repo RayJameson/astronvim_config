@@ -189,10 +189,6 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    opts = {
-      filetype_exclude = {
-        "oil",
-      },
-    },
+    opts = function(_, opts) require("astronvim.utils").extend_tbl(opts.filetype_exclude, { "oil" }) end,
   },
 }
