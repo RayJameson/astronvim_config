@@ -42,6 +42,7 @@ return {
       foldsep = "│",
       foldclose = "",
     },
+    grepprg = "rg --vimgrep",
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader
