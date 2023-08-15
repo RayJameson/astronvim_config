@@ -1,8 +1,8 @@
 local is_available = require("astronvim.utils").is_available
 return {
-    "rebelot/heirline.nvim",
-    opts = function(_, opts)
-      local status = require("astronvim.utils.status")
+  "rebelot/heirline.nvim",
+  opts = function(_, opts)
+    local status = require("astronvim.utils.status")
     -- custom heirline statusline component for harpoon
     status.component.harpoon_index = {
       provider = function()
@@ -27,51 +27,50 @@ return {
       end,
     }
 
-      opts.tabline = nil
-      opts.statusline = {
-        -- statusline
-        hl = { fg = "fg", bg = "bg" },
-        status.component.mode {
-          mode_text = { padding = { left = 1, right = 1 } },
-        }, -- add the mode text
-        status.component.file_info {
-          filetype = {},
-          filename = false,
+    opts.tabline = nil
+    opts.statusline = {
+      -- statusline
+      hl = { fg = "fg", bg = "bg" },
+      status.component.mode {
+        mode_text = { padding = { left = 1, right = 1 } },
+      }, -- add the mode text
+      status.component.file_info {
+        filetype = {},
+        filename = false,
+      },
+      status.component.builder {
+        { provider = function() return vim.bo.fenc end },
+        surround = {
+          separator = "left",
+          condition = function() return vim.bo.fenc ~= "utf-8" end,
         },
-        status.component.builder {
-          { provider = function() return vim.bo.fenc end },
-          surround = {
-            separator = "left",
-            condition = function() return vim.bo.fenc ~= "utf-8" end,
-          },
-          hl = { fg = "orange" },
-          update = "BufModifiedSet"
+        hl = { fg = "orange" },
+        update = "BufModifiedSet",
+      },
+      status.component.git_branch(),
       status.component.harpoon_index,
       status.component.grapple,
+      status.component.git_diff(),
+      status.component.diagnostics(),
+      status.component.fill(),
+      -- lsp causes issue on mac with tokyonight(https://discord.com/channels/939594913560031363/1100223017017163826)
+      status.component.cmd_info(),
+      status.component.fill(),
+      status.component.lsp(),
+      status.component.treesitter(),
+      status.component.builder {
+        {
+          provider = function()
+            local map = { ["unix"] = "LF", ["mac"] = "CR", ["dos"] = "CRLF" }
+            return map[vim.bo.fileformat]
+          end,
         },
-        status.component.git_branch(),
-        harpoon_index,
-        status.component.git_diff(),
-        status.component.diagnostics(),
-        status.component.fill(),
-        -- lsp causes issue on mac with tokyonight(https://discord.com/channels/939594913560031363/1100223017017163826)
-        status.component.cmd_info(),
-        status.component.fill(),
-        status.component.lsp(),
-        status.component.treesitter(),
-        status.component.builder {
-          {
-            provider = function()
-              local map = { ["unix"] = "LF", ["mac"] = "CR", ["dos"] = "CRLF" }
-              return map[vim.bo.fileformat]
-            end,
-          },
-          surround = {
-            separator = "right",
-          },
+        surround = {
+          separator = "right",
         },
-        status.component.nav(),
-      }
-      return opts
-    end,
-  }
+      },
+      status.component.nav(),
+    }
+    return opts
+  end,
+}
