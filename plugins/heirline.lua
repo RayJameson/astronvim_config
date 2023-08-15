@@ -1,19 +1,22 @@
+local is_available = require("astronvim.utils").is_available
 return {
     "rebelot/heirline.nvim",
     opts = function(_, opts)
       local status = require("astronvim.utils.status")
-      local harpoon_index = {
-        provider = function()
-          local Marked = require("harpoon.mark")
-          local filename = vim.api.nvim_buf_get_name(0)
-          local ok, index = pcall(Marked.get_index_of, filename)
-          if ok and index and index > 0 then
-            return "󱡀 " .. index .. " "
-          else
-            return
-          end
-        end,
-      }
+    -- custom heirline statusline component for harpoon
+    status.component.harpoon_index = {
+      provider = function()
+        if not is_available("harpoon") then return end
+        local marked = require("harpoon.mark")
+        local filename = vim.api.nvim_buf_get_name(0)
+        local ok, index = pcall(marked.get_index_of, filename)
+        if ok and index and index > 0 then
+          return "󱡀 " .. index .. " "
+        else
+          return
+        end
+      end,
+    }
 
       opts.tabline = nil
       opts.statusline = {
@@ -34,6 +37,7 @@ return {
           },
           hl = { fg = "orange" },
           update = "BufModifiedSet"
+      status.component.harpoon_index,
         },
         status.component.git_branch(),
         harpoon_index,
