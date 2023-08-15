@@ -17,6 +17,15 @@ return {
         end
       end,
     }
+    -- custom heirline statusline component for grapple
+    status.component.grapple = {
+      provider = function()
+        if not is_available("grapple.nvim") then return end
+        local grapple = require("grapple")
+        local key = grapple.key { buffer = 0 }
+        if key ~= nil then return " " .. key .. " " end
+      end,
+    }
 
       opts.tabline = nil
       opts.statusline = {
@@ -38,6 +47,7 @@ return {
           hl = { fg = "orange" },
           update = "BufModifiedSet"
       status.component.harpoon_index,
+      status.component.grapple,
         },
         status.component.git_branch(),
         harpoon_index,

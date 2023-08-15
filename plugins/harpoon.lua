@@ -2,9 +2,10 @@ local prefix = "<leader><leader>"
 local icon = vim.g.icons_enabled and "󱡀 " or ""
 local maps = { n = {} }
 maps.n[prefix] = { desc = icon .. "Harpoon" }
-require("astronvim.utils").set_mappings(maps)
+-- require("astronvim.utils").set_mappings(maps)
 return {
   "ThePrimeagen/harpoon",
+  enabled = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim",
