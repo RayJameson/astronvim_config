@@ -4,7 +4,8 @@ I doubt anyone wish to use this config as is, so here is some cool features if a
 
 ### Red line numbers above cursor, cyan current line, green below current line
 
-TODO: put a screenshot here  
+<img width="1728" alt="image" src="https://github.com/RayJameson/astronvim_config/assets/67468725/a683a513-ced4-4bdc-9eb8-6c5bb0d3731b">
+
 [How to set it up](astrotheme-config)
 
 ### Fully transparent background via [transparent.nvim](transparent-nvim-repo)
@@ -44,7 +45,7 @@ Check this video of ThePrimeagen explaining `harpoon.nvim`
 
 ### AI completion via [codeium.vim](codeium-repo)
 
-TODO: put a screenshot here
+<img width="1031" alt="image" src="https://github.com/RayJameson/astronvim_config/assets/67468725/9f99070f-1747-4544-98d8-cf250e42bd8a">
 
 [config file](codeium-config)
 
