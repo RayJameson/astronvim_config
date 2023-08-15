@@ -43,7 +43,7 @@ return {
       })
       opts.handlers = {
         python = function(config)
-          config.configurations = {
+          config.configurations = list_insert_unique(config.configurations, {
             {
               type = "python",
               request = "launch",
@@ -65,10 +65,19 @@ return {
               pythonPath = function() return "python" end,
               console = "integratedTerminal",
             },
-          }
+          })
           require("mason-nvim-dap").default_setup(config) -- don't forget this!
         end,
       }
+    end,
+  },
+  {
+    "mfussenegger/nvim-dap-python",
+    dependencies = "mfussenegger/nvim-dap",
+    ft = "python", -- NOTE: ft: lazy-load on filetype
+    config = function(_, opts)
+      local path = require("mason-registry").get_package("debugpy"):get_install_path() .. "/venv/bin/python"
+      require("dap-python").setup(path, opts)
     end,
   },
 }
