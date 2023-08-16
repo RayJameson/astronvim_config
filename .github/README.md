@@ -21,7 +21,6 @@ I doubt anyone wish to use this config as is, so here is some cool features if a
 ### Red line numbers above cursor, cyan current line, green below current line
 
 [How to set it up](astrotheme-config)  
-<img width="1728" alt="image" src="https://github.com/RayJameson/astronvim_config/assets/67468725/a683a513-ced4-4bdc-9eb8-6c5bb0d3731b">
 
 ### Highlight function arguments used in function body
 
