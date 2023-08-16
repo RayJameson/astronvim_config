@@ -1,6 +1,7 @@
 <!--toc:start-->
 - [AstroNvim user configuration](#astronvim-user-configuration)
     - [Red line numbers above cursor, cyan current line, green below current line](#red-line-numbers-above-cursor-cyan-current-line-green-below-current-line)
+    - [Highlight function arguments used in function body](#highlight-function-arguments-used-in-function-body)
     - [Fully transparent background via transparent.nvim](#fully-transparent-background-via-transparentnvim)
     - [Code runner via code_runner.nvim](#code-runner-via-code_runnernvim)
     - [No neo-tree.nvim, I use mini.files and oil.nvim insted](#no-neo-treenvim-i-use-minifiles-and-oilnvim-insted)
@@ -9,6 +10,8 @@
     - [Yank history using yanky.nvim](#yank-history-using-yankynvim)
     - [Random alpha header](#random-alpha-header)
 <!--toc:end-->
+
+
 # AstroNvim user configuration
 
 I doubt anyone wish to use this config as is, so here is some cool features if anyone wants to yoink them:
@@ -18,6 +21,11 @@ I doubt anyone wish to use this config as is, so here is some cool features if a
 <img width="1728" alt="image" src="https://github.com/RayJameson/astronvim_config/assets/67468725/a683a513-ced4-4bdc-9eb8-6c5bb0d3731b">
 
 [How to set it up](astrotheme-config)
+
+### Highlight function arguments used in function body
+[hlargs-repo](hlargs-repo)
+
+TODO: put screenshot here
 
 ### Fully transparent background via transparent.nvim
 
@@ -82,6 +90,8 @@ Every time I open Neovim, I get random header
 
 
 [astrotheme-config]: https://github.com/RayJameson/astronvim_config/blob/main/highlights/astrotheme.lua#L3-L5
+[hlargs-repo]: https://github.com/m-demare/hlargs.nvim
+[hlargs-config]: https://github.com/RayJameson/astronvim_config/blob/main/plugins/user.lua#L14-L21
 [transparent-nvim-repo]: https://github.com/xiyaowong/transparent.nvim
 [astrotheme-repo]: https://github.com/AstroNvim/astrotheme/tree/7a52efdd9a5bd302445d284a424467f92e4b1d44
 [highlight-colors]: https://github.com/RayJameson/astronvim_config/blob/main/highlights/astrotheme.lua
