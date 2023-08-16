@@ -23,9 +23,11 @@ I doubt anyone wish to use this config as is, so here is some cool features if a
 [How to set it up](astrotheme-config)
 
 ### Highlight function arguments used in function body
-[hlargs-repo](hlargs-repo)
+[hlargs repo](hlargs-repo)
 
-TODO: put screenshot here
+<img width="1066" alt="image" src="https://github.com/RayJameson/astronvim_config/assets/67468725/1cc3a467-c93f-4f4b-bbbc-3d164d56d1f9">
+
+[config file](hlargs-config)
 
 ### Fully transparent background via transparent.nvim
 
