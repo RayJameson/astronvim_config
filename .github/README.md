@@ -13,6 +13,10 @@
 
 
 # AstroNvim user configuration
+<img width="1728" alt="image" src="https://github.com/RayJameson/astronvim_config/assets/67468725/5912b1d1-2346-4424-a847-a607a152c99d">
+<img width="1728" alt="image" src="https://github.com/RayJameson/astronvim_config/assets/67468725/fc4572e1-d775-4ffb-8e14-b1b03cf2d0c0">
+
+
 
 I doubt anyone wish to use this config as is, so here is some cool features if anyone wants to yoink them:
 
@@ -88,6 +92,10 @@ so until new commands will be implemented, I will use changed behavior of comman
 ### Random alpha header
 
 Every time I open Neovim, I get random header
+<img width="1728" alt="image" src="https://github.com/RayJameson/astronvim_config/assets/67468725/f26c04e1-3f1c-43e4-b5e1-32e25271f687">
+<img width="1728" alt="image" src="https://github.com/RayJameson/astronvim_config/assets/67468725/a9aadec7-dd08-4709-b856-79e36813c210">
+<img width="1728" alt="image" src="https://github.com/RayJameson/astronvim_config/assets/67468725/e0ec429a-7bfb-41c4-bec1-b7f81a9478c1">
+
 [config file](header-config)
 
 
