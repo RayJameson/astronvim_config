@@ -59,8 +59,9 @@ Oil does (for ssh use `nvim oil-ssh://user@host/path/to/file`)
 
 ### No bufferline and tabline
 
-Same reason as above, for navigating I use Telescope and `grapple.nvim` plugin. I used `harpoon.nvim` before, `grapple.nvim`
-has a little bit more functionality, but they both are very similar.
+Same reason as above, for navigating I use Telescope and [grapple.nvim](grapple-repo) plugin.
+I used [harpoon.nvim](harpoon-repo) before, but [grapple.nvim](grapple-repo) 
+has a little bit more functionality, although they both are very similar.
 
 Check this video of ThePrimeagen explaining `harpoon.nvim`  
 [![harpoon-video](https://img.youtube.com/vi/Qnos8aApa9g/0.jpg)](https://youtu.be/Qnos8aApa9g)
@@ -102,6 +103,8 @@ Every time I open Neovim, I get random header
 [code-runner-config]: https://github.com/RayJameson/astronvim_config/blob/main/plugins/code_runner.lua
 [neo-tree-repo]: https://github.com/nvim-neo-tree/neo-tree.nvim
 [oil-config]: https://github.com/RayJameson/astronvim_config/blob/main/plugins/oil.lua
+[grapple-repo]: https://github.com/cbochs/grapple.nvim
+[harpoon-repo]: https://github.com/ThePrimeagen/harpoon
 [codeium-repo]: https://github.com/Exafunction/codeium.vim
 [codeium-config]: https://github.com/RayJameson/astronvim_config/blob/main/plugins/user.lua#L22-L32
 [yanky-repo]: https://github.com/gbprod/yanky.nvim
