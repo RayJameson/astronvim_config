@@ -52,8 +52,8 @@ return {
     "echasnovski/mini.ai",
     event = { "User AstroFile", "InsertEnter" },
     opts = {
-      n_lines = 500,
       silent = true,
+      search_method = "cover_or_nearest",
     },
   },
   {
