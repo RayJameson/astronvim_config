@@ -15,7 +15,6 @@ return function(hl) -- or a function that returns a new table of colors to set
   hl.Conditional = { fg = C.purple, bg = C.none, italic = true } -- if, then, else, endif, switch, etc.
   hl.Repeat = { fg = C.purple, bg = C.none, italic = true } -- for, do, while, etc.
   hl.Label = { fg = C.blue, bg = C.none, italic = true } -- case, default, etc.
-  hl.Operator = { fg = C.text, bg = C.none, italic = true } -- "sizeof", "+", "*", etc.
   hl.Exception = { fg = C.purple, bg = C.none, italic = true } -- try, catch, throw
   hl.Boolean = { fg = C.bright_turquoise, bg = C.none } -- a boolean constant: TRUE, false
   hl["@lsp.typemod.function.global"] = { fg = C.blue_1 }
