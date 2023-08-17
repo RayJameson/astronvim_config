@@ -111,8 +111,16 @@ return {
         TEST = {
           icon = " ",
           color = "test",
-          alt = { "TESTING", "PASSED", "FAILED" },
+          alt = { "TESTING", "TEST PASSED", "TEST FAILED" },
         },
+      },
+      colors = {
+        error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
+        warning = { "DiagnosticWarn", "WarningMsg", "#FBBF24" },
+        info = "#61afef",
+        hint = "#10B981",
+        default = "#c882e7",
+        test = "#cbcb41",
       },
     },
   },
