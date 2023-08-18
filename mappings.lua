@@ -79,6 +79,17 @@ return function(maps)
   maps.v["gk"] = { "gg", desc = "go to first line" }
   --]
 
+  maps.n["<leader>c"] = {
+    function()
+      require("astronvim.utils.buffer").close()
+      local bufs = vim.fn.getbufinfo { buflisted = true }
+      if is_available("alpha-nvim") and not bufs[2] then
+        require("alpha").start(false, require("alpha").default_config)
+      end
+    end,
+    desc = "Close buffer",
+  }
+
   if is_available("nvim-notify") then
     maps.n["<leader>uD"] =
       { function() require("notify").dismiss { silent = true, pending = true } end, desc = "Dismiss notification" }
