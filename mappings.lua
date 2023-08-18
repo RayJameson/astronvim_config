@@ -80,7 +80,8 @@ return function(maps)
   --]
 
   if is_available("nvim-notify") then
-    maps.n["<leader>uD"] = { function() require("notify").dismiss { silent = true } end, desc = "Dismiss notification" }
+    maps.n["<leader>uD"] =
+      { function() require("notify").dismiss { silent = true, pending = true } end, desc = "Dismiss notification" }
   end
 
   if is_available("orgmode") then
