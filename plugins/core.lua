@@ -27,7 +27,7 @@ return {
         -- this can be used if your configuration lives in ~/.config/nvim
         -- if your configuration lives in ~/.config/astronvim, the full path
         -- must be specified in the next line
-        paths = { vim.env.CONFIG .. "/astronvim/lua/user/snippets" },
+        paths = { vim.env.XDG_CONFIG_HOME .. "/astronvim/lua/user/snippets" },
       }
     end,
   },
