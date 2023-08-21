@@ -8,7 +8,7 @@
     - [No bufferline and tabline](#no-bufferline-and-tabline)
     - [AI completion via codeium.vim](#ai-completion-via-codeiumvim)
     - [Yank history using yanky.nvim](#yank-history-using-yankynvim)
-    - [Random alpha header](#random-alpha-header)
+    - ~~[Random alpha header](#random-alpha-header)~~
 <!--toc:end-->
 
 
@@ -82,13 +82,10 @@ As I said in this issue gbprod/yanky.nvim#122
 I believe yank history should be treated as a stack, and plugin's author agrees with me,
 so until new commands will be implemented, I will use changed behavior of commands
 
-### Random alpha header
+### ~~Random alpha header~~
 
-Every time I open Neovim, I get random header  
-[config file](header-config)  
-<img width="1728" alt="image" src="https://github.com/RayJameson/astronvim_config/assets/67468725/f26c04e1-3f1c-43e4-b5e1-32e25271f687">
-<img width="1728" alt="image" src="https://github.com/RayJameson/astronvim_config/assets/67468725/a9aadec7-dd08-4709-b856-79e36813c210">
-<img width="1728" alt="image" src="https://github.com/RayJameson/astronvim_config/assets/67468725/e0ec429a-7bfb-41c4-bec1-b7f81a9478c1">
+I removed alpha plugin because it's doesn't bring any functionality, but takes some of loading time
+If you want to yoink that random alpha header - [config file](header-config), and [here is how to add it](how-to-add-random-alpha-header)
 
 
 [astrotheme-config]: https://github.com/RayJameson/astronvim_config/blob/main/highlights/astrotheme.lua#L3-L5
@@ -108,4 +105,5 @@ Every time I open Neovim, I get random header
 [codeium-config]: https://github.com/RayJameson/astronvim_config/blob/main/plugins/user.lua#L22-L32
 [yanky-repo]: https://github.com/gbprod/yanky.nvim
 [yanky-config]: https://github.com/RayJameson/astronvim_config/blob/main/plugins/yanky.lua
-[header-config]: https://github.com/RayJameson/astronvim_config/blob/main/header.lua
+[header-config]: https://github.com/RayJameson/astronvim_config/blob/9112999beff3f8455e0cc77beb07318c017d110a/header.lua
+[how-to-add-random-alpha-header]: https://github.com/RayJameson/astronvim_config/blob/9112999beff3f8455e0cc77beb07318c017d110a/plugins/core.lua#L12-L19
