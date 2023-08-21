@@ -7,11 +7,6 @@ return {
     opts = { tools = { inlay_hints = { auto = false } } },
   },
   {
-    "joechrisellis/lsp-format-modifications.nvim",
-    event = "User AstroGitfile",
-    cmd = "FormatModifications",
-  },
-  {
     "m-demare/hlargs.nvim",
     event = "User AstroFile",
     opts = {
