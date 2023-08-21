@@ -20,8 +20,6 @@ return function(hl) -- or a function that returns a new table of colors to set
   hl["@lsp.typemod.function.global"] = { fg = C.blue_1 }
   hl["@function.builtin"] = { fg = C.blue_1 }
   hl["@variable.builtin"] = { fg = C.red_3 }
-  hl.OctoEditable = { fg = C.yellow, bg = C.none }
-  hl.DiffDelete = { fg = C.red }
   hl.HopNextKey = { fg = C.bright_turquoise, bold = true }
   if vim.g.transparent_enabled then
     hl.TreesitterContextLineNumber = { fg = C.pale_red }
