@@ -22,19 +22,14 @@ return function()
   })
   if vim.fn.has("mac") then
     vim.cmd([[
-            " function OpenMarkdownPreview (url)
-            "     execute "silent ! open -a 'Brave Browser' -n --args --new-window " . a:url
-            " endfunction
-            function OpenMarkdownPreview (url)
-                execute "silent ! open_little_arc " . a:url
-            endfunction
-            let g:mkdp_browserfunc = 'OpenMarkdownPreview'
-        ]])
-  end
-  vim.lsp.handlers["workspace/diagnostic/refresh"] = function(_, _, ctx)
-    local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
-    pcall(vim.diagnostic.reset, ns)
-    return true
+      " function OpenMarkdownPreview (url)
+      "     execute "silent ! open -a 'Brave Browser' -n --args --new-window " . a:url
+      " endfunction
+      function OpenMarkdownPreview (url)
+          execute "silent ! open_little_arc " . a:url
+      endfunction
+      let g:mkdp_browserfunc = 'OpenMarkdownPreview'
+    ]])
   end
   -----------------------------------------------------------------------------//
   -- Absolutely fantastic function from stoeffel/.dotfiles which allows you to
@@ -117,13 +112,17 @@ return function()
     vim.g.neovide_floating_blur_amount_y = 2.0
     vim.g.neovide_refresh_rate_idle = 5
   end
-  vim.api.nvim_create_user_command("Scratch", function()
-    vim.cmd([[
+  vim.api.nvim_create_user_command(
+    "Scratch",
+    function()
+      vim.cmd([[
       15split
       noswapfile hide enew
       setlocal buftype=nofile
       setlocal bufhidden=hide
       setlocal nobuflisted
     ]])
-  end, {})
+    end,
+    {}
+  )
 end
