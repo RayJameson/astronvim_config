@@ -5,16 +5,21 @@ return function()
     "/usr/local/bin/neovim-node-host"
     -- nvm doesn't work with this variable, make symlink to destination above
   )
-  vim.cmd([[
-            :set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
-            augroup remember_folds
-            autocmd!
-            autocmd BufWinLeave *.* mkview
-            autocmd BufWinEnter *.* silent! loadview
-            augroup END
-            autocmd BufWritePost *.* TSDisable rainbow | TSEnable rainbow
-        ]])
-
+  vim.api.nvim_set_option(
+    "langmap",
+    "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
+  )
+  vim.api.nvim_create_augroup("RememberFolds", { clear = true })
+  vim.api.nvim_create_autocmd("BufWinLeave", {
+    pattern = ".+",
+    callback = vim.cmd.mkview,
+    group = "RememberFolds",
+  })
+  vim.api.nvim_create_autocmd("BufWinEnter", {
+    pattern = ".+",
+    callback = vim.cmd.loadview,
+    group = "RememberFolds",
+  })
   if vim.fn.has("mac") then
     vim.cmd([[
             " function OpenMarkdownPreview (url)
