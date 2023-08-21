@@ -196,4 +196,8 @@ return {
     "window-picker",
     enabled = false,
   },
+  {
+    "Shatur/neovim-session-manager",
+    enabled = false,
+  },
 }
