@@ -1,6 +1,7 @@
 local extend_tbl = require("astronvim.utils").extend_tbl
 return {
   "nvim-telescope/telescope.nvim",
+  cond = not vim.g.vscode,
   dependencies = { -- add a new dependency to telescope that is our new plugin
     "debugloop/telescope-undo.nvim",
   },

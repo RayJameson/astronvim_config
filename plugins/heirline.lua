@@ -1,6 +1,7 @@
 local is_available = require("astronvim.utils").is_available
 return {
   "rebelot/heirline.nvim",
+  cond = not vim.g.vscode,
   opts = function(_, opts)
     local status = require("astronvim.utils.status")
     -- custom heirline statusline component for harpoon

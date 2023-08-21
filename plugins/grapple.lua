@@ -5,6 +5,7 @@ maps.n[prefix] = { desc = icon .. "Grapple" }
 require("astronvim.utils").set_mappings(maps)
 return {
   "cbochs/grapple.nvim",
+  cond = not vim.g.vscode,
   dependencies = { "nvim-lua/plenary.nvim" },
   cmd = { "Grapple" },
   keys = {

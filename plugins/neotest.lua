@@ -1,5 +1,6 @@
 return {
   "nvim-neotest/neotest",
+  cond = not vim.g.vscode,
   config = function()
     -- get neotest namespace (api call creates or returns namespace)
     local neotest_ns = vim.api.nvim_create_namespace("neotest")

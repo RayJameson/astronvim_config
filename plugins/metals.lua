@@ -11,6 +11,7 @@ return {
   },
   {
     "scalameta/nvim-metals",
+    cond = not vim.g.vscode,
     init = function()
       astronvim.lsp.skip_setup = utils.list_insert_unique(astronvim.lsp.skip_setup, "metals")
       vim.api.nvim_create_autocmd("FileType", {

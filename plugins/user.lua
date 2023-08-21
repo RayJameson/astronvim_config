@@ -4,10 +4,12 @@ return {
   -- "andweeb/presence.nvim",
   {
     "simrat39/rust-tools.nvim",
+    cond = not vim.g.vscode,
     opts = { tools = { inlay_hints = { auto = false } } },
   },
   {
     "m-demare/hlargs.nvim",
+    cond = not (vim.g.vscode or vim.g.neovide),
     event = "User AstroFile",
     opts = {
       color = "#FF7A00", --"#ef9062",
@@ -16,6 +18,7 @@ return {
   },
   {
     "Exafunction/codeium.vim",
+    cond = not vim.g.vscode,
     event = "LspAttach",
     config = function()
       -- Change '<C-g>' here to any keycode you like.
@@ -27,6 +30,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
+    cond = not vim.g.vscode,
     event = "User Astrofile",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -53,16 +57,19 @@ return {
   },
   {
     "mechatroner/rainbow_csv",
+    cond = not vim.g.vscode,
     ft = { "csv", "tsv" },
   },
   {
     "HiPhish/rainbow-delimiters.nvim",
+    cond = not vim.g.vscode,
     dependencies = "nvim-treesitter/nvim-treesitter",
     event = "User AstroFile",
     config = function(_, opts) require("rainbow-delimiters.setup")(opts) end,
   },
   {
     "luckasRanarison/nvim-devdocs",
+    cond = not vim.g.vscode,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
@@ -81,6 +88,7 @@ return {
   },
   {
     "almo7aya/openingh.nvim",
+    cond = not vim.g.vscode,
     cmd = { "OpenInGHRepo", "OpenInGHFile", "OpenInGHFileLines" },
     keys = function()
       local prefix = "<leader>g"

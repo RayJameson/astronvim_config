@@ -1,5 +1,6 @@
 return {
   "gbprod/yanky.nvim",
+  cond = not vim.g.vscode,
   dependencies = { "kkharji/sqlite.lua" },
   opts = function()
     local utils = require("yanky.utils")

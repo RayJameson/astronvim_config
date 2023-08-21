@@ -55,19 +55,21 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 })
 
 -- stop snippets when you leave to normal mode
-vim.api.nvim_create_autocmd("ModeChanged", {
-  pattern = "*",
-  group = vim.api.nvim_create_augroup("ModeChangedGroup", { clear = true }),
-  callback = function()
-    if
-      ((vim.v.event.old_mode == "s" and vim.v.event.new_mode == "n") or vim.v.event.old_mode == "i")
-      and require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
-      and not require("luasnip").session.jump_active
-    then
-      require("luasnip").unlink_current()
-    end
-  end,
-})
+if is_available("luasnip") then
+  vim.api.nvim_create_autocmd("ModeChanged", {
+    pattern = "*",
+    group = vim.api.nvim_create_augroup("ModeChangedGroup", { clear = true }),
+    callback = function()
+      if
+        ((vim.v.event.old_mode == "s" and vim.v.event.new_mode == "n") or vim.v.event.old_mode == "i")
+        and require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
+        and not require("luasnip").session.jump_active
+      then
+        require("luasnip").unlink_current()
+      end
+    end,
+  })
+end
 
 -- remove colorcolumn for qf
 vim.api.nvim_create_autocmd("FileType", {

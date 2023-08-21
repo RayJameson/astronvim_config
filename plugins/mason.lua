@@ -3,7 +3,12 @@ local list_insert_unique = require("astronvim.utils").list_insert_unique
 return {
   -- use mason-lspconfig to configure LSP installations
   {
+    "neovim/nvim-lspconfig",
+    cond = not vim.g.vscode,
+  },
+  {
     "williamboman/mason-lspconfig.nvim",
+    cond = not vim.g.vscode,
     -- overrides `require("mason-lspconfig").setup(...)`
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
@@ -19,6 +24,7 @@ return {
   {
     "jay-babu/mason-null-ls.nvim",
     -- overrides `require("mason-null-ls").setup(...)`
+    cond = not vim.g.vscode,
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = list_insert_unique(opts.ensure_installed, {
@@ -35,6 +41,7 @@ return {
   {
     "jay-babu/mason-nvim-dap.nvim",
     -- overrides `require("mason-nvim-dap").setup(...)`
+    cond = not vim.g.vscode,
     ft = { "python", "go", "rust", "javascript" },
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
@@ -73,6 +80,7 @@ return {
   },
   {
     "mfussenegger/nvim-dap-python",
+    cond = not vim.g.vscode,
     dependencies = "mfussenegger/nvim-dap",
     ft = "python", -- NOTE: ft: lazy-load on filetype
     config = function(_, opts)

@@ -1,6 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    cond = not vim.g.vscode,
     opts = function(_, opts)
       if opts.ensure_installed ~= "all" then
         opts.ensure_installed = require("astronvim.utils").list_insert_unique(
@@ -17,7 +18,7 @@ return {
     },
     init = function() vim.g.lsp_handlers_enabled = false end,
     event = "VeryLazy",
-    cond = not vim.g.neovide,
+    cond = not (vim.g.neovide or vim.g.vscode),
     opts = {
       cmdline = { view = "cmdline" },
       lsp = {

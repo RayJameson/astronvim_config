@@ -12,14 +12,18 @@ return {
   {
     "goolord/alpha-nvim",
     enabled = false,
-    opts = function(_, opts)
-      -- customize the dashboard header
-      opts.section.header.val = require("user.header")
-      return opts
-    end,
+  },
+  {
+    "window-picker",
+    enabled = false,
+  },
+  {
+    "Shatur/neovim-session-manager",
+    enabled = false,
   },
   {
     "L3MON4D3/LuaSnip",
+    cond = not vim.g.vscode,
     config = function(plugin, opts)
       require("plugins.configs.luasnip")(plugin, opts) -- include the default astronvim config that calls the setup call
       -- add more custom luasnip configuration such as filetype extend or custom snippets
@@ -75,6 +79,7 @@ return {
   -- },
   {
     "max397574/better-escape.nvim",
+    cond = not vim.g.vscode,
     opts = function(_, opts)
       opts.mapping = { "JK", "JJ", "jk", "jj" }
       opts.keys = function() return vim.api.nvim_win_get_cursor(0)[2] > 1 and "<esc>l" or "<esc>" end
@@ -82,6 +87,7 @@ return {
   },
   {
     "onsails/lspkind.nvim",
+    cond = not vim.g.vscode,
     opts = function(_, opts)
       -- use codicons preset
       opts.preset = "codicons"
@@ -112,6 +118,7 @@ return {
   {
     -- override nvim-cmp plugin
     "hrsh7th/nvim-cmp",
+    cond = not vim.g.vscode,
     keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
     dependencies = {
       "hrsh7th/cmp-cmdline", -- add cmp-cmdline as dependency of cmp
@@ -153,6 +160,7 @@ return {
   },
   {
     "kevinhwang91/nvim-ufo",
+    cond = not vim.g.vscode,
     opts = function(_, opts)
       local handler = function(virtText, lnum, endLnum, width, truncate)
         local newVirtText = {}
@@ -186,18 +194,12 @@ return {
   },
   {
     "mfussenegger/nvim-dap",
+    cond = not vim.g.vscode,
     dependencies = { "theHamsta/nvim-dap-virtual-text", config = true },
   },
   {
     "lukas-reineke/indent-blankline.nvim",
+    cond = not vim.g.vscode,
     opts = function(_, opts) require("astronvim.utils").extend_tbl(opts.filetype_exclude, { "oil" }) end,
-  },
-  {
-    "window-picker",
-    enabled = false,
-  },
-  {
-    "Shatur/neovim-session-manager",
-    enabled = false,
   },
 }

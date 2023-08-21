@@ -12,6 +12,7 @@ return {
   { import = "astrocommunity.pack.go" },
   {
     "ray-x/go.nvim",
+    cond = not (vim.g.neovide or vim.g.vscode),
     opts = {
       lsp_inlay_hints = {
         enable = false,
@@ -25,9 +26,14 @@ return {
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.utility.neodim" },
+  {
+    "neodim",
+    cond = not vim.g.vscode,
+  },
   { import = "astrocommunity.file-explorer.mini-files" },
   {
     "mini.files",
+    cond = not vim.g.vscode,
     opts = {
       windows = {
         preview = true,
@@ -44,7 +50,7 @@ return {
   { import = "astrocommunity.utility.transparent-nvim" },
   {
     "transparent.nvim",
-    cond = not vim.g.neovide,
+    cond = not (vim.g.neovide or vim.g.vscode),
     priority = 1000,
     opts = {
       extra_groups = { -- table/string: additional groups that should be cleared
@@ -105,6 +111,10 @@ return {
   { import = "astrocommunity.editing-support.todo-comments-nvim" },
   {
     "todo-comments.nvim",
+    cond = not vim.g.vscode,
+  },
+  {
+    "todo-comments.nvim",
     opts = {
       keywords = {
         TEST = {
@@ -135,10 +145,15 @@ return {
     },
   },
   { import = "astrocommunity.project.nvim-spectre" },
+  {
+    "nvim-spectre",
+    cond = not vim.g.vscode,
+  },
   { import = "astrocommunity.motion.vim-matchup" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   {
     "trouble.nvim",
+    cond = not vim.g.vscode,
     opts = {
       include_declaration = { "lsp_definitions" },
       auto_jump = { "lsp_definitions", "lsp_references", "lsp_implementations" },
@@ -177,4 +192,8 @@ return {
     end,
   },
   { import = "astrocommunity.code-runner.sniprun" },
+  {
+    "sniprun",
+    cond = not vim.g.vscode,
+  },
 }
