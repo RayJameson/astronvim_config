@@ -6,6 +6,18 @@ if not is_available("yanky.nvim") then
   })
 end
 
+vim.api.nvim_create_augroup("RememberFolds", { clear = true })
+vim.api.nvim_create_autocmd("BufWinLeave", {
+  pattern = ".+",
+  callback = vim.cmd.mkview,
+  group = "RememberFolds",
+})
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  pattern = ".+",
+  callback = vim.cmd.loadview,
+  group = "RememberFolds",
+})
+
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
   pattern = "*",
   callback = function()
@@ -104,6 +116,6 @@ for file_extension, command in pairs(extension_cmd_map) do
       vim.api.nvim_buf_set_lines(0, 0, 0, true, {
         "#!/usr/bin/env " .. command,
       })
-    end
+    end,
   })
 end

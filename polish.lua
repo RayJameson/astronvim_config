@@ -9,17 +9,6 @@ return function()
     "langmap",
     "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
   )
-  vim.api.nvim_create_augroup("RememberFolds", { clear = true })
-  vim.api.nvim_create_autocmd("BufWinLeave", {
-    pattern = ".+",
-    callback = vim.cmd.mkview,
-    group = "RememberFolds",
-  })
-  vim.api.nvim_create_autocmd("BufWinEnter", {
-    pattern = ".+",
-    callback = vim.cmd.loadview,
-    group = "RememberFolds",
-  })
   if vim.fn.has("mac") then
     vim.cmd([[
       " function OpenMarkdownPreview (url)
