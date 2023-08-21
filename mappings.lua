@@ -226,13 +226,6 @@ end
     maps.n[prefix .. "t"] = { "<CMD>TodoTrouble<CR>", desc = "TODO list" }
   end
 
-  if is_available("glow.nvim") then
-    local icon = vim.g.icons_enabled and "󰽛 " or ""
-    local prefix = "<leader>m"
-    maps.n[prefix] = { desc = icon .. "Markdown" }
-    maps.n[prefix .. "M"] = { "<CMD>Glow<CR>", desc = "Markdown Glow" }
-  end
-
   if is_available("markdown-preview.nvim") then
     local icon = vim.g.icons_enabled and "󰽛 " or ""
     local prefix = "<leader>m"
