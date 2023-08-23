@@ -50,6 +50,8 @@ return function(maps)
   }
   maps.n["<C-d>"] = { "<C-d>zz", desc = "Scroll half page down" }
   maps.n["<C-u>"] = { "<C-u>zz", desc = "Scroll half page up" }
+  maps.n["<C-f>"] = { "<C-f>zz", desc = "Scroll page down" }
+  maps.n["<C-b>"] = { "<C-b>zz", desc = "Scroll page up" }
   maps.n["<leader>w"] = { "<CMD>w<CR><ESC><CMD>e<CR><ESC>", desc = "Save" }
   maps.v["<"] = { "<gv", desc = "Deindent line" }
   maps.v[">"] = { ">gv", desc = "Indent line" }
