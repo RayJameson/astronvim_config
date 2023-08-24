@@ -20,32 +20,32 @@ I doubt anyone wish to use this config as is, so here is some cool features if a
 
 ### Red line numbers above cursor, cyan current line, green below current line
 
-[How to set it up](astrotheme-config)  
+[How to set it up][astrotheme-config]
 
 ### Highlight function arguments used in function body
 
-[hlargs repo](hlargs-repo)  
-[config file](hlargs-config)  
+[hlargs repo][hlargs-repo]
+[config file][hlargs-config]
 <img width="1066" alt="image" src="https://github.com/RayJameson/astronvim_config/assets/67468725/1cc3a467-c93f-4f4b-bbbc-3d164d56d1f9">
 
 ### Fully transparent background via transparent.nvim
 
-[transparent.nvim](transparent-nvim-repo)  
-I'm using pinned version of [astrotheme](astrotheme-repo)
-with [those](highlight-colors) colors and additional
-[highlight groups](transparent-groups)  
+[transparent.nvim][transparent-nvim-repo]
+I'm using pinned version of [astrotheme][astrotheme-repo]
+with [those][highlight-colors] colors and additional
+[highlight groups][transparent-groups]
 _toggle transparency using `<leader>uT` or `:TransparentToggle`_
 
 ### Code runner via code_runner.nvim
 
-[code_runner.nvim](core-runner-repo)  
-[config file](code-runner-config)  
+[code_runner.nvim][core-runner-repo]
+[config file][code-runner-config]
 Very simple to add additional filetypes to run  
 _code runner options are in submenu using `<leader>r`_
 
 ### No neo-tree.nvim, I use mini.files and oil.nvim insted
 
-[oil config file](oil-config)  
+[oil config file][oil-config]
 I don't thik you need that permanent filetree sidebar as in your IDE or code editor.  
 If you need to see some project structure - use `tree` command in terminal.  
 If you need to naviagate files inside Neovim - use Telescope.  
@@ -58,8 +58,8 @@ Oil does (for ssh use `nvim oil-ssh://user@host/path/to/file`)
 
 ### No bufferline and tabline
 
-Same reason as above, for navigating I use Telescope and [grapple.nvim](grapple-repo) plugin.
-I used [harpoon.nvim](harpoon-repo) before, but [grapple.nvim](grapple-repo) 
+Same reason as above, for navigating I use Telescope and [grapple.nvim][grapple-repo] plugin.
+I used [harpoon.nvim][harpoon-repo] before, but [grapple.nvim][grapple-repo] 
 has a little bit more functionality, although they both are very similar.
 
 Check this video of ThePrimeagen explaining `harpoon.nvim`  
@@ -67,8 +67,8 @@ Check this video of ThePrimeagen explaining `harpoon.nvim`
 
 ### AI completion via codeium.vim
 
-[codeium.vim](codeium-repo)  
-[config file](codeium-config)  
+[codeium.vim][codeium-repo]
+[config file][codeium-config]
 Very useful for boilerplate stuff, such as copy-paste with a bit of change in some text/variable etc
 Also it's free for personal use.  
 <img width="1031" alt="image" src="https://github.com/RayJameson/astronvim_config/assets/67468725/9f99070f-1747-4544-98d8-cf250e42bd8a">
@@ -76,8 +76,8 @@ _By default there is some telemetry which can be opted-out in your profile_
 
 ### Yank history using yanky.nvim
 
-[yanky.nvim](yanky-repo)  
-[config file](yanky-config)  
+[yanky.nvim][yanky-repo]  
+[config file][yanky-config]  
 As I said in this issue gbprod/yanky.nvim#122
 I believe yank history should be treated as a stack, and plugin's author agrees with me,
 so until new commands will be implemented, I will use changed behavior of commands
@@ -85,7 +85,7 @@ so until new commands will be implemented, I will use changed behavior of comman
 ### ~~Random alpha header~~
 
 I removed alpha plugin because it's doesn't bring any functionality, but takes some of loading time
-If you want to yoink that random alpha header - [config file](header-config), and [here is how to add it](how-to-add-random-alpha-header)
+If you want to yoink that random alpha header - [config file][header-config], and [here is how to add it][how-to-add-random-alpha-header]
 
 
 [astrotheme-config]: https://github.com/RayJameson/astronvim_config/blob/main/highlights/astrotheme.lua#L3-L5
