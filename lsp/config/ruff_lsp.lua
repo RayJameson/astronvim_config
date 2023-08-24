@@ -1,23 +1,22 @@
 return {
-  on_attach = function(_, bufnr)
-    -- HACK: temporary overwriting `vim.notify` function to prevent "No code actions available" notification
-    local silent = function(fn, ...)
-      local old_notify = vim.notify
-      ---@diagnostic disable-next-line
-      vim.notify = function(msg, ...) end -- luacheck: ignore 212
-      fn(...)
-      vim.wait(100)
-      vim.notify = old_notify
-    end
-
-    -- Organize imports via code action on save
+  on_attach = function(client, bufnr)
+    -- Organize imports and fix all lint warnings via code action on save
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,
       callback = function()
-        silent(vim.lsp.buf.code_action, {
-          context = { only = { "source.fixAll.ruff" } },
-          apply = true,
-        })
+        local ms = vim.lsp.protocol.Methods
+        local timeout_ms = 1000
+        local params = vim.lsp.util.make_range_params()
+        params.context = {
+          only = { "source.fixAll.ruff" },
+          triggerKind = vim.lsp.protocol.CodeActionTriggerKind.Automatic,
+          diagnostics = vim.lsp.diagnostic.get_line_diagnostics(bufnr),
+        }
+        local resp, err = client.request_sync(ms.textDocument_codeAction, params, timeout_ms, bufnr)
+        if err ~= nil then return end
+        if resp.result ~= nil and resp.result[1] ~= nil and resp.result[1].edit ~= nil then
+          vim.lsp.util.apply_workspace_edit(resp.result[1].edit, client.offset_encoding)
+        end
       end,
       group = vim.api.nvim_create_augroup("RuffLspCodeAction", { clear = true }),
     })
