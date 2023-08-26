@@ -1,6 +1,7 @@
 return {
   on_attach = function(client, bufnr)
     -- Organize imports and fix all lint warnings via code action on save
+    client.server_capabilities.hoverProvider = false
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,
       callback = function()
