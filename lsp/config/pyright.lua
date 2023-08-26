@@ -11,4 +11,11 @@ return {
       if not enabled_capabilities[capability_name] then client.server_capabilities[capability_name] = false end
     end
   end,
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+      }
+    }
+  }
 }
