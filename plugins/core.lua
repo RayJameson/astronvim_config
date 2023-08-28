@@ -104,14 +104,29 @@ return {
         String = "",
       }
       opts.mode = "symbol_text"
-      opts.menu = {
-        buffer = "[Buffer]",
-        nvim_lsp = "[LSP]",
-        luasnip = "[LuaSnip]",
-        nvim_lua = "[Lua]",
-        latex_symbols = "[Latex]",
-        orgmode = "[Org]",
-      }
+      --[[
+      INFO: AstroNvim sets `menu` to empty table but we need it to be `nil` for `before` function to work
+      otherwise `menu` will overwrite everything we set up in `vim_item.menu` of `before` function
+      https://github.com/AstroNvim/AstroNvim/blob/nightly/lua/plugins/ui.lua#L45
+      https://github.com/onsails/lspkind.nvim/blob/57610d5ab560c073c465d6faf0c19f200cb67e6e/lua/lspkind/init.lua#L195
+      --]]
+      opts.menu = nil
+      opts.before = function(entry, vim_item)
+        local sources_map = {
+          buffer = "Buffer",
+          nvim_lsp = "LSP",
+          luasnip = "LuaSnip",
+          nvim_lua = "Lua",
+          latex_symbols = "Latex",
+          orgmode = "Org",
+        }
+        if entry and entry.source.name == "nvim_lsp" then
+          vim_item.menu = ("[%s] - [%s]"):format(sources_map[entry.source.name], entry.source.source.client.name)
+        else
+          vim_item.menu = ("[%s]"):format(sources_map[entry.source.name])
+        end
+        return vim_item
+      end
       return opts
     end,
   },
