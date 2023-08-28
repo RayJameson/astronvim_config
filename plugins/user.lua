@@ -21,11 +21,17 @@ return {
     cond = not vim.g.vscode,
     event = "LspAttach",
     config = function()
-      -- Change '<C-g>' here to any keycode you like.
-      vim.keymap.set("i", "<M-g>", function() return vim.api.nvim_call_function("codeium#Accept", {}) end, { expr = true })
-      vim.keymap.set("i", "<M-;>", function() return vim.api.nvim_call_function("codeium#CycleCompletions", {1}) end, { expr = true })
-      vim.keymap.set("i", "<M-,>", function() return vim.api.nvim_call_function("codeium#CycleCompletions", {-1}) end, { expr = true })
-      vim.keymap.set("i", "<M-x>", function() return vim.api.nvim_call_function("codeium#Clear", {}) end, { expr = true })
+      vim.keymap.set("i", "<C-g>", function() return vim.api.nvim_call_function("codeium#Accept", {}) end, { expr = true })
+      vim.keymap.set("i", "<C-;>", function() return vim.api.nvim_call_function("codeium#CycleCompletions", {1}) end, { expr = true })
+      vim.keymap.set("i", "<C-,>", function() return vim.api.nvim_call_function("codeium#CycleCompletions", {-1}) end, { expr = true })
+      vim.keymap.set("i", "<C-x>", function() return vim.api.nvim_call_function("codeium#Clear", {}) end, { expr = true })
+      vim.keymap.set("n", "<leader>;", function()
+      if vim.g.codeium_enabled == true then
+        vim.cmd "CodeiumDisable"
+      else
+        vim.cmd "CodeiumEnable"
+      end
+    end, { noremap = true, desc = "Toggle Codeium" })
     end,
   },
   {
