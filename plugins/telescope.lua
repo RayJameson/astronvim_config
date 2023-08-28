@@ -2,20 +2,44 @@ local extend_tbl = require("astronvim.utils").extend_tbl
 return {
   "nvim-telescope/telescope.nvim",
   cond = not vim.g.vscode,
-  dependencies = { -- add a new dependency to telescope that is our new plugin
-    "debugloop/telescope-undo.nvim",
-  },
   -- the first parameter is the plugin specification
   -- the second is the table of options as set up in Lazy with the `opts` key
+  dependencies = { "debugloop/telescope-undo.nvim" },
+  opts = function(_, opts)
+    opts.extensions = {
+      undo = {
+        use_custom_command = vim.fn.executable("diff-so-fancy") > 0
+            and { "bash", "-c", "echo '$DIFF' | diff-so-fancy" }
+          or nil,
+        layout_strategy = "vertical",
+        layout_config = {
+          preview_height = 0.7,
+          preview_cutoff = 0.3,
+        },
+        mappings = {
+          i = {
+            ["<cr>"] = require("telescope-undo.actions").restore,
+            ["<S-cr>"] = require("telescope-undo.actions").yank_additions,
+            ["<C-cr>"] = require("telescope-undo.actions").yank_deletions,
+          },
+          n = {
+            ["y"] = require("telescope-undo.actions").yank_additions,
+            ["Y"] = require("telescope-undo.actions").yank_deletions,
+            ["u"] = require("telescope-undo.actions").restore,
+          },
+        },
+      },
+    }
+    return opts
+  end,
   config = function(plugin, opts)
-    -- run the core AstroNvim configuration function with the options table
-    require("plugins.configs.telescope")(plugin, opts)
-
     -- require telescope and load extensions as necessary
     local telescope = require("telescope")
+    -- run the core AstroNvim configuration function with the options table
+    require("plugins.configs.telescope")(plugin, opts)
     local actions = require("telescope.actions")
-    telescope.load_extension("undo")
     telescope.load_extension("yank_history")
+    telescope.load_extension("undo")
 
     local trouble = require("trouble")
     -- named function for which-key in telescope help
