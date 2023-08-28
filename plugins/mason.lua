@@ -3,6 +3,15 @@ local list_insert_unique = require("astronvim.utils").list_insert_unique
 return {
   -- use mason-lspconfig to configure LSP installations
   {
+    "williamboman/mason.nvim",
+    opts = {
+      registries = {
+        "lua:user.custom-registry", -- custom user registry
+        "github:mason-org/mason-registry", -- make sure to add the default registry
+      },
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     cond = not vim.g.vscode,
   },
@@ -15,8 +24,6 @@ return {
       opts.ensure_installed = list_insert_unique(opts.ensure_installed, {
         "lua_ls",
         "ruff_lsp",
-        "pyright",
-        "jedi_language_server",
       })
     end,
   },
