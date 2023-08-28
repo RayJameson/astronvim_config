@@ -21,17 +21,19 @@ return {
     cond = not vim.g.vscode,
     event = "LspAttach",
     config = function()
+      -- stylua: ignore start
       vim.keymap.set("i", "<C-g>", function() return vim.api.nvim_call_function("codeium#Accept", {}) end, { expr = true })
       vim.keymap.set("i", "<C-;>", function() return vim.api.nvim_call_function("codeium#CycleCompletions", {1}) end, { expr = true })
       vim.keymap.set("i", "<C-,>", function() return vim.api.nvim_call_function("codeium#CycleCompletions", {-1}) end, { expr = true })
       vim.keymap.set("i", "<C-x>", function() return vim.api.nvim_call_function("codeium#Clear", {}) end, { expr = true })
+      -- stylua: ignore end
       vim.keymap.set("n", "<leader>;", function()
-      if vim.g.codeium_enabled == true then
-        vim.cmd "CodeiumDisable"
-      else
-        vim.cmd "CodeiumEnable"
-      end
-    end, { noremap = true, desc = "Toggle Codeium" })
+        if vim.g.codeium_enabled == true then
+          vim.cmd("CodeiumDisable")
+        else
+          vim.cmd("CodeiumEnable")
+        end
+      end, { noremap = true, desc = "Toggle Codeium" })
     end,
   },
   {
