@@ -55,6 +55,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 })
 
 -- stop snippets when you leave to normal mode
+-- https://github.com/L3MON4D3/LuaSnip/issues/258
 if is_available("luasnip") then
   vim.api.nvim_create_autocmd("ModeChanged", {
     pattern = "*",
