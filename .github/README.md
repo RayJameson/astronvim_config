@@ -1,5 +1,10 @@
 <!--toc:start-->
-- [AstroNvim user configuration](#astronvim-user-configuration)
+- [AstroNvim user configuration](#astronvim-user-configuration)  
+      - [Make a backup of your current nvim folder](#make-a-backup-of-your-current-nvim-folder)  
+      - [Clean neovim folders (Optional but recommended)](#clean-neovim-folders-optional-but-recommended)  
+      - [Clone the repository](#clone-the-repository)  
+      - [Clone this config](#clone-this-config)  
+      - [Install plugins](#install-plugins)  
     - [Red line numbers above cursor, cyan current line, green below current line](#red-line-numbers-above-cursor-cyan-current-line-green-below-current-line)
     - [Highlight function arguments used in function body](#highlight-function-arguments-used-in-function-body)
     - [Fully transparent background via transparent.nvim](#fully-transparent-background-via-transparentnvim)
@@ -8,11 +13,35 @@
     - [No bufferline and tabline](#no-bufferline-and-tabline)
     - [AI completion via codeium.vim](#ai-completion-via-codeiumvim)
     - [Yank history using yanky.nvim](#yank-history-using-yankynvim)
-    - ~~[Random alpha header](#random-alpha-header)~~
+    - [~~Random alpha header~~](#random-alpha-header)
 <!--toc:end-->
 
 
 # AstroNvim user configuration
+
+This is user configuration for AstroNvim, to use it you first need to install AstroNvim.
+#### Make a backup of your current nvim folder
+```shell
+mv ~/.config/nvim ~/.config/nvim.bak
+```
+#### Clean neovim folders (Optional but recommended)
+```shell
+rm -rf ~/.local/{share,state}/nvim && rm -rf ~/.cache/nvim
+```
+#### Clone the repository
+```shell
+git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+```
+#### Clone this config
+```shell
+git clone --depth 1 https://github.com/RayJameson/astronvim_config ~/.config/nvim/lua/user
+# or
+git clone --depth 1 https://github.com/RayJameson/astronvim_config ~/.config/astronvim
+```
+#### Install plugins
+```shell
+nvim --headless "+Lazy! sync" +qa
+```
 
 I doubt anyone wish to use this config as is, so here is some cool features if anyone wants to yoink them:  
 <img width="1728" alt="image" src="https://github.com/RayJameson/astronvim_config/assets/67468725/5912b1d1-2346-4424-a847-a607a152c99d">
