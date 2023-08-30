@@ -83,7 +83,6 @@ return {
       "nvim-telescope/telescope.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-    opts = {},
     cmd = {
       "DevdocsFetch",
       "DevdocsInstall",
@@ -92,6 +91,22 @@ return {
       "DevdocsOpenFloat",
       "DevdocsUpdate",
       "DevdocsUpdateAll",
+    },
+    keys = {
+      { "<leader>fd", "<cmd>DevdocsOpenCurrentFloat<CR>", desc = "Find Devdocs for current ft", mode = { "n" } },
+      { "<leader>fD", "<cmd>DevdocsOpenFloat<CR>", desc = "Find Devdocs", mode = { "n" } },
+    },
+    opts = {
+      previewer_cmd = vim.fn.executable("glow") == 1 and "glow" or nil,
+      cmd_args = { "-s", "dark", "-w", "80" },
+      picker_cmd = true,
+      picker_cmd_args = { "-p" },
+      float_win = { -- passed to nvim_open_win(), see :h api-floatwin
+        relative = "editor",
+        height = 35,
+        width = 125,
+        border = "rounded",
+      },
     },
   },
   {
