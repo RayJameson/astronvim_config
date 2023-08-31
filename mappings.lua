@@ -195,8 +195,6 @@ end
       if maps[mode][prefix] == nil or maps[mode][prefix].desc == "prefix" then
         maps[mode][prefix] = { desc = icon .. "Snip run" }
       end
-      maps[mode][prefix .. "s"] = { ":SnipRun<CR>", desc = "Run snippet" }
-      maps[mode][prefix .. "C"] = { ":SnipClose<CR>", desc = "Close SnipRun" }
     end
   end
 

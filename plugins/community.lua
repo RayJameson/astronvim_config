@@ -191,9 +191,4 @@ return {
       })
     end,
   },
-  { import = "astrocommunity.code-runner.sniprun" },
-  {
-    "sniprun",
-    cond = not vim.g.vscode,
-  },
 }
