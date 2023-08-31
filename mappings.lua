@@ -26,7 +26,7 @@ return function(maps)
   --]
   -- Repeat macros across visual selection
 
-  maps.v["@"] = {
+  maps.x["@"] = {
     ":<C-u>call ExecuteMacroOverVisualRange()<CR>",
     desc = "Repeat macros across visual selection",
     silent = false,
@@ -44,7 +44,7 @@ return function(maps)
     ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/g<Left><Left>",
     desc = "Find and replace",
   }
-  maps.v["<leader>F"] = {
+  maps.x["<leader>F"] = {
     '<Esc>"fyiw<CR>gv:s/<C-r>f/<C-r>f/g<Left><Left>',
     desc = "Find and replace visual",
   }
@@ -53,8 +53,8 @@ return function(maps)
   maps.n["<C-f>"] = { "<C-f>zz", desc = "Scroll page down" }
   maps.n["<C-b>"] = { "<C-b>zz", desc = "Scroll page up" }
   maps.n["<leader>w"] = { "<CMD>w<CR><ESC><CMD>e<CR><ESC>", desc = "Save" }
-  maps.v["<"] = { "<gv", desc = "Deindent line" }
-  maps.v[">"] = { ">gv", desc = "Indent line" }
+  maps.x["<"] = { "<gv", desc = "Deindent line" }
+  maps.x[">"] = { ">gv", desc = "Indent line" }
 
   --[ Move cursor with CTRL in insert, command modes
   maps.c["<C-h>"] = { "<Left>", desc = "Left" }
@@ -70,15 +70,15 @@ return function(maps)
   --[ Better ^ and $
   maps.n["gh"] = { "^", desc = "go to beginning of the line (^)" }
   maps.n["gl"] = { "$", desc = "go to end of the line ($)" }
-  maps.v["gh"] = { "^", desc = "go to beginning of the line (^)" }
-  maps.v["gl"] = { "$", desc = "go to end of the line ($)" }
+  maps.x["gh"] = { "^", desc = "go to beginning of the line (^)" }
+  maps.x["gl"] = { "$", desc = "go to end of the line ($)" }
   --]
 
   --[ Better gg and G
   maps.n["gj"] = { "G", desc = "go to last line" }
   maps.n["gk"] = { "gg", desc = "go to first line" }
-  maps.v["gj"] = { "G", desc = "go to last line" }
-  maps.v["gk"] = { "gg", desc = "go to first line" }
+  maps.x["gj"] = { "G", desc = "go to last line" }
+  maps.x["gk"] = { "gg", desc = "go to first line" }
   --]
 
   maps.n["<leader>c"] = {
@@ -187,7 +187,7 @@ end
 
   if is_available("sniprun") then
     -- for some reason there is error when using "<CR>" instead of ":"
-    for _, mode in pairs { "n", "v" } do
+    for _, mode in pairs { "n", "x" } do
       local icon = vim.g.icons_enabled and " " or ""
       local prefix = "<leader>r"
       if maps[mode][prefix] == nil or maps[mode][prefix].desc == "prefix" then
