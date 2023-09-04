@@ -41,6 +41,7 @@ return {
       })
       opts.handlers = {
         luacheck = function() end,
+        stylua = function() end,
         mypy = function() end,
       }
     end,
