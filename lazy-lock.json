@@ -40,7 +40,6 @@
   "mini.files": { "branch": "main", "commit": "dea80a8147aa4e3025c34d2e2aaa6f2aeb7b21dd" },
   "neoconf.nvim": { "branch": "main", "commit": "9873bc90d7e6bee70ec8f552b4663c3ff51ec7f6" },
   "neodev.nvim": { "branch": "main", "commit": "183f5a7357397260b631d6cccceccc3621b50f78" },
-  "neodim": { "branch": "master", "commit": "1aaf133a0f952058db6b218927d582a98459af0d" },
   "neogen": { "branch": "main", "commit": "1dd0319ccf41b2498f45a3c7607f2ee325ffc6a0" },
   "neotest": { "branch": "master", "commit": "bec7be0f13ee19c85561943fc5f7b8daa4f4d465" },
   "neotest-go": { "branch": "main", "commit": "f2580cad67ef0181403cf65858ab638ffd3ede9f" },

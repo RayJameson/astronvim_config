@@ -25,11 +25,6 @@ return {
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.docker" },
-  { import = "astrocommunity.utility.neodim" },
-  {
-    "neodim",
-    cond = not vim.g.vscode,
-  },
   { import = "astrocommunity.file-explorer.mini-files" },
   {
     "mini.files",
