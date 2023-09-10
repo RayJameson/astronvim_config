@@ -28,7 +28,8 @@ return {
       vim.keymap.set("i", "<C-x>", function() return vim.api.nvim_call_function("codeium#Clear", {}) end, { expr = true })
       -- stylua: ignore end
       vim.keymap.set("n", "<leader>;", function()
-        if vim.g.codeium_enabled == true then
+        -- HACK: initially there is no vim.g.codeium_enabled variable even if Codeium enabled
+        if vim.g.codeium_enabled == true or vim.g.codeium_enabled == nil then
           vim.cmd("CodeiumDisable")
         else
           vim.cmd("CodeiumEnable")
