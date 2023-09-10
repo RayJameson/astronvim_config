@@ -42,7 +42,7 @@ return {
       },
     },
   },
-  { import = "astrocommunity.utility.transparent-nvim" },
+  { import = "astrocommunity.color.transparent-nvim" },
   {
     "transparent.nvim",
     cond = not (vim.g.neovide or vim.g.vscode),
