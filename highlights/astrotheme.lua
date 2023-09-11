@@ -18,6 +18,7 @@ return function(hl) -- or a function that returns a new table of colors to set
     hl.Label = { fg = C.blue, bg = C.none, italic = true } -- case, default, etc.
     hl.Exception = { fg = C.purple, bg = C.none, italic = true } -- try, catch, throw
     hl.Boolean = { fg = C.bright_turquoise, bg = C.none } -- a boolean constant: TRUE, false
+    hl.DiffDelete = { fg = C.red }
     hl["@lsp.typemod.function.global"] = { fg = C.blue_1 }
     hl["@function.builtin"] = { fg = C.blue_1 }
     hl["@variable.builtin"] = { fg = C.red_3 }
