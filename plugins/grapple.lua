@@ -18,4 +18,7 @@ return {
     { "<C-n>", "<cmd>GrappleCycle forward<CR>", desc = "Select next tag" },
     { "<C-p>", "<cmd>GrappleCycle backward<CR>", desc = "Select previous tag" },
   },
+  opts = function(_, opts)
+    opts.scope = require("grapple").resolvers.git_branch
+  end
 }
