@@ -14,7 +14,6 @@ return {
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
     config.diagnostics_format = "#{m} [#{c}] "
-    config.debug = true
     config.sources = {
       -- Set a formatter
       null_ls.builtins.code_actions.gitsigns,
