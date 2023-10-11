@@ -128,17 +128,6 @@ return {
       },
     },
   },
-  { import = "astrocommunity.editing-support.neogen" },
-  {
-    "neogen",
-    opts = {
-      languages = {
-        python = { template = { annotation_convention = "reST" } },
-        rust = { template = { annotation_convention = "rustdoc" } },
-        sh = { template = { annotation_convention = "google_bash" } },
-      },
-    },
-  },
   { import = "astrocommunity.project.nvim-spectre" },
   {
     "nvim-spectre",
