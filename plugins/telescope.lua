@@ -1,4 +1,6 @@
 local extend_tbl = require("astronvim.utils").extend_tbl
+local is_available = require("astronvim.utils").is_available
+
 return {
   "nvim-telescope/telescope.nvim",
   cond = not vim.g.vscode,
@@ -38,7 +40,7 @@ return {
     -- run the core AstroNvim configuration function with the options table
     require("plugins.configs.telescope")(plugin, opts)
     local actions = require("telescope.actions")
-    telescope.load_extension("yank_history")
+    if is_available("yanky.nvim") then telescope.load_extension("yank_history") end
     telescope.load_extension("undo")
 
     local trouble = require("trouble")
