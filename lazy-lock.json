@@ -92,5 +92,5 @@
   "trouble.nvim": { "branch": "main", "commit": "f1168feada93c0154ede4d1fe9183bf69bac54ea" },
   "vim-matchup": { "branch": "master", "commit": "d30b72d20f01478a8486f15a57c89fe3177373db" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" },
-  "yanky.nvim": { "branch": "main", "commit": "631b44d4129b04f9b3e87e4a29627504d350eba4" }
+  "yanky.nvim": { "branch": "main", "commit": "5ba331de8a8d18e1ec345d26e865bc3a0db2e8be" }
 }
