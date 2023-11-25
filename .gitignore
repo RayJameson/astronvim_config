@@ -45,5 +45,3 @@ presence_blacklist.lua
 .luarc.json
 DS_Store
 .DS_Store
-lsp/custom_servers.lua
-custom-registry
