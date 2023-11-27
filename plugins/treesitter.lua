@@ -1,3 +1,4 @@
+local is_available = require("astronvim.utils").is_available
 return {
   "nvim-treesitter/nvim-treesitter",
   cond = not vim.g.vscode,
@@ -6,11 +7,13 @@ return {
   },
   opts = function(_, opts)
     -- add more things to the ensure_installed table protecting against community packs modifying it
-    require("orgmode").setup_ts_grammar()
     opts.highlight = {
       enable = true,
-      additional_vim_regex_highlighting = { "org" },
     }
+    if is_available("orgmode") then
+      require("orgmode").setup_ts_grammar()
+      opts.highlight.additional_vim_regex_highlighting = { "org" }
+    end
     opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
       "bash",
       "diff",
