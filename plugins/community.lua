@@ -112,5 +112,4 @@ return {
       })
     end,
   },
-  { import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
 }
