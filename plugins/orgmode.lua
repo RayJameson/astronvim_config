@@ -24,6 +24,7 @@ local date_with_current_week = function() return os.date("%Y/%m/") .. "W" .. get
 
 return {
   "nvim-orgmode/orgmode",
+  enabled = false,
   cond = not vim.g.vscode,
   event = "VeryLazy",
   dependencies = {
