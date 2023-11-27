@@ -3,7 +3,6 @@ return {
   cond = not vim.g.vscode,
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    "nvim-treesitter/playground",
   },
   opts = function(_, opts)
     -- add more things to the ensure_installed table protecting against community packs modifying it
