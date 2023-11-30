@@ -10,7 +10,7 @@ return {
   opts = function(_, opts)
     opts.extensions = {
       undo = {
-        use_custom_command = vim.fn.executable("diff-so-fancy") > 0
+        use_custom_command = vim.fn.executable("diff-so-fancy") == 1
             and { "bash", "-c", "echo '$DIFF' | diff-so-fancy" }
           or nil,
         layout_strategy = "vertical",
