@@ -1,3 +1,4 @@
+local is_available = require("astronvim.utils").is_available
 return function(hl) -- or a function that returns a new table of colors to set
   local C = require("user.highlights.colors")
   if not vim.g.vscode then
@@ -22,6 +23,11 @@ return function(hl) -- or a function that returns a new table of colors to set
     hl["@lsp.typemod.function.global"] = { fg = C.blue_1 }
     hl["@function.builtin"] = { fg = C.blue_1 }
     hl["@variable.builtin"] = { fg = C.red_3 }
+    if is_available("mini.clue") then
+      hl.MiniClueDescGroup = { fg = C.purple }
+      hl.MiniClueDescSingle = { fg = C.blue }
+      hl.MiniClueNextKey = { fg = C.blue }
+    end
   end
   if vim.g.transparent_enabled then
     hl.TreesitterContextLineNumber = { fg = C.pale_red }
