@@ -71,6 +71,7 @@ return {
     cond = not vim.g.vscode,
   },
   { import = "astrocommunity.motion.vim-matchup" },
+  { import = "astrocommunity.indent.mini-indentscope" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   {
     "trouble.nvim",
