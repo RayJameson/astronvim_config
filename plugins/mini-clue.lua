@@ -96,7 +96,7 @@ return {
         { mode = "n", keys = "<C-w>" },
       }
       local triggers_prepare = {}
-      for _, trigger in ipairs { "g", "z", "d", "y", "c", "`", "'", '"', "[", "]", "<Leader>" } do
+      for _, trigger in ipairs { "g", "z", "d", "y", "c", "m", "q", "`", "'", '"', "[", "]", "<Leader>" } do
         for _, mode in ipairs { "n", "x" } do
           table.insert(triggers_prepare, { mode = mode, keys = trigger })
         end
