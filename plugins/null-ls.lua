@@ -19,7 +19,7 @@ return {
       null_ls.builtins.code_actions.gitsigns,
       null_ls.builtins.formatting.pyink.with {
         extra_args = {
-          "--line-length=79",
+          "--line-length=120",
         },
       },
       null_ls.builtins.diagnostics.pylint,
