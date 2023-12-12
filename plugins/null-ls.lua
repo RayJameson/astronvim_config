@@ -56,6 +56,7 @@ return {
           end
           return args
         end,
+        method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
         generator_opts = extend_tbl(null_ls.builtins.diagnostics.luacheck._opts, { multiple_files = true }),
         on_output = h.diagnostics.from_pattern(
           [[([^:]+):(%d+):(%d+)-(%d+): %((%a)(%d+)%) (.*)]],
