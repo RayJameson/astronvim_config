@@ -68,8 +68,6 @@ return function()
     },
     extension = {
       tlua = "lua",
-      html = "htmldjango",
-      htmldjango = "html",
       zsh = "sh",
     },
     pattern = {
