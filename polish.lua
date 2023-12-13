@@ -1,3 +1,4 @@
+local is_available = require("astronvim.utils").is_available
 return function()
   vim.api.nvim_set_var("python3_host_prog", "$HOME/.pyenv/versions/neovim_base_venv/bin/python3")
   vim.api.nvim_set_var(
@@ -5,10 +6,25 @@ return function()
     "/usr/local/bin/neovim-node-host"
     -- nvm doesn't work with this variable, make symlink to destination above
   )
-  vim.api.nvim_set_option(
-    "langmap",
-    "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
-  )
+  local function escape(str)
+    -- You need to escape these characters to work correctly
+    local escape_chars = [[;,."|\]]
+    return vim.fn.escape(str, escape_chars)
+  end
+
+  -- Recommended to use lua template string
+  local en = [[`qwertyuiop[]asdfghjkl;'zxcvbnm]]
+  local ru = [[ёйцукенгшщзхъфывапролджэячсмить]]
+  local en_shift = [[~QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>]]
+  local ru_shift = [[ËЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ]]
+
+  vim.opt.langmap = vim.fn.join({
+    -- | `to` should be first     | `from` should be second
+    escape(ru_shift)
+      .. ";"
+      .. escape(en_shift),
+    escape(ru) .. ";" .. escape(en),
+  }, ",")
   if vim.fn.has("mac") then
     vim.cmd([[
       " function OpenMarkdownPreview (url)
@@ -112,4 +128,8 @@ return function()
     end,
     {}
   )
+  if is_available("langmapper.nvim") then
+    local langmapper = require("langmapper")
+    langmapper.automapping({ global = true, buffer = true })
+  end
 end
