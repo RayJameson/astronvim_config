@@ -44,7 +44,9 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
-    opts = {},
+    opts = {
+      max_lines = 5,
+    },
   },
   {
     "kylechui/nvim-surround",
