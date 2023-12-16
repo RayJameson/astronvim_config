@@ -20,6 +20,15 @@ return function(hl) -- or a function that returns a new table of colors to set
   hl.Exception = { fg = C.purple, bg = C.none, italic = true } -- try, catch, throw
   hl.Boolean = { fg = C.bright_turquoise, bg = C.none } -- a boolean constant: TRUE, false
   hl.DiffDelete = { fg = C.red }
+  hl.NormalFloat = { bg = C.bg }
+  hl.TabLine = { bg = C.bg }
+  hl.DiagnosticFloatingOk = { link = "DiagnosticOk" }
+  hl.DiagnosticFloatingError = { link = "DiagnosticError" }
+  hl.DiagnosticFloatingWarn = { link = "DiagnosticWarn" }
+  hl.DiagnosticFloatingInfo = { link = "DiagnosticInfo" }
+  hl.DiagnosticFloatingHint = { link = "DiagnosticHint" }
+  hl.FloatShadow = { bg = C.bg }
+  hl.FloatShadowThrough = { bg = C.bg }
   hl["@lsp.typemod.function.global"] = { fg = C.blue_1 }
   hl["@function.builtin"] = { fg = C.blue_1 }
   hl["@variable.builtin"] = { fg = C.red_3 }
