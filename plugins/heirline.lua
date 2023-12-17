@@ -5,28 +5,46 @@ return {
   opts = function(_, opts)
     local status = require("astronvim.utils.status")
     -- custom heirline statusline component for harpoon
-    status.component.harpoon_index = {
-      provider = function()
-        if not is_available("harpoon") then return end
-        local marked = require("harpoon.mark")
-        local filename = vim.api.nvim_buf_get_name(0)
-        local ok, index = pcall(marked.get_index_of, filename)
-        if ok and index and index > 0 then
-          return "󱡀 " .. index .. " "
-        else
-          return
-        end
-      end,
-    }
+    status.component.harpoon_index = function()
+      return status.component.builder {
+        provider = function()
+          if not is_available("harpoon") then return end
+          local marked = require("harpoon.mark")
+          local filename = vim.api.nvim_buf_get_name(0)
+          local ok, index = pcall(marked.get_index_of, filename)
+          if ok and index and index > 0 then
+            return "󱡀 " .. index .. " "
+          else
+            return
+          end
+        end,
+      }
+    end
     -- custom heirline statusline component for grapple
-    status.component.grapple = {
-      provider = function()
-        if not is_available("grapple.nvim") then return end
-        local grapple = require("grapple")
-        local key = grapple.key { buffer = 0 }
-        if key ~= nil then return " " .. key .. " " end
-      end,
-    }
+    status.component.grapple = function()
+      return status.component.builder {
+        provider = function()
+          if not is_available("grapple.nvim") then return end
+          local grapple = require("grapple")
+          local key = grapple.key { buffer = 0 }
+          if key ~= nil then return " " .. key .. " " end
+        end,
+      }
+    end
+
+    status.component.line_end = function()
+      return status.component.builder {
+        {
+          provider = function()
+            local map = { ["unix"] = "LF", ["mac"] = "CR", ["dos"] = "CRLF" }
+            return map[vim.bo.fileformat]
+          end,
+        },
+        surround = {
+          separator = "right",
+        },
+      }
+    end
 
     opts.tabline = nil
     opts.statusline = {
@@ -49,8 +67,8 @@ return {
         update = "BufModifiedSet",
       },
       status.component.git_branch(),
-      status.component.harpoon_index,
-      status.component.grapple,
+      status.component.harpoon_index(),
+      status.component.grapple(),
       status.component.git_diff(),
       status.component.diagnostics(),
       status.component.fill(),
@@ -59,17 +77,7 @@ return {
       status.component.fill(),
       status.component.lsp(),
       status.component.treesitter(),
-      status.component.builder {
-        {
-          provider = function()
-            local map = { ["unix"] = "LF", ["mac"] = "CR", ["dos"] = "CRLF" }
-            return map[vim.bo.fileformat]
-          end,
-        },
-        surround = {
-          separator = "right",
-        },
-      },
+      status.component.line_end(),
       status.component.nav(),
     }
     return opts
