@@ -4,22 +4,6 @@ return {
   cond = not vim.g.vscode,
   opts = function(_, opts)
     local status = require("astronvim.utils.status")
-    -- custom heirline statusline component for harpoon
-    status.component.harpoon_index = function()
-      return status.component.builder {
-        provider = function()
-          if not is_available("harpoon") then return end
-          local marked = require("harpoon.mark")
-          local filename = vim.api.nvim_buf_get_name(0)
-          local ok, index = pcall(marked.get_index_of, filename)
-          if ok and index and index > 0 then
-            return "󱡀 " .. index .. " "
-          else
-            return
-          end
-        end,
-      }
-    end
     -- custom heirline statusline component for grapple
     status.component.grapple = function()
       return status.component.builder {
@@ -67,7 +51,6 @@ return {
         update = "BufModifiedSet",
       },
       status.component.git_branch(),
-      status.component.harpoon_index(),
       status.component.grapple(),
       status.component.git_diff(),
       status.component.diagnostics(),
