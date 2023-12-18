@@ -8,10 +8,13 @@ return {
     status.component.grapple = function()
       return status.component.builder {
         provider = function()
-          if not is_available("grapple.nvim") then return end
           local grapple = require("grapple")
           local key = grapple.key { buffer = 0 }
           if key ~= nil then return " " .. key .. " " end
+        end,
+        condition = function()
+          if not is_available("grapple.nvim") then return end
+          return require("grapple").exists()
         end,
       }
     end
