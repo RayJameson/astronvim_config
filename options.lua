@@ -8,13 +8,13 @@ return {
     wrap = false, -- sets vim.opt.wrap
     showtabline = 0,
     -- set to true or false etc.
-    signcolumn = "auto:3", -- sets vim.opt.signcolumn to auto
+    signcolumn = "auto", -- sets vim.opt.signcolumn to auto
     colorcolumn = "80",
     mouse = "",
     tabstop = 4,
     softtabstop = 4,
     shiftwidth = 4,
-    foldcolumn = "auto:3", -- '0' is not bad
+    foldcolumn = "auto", -- '0' is not bad
     foldlevelstart = 99,
     foldenable = true,
     foldmethod = "manual",
