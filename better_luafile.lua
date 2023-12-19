@@ -21,8 +21,7 @@ function M.call(fargs, orientation, size, focus)
     vim.cmd(("%i vsplit"):format(size))
   else
     local error_msg = ("Wrong orientation settings: '%s'\nShould be 'vertical' or 'horizontal'"):format(orientation)
-    vim.schedule(function() vim.notify(error_msg, error, { title = "BetterLuafile" }) end)
-    return
+    return vim.schedule(function() vim.notify(error_msg, error, { title = "BetterLuafile" }) end)
   end
   local new_window_number = vim.api.nvim_get_current_win()
   -- Create new and set buffer in just created window
@@ -35,6 +34,8 @@ function M.call(fargs, orientation, size, focus)
   vim.api.nvim_win_set_option(new_window_number, "relativenumber", false)
   -- Prevent edit as we only outputting information
   vim.api.nvim_buf_set_option(new_buffer_number, "modifiable", false)
+  -- Set filetype to lua
+  vim.api.nvim_buf_set_option(new_buffer_number, "filetype", "lua")
   -- Focus on original window if needed
   if not focus then vim.api.nvim_set_current_win(original_window_number) end
 end
