@@ -51,7 +51,18 @@ return {
       {}
     )
   end,
-  ft = { "go", "rust", "python" },
+  cmd = {
+    "NeotestRun",
+    "NeotestRunFile",
+    "NeotestStop",
+    "NeotestRunDap",
+    "NeotestAttach",
+    "NeotestSummaryToggle",
+    "NeotestOutput",
+    "NeotestOutputToggle",
+    "NeotestJumpPreviousFailed",
+    "NeotestJumpNextFailed",
+  },
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
     "nvim-neotest/neotest-go",
