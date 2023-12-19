@@ -103,11 +103,12 @@ return function(maps)
 
   if is_available("telescope.nvim") then
     local prefix = "<leader>f"
-    maps.n[prefix .. "g"] = { require("telescope.builtin").git_files, desc = "Find git files" }
-    maps.n[prefix .. "s"] = { require("telescope.builtin").spell_suggest, desc = "Show spell suggestions" }
+    maps.n[prefix .. "g"] = { function() require("telescope.builtin").git_files() end, desc = "Find git files" }
+    maps.n[prefix .. "s"] =
+      { function() require("telescope.builtin").spell_suggest() end, desc = "Show spell suggestions" }
     local telescope_undo_available, _ = pcall(require, "telescope-undo")
     if telescope_undo_available then
-      maps.n[prefix .. "u"] = { require("telescope").extensions.undo.undo, desc = "Show undo history" }
+      maps.n[prefix .. "u"] = { function() require("telescope").extensions.undo.undo() end, desc = "Show undo history" }
     end
   end
 
@@ -166,7 +167,7 @@ end
     local prefix = "<leader>g"
     maps.n[prefix .. "R"] = { function() require("gitsigns").reset_buffer() end, desc = "Reset Git buffer" }
     maps.n[prefix .. "r"] = { function() require("gitsigns").reset_hunk() end, desc = "Reset Git hunk" }
-    maps.n[prefix .. "D"] = { require("gitsigns").toggle_deleted, desc = "Toggle deleted lines" }
+    maps.n[prefix .. "D"] = { function() require("gitsigns").toggle_deleted() end, desc = "Toggle deleted lines" }
   end
 
   if is_available("code_runner.nvim") then
