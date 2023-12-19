@@ -109,10 +109,6 @@ return function(maps)
     if telescope_undo_available then
       maps.n[prefix .. "u"] = { require("telescope").extensions.undo.undo, desc = "Show undo history" }
     end
-    local telescope_project_available, _ = pcall(require, "project_nvim")
-    if telescope_project_available then
-      maps.n[prefix .. "p"] = { require("telescope").extensions.projects.projects, desc = "Find projects" }
-    end
   end
 
   --[ ToggleTerm
