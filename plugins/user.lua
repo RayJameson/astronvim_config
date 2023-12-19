@@ -67,11 +67,6 @@ return {
     },
   },
   {
-    "mechatroner/rainbow_csv",
-    cond = not vim.g.vscode,
-    ft = { "csv", "tsv" },
-  },
-  {
     "HiPhish/rainbow-delimiters.nvim",
     cond = not vim.g.vscode,
     dependencies = "nvim-treesitter/nvim-treesitter",
