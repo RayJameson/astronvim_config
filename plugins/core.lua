@@ -212,9 +212,6 @@ return {
     cond = not vim.g.vscode,
     dependencies = { "theHamsta/nvim-dap-virtual-text", config = true },
     event = function() return {} end,
-    keys = {
-      { "<leader>d", function() end, { desc = "DAP" } },
-    },
   },
   {
     "lukas-reineke/indent-blankline.nvim",

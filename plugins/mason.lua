@@ -69,9 +69,11 @@ return {
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
+    dependencies = {
+      "mfussenegger/nvim-dap-python",
+    },
     -- overrides `require("mason-nvim-dap").setup(...)`
     cond = not vim.g.vscode,
-    ft = { "python", "go", "rust", "javascript" },
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = list_insert_unique(opts.ensure_installed, {
@@ -103,18 +105,10 @@ return {
             },
           })
           require("mason-nvim-dap").default_setup(config) -- don't forget this!
+          local path = require("mason-registry").get_package("debugpy"):get_install_path() .. "/venv/bin/python"
+          require("dap-python").setup(path, opts)
         end,
       }
-    end,
-  },
-  {
-    "mfussenegger/nvim-dap-python",
-    cond = not vim.g.vscode,
-    dependencies = "mfussenegger/nvim-dap",
-    ft = "python", -- NOTE: ft: lazy-load on filetype
-    config = function(_, opts)
-      local path = require("mason-registry").get_package("debugpy"):get_install_path() .. "/venv/bin/python"
-      require("dap-python").setup(path, opts)
     end,
   },
 }
