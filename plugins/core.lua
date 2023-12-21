@@ -119,6 +119,7 @@ return {
           nvim_lua = "Lua",
           latex_symbols = "Latex",
           orgmode = "Org",
+          cmp_yanky = "Yanky",
         }
         if entry and entry.source.name == "nvim_lsp" then
           vim_item.menu = ("[%s] - [%s]"):format(sources_map[entry.source.name], entry.source.source.client.name)
@@ -136,7 +137,8 @@ return {
     cond = not vim.g.vscode,
     keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
     dependencies = {
-      "hrsh7th/cmp-cmdline", -- add cmp-cmdline as dependency of cmp
+      "hrsh7th/cmp-cmdline",
+      "chrisgrieser/cmp_yanky",
     },
     opts = function(_, opts)
       local cmp = require("cmp")
@@ -146,6 +148,7 @@ return {
         { name = "luasnip", priority = 750 },
         { name = "orgmode", priority = 650 },
         { name = "buffer", priority = 500 },
+        { name = "cmp_yanky", priority = 300 },
         { name = "path", priority = 250 },
       }
       ---@diagnostic disable-next-line: missing-fields
