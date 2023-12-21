@@ -51,7 +51,7 @@ return {
     { "p", "<Plug>(YankyPutAfter)", desc = "Put after", mode = { "n", "x" } },
     { "P", "<Plug>(YankyPutBefore)", desc = "Put before", mode = { "n", "x" } },
     { "gp", "<Plug>(YankyGPutAfter)", desc = "gPut after", mode = { "n", "x" } },
-    { "gp", "<Plug>(YankyGPutBefore)", desc = "gPut before", mode = { "n", "x" } },
+    { "gP", "<Plug>(YankyGPutBefore)", desc = "gPut before", mode = { "n", "x" } },
     { "<M-p>", "<Plug>(YankyPreviousEntry)", desc = "Previous yank", mode = "n" },
     { "<M-n>", "<Plug>(YankyNextEntry)", desc = "Next yank", mode = "n" },
     { "]p", "<Plug>(YankyPutIndentAfterLinewise)", desc = "Put indent after linewise", mode = "n" },
