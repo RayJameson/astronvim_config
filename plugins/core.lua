@@ -140,6 +140,7 @@ return {
       "hrsh7th/cmp-cmdline",
       "chrisgrieser/cmp_yanky",
     },
+    ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local cmp = require("cmp")
       -- configure `cmp-cmdline` as described in their repo: https://github.com/hrsh7th/cmp-cmdline#setup
@@ -151,14 +152,12 @@ return {
         { name = "cmp_yanky", priority = 300 },
         { name = "path", priority = 250 },
       }
-      ---@diagnostic disable-next-line: missing-fields
       cmp.setup.cmdline("/", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
           { name = "buffer" },
         },
       })
-      ---@diagnostic disable-next-line: missing-fields
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
