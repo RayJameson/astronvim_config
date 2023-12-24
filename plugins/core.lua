@@ -114,6 +114,7 @@ return {
       opts.before = function(entry, vim_item)
         local sources_map = {
           buffer = "Buffer",
+          path = "Path",
           nvim_lsp = "LSP",
           luasnip = "LuaSnip",
           nvim_lua = "Lua",
