@@ -1,3 +1,9 @@
+local icon = vim.g.icons_enabled and " " or ""
+local prefix = "<leader>n"
+local maps = { n = {} }
+maps.n[prefix] = { desc = icon .. "Neotest" }
+require("astronvim.utils").set_mappings(maps)
+
 return {
   "nvim-neotest/neotest",
   cond = not vim.g.vscode,
@@ -69,5 +75,17 @@ return {
     "nvim-neotest/neotest-python",
     "rouge8/neotest-rust",
     "antoinemadec/FixCursorHold.nvim",
+  },
+  keys = {
+    { prefix .. "r", "<CMD>NeotestRun<CR>", desc = "Run nearest test" },
+    { prefix .. "f", "<CMD>NeotestRunFile<CR>", desc = "Run tests in current file" },
+    { prefix .. "S", "<CMD>NeotestStop<CR>", desc = "Stop running test" },
+    { prefix .. "d", "<CMD>NeotestRunDap<CR>", desc = "Run test in debugger" },
+    { prefix .. "a", "<CMD>NeotestAttach<CR>", desc = "Attach to running test" },
+    { prefix .. "s", "<CMD>NeotestSummaryToggle<CR>", desc = "Toggle test summary window" },
+    { prefix .. "o", "<CMD>NeotestOutput<CR>", desc = "Show test output" },
+    { prefix .. "O", "<CMD>NeotestOutputToggle<CR>", desc = "Toggle test output window" },
+    { prefix .. "k", "<CMD>NeotestJumpPreviousFailed<CR>", desc = "Jump to previous failed test" },
+    { prefix .. "j", "<CMD>NeotestJumpNextFailed<CR>", desc = "Jump to next failed test" },
   },
 }

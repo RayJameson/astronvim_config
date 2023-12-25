@@ -25,6 +25,7 @@ return function(maps)
   maps.n["S"] = { "0Di", desc = "S+" }
   --]
   -- Repeat macros across visual selection
+  maps.n["<leader>n"] = false
 
   maps.x["@"] = {
     ":<C-u>call ExecuteMacroOverVisualRange()<CR>",
@@ -156,23 +157,6 @@ end
         maps[mode][prefix] = { desc = icon .. "Snip run" }
       end
     end
-  end
-
-  if is_available("neotest") then
-    local icon = vim.g.icons_enabled and " " or ""
-    local prefix = "<leader>n"
-    -- maps.n[prefix] = nil
-    maps.n[prefix] = { desc = icon .. "Neotest" }
-    maps.n[prefix .. "r"] = { "<CMD>NeotestRun<CR>", desc = "Run nearest test" }
-    maps.n[prefix .. "f"] = { "<CMD>NeotestRunFile<CR>", desc = "Run tests in current file" }
-    maps.n[prefix .. "S"] = { "<CMD>NeotestStop<CR>", desc = "Stop running test" }
-    maps.n[prefix .. "d"] = { "<CMD>NeotestRunDap<CR>", desc = "Run test in debugger" }
-    maps.n[prefix .. "a"] = { "<CMD>NeotestAttach<CR>", desc = "Attach to running test" }
-    maps.n[prefix .. "s"] = { "<CMD>NeotestSummaryToggle<CR>", desc = "Toggle test summary window" }
-    maps.n[prefix .. "o"] = { "<CMD>NeotestOutput<CR>", desc = "Show test output" }
-    maps.n[prefix .. "O"] = { "<CMD>NeotestOutputToggle<CR>", desc = "Toggle test output window" }
-    maps.n[prefix .. "k"] = { "<CMD>NeotestJumpPreviousFailed<CR>", desc = "Jump to previous failed test" }
-    maps.n[prefix .. "j"] = { "<CMD>NeotestJumpNextFailed<CR>", desc = "Jump to next failed test" }
   end
 
   maps.n["<leader>rn"] = { "<CMD>BetterLuafile<CR>", desc = "Run lua file with nvim-lua" }
