@@ -121,7 +121,6 @@ return {
           nvim_lua = "Lua",
           latex_symbols = "Latex",
           orgmode = "Org",
-          cmp_yanky = "Yanky",
           noice_popupmenu = "Noice",
         }
         if entry and entry.source.name == "nvim_lsp" then
@@ -143,7 +142,6 @@ return {
     keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
     dependencies = {
       "hrsh7th/cmp-cmdline",
-      "chrisgrieser/cmp_yanky",
     },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
@@ -153,7 +151,6 @@ return {
         { name = "nvim_lsp", priority = 1000 },
         { name = "luasnip", priority = 750 },
         { name = "orgmode", priority = 650 },
-        { name = "cmp_yanky", priority = 300 },
       }
       cmp.setup.cmdline("/", {
         mapping = cmp.mapping.preset.cmdline(),
