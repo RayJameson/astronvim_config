@@ -1,3 +1,9 @@
+local icon = vim.g.icons_enabled and "󰐍 " or ""
+local prefix = "<leader>r"
+local maps = { n = {} }
+maps.n[prefix] = { desc = icon .. "Code runner" }
+require("astronvim.utils").set_mappings(maps)
+
 return {
   "CRAG666/code_runner.nvim",
   cond = not vim.g.vscode,
@@ -32,4 +38,11 @@ return {
       },
     }
   end,
+  keys = {
+    { prefix .. "r", "<CMD>RunCode<CR>", desc = "Run code" },
+    { prefix .. "f", "<CMD>RunFile<CR>", desc = "Run file" },
+    { prefix .. "t", "<CMD>RunFile tab<CR>", desc = "Run file tab" },
+    { prefix .. "c", "<CMD>RunClose<CR>", desc = "Close runner" },
+    { prefix .. "p", "<CMD>RunFile toggleterm<CR>", desc = "Run file pop up (toggleterm)" },
+  },
 }

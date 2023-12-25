@@ -145,17 +145,6 @@ end
     maps.n[prefix .. "D"] = { function() require("gitsigns").toggle_deleted() end, desc = "Toggle deleted lines" }
   end
 
-  if is_available("code_runner.nvim") then
-    local icon = vim.g.icons_enabled and "󰐍 " or ""
-    local prefix = "<leader>r"
-    maps.n[prefix] = { desc = icon .. "Code runner" }
-    maps.n[prefix .. "r"] = { "<CMD>RunCode<CR>", desc = "Run code" }
-    maps.n[prefix .. "f"] = { "<CMD>RunFile<CR>", desc = "Run file" }
-    maps.n[prefix .. "t"] = { "<CMD>RunFile tab<CR>", desc = "Run file tab" }
-    maps.n[prefix .. "c"] = { "<CMD>RunClose<CR>", desc = "Close runner" }
-    maps.n[prefix .. "p"] = { "<CMD>RunFile toggleterm<CR>", desc = "Run file pop up (toggleterm)" }
-  end
-
   if is_available("sniprun") then
     -- there is error when using "<CR>" instead of ":" for visual mode mappings
     -- https://discord.com/channels/939594913560031363/1144604661693812771/1146789150981365761
