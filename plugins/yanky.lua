@@ -1,7 +1,8 @@
 return {
   "gbprod/yanky.nvim",
   cond = not vim.g.vscode,
-  dependencies = { "kkharji/sqlite.lua" },
+  dependencies = { "kkharji/sqlite.lua", enabled = not jit.os:find("Windows") },
+  event = "UIEnter",
   opts = function()
     local utils = require("yanky.utils")
     local mapping = require("yanky.telescope.mapping")
@@ -60,6 +61,10 @@ return {
     { "<p", "<Plug>(YankyPutIndentAfterShiftLeft)", desc = "Put indent after shift left", mode = "n" },
     { "=p", "<Plug>(YankyPutAfterFilter)", desc = "Put after filter", mode = "n" },
     { "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put before filter", mode = "n" },
-    { "<leader>fy", "<CMD>Telescope yank_history<CR>", desc = "Yank history" },
+    {
+      "<leader>fy",
+      function() require("telescope").extensions.yank_history.yank_history() end,
+      desc = "Yank history",
+    },
   },
 }
