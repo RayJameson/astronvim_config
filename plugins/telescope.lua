@@ -1,5 +1,5 @@
 local extend_tbl = require("astronvim.utils").extend_tbl
-local is_available = require("astronvim.utils").is_available
+local prefix = "<leader>f"
 
 return {
   "nvim-telescope/telescope.nvim",
@@ -37,11 +37,14 @@ return {
   config = function(plugin, opts)
     -- require telescope and load extensions as necessary
     local telescope = require("telescope")
+    local utils = require("astronvim.utils")
+    local conditional_func = utils.conditional_func
+    conditional_func(telescope.load_extension, pcall(require, "yanky.nvim"), "yank_history")
+    conditional_func(telescope.load_extension, pcall(require, "telescope-undo"), "undo")
+
     -- run the core AstroNvim configuration function with the options table
     require("plugins.configs.telescope")(plugin, opts)
     local actions = require("telescope.actions")
-    if is_available("yanky.nvim") then telescope.load_extension("yank_history") end
-    telescope.load_extension("undo")
 
     local trouble = require("trouble")
     -- named function for which-key in telescope help
@@ -78,4 +81,9 @@ return {
       })
     end
   end,
+  keys = {
+    { prefix .. "u", function() require("telescope").extensions.undo.undo() end, desc = "Show undo history" },
+    { prefix .. "s", function() require("telescope.builtin").spell_suggest() end, desc = "Show spell suggestions" },
+    { prefix .. "g", function() require("telescope.builtin").git_files() end, desc = "Find git files" },
+  },
 }

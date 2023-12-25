@@ -85,17 +85,6 @@ return function(maps)
       { function() require("notify").dismiss { silent = true, pending = true } end, desc = "Dismiss notification" }
   end
 
-  if is_available("telescope.nvim") then
-    local prefix = "<leader>f"
-    maps.n[prefix .. "g"] = { function() require("telescope.builtin").git_files() end, desc = "Find git files" }
-    maps.n[prefix .. "s"] =
-      { function() require("telescope.builtin").spell_suggest() end, desc = "Show spell suggestions" }
-    local telescope_undo_available, _ = pcall(require, "telescope-undo")
-    if telescope_undo_available then
-      maps.n[prefix .. "u"] = { function() require("telescope").extensions.undo.undo() end, desc = "Show undo history" }
-    end
-  end
-
   --[ ToggleTerm
   if is_available("toggleterm.nvim") then
     local prefix = "<leader>t"
