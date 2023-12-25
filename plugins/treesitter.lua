@@ -10,10 +10,6 @@ return {
     opts.highlight = {
       enable = true,
     }
-    if is_available("orgmode") then
-      require("orgmode").setup_ts_grammar()
-      opts.highlight.additional_vim_regex_highlighting = { "org" }
-    end
     opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
       "bash",
       "diff",
@@ -31,7 +27,6 @@ return {
       "luadoc",
       "make",
       "markdown",
-      "org",
       "passwd",
       "python",
       "regex",
