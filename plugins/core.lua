@@ -115,17 +115,21 @@ return {
         local sources_map = {
           buffer = "Buffer",
           path = "Path",
+          cmdline = "Cmdline",
           nvim_lsp = "LSP",
           luasnip = "LuaSnip",
           nvim_lua = "Lua",
           latex_symbols = "Latex",
           orgmode = "Org",
           cmp_yanky = "Yanky",
+          noice_popupmenu = "Noice",
         }
         if entry and entry.source.name == "nvim_lsp" then
           vim_item.menu = ("[%s] - [%s]"):format(sources_map[entry.source.name], entry.source.source.client.name)
-        else
+        elseif sources_map[entry.source.name] then
           vim_item.menu = ("[%s]"):format(sources_map[entry.source.name])
+        else
+          vim_item.menu = ("[%s]"):format(entry.source.name)
         end
         return vim_item
       end
@@ -143,34 +147,39 @@ return {
     },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
+      local any_word = [[\k\+]]
       local cmp = require("cmp")
-      -- configure `cmp-cmdline` as described in their repo: https://github.com/hrsh7th/cmp-cmdline#setup
       opts.sources = cmp.config.sources {
         { name = "nvim_lsp", priority = 1000 },
         { name = "luasnip", priority = 750 },
         { name = "orgmode", priority = 650 },
-        { name = "buffer", priority = 500 },
         { name = "cmp_yanky", priority = 300 },
-        { name = "path", priority = 250 },
       }
       cmp.setup.cmdline("/", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
-          { name = "buffer" },
+          {
+            name = "buffer",
+            keyword_length = 4,
+            option = { keyword_pattern = any_word },
+          },
         },
       })
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = "path" },
-        }, {
+        sources = {
+          {
+            name = "path",
+            priority = 300,
+          },
           {
             name = "cmdline",
+            priority = 750,
             option = {
               ignore_cmds = { "Man", "!" },
             },
           },
-        }),
+        },
       })
       opts.mapping["<M-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" })
       return opts
