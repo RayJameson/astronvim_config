@@ -85,11 +85,6 @@ return function(maps)
       { function() require("notify").dismiss { silent = true, pending = true } end, desc = "Dismiss notification" }
   end
 
-  if is_available("orgmode") then
-    local icon = vim.g.icons_enabled and " " or ""
-    maps.n["<leader>o"] = { desc = icon .. "Orgmode" }
-  end
-
   if is_available("telescope.nvim") then
     local prefix = "<leader>f"
     maps.n[prefix .. "g"] = { function() require("telescope.builtin").git_files() end, desc = "Find git files" }

@@ -24,6 +24,12 @@ end
 local date_with_current_week = function() return os.date("%Y/%m/") .. "W" .. get_week_nr() end
 local utils = require("astronvim.utils")
 
+local prefix = ""
+local maps = { n = {} }
+local icon = vim.g.icons_enabled and " " or ""
+maps.n[prefix] = { desc = icon .. "Orgmode" }
+require("astronvim.utils").set_mappings(maps)
+
 return {
   {
     "nvim-orgmode/orgmode",
