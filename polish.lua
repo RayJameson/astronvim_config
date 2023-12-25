@@ -103,7 +103,7 @@ return function()
   if vim.g.neovide then
     -- local alpha = function() return string.format("%x", math.floor((255 * vim.g.neovide_transparency_point) or 0.8)) end
     -- Set transparency and background color (title bar color)
-    if vim.loop.os_uname().sysname == "Darwin" then
+    if jit.os:find("OSX") then
       -- vim.g.neovide_transparency = 0.0
       -- vim.g.neovide_transparency_point = 0.8
       -- vim.g.neovide_background_color = "#0f1117" .. alpha()
