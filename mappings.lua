@@ -55,17 +55,6 @@ return function(maps)
   maps.x["<"] = { "<gv", desc = "Deindent line" }
   maps.x[">"] = { ">gv", desc = "Indent line" }
 
-  --[ Move cursor with CTRL in insert, command modes
-  maps.c["<C-h>"] = { "<Left>", desc = "Left" }
-  maps.c["<C-j>"] = { "<Down>", desc = "Down" }
-  maps.c["<C-k>"] = { "<Up>", desc = "Up" }
-  maps.c["<C-l>"] = { "<Right>", desc = "Right" }
-  maps.i["<C-h>"] = { "<Left>", desc = "Left" }
-  maps.i["<C-j>"] = { "<Down>", desc = "Down" }
-  maps.i["<C-k>"] = { "<Up>", desc = "Up" }
-  maps.i["<C-l>"] = { "<Right>", desc = "Right" }
-  --]
-
   --[ Better ^ and $
   maps.n["gh"] = { "^", desc = "go to beginning of the line (^)" }
   maps.n["gl"] = { "$", desc = "go to end of the line ($)" }
