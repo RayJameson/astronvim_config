@@ -64,7 +64,7 @@ return {
         }, -- skip hop notifications
       },
       presets = { lsp_doc_border = true, long_message_to_split = true },
-      popupmenu = { backend = "cmp" },
+      popupmenu = { enabled = false },
     },
   },
 }
