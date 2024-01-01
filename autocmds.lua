@@ -51,7 +51,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 
 vim.api.nvim_create_autocmd("BufWinEnter", {
   pattern = "*",
-  callback = function() vim.api.nvim_win_set_option(0, "foldcolumn", "auto:9") end,
+  callback = function() vim.api.nvim_win_set_option(0, "foldcolumn", "1") end,
 })
 
 -- stop snippets when you leave to normal mode
