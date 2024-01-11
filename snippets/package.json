@@ -1,18 +1,27 @@
 {
-  "name": "user-snippets",
-  "engines": {
-    "vscode": "^1.11.0"
-  },
   "contributes": {
     "snippets": [
       {
-        "language": ["gitcommit", "NeogitCommitMessage"],
+        "language": [
+          "gitcommit",
+          "NeogitCommitMessage"
+        ],
         "path": "./gitcommit.json"
       },
       {
         "language": "python",
         "path": "./python.json"
+      },
+      {
+        "language": [
+          "lua"
+        ],
+        "path": "./lua.json"
       }
     ]
-  }
+  },
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "name": "user-snippets"
 }
