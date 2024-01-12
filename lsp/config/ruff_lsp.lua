@@ -9,7 +9,7 @@ return {
         local timeout_ms = 1000
         local params = vim.lsp.util.make_range_params()
         params.context = {
-          only = { "source.fixAll.ruff" },
+          only = { "source.organizeImports.ruff" },
           triggerKind = vim.lsp.protocol.CodeActionTriggerKind.Automatic,
           diagnostics = vim.lsp.diagnostic.get_line_diagnostics(bufnr),
         }
