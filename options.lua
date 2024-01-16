@@ -51,6 +51,7 @@ return {
     icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
     ui_notifications_enabled = true, -- disable notifications when toggling UI elements
     inlay_hints_enabled = true,
+    semantic_tokens_enabled = false,
   },
 }
 -- If you need more control, you can use the function()...end notation
