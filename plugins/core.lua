@@ -244,4 +244,17 @@ return {
     cond = not vim.g.vscode,
     opts = function(_, opts) require("astronvim.utils").extend_tbl(opts.filetype_exclude, { "oil" }) end,
   },
+  {
+    "nvim-tree/nvim-web-devicons",
+    opts = {
+      override = {
+        ino = {
+          icon = "",
+          color = require("user.highlights.colors").cyan,
+          deviconscterm_color = "65",
+          name = "Arduino",
+        }
+      }
+    }
+  }
 }
