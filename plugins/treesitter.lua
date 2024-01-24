@@ -2,6 +2,7 @@ local is_available = require("astronvim.utils").is_available
 return {
   "nvim-treesitter/nvim-treesitter",
   cond = not vim.g.vscode,
+  commit = "10dd49958c96f86c8247c715bd20a6681afc1d8b",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
   },
