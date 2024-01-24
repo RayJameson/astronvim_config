@@ -25,23 +25,6 @@ return {
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.docker" },
-  { import = "astrocommunity.file-explorer.mini-files" },
-  {
-    "mini.files",
-    cond = not vim.g.vscode,
-    opts = {
-      windows = {
-        preview = true,
-        width_preview = 80,
-      },
-      mappings = {
-        go_in_plus = "<CR>",
-        go_in = "L",
-        go_out = "H",
-        go_out_plus = "",
-      },
-    },
-  },
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
   { import = "astrocommunity.editing-support.todo-comments-nvim" },
   {
