@@ -59,11 +59,14 @@ return {
           opts = { skip = true },
         },
         {
-          filter = { event = "msg_show", find = "Hop 1 char:" },
+          filter = { event = "msg_show", find = "^E486: Pattern not found:" },
           opts = { skip = true },
-        }, -- skip hop notifications
+        },
+        { filter = { event = "msg_show", cmdline = "^:lua" }, view = "messages" }, -- send lua output to split
+        { filter = { event = "msg_show", cmdline = "^:=" }, view = "messages" }, -- send lua output to split
+        { filter = { event = "msg_show", min_height = 20 }, view = "messages" }, -- send long messages to split
       },
-      presets = { lsp_doc_border = true, long_message_to_split = true },
+      presets = { lsp_doc_border = true },
       popupmenu = { enabled = false },
     },
   },
