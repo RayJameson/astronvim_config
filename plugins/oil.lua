@@ -34,8 +34,6 @@ return {
   end,
   opts = {
     skip_confirm_for_simple_edits = true,
-    delete_to_trash = vim.fn.executable("trash") == 1,
-    trash_command = "trash",
     view_options = {
       show_hidden = true,
     },
