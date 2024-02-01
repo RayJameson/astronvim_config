@@ -123,25 +123,4 @@ return {
       }
     end,
   },
-  {
-    "michaelb/sniprun",
-    cond = not vim.g.vscode,
-    -- there is error when using "<CR>" instead of ":" for visual mode mappings
-    -- https://discord.com/channels/939594913560031363/1144604661693812771/1146789150981365761
-    -- https://www.reddit.com/r/neovim/comments/y2h8ps/i_have_a_mapping_for_normal_how_to_make_an/
-    keys = {
-      { "<leader>rs", ":SnipRun<CR>", desc = "Run Snippet", mode = { "n", "x" } },
-      { "<leader>rC", ":SnipClose<CR>", desc = "Close SnipRun", mode = { "n", "x" } },
-    },
-    opts = {},
-    build = "bash ./install.sh 1",
-    cmd = {
-      "SnipRun",
-      "SnipInfo",
-      "SnipReset",
-      "SnipReplMemoryClean",
-      "SnipClose",
-      "SnipLive",
-    },
-  },
 }

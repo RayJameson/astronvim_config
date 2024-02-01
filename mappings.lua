@@ -146,19 +146,6 @@ end
     maps.n[prefix .. "D"] = { function() require("gitsigns").toggle_deleted() end, desc = "Toggle deleted lines" }
   end
 
-  if is_available("sniprun") then
-    -- there is error when using "<CR>" instead of ":" for visual mode mappings
-    -- https://discord.com/channels/939594913560031363/1144604661693812771/1146789150981365761
-    -- https://www.reddit.com/r/neovim/comments/y2h8ps/i_have_a_mapping_for_normal_how_to_make_an/
-    for _, mode in pairs { "n", "x" } do
-      local icon = vim.g.icons_enabled and " " or ""
-      local prefix = "<leader>r"
-      if maps[mode][prefix] == nil or maps[mode][prefix].desc == "prefix" then
-        maps[mode][prefix] = { desc = icon .. "Snip run" }
-      end
-    end
-  end
-
   maps.n["<leader>rn"] = { "<CMD>BetterLuafile<CR>", desc = "Run lua file with nvim-lua" }
 
   if is_available("trouble.nvim") then
