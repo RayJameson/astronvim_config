@@ -51,7 +51,7 @@ return {
           opts = { skip = true },
         }, -- skip delete notifications
         {
-          filter = { event = "msg_show", find = "^%d+ line[s]? yanked$" },
+          filter = { event = "msg_show", find = "^%d+ line[s]? yanked" },
           opts = { skip = true },
         }, -- skip yank notifications
         {
