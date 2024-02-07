@@ -12,6 +12,7 @@ return {
   end,
   cmd = { "pylance", "--stdio" },
   single_file_support = true,
+  before_init = function(_, c) c.settings.python.pythonPath = vim.fn.exepath("python3") end,
 
   settings = {
     python = {
@@ -30,8 +31,37 @@ return {
           callArgumentNames = true,
           pytestParameters = true,
         },
+        useLibraryCodeForTypes = true,
       },
-      pythonPath = vim.env.VIRTUAL_ENV and vim.env.VIRTUAL_ENV .. "/bin/python3",
+    },
+  },
+  handlers = {
+    ["workspace/executeCommand"] = function(_, result)
+      if result and result.label == "Extract Method" then
+        vim.ui.input({ prompt = "New name: ", default = result.data.newSymbolName }, function(input)
+          if input and #input > 0 then vim.lsp.buf.rename(input) end
+        end)
+      end
+    end,
+  },
+  commands = {
+    PylanceExtractMethod = {
+      function()
+        local arguments =
+          { vim.uri_from_bufnr(0):gsub("file://", ""), require("vim.lsp.util").make_given_range_params().range }
+        vim.lsp.buf.execute_command { command = "pylance.extractMethod", arguments = arguments }
+      end,
+      description = "Extract Method",
+      range = 2,
+    },
+    PylanceExtractVariable = {
+      function()
+        local arguments =
+          { vim.uri_from_bufnr(0):gsub("file://", ""), require("vim.lsp.util").make_given_range_params().range }
+        vim.lsp.buf.execute_command { command = "pylance.extractVariable", arguments = arguments }
+      end,
+      description = "Extract Variable",
+      range = 2,
     },
   },
   docs = {
