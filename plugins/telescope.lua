@@ -41,6 +41,7 @@ return {
     local conditional_func = utils.conditional_func
     conditional_func(telescope.load_extension, pcall(require, "yanky.nvim"), "yank_history")
     conditional_func(telescope.load_extension, pcall(require, "telescope-undo"), "undo")
+    conditional_func(telescope.load_extension, pcall(require, "yaml_schema"), "yaml_schema")
 
     -- run the core AstroNvim configuration function with the options table
     require("plugins.configs.telescope")(plugin, opts)
