@@ -20,7 +20,7 @@ return function(hl) -- or a function that returns a new table of colors to set
   hl.Label = { fg = C.blue, bg = C.none, italic = true } -- case, default, etc.
   hl.Exception = { fg = C.purple, bg = C.none, italic = true } -- try, catch, throw
   hl.Boolean = { fg = C.bright_turquoise, bg = C.none } -- a boolean constant: TRUE, false
-  hl.DiffDelete = { fg = C.red }
+  hl.DiffDelete = { fg = C.bg, bg = C.red_1 }
   hl.NormalFloat = { bg = C.bg }
   hl.TabLine = { bg = C.bg }
   hl.DiagnosticFloatingOk = { link = "DiagnosticOk" }
