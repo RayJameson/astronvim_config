@@ -76,7 +76,18 @@ return {
   {
     "linrongbin16/gitlinker.nvim",
     cond = not vim.g.vscode,
-    opts = {},
+    opts = function(_, _)
+      return {
+        router = {
+          browse = {
+            ["^github%..*%.com"] = require("gitlinker.routers").github_browse,
+          },
+          blame = {
+            ["^github%..*%.com"] = require("gitlinker.routers").github_blame,
+          },
+        },
+      }
+    end,
     cmd = "GitLink",
     keys = function()
       local prefix = "<leader>g"
