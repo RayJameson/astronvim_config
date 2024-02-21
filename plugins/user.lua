@@ -5,7 +5,11 @@ return {
   {
     "simrat39/rust-tools.nvim",
     cond = not vim.g.vscode,
-    opts = { tools = { inlay_hints = { auto = false } } },
+    opts = function(_, opts)
+      return require("astronvim.utils").extend_tbl(opts, {
+        tools = { inlay_hints = { auto = false } },
+      })
+    end,
   },
   {
     "m-demare/hlargs.nvim",
