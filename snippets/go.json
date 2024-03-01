@@ -1,0 +1,7 @@
+{
+    "setup": {
+        "prefix": "err",
+        "body": "if err != nil {\n\t$0\n}",
+        "description": "Retrun error if not nil"
+    }
+}
