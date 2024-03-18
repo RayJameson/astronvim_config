@@ -58,7 +58,7 @@ return {
     event = "VeryLazy",
     opts = {
       aliases = {
-        ["b"] = { ")", "}", "]" },
+        ["b"] = { ")", "}", "]", ">" },
       },
     },
   },
@@ -68,6 +68,9 @@ return {
     opts = {
       silent = true,
       search_method = "cover_or_nearest",
+      custom_textobjects = {
+        b = { { "%b()", "%b[]", "%b{}", "%b<>" }, "^.().*().$" },
+      },
     },
   },
   {
