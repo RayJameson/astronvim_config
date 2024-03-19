@@ -77,8 +77,8 @@ return {
     "HiPhish/rainbow-delimiters.nvim",
     cond = not vim.g.vscode,
     dependencies = "nvim-treesitter/nvim-treesitter",
-    event = "User AstroFile",
-    config = function(_, opts) require("rainbow-delimiters.setup")(opts) end,
+    event = "VeryLazy",
+    main = "rainbow-delimiters.setup",
   },
   {
     "linrongbin16/gitlinker.nvim",
