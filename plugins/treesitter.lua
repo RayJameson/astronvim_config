@@ -1,4 +1,3 @@
-local is_available = require("astronvim.utils").is_available
 return {
   "nvim-treesitter/nvim-treesitter",
   cond = not vim.g.vscode,
@@ -38,7 +37,6 @@ return {
       "vimdoc",
       "yaml",
     })
-    opts.auto_install = vim.fn.executable("tree-sitter") == 1
     opts.matchup = { enable = true }
   end,
 }
