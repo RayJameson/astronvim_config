@@ -19,7 +19,7 @@ return {
         python = "export PYTHONPATH=$PYTHONPATH:. && time python3 -X dev -u",
         lua = "time luaj",
         typescript = "time deno run",
-        rust = "cd $dir && rustc $fileName && time $dir/$fileNameWithoutExt",
+        rust = "cd $dir && time cargo run",
         javascript = "time node",
         shellscript = "time bash",
         zsh = "time zsh -i",
