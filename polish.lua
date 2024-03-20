@@ -37,16 +37,6 @@ return function()
     ]])
   end
   -----------------------------------------------------------------------------//
-  -- Absolutely fantastic function from stoeffel/.dotfiles which allows you to
-  -- repeat macros across a visual range
-  ------------------------------------------------------------------------------
-  -- TODO: converting this to lua does not work for some obscure reason.
-  vim.cmd([[
-    function! ExecuteMacroOverVisualRange()
-      execute ":'<,'>normal @".nr2char(getchar())
-    endfunction
-  ]])
-  -----------------------------------------------------------------------------//
   -- Multiple Cursor Replacement
   -- http://www.kevinli.co/posts/2017-01-19-multiple-cursors-in-500-bytes-of-vimscript/
   -----------------------------------------------------------------------------//

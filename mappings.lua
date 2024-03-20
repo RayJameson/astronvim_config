@@ -28,9 +28,10 @@ return function(maps)
   maps.n["<leader>n"] = false
 
   maps.x["@"] = {
-    ":<C-u>call ExecuteMacroOverVisualRange()<CR>",
+    function() return ":norm @" .. vim.fn.getcharstr() .. "<cr>" end,
     desc = "Repeat macros across visual selection",
     silent = false,
+    expr = true,
   }
 
   --[ command window
