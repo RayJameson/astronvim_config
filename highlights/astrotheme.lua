@@ -23,6 +23,7 @@ return function(hl) -- or a function that returns a new table of colors to set
   hl.DiffDelete = { fg = C.bg, bg = C.red_1 }
   hl.NormalFloat = { bg = C.bg }
   hl.TabLine = { bg = C.bg }
+  hl.MatchParen = { fg = C.bright_turquoise, bg = C.none, bold = true }
   hl.DiagnosticFloatingOk = { link = "DiagnosticOk" }
   hl.DiagnosticFloatingError = { link = "DiagnosticError" }
   hl.DiagnosticFloatingWarn = { link = "DiagnosticWarn" }
