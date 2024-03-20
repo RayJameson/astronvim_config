@@ -37,6 +37,5 @@ return {
       "vimdoc",
       "yaml",
     })
-    opts.matchup = { enable = true }
   end,
 }
