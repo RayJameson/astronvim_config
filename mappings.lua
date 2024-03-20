@@ -14,6 +14,11 @@ return function(maps)
   maps.n["<leader>bd"] = false
   --]
 
+  --[ jumplist for j/k number jumps
+  maps.n["k"] = { "(v:count > 1 ? \"m'\" . v:count : '') . 'k'", silent = true, expr = true }
+  maps.n["j"] = { "(v:count > 1 ? \"m'\" . v:count : '') . 'j'", silent = true, expr = true }
+  --]
+
   --[ register + clipboard
   for _, mode in ipairs { "n", "v" } do
     maps[mode]["gy"] = { '"+y', desc = "yank +clipboard" }
