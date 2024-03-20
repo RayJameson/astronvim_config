@@ -74,13 +74,6 @@ return {
     },
   },
   {
-    "HiPhish/rainbow-delimiters.nvim",
-    cond = not vim.g.vscode,
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    event = "VeryLazy",
-    main = "rainbow-delimiters.setup",
-  },
-  {
     "linrongbin16/gitlinker.nvim",
     cond = not vim.g.vscode,
     opts = function(_, _)
