@@ -46,12 +46,22 @@ return {
     -- run the core AstroNvim configuration function with the options table
     require("plugins.configs.telescope")(plugin, opts)
     local actions = require("telescope.actions")
+    local from_entry = require("telescope.from_entry")
 
     local trouble = require("trouble")
     -- named function for which-key in telescope help
     local smart_add_to_qf_trouble = function(prompt_bufnr)
       actions.smart_add_to_qflist(prompt_bufnr)
       trouble.open("quickfix")
+    end
+    local yank_path = function(modifier)
+      return function(prompt_bufnr)
+        local entry = require("telescope.actions.state").get_selected_entry()
+        local filename = from_entry.path(entry, false, false)
+        local name = vim.fn.fnamemodify(filename, modifier)
+        vim.fn.setreg('"', name)
+        actions.close(prompt_bufnr)
+      end
     end
     local smart_send_to_qf_trouble = function(prompt_bufnr)
       actions.smart_send_to_qflist(prompt_bufnr)
@@ -79,6 +89,8 @@ return {
         ["<C-l>"] = actions.smart_add_to_loclist + actions.open_loclist,
         ["<M-l>"] = actions.smart_send_to_loclist + actions.open_loclist,
         ["<CR>"] = select_one_or_multi,
+        ["<C-y>"] = yank_path(":."),
+        ["<C-Y>"] = yank_path(),
       })
     end
   end,
