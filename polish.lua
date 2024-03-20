@@ -41,10 +41,24 @@ return function()
   -- http://www.kevinli.co/posts/2017-01-19-multiple-cursors-in-500-bytes-of-vimscript/
   -----------------------------------------------------------------------------//
 
+  -- In Normal mode:
+  -- 1. Position the cursor anywhere in the word.
+  -- 2. Hit `cn`, type word for replacement, then go back to Normal mode.
+  -- 3. Hit `.` n-1 times, where n is the number of replacements.
+  -- 4. Hit `<Enter>` to repeat the macro over search matches.
+
+  -- Sometimes, the target to change is not a whole word.
+  -- In these cases, we would first manually select the word (using appropriate motions and text objects) and then issue `cn`.
+  -- 1. Select part of the word in visual mode.
+  -- 2. Hit `cn` to start the replacement process.
+  -- 3. Enter word for replacement, then hit `.` an appropriate number of times.
+  -- 4. Use `n` to skip over the matches.
+
+  -- Over search matches:
   -- 1. Position the cursor over a word; alternatively, make a selection.
-  -- 2. Hit cq to start recording the macro.
-  -- 3. Once you are done with the macro, go back to normal mode.
-  -- 4. Hit Enter to repeat the macro over search matches.
+  -- 2. Hit `cq` to start recording the macro.
+  -- 3. Once you are done with the macro, go back to normal move.
+  -- 4. Hit `<Enter>` to repeat the macro over search matches.
 
   vim.cmd([[
   let g:mc = "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>"
