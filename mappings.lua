@@ -55,6 +55,8 @@ return function(maps)
     '<Esc>"fyiw<CR>gv:s/<C-r>f/<C-r>f/g<Left><Left>',
     desc = "Find and replace visual",
   }
+  maps.x["<leader>fc"] =
+    { function() require("telescope.builtin").grep_string() end, desc = "Find visually selected text" }
   maps.n["<C-d>"] = { "<C-d>zz", desc = "Scroll half page down" }
   maps.n["<C-u>"] = { "<C-u>zz", desc = "Scroll half page up" }
   maps.n["<C-f>"] = { "<C-f>zz", desc = "Scroll page down" }
