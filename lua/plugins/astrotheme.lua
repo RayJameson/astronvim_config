@@ -10,7 +10,9 @@ return {
           base = C.bg,
           statusline = C.bg_1,
           green = C.green_1,
-          inactive_base = C.black,
+          inactive_base = C.surface0,
+          float = C.bg,
+          tabline = C.bg,
         },
         syntax = {
           red = C.red,

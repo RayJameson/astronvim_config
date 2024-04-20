@@ -60,7 +60,6 @@ return {
       "Pmenu",
       "PmenuSel",
       "PmenuSbar",
-      "Stl494d56_181a1f__",
       "TabLine",
       "TreesitterContextLineNumber",
       "NotifyERRORBorder",
