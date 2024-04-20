@@ -111,4 +111,5 @@ return {
       })
     end,
   },
+  { import = "astrocommunity.git.neogit" },
 }
