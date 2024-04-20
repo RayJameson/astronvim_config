@@ -1,22 +1,6 @@
 ---@type LazySpec
 return {
   {
-    "goolord/alpha-nvim",
-    enabled = false,
-  },
-  {
-    "s1n7ax/nvim-window-picker",
-    enabled = false,
-  },
-  {
-    "s1n7ax/nvim-window-picker",
-    enabled = false,
-  },
-  {
-    "stevearc/resession.nvim",
-    enabled = false,
-  },
-  {
     "max397574/better-escape.nvim",
     cond = not vim.g.vscode,
     opts = function(_, opts)
