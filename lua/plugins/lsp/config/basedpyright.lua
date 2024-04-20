@@ -16,7 +16,7 @@ return {
             analysis = {
               diagnosticMode = "workspace",
               -- diagnosticMode = "openFilesOnly",
-              typeCheckingMode = "all",
+              typeCheckingMode = "basic",
               autoImportCompletions = true,
               autoSearchPath = true,
               -- inlayHints = {
