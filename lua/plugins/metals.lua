@@ -11,56 +11,50 @@ return {
   },
   {
     "scalameta/nvim-metals",
-    cond = not vim.g.vscode,
-    init = function()
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "scala", "sbt" },
-        callback = function()
-          if vim.fn.executable("metals") ~= 1 and vim.fn.executable("coursier") ~= 1 then
-            vim.notify("`metals` or `coursier` are required to be installed for `nvim-metals` to work.")
-            return
-          end
-
-          local metals = require("metals")
-
-          local user_config = require("astrocore.lsp").config("metals")
-          local old_on_attach = user_config.on_attach
-          user_config.on_attach = function(...)
-            old_on_attach(...)
-            metals.setup_dap()
-          end
-
-          metals.initialize_or_attach(utils.extend_tbl(metals.bare_config(), user_config))
+    enabled = function() return vim.fn.executable("cs") == 1 or vim.fn.executable("coursier") == 1 end,
+    ft = { "scala", "sbt", "java" },
+    dependencies = {
+      { "AstroNvim/astrolsp", opts = { handlers = { metals = false } } },
+      {
+        "mfussenegger/nvim-dap",
+        optional = true,
+        config = function()
+          require("dap").configurations.scala = {
+            {
+              type = "scala",
+              request = "launch",
+              name = "RunOrTest",
+              metals = { runType = "runOrTestFile" },
+            },
+            {
+              type = "scala",
+              request = "launch",
+              name = "Test Target",
+              metals = { runType = "testTarget" },
+            },
+          }
         end,
-        group = vim.api.nvim_create_augroup("nvim-metals", { clear = true }),
-      })
+      },
+    },
+    opts = function()
+      local metals = require("metals")
+      local user_config = require("astrolsp").lsp_opts("metals")
+      if require("astrocore").is_available("nvim-dap") then
+        local on_attach = user_config.on_attach
+        user_config.on_attach = function(...)
+          on_attach(...)
+          metals.setup_dap()
+        end
+      end
+      return require("astrocore").extend_tbl(metals.bare_config(), user_config)
     end,
   },
-  {
-    "mfussenegger/nvim-dap",
-    optional = true,
-    config = function()
-      local scala_config = {
-        {
-          type = "scala",
-          request = "launch",
-          name = "RunOrTest",
-          metals = {
-            runType = "runOrTestFile",
-          },
-        },
-        {
-          type = "scala",
-          request = "launch",
-          name = "Test Target",
-          metals = {
-            runType = "testTarget",
-          },
-        },
-      }
-      local dap = require("dap")
-      dap.configurations.scala = dap.configurations.scala and vim.list_extend(dap.configurations.scala, scala_config)
-        or scala_config
-    end,
-  },
+  config = function(self, opts)
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = self.ft,
+      group = vim.api.nvim_create_augroup("nvim-metals", { clear = true }),
+      desc = "Initialize and attach nvim-metals",
+      callback = function() require("metals").initialize_or_attach(opts) end,
+    })
+  end,
 }

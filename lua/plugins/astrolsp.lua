@@ -29,7 +29,7 @@ return {
       opts.features = extend_tbl(opts.features, {
         autoformat = false, -- enable or disable auto formatting on start
         codelens = true, -- enable/disable codelens refresh on start
-        inlay_hints = true, -- enable/disable inlay hints on start
+        inlay_hints = false, -- enable/disable inlay hints on start
         semantic_tokens = false, -- enable/disable semantic token highlighting
       })
       -- customize lsp formatting options
@@ -52,20 +52,9 @@ return {
       --   return true
       -- end
       -- enable servers that you already have installed without mason
-      opts.servers = {
-        "pylance",
-      }
+      opts.servers = {}
       -- customize how language servers are attached
       opts.lsp_handlers ={}
-      opts.handlers = {
-        metals = false,
-        -- a function without a key is simply the default handler, functions take two parameters, the server name and the configured options table for that server
-        -- function(server, opts) require("lspconfig")[server].setup(opts) end
-
-        -- the key is the server that is being setup with `lspconfig`
-        -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
-        -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
-      }
       -- Configure buffer local auto commands to add when attaching a language server
       -- autocmds = {
       --   -- first key is the `augroup` to add the auto commands to (:h augroup)
