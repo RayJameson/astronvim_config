@@ -25,6 +25,7 @@ return {
   yellow = "#e5c07b",
   yellow_1 = "#ebae34",
   yellow_2 = "#d1b071",
+  yellow_3 = "#e5c06b",
   red = "#e06c75",
   red_1 = "#ec5f67",
   red_2 = "#ffbba6",

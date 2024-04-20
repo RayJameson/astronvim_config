@@ -13,6 +13,7 @@ return {
           inactive_base = C.surface0,
           float = C.bg,
           tabline = C.bg,
+          none_text = C.subtext0
         },
         syntax = {
           red = C.red,
@@ -22,6 +23,7 @@ return {
           cyan = C.cyan,
           purple = C.purple,
           yellow = C.yellow,
+          comment = C.subtext1,
         },
       },
     },

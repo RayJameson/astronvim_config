@@ -44,6 +44,7 @@ return {
           IlluminatedWordText = { fg = C.none, bg = C.surface1 },
           IlluminatedWordRead = { fg = C.none, bg = C.surface1 },
           IlluminatedWordWrite = { fg = C.none, bg = C.surface1 },
+          Type = { fg = C.cyan },
           ["@lsp.typemod.function.global"] = { fg = C.blue_1 },
           ["@method"] = { fg = C.cyan, bg = C.none },
           ["@function.method.call.lua"] = { link = "@method" },
