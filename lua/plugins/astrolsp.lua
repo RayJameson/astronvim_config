@@ -29,8 +29,8 @@ return {
       opts.features = extend_tbl(opts.features, {
         autoformat = false, -- enable or disable auto formatting on start
         codelens = true, -- enable/disable codelens refresh on start
-        inlay_hints = false, -- enable/disable inlay hints on start
-        semantic_tokens = false, -- enable/disable semantic token highlighting
+        inlay_hints = true, -- enable/disable inlay hints on start
+        semantic_tokens = true, -- enable/disable semantic token highlighting
       })
       -- customize lsp formatting options
       opts.formatting.format_on_save = extend_tbl(opts.formatting.format_on_save, {

@@ -112,4 +112,8 @@ return {
     end,
   },
   { import = "astrocommunity.git.neogit" },
+  {
+    "NeogitOrg/neogit",
+    branch = "nightly",
+  },
 }
