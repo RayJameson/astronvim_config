@@ -1,6 +1,8 @@
 return {
   none = "NONE",
   fg = "#abb2bf",
+  norm = "#adb0bb",
+  border = "#3a3e47",
   bg = "#1e222a",
   bg_1 = "#303742",
   black = "#181a1f",

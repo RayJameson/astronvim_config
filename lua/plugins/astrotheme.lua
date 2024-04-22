@@ -13,7 +13,8 @@ return {
           inactive_base = C.surface0,
           float = C.bg,
           tabline = C.bg,
-          none_text = C.subtext0
+          none_text = C.subtext0,
+          split = C.border,
         },
         syntax = {
           red = C.red,
