@@ -49,6 +49,7 @@ return {
           ["@method"] = { fg = C.cyan, bg = C.none },
           ["@function.method.call.lua"] = { link = "@method" },
           ["@lsp.type.class"] = { fg = C.blue },
+          ["@lsp.type.namespace.python"] = { link = "Identifier" },
           ["@function.builtin"] = { fg = C.blue_1 },
           ["@variable.builtin"] = { fg = C.red_3 },
         }
