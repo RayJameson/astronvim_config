@@ -73,7 +73,7 @@ return {
     dependencies = {
       "mfussenegger/nvim-dap-python",
     },
-    -- overrides `require("mason-nvim-dap").setup(...)`
+    init = function() end,
     cond = not vim.g.vscode,
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
