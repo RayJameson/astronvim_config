@@ -5,15 +5,55 @@ return {
   opts = function(_, opts)
     local status = require("astroui.status")
     -- custom heirline statusline component for grapple
-    status.component.grapple = function()
+    local function grapple_component()
       return status.component.builder {
         provider = function() return "󰛢 " .. require("grapple").name_or_index() end,
         condition = function()
-          if not require("astrocore").is_available("grapple.nvim") then return end
+          if not require("astrocore").is_available("grapple.nvim") then return false end
           return require("grapple").exists()
         end,
       }
     end
+    local Spacer = { provider = " " }
+    local function rpad(child)
+      return {
+        condition = child.condition,
+        child,
+        Spacer,
+      }
+    end
+    local function OverseerTasksForStatus(status)
+      return {
+        condition = function(self) return self.tasks[status] end,
+        provider = function(self) return string.format("%s%d", self.symbols[status], #self.tasks[status]) end,
+        hl = function(self)
+          return {
+            fg = require("heirline.utils").get_highlight(string.format("Overseer%s", status)).fg,
+          }
+        end,
+      }
+    end
+    local overseer_component = {
+      condition = function() return package.loaded.overseer end,
+      init = function(self)
+        local tasks = require("overseer.task_list").list_tasks { unique = true }
+        local tasks_by_status = require("overseer.util").tbl_group_by(tasks, "status")
+        self.tasks = tasks_by_status
+      end,
+      static = {
+        symbols = {
+          ["CANCELED"] = " ",
+          ["FAILURE"] = "󰅚 ",
+          ["SUCCESS"] = "󰄴 ",
+          ["RUNNING"] = "󰑮 ",
+        },
+      },
+
+      rpad(OverseerTasksForStatus("CANCELED")),
+      rpad(OverseerTasksForStatus("RUNNING")),
+      rpad(OverseerTasksForStatus("SUCCESS")),
+      rpad(OverseerTasksForStatus("FAILURE")),
+    }
 
     status.component.line_end = function()
       return status.component.builder {
@@ -50,9 +90,10 @@ return {
         update = "BufModifiedSet",
       },
       status.component.git_branch(),
-      status.component.grapple(),
+      grapple_component(),
       status.component.git_diff(),
       status.component.diagnostics(),
+      overseer_component,
       status.component.fill(),
       -- lsp causes issue on mac with tokyonight(https://discord.com/channels/939594913560031363/1100223017017163826)
       status.component.cmd_info(),
@@ -62,6 +103,7 @@ return {
       status.component.line_end(),
       status.component.nav(),
     }
+    opts.tabline = {}
     return opts
   end,
 }
