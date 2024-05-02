@@ -15,6 +15,7 @@ return {
           tabline = C.bg,
           none_text = C.subtext0,
           split = C.border,
+          cyan = C.blue,
         },
         syntax = {
           red = C.red,

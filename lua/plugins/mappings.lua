@@ -183,7 +183,7 @@ return {
     maps.i["<M-k>"] = { "<esc><cmd>m .-2<cr>==gi", desc = "Move up" }
     maps.x["<M-j>"] = { ":m '>+1<cr>gv=gv", desc = "Move down" }
     maps.x["<M-k>"] = { ":m '<-2<cr>gv=gv", desc = "Move up" }
-    maps.t["<esc><esc>"] = { "<c-\\><c-n>", desc = "Enter Normal Mode" }
+    maps.t["<Esc><Esc>"] = { "<C-\\><C-n>", desc = "Enter Normal Mode" }
     -- Smart Splits (remapped on Meta key)
     if is_available("smart-splits.nvim") then
       -- Resize with arrows

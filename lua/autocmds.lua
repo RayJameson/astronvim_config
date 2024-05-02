@@ -105,14 +105,13 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_augroup("FileSkeletons", { clear = true })
-local extension_cmd_map = {
+for file_extension, command in pairs {
   sh = "bash",
   zsh = "zsh",
   fish = "fish",
   ksh = "ksh",
   awk = "awk",
-}
-for file_extension, command in pairs(extension_cmd_map) do
+} do
   vim.api.nvim_create_autocmd("BufNewFile", {
     pattern = "*." .. file_extension,
     group = "FileSkeletons",

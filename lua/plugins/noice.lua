@@ -17,18 +17,16 @@ return {
     dependencies = {
       "MunifTanjim/nui.nvim",
     },
-    init = function() vim.g.lsp_handlers_enabled = false end,
     event = "VeryLazy",
     cond = not (vim.g.neovide or vim.g.vscode),
     opts = {
       cmdline = { view = "cmdline" },
+      messages = { view_search = false },
+      popupmenu = { enabled = false },
       lsp = {
+        hover = { enabled = false },
+        signature = { enabled = false },
         progress = { enabled = false },
-        override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.stylize_markdown"] = true,
-          ["cmp.entry.get_documentation"] = true,
-        },
       },
       routes = {
         {
@@ -67,8 +65,6 @@ return {
         { filter = { event = "msg_show", cmdline = "^:=" }, view = "messages" }, -- send lua output to split
         { filter = { event = "msg_show", min_height = 20 }, view = "messages" }, -- send long messages to split
       },
-      presets = { lsp_doc_border = true },
-      popupmenu = { enabled = false },
     },
   },
 }
