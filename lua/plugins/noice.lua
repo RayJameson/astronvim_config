@@ -14,6 +14,7 @@ return {
   },
   {
     "folke/noice.nvim",
+    init = function() vim.g.lsp_handlers_enabled = false end,
     dependencies = {
       "MunifTanjim/nui.nvim",
     },
@@ -21,11 +22,10 @@ return {
     cond = not (vim.g.neovide or vim.g.vscode),
     opts = {
       cmdline = { view = "cmdline" },
+      presets = { lsp_doc_border = true },
       messages = { view_search = false },
       popupmenu = { enabled = false },
       lsp = {
-        hover = { enabled = false },
-        signature = { enabled = false },
         progress = { enabled = false },
       },
       routes = {
