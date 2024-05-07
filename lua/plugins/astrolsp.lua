@@ -54,7 +54,7 @@ return {
       -- enable servers that you already have installed without mason
       opts.servers = {}
       -- customize how language servers are attached
-      opts.lsp_handlers ={}
+      -- opts.lsp_handlers ={}
       -- Configure buffer local auto commands to add when attaching a language server
       -- autocmds = {
       --   -- first key is the `augroup` to add the auto commands to (:h augroup)
