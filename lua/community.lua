@@ -13,10 +13,11 @@ return {
   -- { import = "astrocommunity.colorscheme.catppuccin" },
   -- { import = "astrocommunity.completion.copilot-lua-cmp" },
   { import = "astrocommunity.recipes.heirline-vscode-winbar" },
-  { import = "astrocommunity.pack.rust" },
-  { import = "astrocommunity.pack.go" },
+  (vim.fn.executable("rustc") and { import = "astrocommunity.pack.rust" }) or {},
+  (vim.fn.executable("go") == 1 and { import = "astrocommunity.pack.go" }) or {},
   {
     "ray-x/go.nvim",
+    enabled = vim.fn.executable("go") == 1,
     cond = not (vim.g.neovide or vim.g.vscode),
     opts = {
       lsp_inlay_hints = {

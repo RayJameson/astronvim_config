@@ -26,11 +26,7 @@ return {
           )
         end,
       })
-      cmd(
-        "MasonUpdateAll",
-        function() require("astrocore.mason").update_all() end,
-        { desc = "Update Mason Packages" }
-      )
+      cmd("MasonUpdateAll", function() require("astrocore.mason").update_all() end, { desc = "Update Mason Packages" })
     end,
   },
   {
@@ -43,10 +39,11 @@ return {
     -- overrides `require("mason-lspconfig").setup(...)`
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
-      opts.ensure_installed = list_insert_unique(opts.ensure_installed, {
+      local servers = {
         "lua_ls",
-        "ruff_lsp",
-      })
+      }
+      if vim.fn.executable("python3") == 1 then table.insert(servers, "ruff_lsp") end
+      opts.ensure_installed = list_insert_unique(opts.ensure_installed, servers)
     end,
   },
   -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
@@ -56,11 +53,12 @@ return {
     cond = not vim.g.vscode,
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
-      opts.ensure_installed = list_insert_unique(opts.ensure_installed, {
+      local utils = {
         -- "prettier",
         "stylua",
-        "pyink",
-      })
+      }
+      if vim.fn.executable("python3") == 1 then table.insert(utils, "pyink") end
+      opts.ensure_installed = list_insert_unique(opts.ensure_installed, utils)
       opts.handlers = {
         luacheck = function() end,
         stylua = function() end,
