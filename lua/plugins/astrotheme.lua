@@ -16,6 +16,7 @@ return {
           none_text = C.subtext0,
           split = C.border,
           cyan = C.blue,
+          selection = C.grey_1,
         },
         syntax = {
           red = C.red,
