@@ -88,7 +88,7 @@ return {
         pattern = "trouble",
         callback = function()
           local next = require("trouble").next
-          local previous = require("trouble").previous
+          local previous = require("trouble").prev
           local maps = { n = {} }
           maps.n["<M-j>"] = {
             function() next {} end,
