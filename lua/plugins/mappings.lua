@@ -29,16 +29,6 @@ return {
     maps.n["S"] = { "0Di", desc = "S+" }
     --]
     maps.n["<Leader>n"] = false
-    maps.n["gr"] = {
-      function()
-        if is_available("trouble") then
-          require("trouble").open("lsp_references")
-        else
-          vim.lsp.buf.references()
-        end
-      end,
-      desc = "LSP references",
-    }
 
     -- Repeat macros across visual selection
     maps.x["@"] = {
