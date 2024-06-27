@@ -11,11 +11,12 @@ return {
           function(type) require("luasnip.loaders.from_" .. type).lazy_load() end,
           { "vscode", "snipmate", "lua" }
         )
-        require("luasnip").filetype_extend("lua", { "luadoc" })
-        require("luasnip").filetype_extend("python", { "pydoc" })
-        require("luasnip").filetype_extend("rust", { "rustdoc" })
-        require("luasnip").filetype_extend("typescript", { "tsdoc" })
-        require("luasnip").filetype_extend("javascript", { "jsdoc" })
+        local luasnip = require("luasnip")
+        luasnip.filetype_extend("lua", { "luadoc" })
+        luasnip.filetype_extend("python", { "pydoc" })
+        luasnip.filetype_extend("rust", { "rustdoc" })
+        luasnip.filetype_extend("typescript", { "tsdoc" })
+        luasnip.filetype_extend("javascript", { "jsdoc" })
       end,
     },
   },
