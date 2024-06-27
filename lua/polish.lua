@@ -1,10 +1,4 @@
 local is_available = require("astrocore").is_available
-vim.api.nvim_set_var("python3_host_prog", "$HOME/.pyenv/versions/neovim_base_venv/bin/python3")
-vim.api.nvim_set_var(
-  "node_host_prog",
-  "/usr/local/bin/neovim-node-host"
-  -- nvm doesn't work with this variable, make symlink to destination above
-)
 local function escape(str)
   -- You need to escape these characters to work correctly
   local escape_chars = [[;,."|\]]

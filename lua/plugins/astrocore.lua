@@ -65,12 +65,19 @@ return {
         grepprg = vim.fn.executable("rg") == 1 and "rg --vimgrep" or nil,
       },
       g = { -- vim.g.<key>
+        node_host_prog = vim.env.HOME .. "/.nvm/versions/node/v20.3.0/bin/node",
+        python3_host_prog = vim.env.HOME .. "/.pyenv/versions/neovim_base_venv/bin/python3",
+        rustaceanvim = {
+          tools = {
+            float_win_config = {
+              border = "rounded",
+            },
+          },
+        },
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
       },
     },
-    -- Mappings can be configured through AstroCore as well.
-    -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
   },
 }
