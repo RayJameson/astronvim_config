@@ -18,7 +18,18 @@ return {
         if maps.n.gT then maps.n.gT[1] = function() trouble.open("lsp_type_definitions") end end
         if maps.n["<Leader>lR"] then maps.n["<Leader>lR"][1] = function() trouble.open("lsp_references") end end
         maps.n.gr = {
-          function() trouble.open { mode = "lsp_references", focus = true, auto_jump = true } end,
+          function()
+            local view = trouble.open { mode = "lsp_references", focus = true, auto_jump = true }
+            if view ~= nil then
+              view:wait(function()
+                local loc = view:at()
+                if loc.first_line then
+                  ---@diagnostic disable-next-line: missing-parameter
+                  trouble.next(view)
+                end
+              end)
+            end
+          end,
           desc = "LSP references",
         }
       else
