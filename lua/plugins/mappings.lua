@@ -70,13 +70,6 @@ return {
     maps.x["gl"] = { "$", desc = "go to end of the line ($)" }
     --]
 
-    --[ Better gg and G
-    maps.n["gj"] = { "G", desc = "go to last line" }
-    maps.n["gk"] = { "gg", desc = "go to first line" }
-    maps.x["gj"] = { "G", desc = "go to last line" }
-    maps.x["gk"] = { "gg", desc = "go to first line" }
-    --]
-
     maps.n["<Leader>c"] = {
       function()
         require("astrocore.buffer").close()
@@ -160,8 +153,6 @@ return {
       local icon = vim.g.icons_enabled and "󱍼 " or ""
       local prefix = "<Leader>x"
       maps.n[prefix] = { desc = icon .. "Trouble" }
-      maps.n[prefix .. "r"] = { "<CMD>Trouble lsp_references<CR>", desc = "References (Trouble)" }
-      maps.n[prefix .. "f"] = { "<CMD>Trouble lsp_definitions<CR>", desc = "Definitions (Trouble)" }
       maps.n[prefix .. "q"] = { "<CMD>Trouble quickfix<CR>", desc = "QuickFix (Trouble)" }
       maps.n[prefix .. "l"] = { "<CMD>Trouble loclist<CR>", desc = "LocationList (Trouble)" }
       maps.n[prefix .. "t"] = { "<CMD>TodoTrouble<CR>", desc = "TODO list" }
