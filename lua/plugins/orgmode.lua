@@ -1,4 +1,3 @@
-if true then return {} end
 ---Return `date` with Monday as first day of week
 ---@param date table
 ---@return osdate
@@ -140,7 +139,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
-      require("orgmode").setup_ts_grammar()
       opts.highlight.additional_vim_regex_highlighting = { "org" }
       if opts.ensure_installed ~= "all" then
         opts.ensure_installed = utils.list_insert_unique(opts.ensure_installed, { "org" })
