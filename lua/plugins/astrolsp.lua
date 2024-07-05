@@ -22,8 +22,8 @@ return {
             local view = trouble.open { mode = "lsp_references", focus = true, auto_jump = true }
             if view ~= nil then
               view:wait(function()
-                local loc = view:at()
-                if loc.first_line then
+                local cursor_pos = vim.api.nvim_win_get_cursor(0)
+                if cursor_pos[1] == 1 and cursor_pos[2] == 0 then
                   ---@diagnostic disable-next-line: missing-parameter
                   trouble.next(view)
                 end
