@@ -149,15 +149,6 @@ return {
 
     maps.n["<Leader>rn"] = { "<CMD>BetterLuafile<CR>", desc = "Run lua file with nvim-lua" }
 
-    if is_available("trouble.nvim") then
-      local icon = vim.g.icons_enabled and "󱍼 " or ""
-      local prefix = "<Leader>x"
-      maps.n[prefix] = { desc = icon .. "Trouble" }
-      maps.n[prefix .. "q"] = { "<CMD>Trouble quickfix<CR>", desc = "QuickFix (Trouble)" }
-      maps.n[prefix .. "l"] = { "<CMD>Trouble loclist<CR>", desc = "LocationList (Trouble)" }
-      maps.n[prefix .. "t"] = { "<CMD>TodoTrouble<CR>", desc = "TODO list" }
-    end
-
     if is_available("markdown-preview.nvim") then
       local icon = vim.g.icons_enabled and "󰽛 " or ""
       local prefix = "<Leader>m"

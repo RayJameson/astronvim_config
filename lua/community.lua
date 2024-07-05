@@ -60,46 +60,5 @@ return {
     end,
   },
   { import = "astrocommunity.indent.mini-indentscope" },
-  { import = "astrocommunity.diagnostics.trouble-nvim" },
-  {
-    "trouble.nvim",
-    cond = not vim.g.vscode,
-    opts = {
-      include_declaration = { "lsp_definitions" },
-      auto_jump = { "lsp_definitions", "lsp_references", "lsp_implementations" },
-      action_keys = {
-        jump_close = { "o", "<CR>" },
-        jump = { "<tab>", "<2-leftmouse>" },
-      },
-    },
-    init = function()
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "trouble",
-        callback = function()
-          local next = require("trouble").next
-          local previous = require("trouble").prev
-          local maps = { n = {} }
-          maps.n["<M-j>"] = {
-            function() next {} end,
-            desc = "Jump to next entry",
-          }
-          maps.n["<M-k>"] = {
-            function() previous {} end,
-            desc = "Jump to previous entry",
-          }
-          maps.n["j"] = {
-            function() next { skip_groups = true } end,
-            desc = "Jump to next entry",
-          }
-          maps.n["k"] = {
-            function() previous { skip_groups = true } end,
-            desc = "Jump to previous entry",
-          }
-          require("astrocore").set_mappings(maps, { buffer = 0 })
-        end,
-        group = vim.api.nvim_create_augroup("TroubleMappings", { clear = true }),
-      })
-    end,
-  },
   { import = "astrocommunity.git.neogit" },
 }
