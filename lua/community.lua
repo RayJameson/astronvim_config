@@ -1,7 +1,6 @@
 -- AstroCommunity: import any community modules here
 -- We import this file in `lazy_setup.lua` before the `plugins/` folder.
 -- This guarantees that the specs are processed before any user plugins.
-
 ---@type LazySpec
 return {
   "AstroNvim/astrocommunity",
@@ -15,16 +14,6 @@ return {
   { import = "astrocommunity.recipes.heirline-vscode-winbar" },
   (vim.fn.executable("rustc") and { import = "astrocommunity.pack.rust" }) or {},
   (vim.fn.executable("go") == 1 and { import = "astrocommunity.pack.go" }) or {},
-  {
-    "ray-x/go.nvim",
-    enabled = vim.fn.executable("go") == 1,
-    cond = not (vim.g.neovide or vim.g.vscode),
-    opts = {
-      lsp_inlay_hints = {
-        enable = false,
-      },
-    },
-  },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.yaml" },
   { import = "astrocommunity.pack.toml" },
