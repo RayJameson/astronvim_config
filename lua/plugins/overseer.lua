@@ -1,4 +1,4 @@
-local prefix = "<Leader>o"
+local prefix = "<Leader>r"
 ---@type LazySpec
 return {
   {
@@ -23,11 +23,9 @@ return {
       opts = {
         mappings = {
           n = {
-            [prefix] = { desc = "󱁤 Compilation" },
-            [prefix .. "a"] = { "<Cmd>OverseerQuickAction<CR>", desc = "Quick Action" },
             [prefix .. "i"] = { "<Cmd>OverseerInfo<CR>", desc = "Overseer Info" },
-            [prefix .. "<CR>"] = { "<Cmd>OverseerToggle<CR>", desc = "Overseer" },
-            [prefix .. "r"] = { "<Cmd>OverseerRun<CR>", desc = "Run" },
+            [prefix .. "r"] = { "<Cmd>OverseerRun<CR>", desc = "Overseer Run" },
+            [prefix .. "<CR>"] = { "<Cmd>OverseerToggle<CR>", desc = "Overseer panel" },
           },
         },
       },

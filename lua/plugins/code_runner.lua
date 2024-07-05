@@ -1,7 +1,7 @@
 local icon = vim.g.icons_enabled and "󰐍 " or ""
 local prefix = "<Leader>r"
 local maps = { n = {} }
-maps.n[prefix] = { desc = icon .. "Code runner" }
+maps.n[prefix] = { desc = icon .. "󰜎 Code runner" }
 require("astrocore").set_mappings(maps)
 
 ---@type LazySpec
@@ -40,7 +40,6 @@ return {
     }
   end,
   keys = {
-    { prefix .. "r", "<CMD>RunCode<CR>", desc = "Run code" },
     { prefix .. "f", "<CMD>RunFile<CR>", desc = "Run file" },
     { prefix .. "t", "<CMD>RunFile tab<CR>", desc = "Run file tab" },
     { prefix .. "c", "<CMD>RunClose<CR>", desc = "Close runner" },
