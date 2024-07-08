@@ -12,33 +12,27 @@ return {
     opts.mappings = {
       i = {
         j = {
-          -- These can all also be functions
           k = esc_fn,
-          j = esc_fn,
         },
       },
       c = {
         j = {
           k = esc_fn,
-          j = esc_fn,
         },
       },
       t = {
         j = {
           k = "<C-\\><C-n>",
-          j = "<C-\\><C-n>",
         },
       },
       v = {
         j = {
           k = esc_fn,
-          j = esc_fn,
         },
       },
       s = {
         j = {
           k = esc_fn,
-          j = esc_fn,
         },
       },
     }
