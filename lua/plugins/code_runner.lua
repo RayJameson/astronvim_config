@@ -17,7 +17,7 @@ return {
       project_path = "", -- No default path defined
       filetype = {
         java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
-        python = "export PYTHONPATH=$PYTHONPATH:. && time python3 -X dev -u",
+        python = "export PYTHONPATH=$PYTHONPATH:.:src && time python3 -X dev -u",
         lua = "time luaj",
         typescript = "time deno run",
         rust = "time cargo run",
