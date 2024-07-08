@@ -11,11 +11,6 @@ return {
   opts = function(_, opts)
     local any_word = [[\k\+]]
     local cmp = require("cmp")
-    opts.sources = cmp.config.sources {
-      { name = "nvim_lsp", priority = 1000 },
-      { name = "luasnip", priority = 750 },
-      { name = "orgmode", priority = 650 },
-    }
     cmp.setup.cmdline("/", {
       mapping = cmp.mapping.preset.cmdline(),
       sources = {
