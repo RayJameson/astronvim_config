@@ -5,9 +5,9 @@ return {
   opts = function(_, opts)
     local esc_fn = function()
       if vim.bo.filetype == "OverseerForm" then
-        return vim.api.nvim_win_get_cursor(0)[2] > 1 and "<esc>lx" or "<esc>x"
+        return vim.api.nvim_win_get_cursor(0)[2] > 1 and "<Esc>lx" or "<Esc>x"
       end
-      return vim.api.nvim_win_get_cursor(0)[2] > 1 and "<esc>l" or "<esc>"
+      return vim.api.nvim_win_get_cursor(0)[2] > 1 and "<Esc>l" or "<Esc>"
     end
     opts.mappings = {
       i = {
@@ -25,18 +25,20 @@ return {
       },
       t = {
         j = {
-          k = esc_fn,
-          j = esc_fn,
+          k = "<C-\\><C-n>",
+          j = "<C-\\><C-n>",
         },
       },
       v = {
         j = {
           k = esc_fn,
+          j = esc_fn,
         },
       },
       s = {
         j = {
           k = esc_fn,
+          j = esc_fn,
         },
       },
     }
