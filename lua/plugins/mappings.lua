@@ -81,11 +81,6 @@ return {
       desc = "Close buffer",
     }
 
-    if is_available("nvim-notify") then
-      maps.n["<Leader>uD"] =
-        { function() require("notify").dismiss { silent = true, pending = true } end, desc = "Dismiss notification" }
-    end
-
     --[ ToggleTerm
     if is_available("toggleterm.nvim") then
       local prefix = "<Leader>t"
@@ -113,39 +108,6 @@ return {
     end
 
     maps.n["<Leader>ur"] = { toggle_lazyreadraw, desc = "Toggle lazyredraw" }
-
-    if is_available("nvim-treesitter-context") then
-      maps.n["[c"] = { function() require("treesitter-context").go_to_context() end, desc = "Go to context" }
-    end
-
-    if is_available("nvim-transparent") then
-      maps.n["<Leader>uT"] = { "<CMD>TransparentToggle<CR>", desc = "Toggle tranparency" }
-    end
-
-    -- stylua: ignore start
-    if is_available("nvim-dap") then
-      local prefix = "<Leader>d"
-      local icon = vim.g.icons_enabled and " " or ""
-      maps.n[prefix] = { desc = icon .. "Debugger" }
-      maps.n["<F8>"] = { function() require("dap").toggle_breakpoint() end, desc = "Debugger: Toggle Breakpoint", }
-      maps.n["<F9>"] = { function() require("dap").step_over() end, desc = "Debugger: Step Over", }
-      maps.n["<F10>"] = { function() require("dap").step_into() end, desc = "Debugger: Step Into", }
-      maps.n["<F22>"] = { function() require("dap").step_out() end, desc = "Debugger: Step Out (S-F10)", } -- Shift+F10
-      maps.n[prefix .. "b"] = { function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint (F8)", }
-      maps.n[prefix .. "i"] = { function() require("dap").step_into() end, desc = "Step Into (F10)", }
-      maps.n[prefix .. "O"] = { function() require("dap").step_out() end, desc = "Step Out (S-F10)", }
-      maps.n[prefix .. "o"] = { function() require("dap").step_over() end, desc = "Step Over (F9)", }
-      maps.n["<F11>"] = false
-    end
-    -- stylua: ignore end
-
-    -- GitSigns
-    if is_available("gitsigns.nvim") then
-      local prefix = "<Leader>g"
-      maps.n[prefix .. "R"] = { function() require("gitsigns").reset_buffer() end, desc = "Reset Git buffer" }
-      maps.n[prefix .. "r"] = { function() require("gitsigns").reset_hunk() end, desc = "Reset Git hunk" }
-      maps.n[prefix .. "D"] = { function() require("gitsigns").toggle_deleted() end, desc = "Toggle deleted lines" }
-    end
 
     maps.n["<Leader>rn"] = { "<CMD>BetterLuafile<CR>", desc = "Run lua file with nvim-lua" }
 

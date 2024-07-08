@@ -2,6 +2,19 @@ local prefix = "<Leader>u"
 ---@type LazySpec
 return {
   "xiyaowong/transparent.nvim",
+  specs = {
+    {
+      "AstroNvim/astrocore",
+      ---@type AstroCoreOpts
+      opts = {
+        mappings = {
+          n = {
+            ["<Leader>uT"] = { "<CMD>TransparentToggle<CR>", desc = "Toggle tranparency" },
+          },
+        },
+      },
+    },
+  },
   lazy = false,
   opts = {
     -- table: default groups
