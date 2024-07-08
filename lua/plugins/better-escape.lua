@@ -25,11 +25,7 @@ return {
           k = "<C-\\><C-n>",
         },
       },
-      v = {
-        j = {
-          k = esc_fn,
-        },
-      },
+      v = {},
       s = {
         j = {
           k = esc_fn,
