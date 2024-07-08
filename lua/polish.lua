@@ -126,10 +126,6 @@ vim.api.nvim_create_user_command(
   end,
   {}
 )
-if is_available("langmapper.nvim") then
-  local langmapper = require("langmapper")
-  langmapper.automapping { global = true, buffer = true }
-end
 for _, v in ipairs { "r", "a", "n" } do
   vim.api.nvim_del_keymap("n", "gr" .. v)
 end
