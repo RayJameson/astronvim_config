@@ -5,5 +5,6 @@ return {
     background_colour = "#000000",
     stages = "fade",
     fps = 60,
+    timeout = 0,
   },
 }

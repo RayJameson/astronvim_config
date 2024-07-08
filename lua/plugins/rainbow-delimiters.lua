@@ -2,7 +2,7 @@
 return {
   {
     "HiPhish/rainbow-delimiters.nvim",
-    dependencies = {
+    specs = {
       {
         "AstroNvim/astrocore",
         opts = {

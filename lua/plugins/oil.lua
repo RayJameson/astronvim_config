@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   "stevearc/oil.nvim",
-  dependencies = {
+  specs = {
     "nvim-tree/nvim-web-devicons",
     {
       "rebelot/heirline.nvim",

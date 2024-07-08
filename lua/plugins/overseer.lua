@@ -18,7 +18,7 @@ return {
       "OverseerTaskAction",
       "OverseerClearCache",
     },
-    dependencies = {
+    specs = {
       "AstroNvim/astrocore",
       opts = {
         mappings = {

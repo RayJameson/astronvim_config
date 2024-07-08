@@ -4,7 +4,7 @@ return {
     "folke/trouble.nvim",
     cmd = "Trouble",
     cond = not vim.g.vscode,
-    dependencies = {
+    specs = {
       { "AstroNvim/astroui", opts = { icons = { Trouble = "󱍼" } } },
       {
         "AstroNvim/astrocore",

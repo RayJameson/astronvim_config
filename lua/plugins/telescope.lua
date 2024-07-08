@@ -64,7 +64,7 @@ return {
     end
     local smart_send_to_qf_trouble = function(prompt_bufnr)
       actions.smart_send_to_qflist(prompt_bufnr)
-      trouble.open("quickfix")
+      trouble.open( { mode = "quickfix", focus = true})
     end
     local select_one_or_multi = function(prompt_bufnr)
       local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
