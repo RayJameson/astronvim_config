@@ -11,6 +11,9 @@ return {
 
   -- { import = "astrocommunity.colorscheme.catppuccin" },
   -- { import = "astrocommunity.completion.copilot-lua-cmp" },
+  { import = "astrocommunity.completion.cmp-nerdfont" },
+  { import = "astrocommunity.completion.cmp-nvim-lua" },
+  { import = "astrocommunity.completion.cmp-under-comparator" },
   { import = "astrocommunity.recipes.heirline-vscode-winbar" },
   (vim.fn.executable("rustc") and { import = "astrocommunity.pack.rust" }) or {},
   (vim.fn.executable("go") == 1 and { import = "astrocommunity.pack.go" }) or {},
@@ -22,6 +25,7 @@ return {
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
   { import = "astrocommunity.editing-support.todo-comments-nvim" },
+  { import = "astrocommunity.editing-support.bigfile-nvim" },
   {
     "todo-comments.nvim",
     cond = not vim.g.vscode,
