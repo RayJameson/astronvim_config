@@ -28,7 +28,6 @@ return {
     maps.x["gp"] = { "P", desc = "Paste noregister" }
     maps.n["S"] = { "0Di", desc = "S+" }
     --]
-    maps.n["<Leader>n"] = false
 
     -- Repeat macros across visual selection
     maps.x["@"] = {

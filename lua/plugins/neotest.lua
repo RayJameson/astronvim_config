@@ -1,14 +1,25 @@
-local icon = vim.g.icons_enabled and " " or ""
 local prefix = "<Leader>n"
-local maps = { n = {} }
-maps.n[prefix] = { desc = icon .. "Neotest" }
-require("astrocore").set_mappings(maps)
-
 ---@type LazySpec
 return {
   "nvim-neotest/neotest",
   cond = not vim.g.vscode,
-  config = function()
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter",
+    "nvim-neotest/neotest-go",
+    "nvim-neotest/neotest-python",
+    "rouge8/neotest-rust",
+    "antoinemadec/FixCursorHold.nvim",
+  },
+  opts = function()
+    return {
+      adapters = {
+        require("neotest-go"),
+        require("neotest-rust"),
+        require("neotest-python"),
+      },
+    }
+  end,
+  config = function(_, opts)
     -- get neotest namespace (api call creates or returns namespace)
     local neotest_ns = vim.api.nvim_create_namespace("neotest")
     vim.diagnostic.config({
@@ -19,74 +30,47 @@ return {
         end,
       },
     }, neotest_ns)
-    require("neotest").setup {
-      adapters = {
-        require("neotest-go"),
-        require("neotest-rust"),
-        require("neotest-python"),
-      },
-      log_level = vim.log.levels.DEBUG,
-    }
-    vim.api.nvim_create_user_command("NeotestRun", require("neotest").run.run, {})
-    vim.api.nvim_create_user_command(
-      "NeotestRunFile",
-      function() require("neotest").run.run(vim.fn.expand("%")) end,
-      {}
-    )
-    vim.api.nvim_create_user_command(
-      "NeotestRunDap",
-      function() require("neotest").run.run { strategy = "dap" } end,
-      {}
-    )
-    vim.api.nvim_create_user_command("NeotestStop", function() require("neotest").run.stop() end, {})
-    vim.api.nvim_create_user_command("NeotestAttach", function() require("neotest").run.attach() end, {})
-    vim.api.nvim_create_user_command("NeotestSummaryToggle", function() require("neotest").summary.toggle() end, {})
-    vim.api.nvim_create_user_command(
-      "NeotestOutput",
-      function() require("neotest").output.open { enter = true } end,
-      {}
-    )
-    vim.api.nvim_create_user_command("NeotestOutputToggle", function() require("neotest").output_panel.toggle() end, {})
-    vim.api.nvim_create_user_command(
-      "NeotestJumpPreviousFailed",
-      function() require("neotest").jump.prev { status = "failed" } end,
-      {}
-    )
-    vim.api.nvim_create_user_command(
-      "NeotestJumpNextFailed",
-      function() require("neotest").jump.next { status = "failed" } end,
-      {}
-    )
+    require("neotest").setup(opts)
   end,
-  cmd = {
-    "NeotestRun",
-    "NeotestRunFile",
-    "NeotestStop",
-    "NeotestRunDap",
-    "NeotestAttach",
-    "NeotestSummaryToggle",
-    "NeotestOutput",
-    "NeotestOutputToggle",
-    "NeotestJumpPreviousFailed",
-    "NeotestJumpNextFailed",
-  },
-  dependencies = {
-    "nvim-treesitter/nvim-treesitter",
-    "nvim-neotest/neotest-go",
-    "nvim-neotest/neotest-python",
-    "rouge8/neotest-rust",
-    "antoinemadec/FixCursorHold.nvim",
-  },
-  keys = {
-    { prefix .. "r", "<CMD>NeotestRun<CR>", desc = "Run nearest test" },
-    { prefix .. "f", "<CMD>NeotestRunFile<CR>", desc = "Run tests in current file" },
-    { prefix .. "S", "<CMD>NeotestStop<CR>", desc = "Stop running test" },
-    { prefix .. "d", "<CMD>NeotestRunDap<CR>", desc = "Run test in debugger" },
-    { prefix .. "a", "<CMD>NeotestAttach<CR>", desc = "Attach to running test" },
-    { prefix .. "s", "<CMD>NeotestSummaryToggle<CR>", desc = "Toggle test summary window" },
-    { prefix .. "o", "<CMD>NeotestOutput<CR>", desc = "Show test output" },
-    { prefix .. "O", "<CMD>NeotestOutputToggle<CR>", desc = "Toggle test output window" },
-    { prefix .. "k", "<CMD>NeotestJumpPreviousFailed<CR>", desc = "Jump to previous failed test" },
-    { prefix .. "j", "<CMD>NeotestJumpNextFailed<CR>", desc = "Jump to next failed test" },
+  specs = {
+    { "AstroNvim/astroui", opts = { icons = { Neotest = "" } } },
+    {
+      "AstroNvim/astrocore",
+      opts = function(_, opts)
+        local maps = opts.mappings
+        maps.n[prefix] = { desc = require("astroui").get_icon("Neotest", 1, false) .. "Neotest" }
+        maps.n[prefix .. "r"] = { function() require("neotest").run.run() end, desc = "Run nearest test" }
+        maps.n[prefix .. "f"] = {
+          function() require("neotest").run.run(vim.fn.expand("%")) end,
+          desc = "Run tests in current file",
+        }
+        maps.n[prefix .. "S"] = { function() require("neotest").run.stop() end, desc = "Stop running test" }
+        maps.n[prefix .. "d"] = {
+          function() require("neotest").run.run { strategy = "dap", suite = false } end,
+          desc = "Run test in debugger",
+        }
+        maps.n[prefix .. "a"] = { function() require("neotest").run.attach() end, desc = "Attach to running test" }
+        maps.n[prefix .. "s"] = {
+          function() require("neotest").summary.toggle() end,
+          desc = "Toggle test summary window",
+        }
+        maps.n[prefix .. "o"] = {
+          function() require("neotest").output.open { enter = true } end,
+          desc = "Show test output",
+        }
+        maps.n[prefix .. "O"] = {
+          function() require("neotest").output_panel.toggle() end,
+          desc = "Toggle test output window",
+        }
+        maps.n[prefix .. "k"] = {
+          function() require("neotest").jump.prev { status = "failed" } end,
+          desc = "Jump to previous failed test",
+        }
+        maps.n[prefix .. "j"] = {
+          function() require("neotest").jump.next { status = "failed" } end,
+          desc = "Jump to next failed test",
+        }
+      end,
+    },
   },
 }
