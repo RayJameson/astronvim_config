@@ -8,7 +8,6 @@ return {
     local maps = opts.mappings
     local is_available = require("astrocore").is_available
     -- disbale defaults:
-    -- Makes more sense to use "\" as vert split and "|" as split, because I use vert split more often
     maps.n["<Leader>bb"] = false
     maps.n["<Leader>bd"] = false
     --]

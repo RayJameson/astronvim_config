@@ -11,37 +11,14 @@ return {
       local maps = opts.mappings
       maps.n.gy = false
       if maps.n["<Leader>lG"] then maps.n["<Leader>lG"][1] = function() vim.lsp.buf.workspace_symbol() end end
-      if require("astrocore").is_available("trouble.nvim") then
-        local trouble = require("trouble")
-        if maps.n.gd then maps.n.gd[1] = function() trouble.open("lsp_definitions") end end
-        if maps.n.gI then maps.n.gI[1] = function() trouble.open("lsp_implementations") end end
-        if maps.n.gT then maps.n.gT[1] = function() trouble.open("lsp_type_definitions") end end
-        if maps.n["<Leader>lR"] then maps.n["<Leader>lR"][1] = function() trouble.open("lsp_references") end end
-        maps.n.gr = {
-          function()
-            local view = trouble.open { mode = "lsp_references", focus = true, auto_jump = true }
-            if view ~= nil then
-              view:wait(function()
-                local cursor_pos = vim.api.nvim_win_get_cursor(0)
-                if cursor_pos[1] == 1 and cursor_pos[2] == 0 then
-                  ---@diagnostic disable-next-line: missing-parameter
-                  trouble.next(view)
-                end
-              end)
-            end
-          end,
-          desc = "LSP references",
-        }
-      else
-        if maps.n.gd then maps.n.gd[1] = function() vim.lsp.buf.definition() end end
-        if maps.n.gI then maps.n.gI[1] = function() vim.lsp.buf.implementation() end end
-        if maps.n.gr then maps.n.gr[1] = function() vim.lsp.buf.references() end end
-        if maps.n["<Leader>lR"] then maps.n["<Leader>lR"][1] = function() vim.lsp.buf.references() end end
-        maps.n.gr = {
-          function() vim.lsp.buf.type_definition() end,
-          desc = "LSP references",
-        }
-      end
+      if maps.n.gd then maps.n.gd[1] = function() vim.lsp.buf.definition() end end
+      if maps.n.gI then maps.n.gI[1] = function() vim.lsp.buf.implementation() end end
+      if maps.n.gr then maps.n.gr[1] = function() vim.lsp.buf.references() end end
+      if maps.n["<Leader>lR"] then maps.n["<Leader>lR"][1] = function() vim.lsp.buf.references() end end
+      maps.n.gr = {
+        function() vim.lsp.buf.type_definition() end,
+        desc = "LSP references",
+      }
       -- Configuration table of features provided by AstroLSP
       opts.features = extend_tbl(opts.features, {
         autoformat = false, -- enable or disable auto formatting on start
