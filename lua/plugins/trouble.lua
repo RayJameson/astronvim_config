@@ -5,29 +5,20 @@ return {
     cmd = "Trouble",
     cond = not vim.g.vscode,
     opts = function()
-      local get_icon = require("astroui").get_icon
-      local lspkind_avail, lspkind = pcall(require, "lspkind")
       return {
         keys = {
           ["<ESC>"] = "close",
           ["q"] = "close",
           ["<C-E>"] = "close",
         },
-        icons = {
-          indent = {
-            fold_open = get_icon("FoldOpened"),
-            fold_closed = get_icon("FoldClosed"),
+        modes = {
+          lsp_references = {
+            params = {
+              include_declaration = false,
+            },
           },
-          folder_closed = get_icon("FolderClosed"),
-          folder_open = get_icon("FolderOpen"),
-          kinds = lspkind_avail and lspkind.symbol_map,
         },
-        include_declaration = { "lsp_definitions" },
         auto_jump = { "lsp_definitions", "lsp_references", "lsp_implementations" },
-        action_keys = {
-          jump_close = { "o", "<CR>" },
-          jump = { "<tab>", "<2-leftmouse>" },
-        },
       }
     end,
     specs = {
@@ -94,28 +85,33 @@ return {
               desc = "Todo/Fix/Fixme [T]",
             }
           end
+          opts.autocmds.TroubleView = {
+            {
+              event = "BufEnter",
+              desc = "Jump to first entry in trouble view",
+              callback = function(ev)
+                if vim.bo[ev.buf].filetype == "trouble" then
+                  local cursor_pos = vim.api.nvim_win_get_cursor(0)
+                  ---@diagnostic disable-next-line: missing-parameter
+                  if cursor_pos[1] == 1 and cursor_pos[2] == 0 then vim.schedule(function() trouble.next() end) end
+                end
+              end,
+            },
+          }
           opts.autocmds.TroubleMappings = {
             {
               event = "FileType",
               desc = "Create jump mappings for trouble view",
               pattern = "trouble",
               callback = function()
-                local next = require("trouble").next
-                local previous = require("trouble").prev
-                maps.n["<M-j>"] = {
-                  function() next {} end,
-                  desc = "Jump to next entry",
-                }
-                maps.n["<M-k>"] = {
-                  function() previous {} end,
-                  desc = "Jump to previous entry",
-                }
                 maps.n["j"] = {
-                  function() next { skip_groups = true } end,
+                  ---@diagnostic disable-next-line: missing-parameter
+                  function() trouble.next() end,
                   desc = "Jump to next entry",
                 }
                 maps.n["k"] = {
-                  function() previous { skip_groups = true } end,
+                  ---@diagnostic disable-next-line: missing-parameter
+                  function() trouble.prev() end,
                   desc = "Jump to previous entry",
                 }
                 require("astrocore").set_mappings(maps, { buffer = 0 })
