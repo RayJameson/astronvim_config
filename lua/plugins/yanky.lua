@@ -85,11 +85,11 @@ return {
       ---@type AstroUIOpts
       opts = {
         highlights = {
-        init = {
-            YankyYanked = { link = "IncSearch"},
-            YankyPut = { link = "IncSearch"},
-          }
-        }
+          init = {
+            YankyYanked = { link = "IncSearch" },
+            YankyPut = { link = "IncSearch" },
+          },
+        },
       },
     },
   },
