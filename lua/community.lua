@@ -29,6 +29,7 @@ return {
   {
     "todo-comments.nvim",
     cond = not vim.g.vscode,
+    optional = true,
     opts = {
       keywords = {
         TEST = {
@@ -51,6 +52,7 @@ return {
   {
     "nvim-spectre",
     cond = not vim.g.vscode,
+    optional = true,
     opts = function(_, opts)
       opts.open_cmd = "tabnew"
       opts.highlight = {
