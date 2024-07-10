@@ -10,15 +10,11 @@ return {
       local extend_tbl = require("astrocore").extend_tbl
       local maps = opts.mappings
       maps.n.gy = false
+      maps.n.gr = { function() vim.lsp.buf.references() end, desc = "LSP references" }
       if maps.n["<Leader>lG"] then maps.n["<Leader>lG"][1] = function() vim.lsp.buf.workspace_symbol() end end
       if maps.n.gd then maps.n.gd[1] = function() vim.lsp.buf.definition() end end
       if maps.n.gI then maps.n.gI[1] = function() vim.lsp.buf.implementation() end end
-      if maps.n.gr then maps.n.gr[1] = function() vim.lsp.buf.references() end end
       if maps.n["<Leader>lR"] then maps.n["<Leader>lR"][1] = function() vim.lsp.buf.references() end end
-      maps.n.gr = {
-        function() vim.lsp.buf.type_definition() end,
-        desc = "LSP references",
-      }
       -- Configuration table of features provided by AstroLSP
       opts.features = extend_tbl(opts.features, {
         autoformat = false, -- enable or disable auto formatting on start
