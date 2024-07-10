@@ -18,7 +18,7 @@ return {
       },
       ring = {
         history_length = 1000,
-        storage = "sqlite",
+        storage = jit.os:find("Windows") and "shada" or "sqlite",
         sync_with_numbered_registers = true,
         cancel_event = "update",
         ignore_registers = { "_" },
