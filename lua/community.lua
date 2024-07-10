@@ -26,6 +26,18 @@ return {
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
   { import = "astrocommunity.editing-support.todo-comments-nvim" },
   { import = "astrocommunity.editing-support.bigfile-nvim" },
+  { import = "astrocommunity.debugging.nvim-bqf" },
+  {
+    "nvim-bqf",
+    optional = true,
+    opts = {
+      preview = {
+        winblend = 0,
+        auto_resize_height = true,
+        win_height = 999,
+      },
+    },
+  },
   {
     "todo-comments.nvim",
     cond = not vim.g.vscode,
