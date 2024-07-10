@@ -1,18 +1,6 @@
 ---@type LazySpec
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
-    cond = not vim.g.vscode,
-    opts = function(_, opts)
-      if opts.ensure_installed ~= "all" then
-        opts.ensure_installed = require("astrocore").list_insert_unique(
-          opts.ensure_installed,
-          { "bash", "markdown", "markdown_inline", "regex", "vim" }
-        )
-      end
-    end,
-  },
-  {
     "folke/noice.nvim",
     init = function() vim.g.lsp_handlers_enabled = false end,
     dependencies = {
@@ -67,5 +55,17 @@ return {
         { filter = { event = "msg_show", min_height = 20 }, view = "messages" }, -- send long messages to split
       },
     },
+    specs = {
+    "nvim-treesitter/nvim-treesitter",
+    cond = not vim.g.vscode,
+    opts = function(_, opts)
+      if opts.ensure_installed ~= "all" then
+        opts.ensure_installed = require("astrocore").list_insert_unique(
+          opts.ensure_installed,
+          { "bash", "markdown", "markdown_inline", "regex", "vim" }
+        )
+      end
+    end,
+  },
   },
 }
