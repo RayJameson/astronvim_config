@@ -94,18 +94,6 @@ return {
               desc = "Todo/Fix/Fixme [T]",
             }
           end
-          opts.autocmds.TroubleView = {
-            {
-              event = "BufEnter",
-              desc = "Jump to first entry in trouble view",
-              pattern = "trouble",
-              once = true,
-              callback = function()
-                local cursor_pos = vim.api.nvim_win_get_cursor(0)
-                if cursor_pos[1] == 1 and cursor_pos[2] == 0 then vim.api.nvim_feedkeys("jj", "n", false) end
-              end,
-            },
-          }
           opts.autocmds.TroubleMappings = {
             {
               event = "FileType",
