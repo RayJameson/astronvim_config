@@ -11,6 +11,9 @@ return {
           ["q"] = "close",
           ["<C-E>"] = "close",
         },
+        preview = {
+          scratch = false,
+        },
         modes = {
           lsp_references = {
             params = {
@@ -118,6 +121,20 @@ return {
               end,
             },
           }
+        end,
+      },
+      {
+        "nvim-telescope/telescope.nvim",
+        opts = function(_, opts)
+          local add_to_qf_trouble = function(bufnr) require("trouble.sources.telescope").add(bufnr, { focus = true }) end
+          local send_to_qf_trouble = function(bufnr) require("trouble.sources.telescope").open(bufnr, { focus = true }) end
+
+          for _, mode in ipairs { "i", "n" } do
+            opts.defaults.mappings[mode] = require("astrocore").extend_tbl(opts.defaults.mappings[mode], {
+              ["<C-t>"] = add_to_qf_trouble,
+              ["<M-t>"] = send_to_qf_trouble,
+            })
+          end
         end,
       },
       { "lewis6991/gitsigns.nvim", opts = { trouble = true } },

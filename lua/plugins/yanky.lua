@@ -2,7 +2,10 @@
 return {
   "gbprod/yanky.nvim",
   cond = not vim.g.vscode,
-  dependencies = { "kkharji/sqlite.lua", enabled = not jit.os:find("Windows") },
+  dependencies = {
+    "nvim-telescope/telescope.nvim",
+    { "kkharji/sqlite.lua", enabled = not jit.os:find("Windows") },
+  },
   event = "UIEnter",
   opts = function()
     local utils = require("yanky.utils")
@@ -44,10 +47,6 @@ return {
       },
     }
   end,
-  init = function()
-    vim.api.nvim_set_hl(0, "YankyYanked", { link = "IncSearch" })
-    vim.api.nvim_set_hl(0, "YankyPut", { link = "IncSearch" })
-  end,
   keys = {
     { "y", "<Plug>(YankyYank)", desc = "Yank", mode = { "n", "x" } },
     { "p", "<Plug>(YankyPutAfter)", desc = "Put after", mode = { "n", "x" } },
@@ -62,10 +61,36 @@ return {
     { "<p", "<Plug>(YankyPutIndentAfterShiftLeft)", desc = "Put indent after shift left", mode = "n" },
     { "=p", "<Plug>(YankyPutAfterFilter)", desc = "Put after filter", mode = "n" },
     { "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put before filter", mode = "n" },
+  },
+  specs = {
     {
-      "<Leader>fy",
-      function() require("telescope").extensions.yank_history.yank_history() end,
-      desc = "Yank history",
+      "nvim-telescope/telescope.nvim",
+      opts = function() require("telescope").load_extension("yank_history") end,
+      specs = {
+        "AstroNvim/astrocore",
+        opts = {
+          mappings = {
+            n = {
+              ["<Leader>fy"] = {
+                function() require("telescope").extensions.yank_history.yank_history() end,
+                desc = "Yank history",
+              },
+            },
+          },
+        },
+      },
+    },
+    {
+      "AstroNvim/astroui",
+      ---@type AstroUIOpts
+      opts = {
+        highlights = {
+        init = {
+            YankyYanked = { link = "IncSearch"},
+            YankyPut = { link = "IncSearch"},
+          }
+        }
+      },
     },
   },
 }

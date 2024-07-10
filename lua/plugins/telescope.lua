@@ -39,7 +39,6 @@ return {
     -- require telescope and load extensions as necessary
     local telescope = require("telescope")
     local conditional_func = require("astrocore").conditional_func
-    conditional_func(telescope.load_extension, pcall(require, "yanky.nvim"), "yank_history")
     conditional_func(telescope.load_extension, pcall(require, "telescope-undo"), "undo")
     conditional_func(telescope.load_extension, pcall(require, "yaml_schema"), "yaml_schema")
     require("astronvim.plugins.configs.telescope")(plugin, opts)
@@ -47,12 +46,6 @@ return {
     local actions = require("telescope.actions")
     local from_entry = require("telescope.from_entry")
 
-    local trouble = require("trouble")
-    -- named function for which-key in telescope help
-    local smart_add_to_qf_trouble = function(prompt_bufnr)
-      actions.smart_add_to_qflist(prompt_bufnr)
-      trouble.open("quickfix")
-    end
     local yank_path = function(modifier)
       return function(prompt_bufnr)
         local entry = require("telescope.actions.state").get_selected_entry()
@@ -61,10 +54,6 @@ return {
         vim.fn.setreg('"', name)
         actions.close(prompt_bufnr)
       end
-    end
-    local smart_send_to_qf_trouble = function(prompt_bufnr)
-      actions.smart_send_to_qflist(prompt_bufnr)
-      trouble.open( { mode = "quickfix", focus = true})
     end
     local select_one_or_multi = function(prompt_bufnr)
       local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
@@ -81,8 +70,6 @@ return {
 
     for _, mode in ipairs { "i", "n" } do
       opts.defaults.mappings[mode] = extend_tbl(opts.defaults.mappings[mode], {
-        ["<C-t>"] = smart_add_to_qf_trouble,
-        ["<M-t>"] = smart_send_to_qf_trouble,
         ["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
         ["<M-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
         ["<C-l>"] = actions.smart_add_to_loclist + actions.open_loclist,
@@ -92,7 +79,6 @@ return {
         ["<C-Y>"] = yank_path(),
       })
     end
-    return opts
   end,
   keys = {
     { prefix .. "u", function() require("telescope").extensions.undo.undo() end, desc = "Show undo history" },
