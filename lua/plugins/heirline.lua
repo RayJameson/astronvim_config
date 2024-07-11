@@ -42,9 +42,9 @@ return {
       end,
       static = {
         symbols = {
-          ["CANCELED"] = " ",
-          ["FAILURE"] = "󰅚 ",
-          ["SUCCESS"] = "󰄴 ",
+          ["CANCELED"] = "󰜺 ",
+          ["FAILURE"] = " ",
+          ["SUCCESS"] = "󰄳 ",
           ["RUNNING"] = "󰑮 ",
         },
       },
@@ -55,7 +55,7 @@ return {
       rpad(OverseerTasksForStatus("FAILURE")),
     }
 
-    status.component.line_end = function()
+    local line_end = function()
       return status.component.builder {
         {
           provider = function()
@@ -100,7 +100,7 @@ return {
       status.component.fill(),
       status.component.lsp(),
       status.component.treesitter(),
-      status.component.line_end(),
+      line_end(),
       status.component.nav(),
     }
     opts.tabline = {}
