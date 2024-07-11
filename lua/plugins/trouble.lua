@@ -67,7 +67,7 @@ return {
             desc = "Workspace Diagnostics [T]",
           }
           maps.n[prefix .. "x"] = {
-            function() trouble.toggle { mode = "diagnostics", focus = true, filter = { bufnr = 0 } } end,
+            function() trouble.toggle { mode = "diagnostics", focus = true, filter = { buf = 0 } } end,
             desc = "Document Diagnostics [T]",
           }
           maps.n[prefix .. "l"] = {
