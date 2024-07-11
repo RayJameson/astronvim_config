@@ -16,6 +16,7 @@ return {
   white_1 = "#afb2bb",
   white_2 = "#c9c9c9",
   blue = "#61afef",
+  title = "#50a4e9",
   blue_1 = "#40d9ff",
   blue_2 = "#1b1f27",
   blue_3 = "#8094B4",

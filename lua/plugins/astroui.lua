@@ -52,6 +52,7 @@ return {
         ["@lsp.type.parameter.python"] = { link = "Hlargs" },
         ["@function.builtin"] = { fg = C.blue_1 },
         ["@variable.builtin"] = { fg = C.red_3 },
+        Title = { fg = C.title, bold = true },
       },
     },
     -- Icons can be configured throughout the interface
