@@ -48,6 +48,7 @@ return {
             J = "DecreaseDetail",
             ["<C-p>"] = "ScrollOutputUp",
             ["<C-n>"] = "ScrollOutputDown",
+            ["dd"] = "<Cmd>OverseerQuickAction dispose<CR>",
           },
         },
       },
