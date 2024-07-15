@@ -21,7 +21,6 @@ return {
             },
           },
         },
-        auto_jump = { "lsp_definitions", "lsp_references", "lsp_implementations" },
       }
     end,
     specs = {
