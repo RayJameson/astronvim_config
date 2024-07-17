@@ -4,25 +4,23 @@ return {
     "folke/trouble.nvim",
     cmd = "Trouble",
     cond = not vim.g.vscode,
-    opts = function()
-      return {
-        keys = {
-          ["<ESC>"] = "close",
-          ["q"] = "close",
-          ["<C-E>"] = "close",
-        },
-        preview = {
-          scratch = false,
-        },
-        modes = {
-          lsp_references = {
-            params = {
-              include_declaration = false,
-            },
+    opts = {
+      keys = {
+        ["<ESC>"] = "close",
+        ["q"] = "close",
+        ["<C-E>"] = "close",
+      },
+      preview = {
+        scratch = false,
+      },
+      modes = {
+        lsp_references = {
+          params = {
+            include_declaration = false,
           },
         },
-      }
-    end,
+      },
+    },
     specs = {
       { "AstroNvim/astroui", opts = { icons = { Trouble = "󱍼" } } },
       {
