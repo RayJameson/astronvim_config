@@ -55,7 +55,9 @@ return {
       end
 
       local filetype_to_cmd = {
-        python = function(file) return run_with("python")(file), { env = { PYTHONPATH = vim.uv.cwd() } } end,
+        python = function(file)
+          return run_with("python")(file), { env = { PYTHONPATH = table.concat({ vim.uv.cwd(), "src" }, ":") } }
+        end,
         sh = run_with("sh"),
         zsh = run_with("zsh"),
         bash = run_with("bash"),
