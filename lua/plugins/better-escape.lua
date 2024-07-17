@@ -26,11 +26,7 @@ return {
             k = esc_fn,
           },
         },
-        t = {
-          j = {
-            k = "<C-\\><C-n>",
-          },
-        },
+        t = disabled,
         v = disabled,
         x = disabled,
         s = disabled,
