@@ -74,7 +74,12 @@ return {
         local cmd = filetype_to_cmd[vim.bo.filetype](file)
         return {
           cmd = cmd,
-          strategy = { "toggleterm", direction = "tab", open_on_start = true },
+          strategy = {
+            "toggleterm",
+            direction = "tab",
+            open_on_start = true,
+            on_create = function() vim.cmd("stopinsert") end,
+          },
           components = {
             { "display_duration", detail_level = 2 },
             "on_output_summarize",
