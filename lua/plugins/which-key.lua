@@ -5,8 +5,8 @@ return {
   opts = {
     preset = "modern",
     delay = 0,
-    modes = {
-      t = false,
-    }
+    triggers = {
+      { "<auto>", mode = "nxso" },
+    },
   },
 }

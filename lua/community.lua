@@ -60,7 +60,7 @@ return {
       },
     },
   },
-  { import = "astrocommunity.project.nvim-spectre" },
+  { import = "astrocommunity.search.nvim-spectre" },
   {
     "nvim-spectre",
     cond = not vim.g.vscode,
