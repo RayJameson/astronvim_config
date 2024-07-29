@@ -8,8 +8,15 @@ return {
     local maps = opts.mappings
     local is_available = require("astrocore").is_available
     -- disbale defaults:
-    maps.n["<Leader>bb"] = false
-    maps.n["<Leader>bd"] = false
+    maps.n["<Leader>b"] = false
+    for _, char in ipairs { "b", "d", "C", "c", "l", "r", "s", "p", "\\", "|" } do
+      maps.n["<Leader>b" .. char] = false
+      if char == "s" then
+        for _, s_char in ipairs { "e", "i", "m", "p", "r" } do
+          maps.n["<Leader>bs" .. s_char] = false
+        end
+      end
+    end
     --]
 
     --[ jumplist for j/k number jumps
