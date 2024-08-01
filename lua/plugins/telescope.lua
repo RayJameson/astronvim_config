@@ -46,11 +46,14 @@ return {
     local actions = require("telescope.actions")
     local from_entry = require("telescope.from_entry")
 
-    local yank_path = function(modifier)
+    local yank_path_or_content = function(modifier)
       return function(prompt_bufnr)
         local entry = require("telescope.actions.state").get_selected_entry()
-        local filename = from_entry.path(entry, false, false)
-        local name = vim.fn.fnamemodify(filename, modifier)
+        local filename_or_content = from_entry.path(entry, false, false)
+        local name = (
+          type(filename_or_content) == "string" and vim.fn.fnamemodify(filename_or_content, modifier)
+          or filename_or_content.regcontents
+        ) or ""
         vim.fn.setreg('"', name)
         actions.close(prompt_bufnr)
       end
@@ -75,8 +78,8 @@ return {
         ["<C-l>"] = actions.smart_add_to_loclist + actions.open_loclist,
         ["<M-l>"] = actions.smart_send_to_loclist + actions.open_loclist,
         ["<CR>"] = select_one_or_multi,
-        ["<C-y>"] = yank_path(":."),
-        ["<C-Y>"] = yank_path(),
+        ["<C-y>"] = yank_path_or_content(":."),
+        ["<C-Y>"] = yank_path_or_content(),
       })
     end
   end,
