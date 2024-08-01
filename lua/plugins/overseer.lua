@@ -63,7 +63,7 @@ return {
         bash = run_with("bash"),
         javascript = run_with("node"),
         typescript = run_with("node"),
-        lua = run_with("luajit"),
+        lua = run_with("luaj"),
         perl = run_with("perl"),
         html = run_with("xdg-open"),
         go = run_with { "go", "run" },
