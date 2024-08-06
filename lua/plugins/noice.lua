@@ -16,6 +16,11 @@ return {
       lsp = {
         progress = { enabled = false },
         hover = { enabled = false },
+        override = {
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true,
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+        },
       },
       routes = {
         {
@@ -56,16 +61,16 @@ return {
       },
     },
     specs = {
-    "nvim-treesitter/nvim-treesitter",
-    cond = not vim.g.vscode,
-    opts = function(_, opts)
-      if opts.ensure_installed ~= "all" then
-        opts.ensure_installed = require("astrocore").list_insert_unique(
-          opts.ensure_installed,
-          { "bash", "markdown", "markdown_inline", "regex", "vim" }
-        )
-      end
-    end,
-  },
+      "nvim-treesitter/nvim-treesitter",
+      cond = not vim.g.vscode,
+      opts = function(_, opts)
+        if opts.ensure_installed ~= "all" then
+          opts.ensure_installed = require("astrocore").list_insert_unique(
+            opts.ensure_installed,
+            { "bash", "markdown", "markdown_inline", "regex", "vim" }
+          )
+        end
+      end,
+    },
   },
 }
