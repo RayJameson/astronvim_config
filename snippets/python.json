@@ -1,7 +1,11 @@
 {
-    "setup": {
-        "prefix": "shebang",
-        "body": "#!/usr/bin/env python3",
-        "description": "add python3 shebang"
-    }
+  "#type: ignore": {
+    "body": "  # type: ignore",
+    "prefix": "#type: ignore"
+  },
+  "setup": {
+    "body": "#!/usr/bin/env python3",
+    "description": "add python3 shebang",
+    "prefix": "shebang"
+  }
 }
