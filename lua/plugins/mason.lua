@@ -88,6 +88,11 @@ return {
               program = "${file}",
               justMyCode = false,
               console = "integratedTerminal",
+              cwd = vim.uv.cwd(),
+              env = {
+                PYTHONPATH = table.concat({ vim.uv.cwd(), "src" }, ":"),
+                PYDEVD_WARN_SLOW_RESOLVE_TIMEOUT = "2",
+              },
               pythonPath = function() return "python" end,
             },
             {
@@ -95,6 +100,11 @@ return {
               request = "launch",
               name = "Python: Debug FastAPI web application",
               module = "uvicorn",
+              cwd = vim.uv.cwd(),
+              env = {
+                PYTHONPATH = table.concat({ vim.uv.cwd(), "src" }, ":"),
+                PYDEVD_WARN_SLOW_RESOLVE_TIMEOUT = "2",
+              },
               args = {
                 "main:app",
                 "--use-colors",
@@ -104,7 +114,9 @@ return {
             },
           })
           require("mason-nvim-dap").default_setup(config) -- don't forget this!
-          local path = require("mason-registry").get_package("debugpy"):get_install_path() .. "/venv/bin/python"
+          local path = vim.fn.exepath("python")
+          local debugpy = require("mason-registry").get_package("debugpy")
+          if debugpy:is_installed() then path = debugpy:get_install_path() .. "/venv/bin/python" end
           require("dap-python").setup(path, opts)
         end,
       }
