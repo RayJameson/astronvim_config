@@ -15,6 +15,7 @@ return {
   { import = "astrocommunity.completion.cmp-nvim-lua" },
   { import = "astrocommunity.completion.cmp-under-comparator" },
   { import = "astrocommunity.recipes.heirline-vscode-winbar" },
+  { import = "astrocommunity.recipes.disable-tabline" },
   (vim.fn.executable("rustc") and { import = "astrocommunity.pack.rust" }) or {},
   (vim.fn.executable("go") == 1 and { import = "astrocommunity.pack.go" }) or {},
   { import = "astrocommunity.pack.lua" },
