@@ -61,23 +61,6 @@ return {
       },
     },
   },
-  { import = "astrocommunity.search.nvim-spectre" },
-  {
-    "nvim-spectre",
-    cond = not vim.g.vscode,
-    optional = true,
-    opts = function(_, opts)
-      opts.open_cmd = "tabnew"
-      opts.highlight = {
-        ui = "String",
-        search = "DiffRemoved",
-        replace = "DiffAdded",
-      }
-      opts.line_sep_start = ""
-      opts.result_padding = "│  "
-      opts.line_sep = ""
-    end,
-  },
   { import = "astrocommunity.indent.mini-indentscope" },
   { import = "astrocommunity.git.neogit" },
   { import = "astrocommunity.color.nvim-highlight-colors" },
