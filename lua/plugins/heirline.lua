@@ -26,7 +26,7 @@ return {
       return {
         condition = function(self) return self.tasks[status] end,
         provider = function(self) return string.format("%s%d", self.symbols[status], #self.tasks[status]) end,
-        hl = function()
+        hl = function(self)
           return {
             fg = require("heirline.utils").get_highlight(string.format("Overseer%s", status)).fg,
           }
@@ -69,6 +69,7 @@ return {
       }
     end
 
+    opts.tabline = nil
     opts.statusline = {
       -- statusline
       hl = { fg = "fg", bg = "bg" },
@@ -102,6 +103,7 @@ return {
       line_end(),
       status.component.nav(),
     }
+    opts.tabline = {}
     return opts
   end,
 }

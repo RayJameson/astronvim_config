@@ -26,6 +26,7 @@ return {
         number = true, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
         wrap = false, -- sets vim.opt.wrap
+        showtabline = 0,
         -- set to true or false etc.
         signcolumn = "yes:1", -- sets vim.opt.signcolumn to auto
         swapfile = false,
