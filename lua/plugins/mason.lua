@@ -89,9 +89,13 @@ return {
               justMyCode = false,
               console = "integratedTerminal",
               cwd = vim.uv.cwd(),
+              args = {
+                "-m",
+                "debugpy.adapter",
+              },
               env = {
                 PYTHONPATH = table.concat({ vim.uv.cwd(), "src" }, ":"),
-                PYDEVD_WARN_SLOW_RESOLVE_TIMEOUT = "2",
+                PYDEVD_WARN_SLOW_RESOLVE_TIMEOUT = "4",
               },
               pythonPath = function() return "python" end,
             },
@@ -103,9 +107,11 @@ return {
               cwd = vim.uv.cwd(),
               env = {
                 PYTHONPATH = table.concat({ vim.uv.cwd(), "src" }, ":"),
-                PYDEVD_WARN_SLOW_RESOLVE_TIMEOUT = "2",
+                PYDEVD_WARN_SLOW_RESOLVE_TIMEOUT = "4",
               },
               args = {
+                "-m",
+                "debugpy.adapter",
                 "main:app",
                 "--use-colors",
               },
