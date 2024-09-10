@@ -7,6 +7,11 @@ return {
     {
       "AstroNvim/astrocore",
       opts = {
+        options = {
+          g = {
+            codeium_enabled = false,
+          },
+        },
         mappings = {
           n = {
             ["<Leader>;"] = {
