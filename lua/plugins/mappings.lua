@@ -116,15 +116,6 @@ return {
 
     maps.n["<Leader>rn"] = { "<CMD>BetterLuafile<CR>", desc = "Run lua file with nvim-lua" }
 
-    if is_available("markdown-preview.nvim") then
-      local icon = vim.g.icons_enabled and "󰽛 " or ""
-      local prefix = "<Leader>m"
-      maps.n[prefix] = { desc = icon .. "Markdown" }
-      maps.n[prefix .. "m"] = { "<CMD>MarkdownPreview<CR>", desc = "MarkdownPreview" }
-      maps.n[prefix .. "t"] = { "<CMD>MarkdownPreviewToggle<CR>", desc = "MarkdownPreview Toggle" }
-      maps.n[prefix .. "s"] = { "<CMD>MarkdownPreviewStop<CR>", desc = "MarkdownPreview Stop" }
-    end
-
     -- Move Lines
     maps.n["<M-j>"] = { "<cmd>m .+1<cr>==", desc = "Move down" }
     maps.n["<M-k>"] = { "<cmd>m .-2<cr>==", desc = "Move up" }
