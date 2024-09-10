@@ -16,11 +16,7 @@ return {
       lsp = {
         progress = { enabled = false },
         hover = { enabled = false },
-        override = {
-          ["vim.lsp.util.stylize_markdown"] = true,
-          ["cmp.entry.get_documentation"] = true,
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-        },
+        signature = { enabled = false },
       },
       routes = {
         {
