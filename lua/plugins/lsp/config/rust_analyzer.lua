@@ -8,6 +8,32 @@ return {
       rust_analyzer = {
         settings = {
           ["rust-analyzer"] = {
+            lens = {
+              references = {
+                method = {
+                  enable = true,
+                },
+                trait = {
+                  enable = true,
+                },
+                adt = {
+                  enable = true,
+                },
+                enumVariant = {
+                  enable = true,
+                },
+              },
+            },
+            diagnostics = {
+              styleLints = {
+                enable = true,
+              }
+            },
+            inlayHints = {
+              implicitDrops = {
+                enable = true,
+              }
+            },
             cargo = {
               allFeatures = true,
             },
