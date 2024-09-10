@@ -13,6 +13,7 @@ return {
       "netrw",
       "neo-tree",
       "oil",
+      "noice",
     },
   },
 }
