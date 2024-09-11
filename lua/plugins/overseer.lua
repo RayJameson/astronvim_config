@@ -31,8 +31,9 @@ return {
                 [prefix .. "r"] = { "<Cmd>OverseerRun<CR>", desc = "Open tasks" },
                 [prefix .. "<CR>"] = { "<Cmd>OverseerToggle<CR>", desc = "Open Panel" },
                 [prefix .. "s"] = { "<Cmd>OverseerRun shell<CR>", desc = "Run shell" },
-                [prefix .. "f"] = { "<Cmd>OverseerRun file-run<CR>", desc = "Run file" },
-                [prefix .. "t"] = { "<Cmd>OverseerRun file-run-tab<CR>", desc = "Run file" },
+                [prefix .. "f"] = { "<Cmd>OverseerRun file-run<CR>", desc = "Run file in split" },
+                [prefix .. "F"] = { "<Cmd>OverseerRun file-run-background<CR>", desc = "Run file in background" },
+                [prefix .. "t"] = { "<Cmd>OverseerRun file-run-tab<CR>", desc = "Run file in new tab" },
               },
             },
           })
@@ -69,6 +70,7 @@ return {
         go = run_with { "go", "run" },
       }
 
+      ---@return overseer.TaskDefinition
       local function tab_builder()
         local file = vim.fn.expand("%:p")
         local cmd = filetype_to_cmd[vim.bo.filetype](file)
@@ -78,7 +80,7 @@ return {
             "toggleterm",
             direction = "tab",
             open_on_start = true,
-            on_create = function() vim.cmd("stopinsert") end,
+            on_create = function() vim.cmd.stopinsert() end,
           },
           components = {
             { "display_duration", detail_level = 2 },
@@ -89,12 +91,19 @@ return {
         }
       end
 
-      local function builder()
+      ---@param run_in_foreground boolean
+      ---@return overseer.TaskDefinition
+      local function builder(run_in_foreground)
         local file = vim.fn.expand("%:p")
         local cmd = filetype_to_cmd[vim.bo.filetype](file)
         return {
           cmd = cmd,
-          strategy = { "toggleterm", open_on_start = true },
+          strategy = {
+            "toggleterm",
+            use_shell = true,
+            open_on_start = run_in_foreground,
+            on_create = function() vim.cmd.stopinsert() end,
+          },
           components = {
             { "display_duration", detail_level = 2 },
             "on_output_summarize",
@@ -128,8 +137,16 @@ return {
         },
         templates = {
           {
+            name = "file-run-background",
+            builder = function() return builder(false) end,
+            condition = {
+              filetype = vim.tbl_keys(filetype_to_cmd),
+            },
+            desc = "Run single file in background",
+          },
+          {
             name = "file-run",
-            builder = builder,
+            builder = function() return builder(true) end,
             condition = {
               filetype = vim.tbl_keys(filetype_to_cmd),
             },

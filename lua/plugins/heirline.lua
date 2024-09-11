@@ -15,9 +15,10 @@ return {
       }
     end
     local Spacer = { provider = " " }
-    local function rpad(child)
+    local function pad(child)
       return {
         condition = child.condition,
+        Spacer,
         child,
         Spacer,
       }
@@ -49,10 +50,10 @@ return {
         },
       },
 
-      rpad(OverseerTasksForStatus("CANCELED")),
-      rpad(OverseerTasksForStatus("RUNNING")),
-      rpad(OverseerTasksForStatus("SUCCESS")),
-      rpad(OverseerTasksForStatus("FAILURE")),
+      pad(OverseerTasksForStatus("CANCELED")),
+      pad(OverseerTasksForStatus("RUNNING")),
+      pad(OverseerTasksForStatus("SUCCESS")),
+      pad(OverseerTasksForStatus("FAILURE")),
     }
 
     local line_end = function()
