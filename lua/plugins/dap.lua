@@ -20,21 +20,74 @@ return {
         maps.n["<Leader>di"] = { function() require("dap").step_into() end, desc = "Step Into (F10)" }
         maps.n["<Leader>dO"] = { function() require("dap").step_out() end, desc = "Step Out (S-F10)" }
         maps.n["<Leader>do"] = { function() require("dap").step_over() end, desc = "Step Over (F9)" }
+        maps.n["<Leader>da"] = { function() require("dap").step_back() end, desc = "Step Back (S-F9)" }
+        maps.n["<S-F9>"] = { function() require("dap").step_back() end, desc = "Step Back (S-F9)" }
         maps.n["<Leader>dd"] = { function() require("dap").disconnect() end, desc = "Disconnect" }
-        maps.n["<C-F5>"] = { function() require("dap").restart_frame() end, desc = "Debugger: Restart" } -- Control+F5
-        maps.n["<S-F5>"] = { function() require("dap").terminate() end, desc = "Debugger: Stop" } -- Shift+F5
-        maps.n["<S-F9>"] = { -- Shift+F9
+        maps.n["<C-F5>"] = { function() require("dap").restart_frame() end, desc = "Restart" } -- Control+F5
+        maps.n["<S-F5>"] = { function() require("dap").terminate() end, desc = "Stop" } -- Shift+F5
+        maps.n["<Leader>dh"] = {
+          ---@diagnostic disable-next-line: missing-fields
+          function() require("dapui").eval(nil, { enter = true }) end,
+          desc = "Hover",
+        }
+        maps.n["<S-F8>"] = { -- Shift+F8
           function()
             vim.ui.input({ prompt = "Condition: " }, function(condition)
               if condition then require("dap").set_breakpoint(condition) end
             end)
           end,
-          desc = "Debugger: Conditional Breakpoint",
+          desc = "Conditional Breakpoint",
         }
 
         maps.n["<F11>"] = false
       end,
     },
   },
-  dependencies = { "theHamsta/nvim-dap-virtual-text", config = true },
+  dependencies = {
+    { "theHamsta/nvim-dap-virtual-text", config = true },
+    {
+      "rcarriga/nvim-dap-ui",
+      config = function(plugin, opts)
+        opts.controls = {
+      icons = {
+        pause = "󰏤",
+        play = "",
+        disconnect = "",
+        run_last = "",
+        step_back = "",
+        step_into = "",
+        step_out = "",
+        step_over = "",
+        terminate = ""
+      }
+        }
+        opts.layouts = {
+          {
+            -- You can change the order of elements in the sidebar
+            elements = {
+              -- Provide IDs as strings or tables with "id" and "size" keys
+              {
+                id = "scopes",
+                size = 0.25, -- Can be float or integer > 1
+              },
+              { id = "breakpoints", size = 0.25 },
+              { id = "stacks", size = 0.25 },
+              { id = "watches", size = 0.25 },
+            },
+            size = 40,
+            position = "left", -- Can be "left" or "right"
+          },
+          {
+            elements = {
+              "repl",
+              "console",
+            },
+            size = 9,
+            position = "bottom", -- Can be "bottom" or "top"
+          },
+        }
+        require("astronvim.plugins.configs.nvim-dap-ui")(plugin, opts)
+      end,
+    },
+  },
 }
