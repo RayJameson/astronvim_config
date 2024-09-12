@@ -1,18 +1,7 @@
-local icon = vim.g.icons_enabled and " " or ""
-local prefix = "<Leader>D"
-require("astrocore").set_mappings {
-  n = { [prefix] = { name = icon .. "Diff View" } },
-  x = { [prefix] = { name = icon .. "Diff View" } },
-}
 ---@type LazySpec
 return {
   "sindrets/diffview.nvim",
   event = "User AstroGitFile",
-  keys = {
-    { prefix .. "<CR>", "<cmd>DiffviewOpen<cr>", desc = "Open DiffView" },
-    { prefix .. "h", "<cmd>DiffviewFileHistory %<cr>", desc = "Open DiffView File History", mode = { "n", "x" } },
-    { prefix .. "H", "<cmd>DiffviewFileHistory<cr>", desc = "Open DiffView Branch History" },
-  },
   cmd = {
     "DiffviewOpen",
     "DiffviewFileHistory",
@@ -36,5 +25,39 @@ return {
       },
     },
     hooks = { diff_buf_read = function(bufnr) vim.b[bufnr].view_activated = false end },
+  },
+  specs = {
+    {
+      "AstroNvim/astroui",
+      ---@type AstroUIOpts
+      opts = { icons = { DiffView = "" } },
+    },
+    {
+      "AstroNvim/astrocore",
+      ---@param opts AstroCoreOpts
+      opts = function(_, opts)
+        if opts.mappings == nil then opts.mappings = {} end
+        local maps, prefix = opts.mappings, "<Leader>D" ---@cast maps -nil
+        maps.n[prefix] = { desc = require("astroui").get_icon("DiffView", 1, true) .. "Diff View" }
+        maps.n[prefix .. "<CR>"] = {
+          "<Cmd>DiffviewOpen<Cr>",
+          desc = "Open DiffView",
+        }
+        maps.n[prefix .. "h"] = {
+          "<Cmd>DiffviewFileHistory %<Cr>",
+          desc = "Open DiffView File History",
+        }
+        maps.n[prefix .. "H"] = {
+          "<Cmd>DiffviewFileHistory<Cr>",
+          desc = "Open DiffView Branch History",
+        }
+
+        maps.x[prefix] = { desc = require("astroui").get_icon("DiffView", 1, true) .. "Diff View" }
+        maps.x[prefix .. "h"] = {
+          "<Cmd>DiffviewFileHistory %<Cr>",
+          desc = "Open DiffView File History",
+        }
+      end,
+    },
   },
 }
