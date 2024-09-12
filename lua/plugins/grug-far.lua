@@ -51,10 +51,16 @@ return {
     if not vim.g.icons_enabled then
       opts.resultsSeparatorLineChar = "-"
       opts.spinnerStates = {
-        "|",
-        "\\",
-        "-",
-        "/",
+        "⠋",
+        "⠙",
+        "⠹",
+        "⠸",
+        "⠼",
+        "⠴",
+        "⠦",
+        "⠧",
+        "⠇",
+        "⠏",
       }
     end
   end,
