@@ -27,7 +27,6 @@ return {
         Label = { fg = C.blue, bg = C.none, italic = true }, -- case, default, etc.,
         Exception = { fg = C.purple, bg = C.none, italic = true }, -- try, catch, throw,
         Boolean = { fg = C.bright_turquoise, bg = C.none }, -- a boolean constant: TRUE, false,
-        DiffDelete = { fg = C.bg, bg = C.red_1 },
         NormalFloat = { bg = C.bg },
         TabLine = { bg = C.bg },
         MatchParen = { fg = C.bright_turquoise, bg = C.none, bold = true },
