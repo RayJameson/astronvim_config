@@ -86,20 +86,6 @@ return {
       desc = "Close buffer",
     }
 
-    --[ ToggleTerm
-    if is_available("toggleterm.nvim") then
-      local prefix = "<Leader>t"
-      maps.n[prefix .. "h"] =
-        { "<CMD>ToggleTerm size=15 direction=horizontal<cr>", desc = "ToggleTerm horizontal split" }
-      if vim.fn.executable("lnav") == 1 then
-        maps.n[prefix .. "L"] = {
-          function() require("astrocore").toggle_term_cmd("lnav " .. vim.fn.expand("%:p")) end,
-          silent = true,
-          desc = "ToggleTerm lnav",
-        }
-      end
-    end
-
     --]
     local function ui_notify(str)
       if vim.g.ui_notifications_enabled then require("astrocore").notify(str) end
