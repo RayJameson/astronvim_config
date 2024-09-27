@@ -18,16 +18,17 @@ return {
         if opts.mappings == nil then opts.mappings = {} end
         local maps, prefix = opts.mappings, "<Leader><Leader>" ---@cast maps -nil
         maps.n[prefix] = { desc = require("astroui").get_icon("Grapple", 1, true) .. "Grapple" }
+        maps.n[prefix .. "e"] = { "<Cmd>Grapple toggle_tags<CR>", desc = "Select from tags" }
         maps.n[prefix .. "t"] = {
-          "<cmd>Grapple toggle<CR>",
+          "<Cmd>Grapple toggle<CR>",
           desc = "Toggle a file",
         }
         maps.n[prefix .. "s"] = {
-          "<cmd>Grapple toggle_scopes<CR>",
+          "<Cmd>Grapple toggle_scopes<CR>",
           desc = "Toggle a file",
         }
-        maps.n["<C-n>"] = { "<cmd>Grapple cycle forward<CR>", desc = "Select next tag" }
-        maps.n["<C-p>"] = { "<cmd>Grapple cycle backward<CR>", desc = "Select previous tag" }
+        maps.n["<C-n>"] = { "<Cmd>Grapple cycle forward<CR>", desc = "Select next tag" }
+        maps.n["<C-p>"] = { "<Cmd>Grapple cycle backward<CR>", desc = "Select previous tag" }
       end,
     },
   },
