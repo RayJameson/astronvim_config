@@ -64,4 +64,5 @@ return {
   { import = "astrocommunity.indent.mini-indentscope" },
   { import = "astrocommunity.color.nvim-highlight-colors" },
   { import = "astrocommunity.lsp.lsplinks-nvim" },
+  { import = "astrocommunity.neovim-lua-development.helpview-nvim" },
 }
