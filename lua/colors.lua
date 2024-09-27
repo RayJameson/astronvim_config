@@ -35,6 +35,7 @@ return {
   red_3 = "#cc626a",
   red_4 = "#d47d85",
   red_5 = "#e9989e",
+  red_6 = "#f8747e",
   pale_red = "#a36a6f",
   grey = "#5c6370",
   grey_1 = "#4b5263",
