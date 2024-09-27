@@ -40,7 +40,27 @@ return {
         end,
       },
     },
-    opts = function()
+    opts = {
+      task_list = {
+        direction = "bottom",
+        max_height = { 100, 0.99 },
+        height = 100,
+        bindings = {
+          ["<C-l>"] = false,
+          ["<C-h>"] = false,
+          ["<C-k>"] = false,
+          ["<C-j>"] = false,
+          ["p"] = false,
+          q = "<Cmd>close<CR>",
+          K = "IncreaseDetail",
+          J = "DecreaseDetail",
+          ["<C-p>"] = "ScrollOutputUp",
+          ["<C-n>"] = "ScrollOutputDown",
+          ["dd"] = "<Cmd>OverseerQuickAction dispose<CR>",
+        },
+      },
+    },
+    config = function(_, opts)
       --- Run with runner
       ---@param runner string | table
       ---@return function
@@ -111,77 +131,51 @@ return {
         if run_in_foreground then vim.list_extend(task.components, { { "open_output", focus = true } }) end
         return task
       end
-
-      return {
-        setup = {
-          task_list = {
-            direction = "bottom",
-            max_height = { 100, 0.99 },
-            height = 100,
-            bindings = {
-              ["<C-l>"] = false,
-              ["<C-h>"] = false,
-              ["<C-k>"] = false,
-              ["<C-j>"] = false,
-              ["p"] = false,
-              q = "<Cmd>close<CR>",
-              K = "IncreaseDetail",
-              J = "DecreaseDetail",
-              ["<C-p>"] = "ScrollOutputUp",
-              ["<C-n>"] = "ScrollOutputDown",
-              ["dd"] = "<Cmd>OverseerQuickAction dispose<CR>",
-            },
+      require("overseer").setup(opts)
+      vim.tbl_map(require("overseer").register_template, {
+        {
+          name = "file-run-background",
+          builder = function() return builder(false) end,
+          condition = {
+            filetype = vim.tbl_keys(filetype_to_cmd),
           },
+          desc = "Run single file in background",
         },
-        templates = {
-          {
-            name = "file-run-background",
-            builder = function() return builder(false) end,
-            condition = {
-              filetype = vim.tbl_keys(filetype_to_cmd),
-            },
-            desc = "Run single file in background",
+        {
+          name = "file-run",
+          builder = function() return builder(true) end,
+          condition = {
+            filetype = vim.tbl_keys(filetype_to_cmd),
           },
-          {
-            name = "file-run",
-            builder = function() return builder(true) end,
-            condition = {
-              filetype = vim.tbl_keys(filetype_to_cmd),
-            },
-            desc = "Run single file",
-          },
-          {
-            name = "file-run-tab",
-            builder = tab_builder,
-            condition = {
-              filetype = vim.tbl_keys(filetype_to_cmd),
-            },
-            desc = "Run single file in a new tab",
-          },
-          {
-            name = "python run module",
-            builder = function()
-              local python_module, _ = vim.fn.expand("%:p:.:r"):gsub("/", ".")
-              return {
-                cmd = { "python3" },
-                args = { "-m", python_module },
-                env = { PYTHONPATH = "src" .. ":" .. vim.uv.cwd() },
-                strategy = {
-                  "toggleterm",
-                  open_on_start = true,
-                  direction = "tab",
-                },
-              }
-            end,
-            condition = { filetype = "python" },
-            desc = "Run with `-m` flag",
-          },
+          desc = "Run single file",
         },
-      }
-    end,
-    config = function(_, opts)
-      require("overseer").setup(opts.setup)
-      vim.tbl_map(require("overseer").register_template, opts.templates)
+        {
+          name = "file-run-tab",
+          builder = tab_builder,
+          condition = {
+            filetype = vim.tbl_keys(filetype_to_cmd),
+          },
+          desc = "Run single file in a new tab",
+        },
+        {
+          name = "python run module",
+          builder = function()
+            local python_module, _ = vim.fn.expand("%:p:.:r"):gsub("/", ".")
+            return {
+              cmd = { "python3" },
+              args = { "-m", python_module },
+              env = { PYTHONPATH = "src" .. ":" .. vim.uv.cwd() },
+              strategy = {
+                "toggleterm",
+                open_on_start = true,
+                direction = "tab",
+              },
+            }
+          end,
+          condition = { filetype = "python" },
+          desc = "Run with `-m` flag",
+        },
+      })
     end,
   },
   {
