@@ -122,7 +122,6 @@ return {
       bad_encoding(),
       status.component.git_branch(),
       grapple(),
-      status.component.git_diff(),
       status.component.diagnostics(),
       overseer(),
       status.component.fill(),
