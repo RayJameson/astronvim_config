@@ -5,7 +5,7 @@ return {
   opts = function(_, opts)
     local status = require("astroui.status")
     -- custom heirline statusline component for grapple
-    local function grapple_component()
+    local function grapple()
       return status.component.builder {
         provider = function() return "󰛢 " .. require("grapple").name_or_index() end,
         condition = function()
@@ -34,27 +34,29 @@ return {
         end,
       }
     end
-    local overseer_component = {
-      condition = function() return package.loaded.overseer end,
-      init = function(self)
-        local tasks = require("overseer.task_list").list_tasks { unique = true }
-        local tasks_by_status = require("overseer.util").tbl_group_by(tasks, "status")
-        self.tasks = tasks_by_status
-      end,
-      static = {
-        symbols = {
-          ["CANCELED"] = "󰜺 ",
-          ["FAILURE"] = " ",
-          ["SUCCESS"] = "󰄳 ",
-          ["RUNNING"] = "󰑮 ",
+    local overseer = function()
+      return status.component.builder {
+        condition = function() return package.loaded.overseer end,
+        init = function(self)
+          local tasks = require("overseer.task_list").list_tasks { unique = true }
+          local tasks_by_status = require("overseer.util").tbl_group_by(tasks, "status")
+          self.tasks = tasks_by_status
+        end,
+        static = {
+          symbols = {
+            ["CANCELED"] = "󰜺 ",
+            ["FAILURE"] = " ",
+            ["SUCCESS"] = "󰄳 ",
+            ["RUNNING"] = "󰑮 ",
+          },
         },
-      },
 
-      pad(OverseerTasksForStatus("CANCELED")),
-      pad(OverseerTasksForStatus("RUNNING")),
-      pad(OverseerTasksForStatus("SUCCESS")),
-      pad(OverseerTasksForStatus("FAILURE")),
-    }
+        pad(OverseerTasksForStatus("CANCELED")),
+        pad(OverseerTasksForStatus("RUNNING")),
+        pad(OverseerTasksForStatus("SUCCESS")),
+        pad(OverseerTasksForStatus("FAILURE")),
+      }
+    end
 
     local line_end = function()
       return status.component.builder {
@@ -69,6 +71,17 @@ return {
         },
       }
     end
+    local function bad_encoding()
+      return status.component.builder {
+        provider = function() return vim.bo.fenc end,
+        surround = {
+          separator = "left",
+        },
+        condition = function() return vim.bo.fenc ~= "utf-8" end,
+        hl = { fg = "orange", bold = true },
+        update = "BufModifiedSet",
+      }
+    end
 
     opts.tabline = nil
     opts.statusline = {
@@ -81,20 +94,12 @@ return {
         filetype = {},
         filename = false,
       },
-      status.component.builder {
-        { provider = function() return vim.bo.fenc end },
-        surround = {
-          separator = "left",
-          condition = function() return vim.bo.fenc ~= "utf-8" end,
-        },
-        hl = { fg = "orange" },
-        update = "BufModifiedSet",
-      },
+      bad_encoding(),
       status.component.git_branch(),
-      grapple_component(),
+      grapple(),
       status.component.git_diff(),
       status.component.diagnostics(),
-      overseer_component,
+      overseer(),
       status.component.fill(),
       -- lsp causes issue on mac with tokyonight(https://discord.com/channels/939594913560031363/1100223017017163826)
       status.component.cmd_info(),
