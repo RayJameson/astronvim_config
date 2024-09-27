@@ -89,8 +89,8 @@ return {
             {
               event = "BufEnter",
               desc = "Jump to first entry in trouble view",
-              callback = function(ev)
-                if vim.bo[ev.buf].filetype == "trouble" then
+              callback = function(args)
+                if vim.bo[args.buf].filetype == "trouble" then
                   local cursor_pos = vim.api.nvim_win_get_cursor(0)
                   ---@diagnostic disable-next-line: missing-parameter
                   if cursor_pos[1] == 1 and cursor_pos[2] == 0 then vim.schedule(function() trouble.next() end) end
