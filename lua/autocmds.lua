@@ -123,8 +123,8 @@ for file_extension, command in pairs {
   })
   vim.api.nvim_create_autocmd("BufEnter", {
     group = vim.api.nvim_create_augroup("HelpPages", {}),
-    callback = function(opts)
-      if vim.bo[opts.buf].filetype == "help" then vim.cmd.wincmd("T") end
+    callback = function(args)
+      if vim.bo[args.buf].filetype == "help" then vim.cmd.wincmd("T") end
     end,
   })
 end
