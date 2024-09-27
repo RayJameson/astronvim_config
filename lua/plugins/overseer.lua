@@ -96,13 +96,10 @@ return {
       local function builder(run_in_foreground)
         local file = vim.fn.expand("%:p")
         local cmd = filetype_to_cmd[vim.bo.filetype](file)
-        return {
+        local task = {
           cmd = cmd,
           strategy = {
-            "toggleterm",
-            use_shell = true,
-            open_on_start = run_in_foreground,
-            on_create = function() vim.cmd.stopinsert() end,
+            "terminal",
           },
           components = {
             { "display_duration", detail_level = 2 },
@@ -111,6 +108,8 @@ return {
             { "on_complete_dispose", require_view = { "SUCCESS", "FAILURE" } },
           },
         }
+        if run_in_foreground then vim.list_extend(task.components, { { "open_output", focus = true } }) end
+        return task
       end
 
       return {
