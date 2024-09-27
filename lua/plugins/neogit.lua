@@ -29,6 +29,7 @@ return {
     return utils.extend_tbl(opts, {
       disable_builtin_notifications = disable_builtin_notifications,
       disable_signs = true,
+      graph_style = "unicode",
       telescope_sorter = function()
         if utils.is_available("telescope-fzf-native.nvim") then
           return require("telescope").extensions.fzf.native_fzf_sorter()
