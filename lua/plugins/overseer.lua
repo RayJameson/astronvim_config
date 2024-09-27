@@ -115,7 +115,6 @@ return {
       return {
         setup = {
           task_list = {
-            strategy = "toggleterm",
             direction = "bottom",
             max_height = { 100, 0.99 },
             height = 100,
