@@ -5,6 +5,31 @@ return {
   opts = function(_, opts)
     local status = require("astroui.status")
     -- custom heirline statusline component for grapple
+
+    local function dap_ui_component()
+      return {
+        status.component.builder {
+          condition = function() return require("dap").session() ~= nil end,
+          static = {
+            symbols = {
+              RUNNING = "",
+              STOPPED = "",
+            },
+            colors = {
+              RUNNING = require("colors").green_1,
+              STOPPED = require("colors").red_6,
+            },
+          },
+          provider = function(self)
+            local mapped_debugger_status = require("dap").session().stopped_thread_id == nil and "RUNNING" or "STOPPED"
+            self.color = self.colors[mapped_debugger_status]
+            return self.symbols[mapped_debugger_status]
+          end,
+          hl = function(self) return { fg = self.color } end,
+        },
+      }
+    end
+
     local function grapple()
       return status.component.builder {
         provider = function() return "󰛢 " .. require("grapple").name_or_index() end,
@@ -104,6 +129,7 @@ return {
       -- lsp causes issue on mac with tokyonight(https://discord.com/channels/939594913560031363/1100223017017163826)
       status.component.cmd_info(),
       status.component.fill(),
+      dap_ui_component(),
       status.component.lsp(),
       status.component.treesitter(),
       line_end(),
