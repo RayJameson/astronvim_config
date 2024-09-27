@@ -50,6 +50,7 @@ return {
         ["@lsp.type.namespace.python"] = { link = "Identifier" },
         ["@lsp.type.parameter.python"] = { link = "Hlargs" },
         ["@lsp.type.parameter.go"] = { link = "Hlargs" },
+        ["@variable.parameter"] = { link = "Hlargs" },
         ["@function.builtin"] = { fg = C.blue_1 },
         ["@variable.builtin"] = { fg = C.red_3 },
         Title = { fg = C.title, bold = true },
