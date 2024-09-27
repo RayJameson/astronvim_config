@@ -32,4 +32,25 @@ return {
     end
     opts.fold_virt_text_handler = handler
   end,
+  specs = {
+    "AstroNvim/astrocore",
+    opts = {
+      autocmds = {
+        DisableUfoForFt = {
+          {
+            event = "FileType",
+            pattern = {
+              "Neogit*",
+              "dapui*",
+              "aerial",
+              "dap-repl",
+            },
+            desc = "Disable `ufo` folds for certain filetypes",
+            callback = function(args)
+              require("ufo").detach(args.buf) end,
+          },
+        },
+      },
+    },
+  },
 }
