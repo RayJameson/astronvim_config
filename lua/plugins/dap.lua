@@ -60,6 +60,10 @@ return {
         step_over = "",
         terminate = ""
       }
+        opts.icons = {
+          collapsed = "",
+          current_frame = "",
+          expanded = "",
         }
         opts.layouts = {
           {
