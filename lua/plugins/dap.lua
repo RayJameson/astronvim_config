@@ -48,18 +48,7 @@ return {
     {
       "rcarriga/nvim-dap-ui",
       config = function(plugin, opts)
-        opts.controls = {
-      icons = {
-        pause = "󰏤",
-        play = "",
-        disconnect = "",
-        run_last = "",
-        step_back = "",
-        step_into = "",
-        step_out = "",
-        step_over = "",
-        terminate = ""
-      }
+        opts.controls = { enabled = false }
         opts.icons = {
           collapsed = "",
           current_frame = "",
