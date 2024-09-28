@@ -114,6 +114,7 @@ return {
           vim.fn.setreg("+", dir .. entry.name)
         end,
       },
+      [","] = { "actions.cd", opts = { scope = "win" }, desc = ":lcd to the current oil directory" },
     },
   },
 }
