@@ -45,10 +45,16 @@ return {
     opts = {
       keywords = {
         TEST = {
-          icon = " ",
+          icon = " ",
           color = "test",
           alt = { "TESTING", "TEST PASSED", "TEST FAILED" },
         },
+        NOTE = {
+          icon = "󱞁 ",
+          color = "hint",
+          alt = { "INFO" },
+        },
+        PERF = { icon = "󱁤 ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
       },
       colors = {
         error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
