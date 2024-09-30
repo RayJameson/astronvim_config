@@ -77,4 +77,11 @@ return {
     }
     return opts -- return final config table
   end,
+  specs = {
+    "AstroNvim/astrocore",
+    opts = function(_, opts)
+      local maps = opts.mappings
+      maps.n["<Leader>ln"] = { function() require("null-ls").toggle {} end, desc = "None-ls toggle" }
+    end,
+  },
 }

@@ -50,7 +50,6 @@ return {
     --]
 
     maps.n["<Leader>."] = { ":lcd %:p:h<CR>", desc = "CD to current file" }
-    maps.n["<Leader>ln"] = { function() require("null-ls").toggle {} end, desc = "None-ls toggle" }
     maps.n["<Leader>F"] = {
       ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/g<Left><Left>",
       desc = "Find and replace",
@@ -59,8 +58,6 @@ return {
       '<Esc>"fyiw<CR>gv:s/<C-r>f/<C-r>f/g<Left><Left>',
       desc = "Find and replace visual",
     }
-    maps.x["<Leader>fc"] =
-      { function() require("telescope.builtin").grep_string() end, desc = "Find visually selected text" }
     maps.n["<C-d>"] = { "<C-d>zz", desc = "Scroll half page down" }
     maps.n["<C-u>"] = { "<C-u>zz", desc = "Scroll half page up" }
     maps.n["<C-f>"] = { "<C-f>zz", desc = "Scroll page down" }

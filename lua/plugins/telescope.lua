@@ -115,6 +115,8 @@ return {
         function() require("telescope.builtin").lsp_document_symbols { symbols = { "class" } } end,
         desc = "Search class symbols",
       }
+      maps.x["<Leader>fc"] =
+        { function() require("telescope.builtin").grep_string() end, desc = "Find visually selected text" }
     end,
   },
 }
