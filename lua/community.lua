@@ -27,6 +27,7 @@ return {
   { import = "astrocommunity.editing-support.todo-comments-nvim" },
   { import = "astrocommunity.editing-support.bigfile-nvim" },
   { import = "astrocommunity.quickfix.nvim-bqf" },
+  { import = "astrocommunity.quickfix.quicker-nvim" },
   {
     "nvim-bqf",
     optional = true,

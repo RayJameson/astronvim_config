@@ -67,11 +67,11 @@ return {
             function() trouble.toggle { mode = "diagnostics", focus = true, filter = { buf = 0 } } end,
             desc = "Document Diagnostics [T]",
           }
-          maps.n[prefix .. "l"] = {
+          maps.n[prefix .. "L"] = {
             function() trouble.toggle { mode = "loclist", focus = true } end,
             desc = "Location List [T]",
           }
-          maps.n[prefix .. "q"] = {
+          maps.n[prefix .. "Q"] = {
             function() trouble.toggle { mode = "quickfix", focus = true } end,
             desc = "Quickfix List [T]",
           }
