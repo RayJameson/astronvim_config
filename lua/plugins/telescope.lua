@@ -4,7 +4,6 @@ local prefix = "<Leader>f"
 ---@type LazySpec
 return {
   "nvim-telescope/telescope.nvim",
-  cond = not vim.g.vscode,
   -- the first parameter is the plugin specification
   -- the second is the table of options as set up in Lazy with the `opts` key
   dependencies = { "debugloop/telescope-undo.nvim" },

@@ -41,7 +41,6 @@ return {
   },
   {
     "todo-comments.nvim",
-    cond = not vim.g.vscode,
     optional = true,
     opts = {
       keywords = {

@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
   "chentoast/marks.nvim",
-  cond = not vim.g.vscode,
   event = "User AstroFile",
   opts = {
     excluded_filetypes = {

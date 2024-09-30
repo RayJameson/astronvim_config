@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
   "max397574/better-escape.nvim",
-  cond = not vim.g.vscode,
   opts = function()
     local esc_fn = function()
       if vim.bo.filetype == "OverseerForm" then

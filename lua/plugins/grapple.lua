@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
   "cbochs/grapple.nvim",
-  cond = not vim.g.vscode,
   dependencies = { "nvim-lua/plenary.nvim" },
   cmd = { "Grapple" },
   opts = function(_, opts) opts.scope = "git_branch" end,

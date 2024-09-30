@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
   "rebelot/heirline.nvim",
-  cond = not vim.g.vscode,
   opts = function(_, opts)
     local status = require("astroui.status")
     -- custom heirline statusline component for grapple

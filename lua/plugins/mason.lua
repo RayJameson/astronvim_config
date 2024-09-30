@@ -30,12 +30,7 @@ return {
     end,
   },
   {
-    "neovim/nvim-lspconfig",
-    cond = not vim.g.vscode,
-  },
-  {
     "williamboman/mason-lspconfig.nvim",
-    cond = not vim.g.vscode,
     -- overrides `require("mason-lspconfig").setup(...)`
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
@@ -50,7 +45,6 @@ return {
   {
     "jay-babu/mason-null-ls.nvim",
     -- overrides `require("mason-null-ls").setup(...)`
-    cond = not vim.g.vscode,
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
       local utils = {
@@ -72,7 +66,6 @@ return {
       "mfussenegger/nvim-dap-python",
     },
     init = function() end,
-    cond = not vim.g.vscode,
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = list_insert_unique(opts.ensure_installed, {

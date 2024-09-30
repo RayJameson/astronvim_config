@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
   "Exafunction/codeium.vim",
-  cond = not vim.g.vscode,
   event = "LspAttach",
   specs = {
     {

@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
   "L3MON4D3/LuaSnip",
-  cond = not vim.g.vscode,
   specs = {
     {
       "rafamadriz/friendly-snippets",

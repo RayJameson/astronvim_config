@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
   "mfussenegger/nvim-dap",
-  cond = not vim.g.vscode,
   specs = {
     { "AstroNvim/astroui", opts = { icons = { Debugger = "" } } },
     {

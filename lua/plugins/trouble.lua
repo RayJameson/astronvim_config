@@ -3,7 +3,6 @@ return {
   {
     "folke/trouble.nvim",
     cmd = "Trouble",
-    cond = not vim.g.vscode,
     opts = {
       keys = {
         ["<ESC>"] = "close",

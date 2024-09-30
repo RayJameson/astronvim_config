@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
   "linrongbin16/gitlinker.nvim",
-  cond = not vim.g.vscode,
   opts = function(_, _)
     return {
       router = {

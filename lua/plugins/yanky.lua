@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
   "gbprod/yanky.nvim",
-  cond = not vim.g.vscode,
   dependencies = {
     "nvim-telescope/telescope.nvim",
     { "kkharji/sqlite.lua", enabled = not jit.os:find("Windows") },

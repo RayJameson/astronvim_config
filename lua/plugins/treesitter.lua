@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
   "nvim-treesitter/nvim-treesitter",
-  cond = not vim.g.vscode,
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
   },

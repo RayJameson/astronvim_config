@@ -2,7 +2,6 @@ local prefix = "<Leader>n"
 ---@type LazySpec
 return {
   "nvim-neotest/neotest",
-  cond = not vim.g.vscode,
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
     "nvim-neotest/neotest-go",

@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
   "luckasRanarison/nvim-devdocs",
-  cond = not vim.g.vscode,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim",

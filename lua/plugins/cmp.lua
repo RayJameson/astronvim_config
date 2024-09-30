@@ -2,7 +2,6 @@
 return {
   -- override nvim-cmp plugin
   "hrsh7th/nvim-cmp",
-  cond = not vim.g.vscode,
   keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
   dependencies = {
     "hrsh7th/cmp-cmdline",

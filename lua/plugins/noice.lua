@@ -7,7 +7,7 @@ return {
       "MunifTanjim/nui.nvim",
     },
     event = "VeryLazy",
-    cond = not (vim.g.neovide or vim.g.vscode),
+    cond = not vim.g.neovide,
     opts = {
       cmdline = { view = "cmdline" },
       presets = { lsp_doc_border = true },
@@ -58,7 +58,6 @@ return {
     },
     specs = {
       "nvim-treesitter/nvim-treesitter",
-      cond = not vim.g.vscode,
       opts = function(_, opts)
         if opts.ensure_installed ~= "all" then
           opts.ensure_installed = require("astrocore").list_insert_unique(
