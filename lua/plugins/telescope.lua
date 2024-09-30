@@ -87,4 +87,34 @@ return {
     { prefix .. "s", function() require("telescope.builtin").spell_suggest() end, desc = "Show spell suggestions" },
     { prefix .. "g", function() require("telescope.builtin").git_files() end, desc = "Find git files" },
   },
+  ---@type LazySpec
+  specs = {
+    "AstroNvim/astrocore",
+    opts = function(_, opts)
+      local maps = opts.mappings
+      maps.n["<Leader>ls"] = {
+        desc = "Search symbols",
+      }
+      maps.n["<Leader>lsa"] = {
+        function() require("telescope.builtin").lsp_document_symbols() end,
+        desc = "Search all symbols",
+      }
+      maps.n["<Leader>lsf"] = {
+        function() require("telescope.builtin").lsp_document_symbols { symbols = { "function" } } end,
+        desc = "Search functions symbols",
+      }
+      maps.n["<Leader>lsm"] = {
+        function() require("telescope.builtin").lsp_document_symbols { symbols = { "method" } } end,
+        desc = "Search method symbols",
+      }
+      maps.n["<Leader>lsv"] = {
+        function() require("telescope.builtin").lsp_document_symbols { symbols = { "variable" } } end,
+        desc = "Search variable symbols",
+      }
+      maps.n["<Leader>lsc"] = {
+        function() require("telescope.builtin").lsp_document_symbols { symbols = { "class" } } end,
+        desc = "Search class symbols",
+      }
+    end,
+  },
 }
