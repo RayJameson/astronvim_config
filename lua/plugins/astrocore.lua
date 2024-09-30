@@ -61,7 +61,6 @@ return {
           foldopen = "",
           foldclose = "",
         },
-        grepprg = vim.fn.executable("rg") == 1 and "rg --vimgrep" or nil,
       },
       g = { -- vim.g.<key>
         node_host_prog = vim.env.HOME .. "/.nvm/versions/node/v20.3.0/bin/node",
