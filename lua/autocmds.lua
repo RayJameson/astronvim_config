@@ -1,5 +1,6 @@
 local is_available = require("astrocore").is_available
 if not is_available("yanky.nvim") then
+  vim.notify("`yanky.nvim` is not available, falling back on autocmd", vim.log.levels.WARN)
   vim.api.nvim_create_autocmd({ "TextYankPost" }, {
     pattern = "*",
     callback = function() vim.highlight.on_yank { higroup = "IncSearch", timeout = 100 } end,
@@ -53,25 +54,6 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   pattern = "*",
   callback = function() vim.api.nvim_win_set_option(0, "foldcolumn", "1") end,
 })
-
--- stop snippets when you leave to normal mode
--- https://github.com/L3MON4D3/LuaSnip/issues/258
-if is_available("luasnip") then
-  vim.api.nvim_create_autocmd("ModeChanged", {
-    pattern = "*",
-    group = vim.api.nvim_create_augroup("ModeChangedGroup", { clear = true }),
-    callback = function()
-      local luasnip = require("luasnip")
-      if
-        ((vim.v.event.old_mode == "s" and vim.v.event.new_mode == "n") or vim.v.event.old_mode == "i")
-        and luasnip.session.current_nodes[vim.api.nvim_get_current_buf()]
-        and not luasnip.session.jump_active
-      then
-        luasnip.unlink_current()
-      end
-    end,
-  })
-end
 
 -- remove colorcolumn for qf
 vim.api.nvim_create_autocmd("FileType", {

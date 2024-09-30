@@ -18,6 +18,28 @@ return {
         luasnip.filetype_extend("javascript", { "jsdoc" })
       end,
     },
+    {
+      "AstroNvim/astrocore",
+      opts = function(_, opts)
+        opts.autocmds.LuaSnip = {
+          {
+            desc = "stop snippets when you leave to normal mode\nhttps://github.com/L3MON4D3/LuaSnip/issues/258",
+            event = "ModeChanged",
+            pattern = "*",
+            callback = function()
+              local luasnip = require("luasnip")
+              if
+                ((vim.v.event.old_mode == "s" and vim.v.event.new_mode == "n") or vim.v.event.old_mode == "i")
+                and luasnip.session.current_nodes[vim.api.nvim_get_current_buf()]
+                and not luasnip.session.jump_active
+              then
+                luasnip.unlink_current()
+              end
+            end,
+          },
+        }
+      end,
+    },
   },
   config = function(plugin, opts)
     require("astronvim.plugins.configs.luasnip")(plugin, opts) -- include the default astronvim config that calls the setup call
