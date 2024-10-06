@@ -31,7 +31,7 @@ return {
 
     local function grapple()
       return status.component.builder {
-        provider = function() return "󰛢 " .. require("grapple").name_or_index() end,
+        provider = function() return require("grapple").statusline() end,
         condition = function()
           if not require("astrocore").is_available("grapple.nvim") then return false end
           return require("grapple").exists()
