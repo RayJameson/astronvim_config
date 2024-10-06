@@ -24,7 +24,7 @@ return {
         }
         maps.n[prefix .. "s"] = {
           "<Cmd>Grapple toggle_scopes<CR>",
-          desc = "Toggle a file",
+          desc = "Switch scope",
         }
         maps.n["<C-n>"] = { "<Cmd>Grapple cycle forward<CR>", desc = "Select next tag" }
         maps.n["<C-p>"] = { "<Cmd>Grapple cycle backward<CR>", desc = "Select previous tag" }
