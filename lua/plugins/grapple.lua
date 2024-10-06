@@ -3,10 +3,7 @@ return {
   "cbochs/grapple.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
   cmd = { "Grapple" },
-  opts = function(_, opts)
-    opts.scope = "git_branch"
-    opts.quick_select = "qwertasdf"
-  end,
+  opts = function(_, opts) opts.scope = "git_branch" end,
   specs = {
     {
       "AstroNvim/astroui",
