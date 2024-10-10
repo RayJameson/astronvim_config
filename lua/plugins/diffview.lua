@@ -52,10 +52,9 @@ return {
           desc = "Open DiffView Branch History",
         }
 
-        maps.x[prefix] = { desc = require("astroui").get_icon("DiffView", 1, true) .. "Diff View" }
-        maps.x[prefix .. "h"] = {
+        maps.x[prefix] = {
           ":DiffviewFileHistory %<Cr>",
-          desc = "Open DiffView File History",
+          desc = "Open DiffView line(s) history",
         }
       end,
     },
