@@ -34,6 +34,7 @@ return {
                 [prefix .. "f"] = { "<Cmd>OverseerRun file-run<CR>", desc = "Run file in split" },
                 [prefix .. "F"] = { "<Cmd>OverseerRun file-run-background<CR>", desc = "Run file in background" },
                 [prefix .. "t"] = { "<Cmd>OverseerRun file-run-tab<CR>", desc = "Run file in new tab" },
+                [prefix .. "l"] = { "<Cmd>OverseerLoadBundle<CR>", desc = "Load task bundle" },
               },
             },
           })
