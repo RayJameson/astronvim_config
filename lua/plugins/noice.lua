@@ -16,7 +16,7 @@ return {
       lsp = {
         progress = { enabled = false },
         hover = { enabled = false },
-        signature = { enabled = false },
+        signature = { enabled = true },
       },
       routes = {
         {
@@ -57,15 +57,40 @@ return {
       },
     },
     specs = {
-      "nvim-treesitter/nvim-treesitter",
-      opts = function(_, opts)
-        if opts.ensure_installed ~= "all" then
-          opts.ensure_installed = require("astrocore").list_insert_unique(
-            opts.ensure_installed,
-            { "bash", "markdown", "markdown_inline", "regex", "vim" }
-          )
-        end
-      end,
+      {
+        "nvim-treesitter/nvim-treesitter",
+        opts = function(_, opts)
+          if opts.ensure_installed ~= "all" then
+            opts.ensure_installed = require("astrocore").list_insert_unique(
+              opts.ensure_installed,
+              { "bash", "markdown", "markdown_inline", "regex", "vim" }
+            )
+          end
+        end,
+      },
+      {
+        "AstroNvim/astrolsp",
+        opts = function(_, opts)
+          if not opts.mappings then opts.mappings = {} end
+          local maps = opts.mappings
+          maps.i["<c-f>"] = {
+            function()
+              if not require("noice.lsp").scroll(4) then return "<c-f>" end
+            end,
+            desc = "Scroll down signature help",
+            silent = true,
+            expr = true,
+          }
+          maps.i["<c-b>"] = {
+            function()
+              if not require("noice.lsp").scroll(-4) then return "<c-f>" end
+            end,
+            desc = "Scroll up signature help",
+            silent = true,
+            expr = true,
+          }
+        end,
+      },
     },
   },
 }
