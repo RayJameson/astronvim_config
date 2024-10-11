@@ -22,7 +22,12 @@ return {
           "--line-length=120",
         },
       },
-      nls.builtins.diagnostics.mypy,
+      nls.builtins.diagnostics.mypy.with {
+        extra_args = function()
+          local venv = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
+          return { "--python-executable", (venv and venv .. "/bin/python3") or "python3" }
+        end,
+      },
       nls.builtins.formatting.stylua.with {
         args = function(params)
           local args = {
