@@ -7,7 +7,6 @@ return {
       "MunifTanjim/nui.nvim",
     },
     event = "VeryLazy",
-    cond = not vim.g.neovide,
     opts = {
       cmdline = { view = "cmdline" },
       presets = { lsp_doc_border = true },
