@@ -54,21 +54,31 @@ vim.api.nvim_create_user_command(
   { nargs = "?" }
 )
 require("autocmds")
+
 if vim.g.neovide then
-  -- local alpha = function() return string.format("%x", math.floor((255 * vim.g.neovide_transparency_point) or 0.8)) end
-  -- Set transparency and background color (title bar color)
-  if jit.os:find("OSX") then
-    -- vim.g.neovide_transparency = 0.0
-    -- vim.g.neovide_transparency_point = 0.8
-    -- vim.g.neovide_background_color = "#0f1117" .. alpha()
+  if jit.os == "OSX" then
     vim.g.neovide_input_macos_alt_is_meta = true
+    vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
+    vim.keymap.set("v", "<D-c>", '"+y') -- Copy
+    vim.keymap.set("n", "<D-v>", '"+P') -- Paste normal mode
+    vim.keymap.set("v", "<D-v>", '"+P') -- Paste visual mode
+    vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
+    vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
+  else
+    vim.api.nvim_set_keymap("v", "<C-S-C>", '"+y', { noremap = true })
+    vim.api.nvim_set_keymap("n", "<C-S-V>", 'l"+P', { noremap = true })
+    vim.api.nvim_set_keymap("v", "<C-S-V>", '"+P', { noremap = true })
+    vim.api.nvim_set_keymap("c", "<C-S-V>", "<C-R>+", { noremap = true })
+    vim.api.nvim_set_keymap("i", "<C-S-V>", '<ESC>l"+Pli', { noremap = true })
+    vim.api.nvim_set_keymap("t", "<C-S-V>", '<C-\\><C-n>"+Pi', { noremap = true })
   end
   vim.g.neovide_cursor_antialiasing = true
-  vim.o.guifont = "LigaMesloLGSDZ Nerd Font Mono,Source Code Pro:h20"
+  vim.o.guifont = "Iosevka Nerd Font Mono SemiCondensed Light:h16"
   vim.g.neovide_floating_blur_amount_x = 2.0
   vim.g.neovide_floating_blur_amount_y = 2.0
   vim.g.neovide_refresh_rate_idle = 5
 end
+
 vim.api.nvim_create_user_command(
   "Scratch",
   function()
