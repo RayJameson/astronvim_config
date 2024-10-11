@@ -42,7 +42,7 @@ return {
       --   return true
       -- end
       -- enable servers that you already have installed without mason
-      opts.servers = {}
+      opts.servers = opts.servers or {}
       -- customize how language servers are attached
       -- opts.lsp_handlers ={}
       -- Configure buffer local auto commands to add when attaching a language server
