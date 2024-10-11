@@ -103,10 +103,4 @@ for file_extension, command in pairs {
       })
     end,
   })
-  -- INFO: doesn't work if help file has `markdown` filetype modeline
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = "help",
-    group = vim.api.nvim_create_augroup("HelpPages", {}),
-    callback = function() vim.cmd.wincmd("T") end,
-  })
 end
