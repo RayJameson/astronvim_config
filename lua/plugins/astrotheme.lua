@@ -34,6 +34,7 @@ return {
       astrodark = {
         ColorColumn = { fg = C.none, bg = C.bg_1 },
         BufferLineTab = { fg = C.fg, bg = C.none },
+        RenderMarkdownCode = { bg = C.surface0 },
       },
     },
   },
