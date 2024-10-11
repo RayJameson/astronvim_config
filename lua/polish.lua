@@ -74,6 +74,7 @@ if vim.g.neovide then
   end
   vim.g.neovide_cursor_antialiasing = true
   vim.o.guifont = "Iosevka Nerd Font Mono SemiCondensed Light:h16"
+  vim.o.linespace = -1
   vim.g.neovide_floating_blur_amount_x = 2.0
   vim.g.neovide_floating_blur_amount_y = 2.0
   vim.g.neovide_refresh_rate_idle = 5
