@@ -74,7 +74,6 @@ return {
       -- takes two parameters `client` and `bufnr`  (`:h lspconfig-setup`)
       opts.on_attach = function(client, bufnr)
         if vim.b[bufnr].large_buf then client.stop() end
-        if client.name == "ruff_lsp" then client.server_capabilities.hoverProvider = false end
         -- this would disable semanticTokensProvider for all clients
         -- client.server_capabilities.semanticTokensProvider = nil
       end
