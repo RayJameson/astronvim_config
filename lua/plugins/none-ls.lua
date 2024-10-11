@@ -6,7 +6,7 @@ return {
   },
   opts = function(_, opts)
     -- config variable is the default configuration table for the setup function call
-    local null_ls = require("null-ls")
+    local nls = require("null-ls")
     local h = require("null-ls.helpers")
     local u = require("null-ls.utils")
 
@@ -16,14 +16,14 @@ return {
     opts.diagnostics_format = "#{m} [#{c}] "
     opts.sources = {
       -- Set a formatternone
-      null_ls.builtins.code_actions.gitsigns,
-      null_ls.builtins.formatting.pyink.with {
+      nls.builtins.code_actions.gitsigns,
+      nls.builtins.formatting.pyink.with {
         extra_args = {
           "--line-length=120",
         },
       },
-      null_ls.builtins.diagnostics.mypy,
-      null_ls.builtins.formatting.stylua.with {
+      nls.builtins.diagnostics.mypy,
+      nls.builtins.formatting.stylua.with {
         args = function(params)
           local args = {
             "--stdin-filepath",
@@ -57,7 +57,7 @@ return {
           end
           return args
         end,
-        method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+        method = nls.methods.DIAGNOSTICS_ON_SAVE,
         generator_opts = require("astrocore").extend_tbl(
           require("none-ls-luacheck.diagnostics.luacheck"),
           { multiple_files = true }
