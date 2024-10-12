@@ -4,5 +4,6 @@ return {
   optional = true,
   opts = {
     direction = "float",
+    autochdir = true,
   },
 }
