@@ -65,12 +65,9 @@ if vim.g.neovide then
     vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
     vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
   else
-    vim.api.nvim_set_keymap("v", "<C-S-C>", '"+y', { noremap = true })
-    vim.api.nvim_set_keymap("n", "<C-S-V>", 'l"+P', { noremap = true })
-    vim.api.nvim_set_keymap("v", "<C-S-V>", '"+P', { noremap = true })
-    vim.api.nvim_set_keymap("c", "<C-S-V>", "<C-R>+", { noremap = true })
-    vim.api.nvim_set_keymap("i", "<C-S-V>", '<ESC>l"+Pli', { noremap = true })
-    vim.api.nvim_set_keymap("t", "<C-S-V>", '<C-\\><C-n>"+Pi', { noremap = true })
+    vim.keymap.set("x", "<C-S-C>", '"+y', { desc = "Copy to system clipboard" })
+    vim.keymap.set("n", "<C-S-C>", '"+p', { desc = "Paste from system clipboard" })
+    vim.keymap.set("i", "<C-S-V>", "<C-r>+", { desc = "Paste from system clipboard" })
   end
   vim.g.neovide_cursor_antialiasing = true
   vim.o.guifont = "Iosevka Nerd Font Mono SemiCondensed Light:h16"
