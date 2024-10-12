@@ -66,7 +66,7 @@ if vim.g.neovide then
     vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
   else
     vim.keymap.set("x", "<C-S-C>", '"+y', { desc = "Copy to system clipboard" })
-    vim.keymap.set("n", "<C-S-C>", '"+p', { desc = "Paste from system clipboard" })
+    vim.keymap.set("n", "<C-S-V>", '"+p', { desc = "Paste from system clipboard" })
     vim.keymap.set("i", "<C-S-V>", "<C-r>+", { desc = "Paste from system clipboard" })
   end
   vim.g.neovide_cursor_antialiasing = true
