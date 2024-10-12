@@ -1,6 +1,13 @@
 ---@type LazySpec
 return {
-  "stevearc/oil.nvim",
+  --[[
+  HACK:
+  until stevearc/oil.nvim#435 is fixed
+  I will use this branch, have to rebase on origin/master manually
+  Either stevearc/oil.nvim#467 should be merged or upstream will fix semantic tokens
+  --]]
+  "jelmansouri/oil.nvim",
+  branch = "feat/scratch-preview",
   specs = {
     "nvim-tree/nvim-web-devicons",
     {
