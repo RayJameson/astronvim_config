@@ -8,7 +8,6 @@ return {
     },
     event = "VeryLazy",
     opts = {
-      cmdline = { view = "cmdline" },
       presets = { lsp_doc_border = true },
       messages = { view_search = false },
       popupmenu = { enabled = false },
