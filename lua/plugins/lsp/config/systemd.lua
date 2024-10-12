@@ -1,7 +1,7 @@
+if not vim.fn.executable("systemd-language-server") then return {} end
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
-  cond = vim.fn.executable("systemd-language-server") == 1,
   ---@param opts AstroLSPOpts
   opts = function(_, opts)
     opts.servers = opts.servers or {}
