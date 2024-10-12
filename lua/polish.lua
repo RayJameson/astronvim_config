@@ -68,6 +68,7 @@ if vim.g.neovide then
     vim.keymap.set("x", "<C-S-C>", '"+y', { desc = "Copy to system clipboard" })
     vim.keymap.set("n", "<C-S-V>", '"+p', { desc = "Paste from system clipboard" })
     vim.keymap.set("i", "<C-S-V>", "<C-r>+", { desc = "Paste from system clipboard" })
+    vim.keymap.set("t", "<C-S-V>", '<C-\\><C-n>"+pi', { desc = "Paste from system clipboard" })
   end
   vim.g.neovide_cursor_antialiasing = true
   vim.o.guifont = "Iosevka Nerd Font Mono SemiCondensed Light:h16"
