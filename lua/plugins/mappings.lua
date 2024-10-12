@@ -49,7 +49,7 @@ return {
     maps.n["q?"] = { "q?i", desc = "Command search up window" }
     --]
 
-    maps.n["<Leader>."] = { ":lcd %:p:h<CR>", desc = "CD to current file" }
+    maps.n["<Leader>."] = { ":lcd %:p:h<CR>", desc = "lcd to current file's dir" }
     maps.n["<Leader>F"] = {
       ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/g<Left><Left>",
       desc = "Find and replace",
