@@ -8,7 +8,13 @@ return {
   -- the second is the table of options as set up in Lazy with the `opts` key
   dependencies = { "debugloop/telescope-undo.nvim" },
   opts = function(_, opts)
+    local create_command = require("telescope._extensions.zoxide.utils").create_basic_command
     opts.extensions = {
+      zoxide = {
+        mappings = {
+          ["<CR>"] = { action = create_command("lcd") }
+        }
+      },
       undo = {
         use_delta = false,
         use_custom_command = (
