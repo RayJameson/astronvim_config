@@ -72,6 +72,14 @@ return {
     maps.x["gl"] = { "$", desc = "go to end of the line ($)" }
     --]
 
+    maps.n["<Leader>C"] = {
+      "<Cmd>%bdelete|edit#<Cr>",
+      desc = "Close all other buffers",
+    }
+    maps.n["<Leader>a"] = {
+      "<Cmd>%bdelete<Cr>",
+      desc = "Close all buffers",
+    }
     maps.n["<Leader>c"] = {
       function()
         require("astrocore.buffer").close()
@@ -80,7 +88,7 @@ return {
           require("alpha").start(false, require("alpha").default_config)
         end
       end,
-      desc = "Close buffer",
+      desc = "Close current buffer",
     }
 
     --]
