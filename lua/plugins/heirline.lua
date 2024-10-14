@@ -47,6 +47,18 @@ return {
         Spacer,
       }
     end
+
+    local function active_venv()
+      return {
+        condition = function() return vim.env.VIRTUAL_ENV ~= nil end,
+        provider = function()
+          local venv = vim.split(vim.env.VIRTUAL_ENV, "/")
+          local base_name = venv[#venv]
+          return " 󰌠 " .. base_name
+        end,
+        hl = { fg = "orange" },
+      }
+    end
     local function OverseerTasksForStatus(status)
       return {
         condition = function(self) return self.tasks[status] end,
@@ -128,6 +140,7 @@ return {
       status.component.cmd_info(),
       status.component.fill(),
       dap_ui_component(),
+      active_venv(),
       status.component.lsp(),
       status.component.treesitter(),
       line_end(),
