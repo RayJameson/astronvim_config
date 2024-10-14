@@ -69,8 +69,8 @@ return {
         static = {
           symbols = {
             ["CANCELED"] = "󰜺 ",
-            ["FAILURE"] = " ",
-            ["SUCCESS"] = "󰄳 ",
+            ["FAILURE"] = " ",
+            ["SUCCESS"] = "󰸞 ",
             ["RUNNING"] = "󰑮 ",
           },
         },
