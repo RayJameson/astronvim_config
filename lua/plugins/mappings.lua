@@ -50,6 +50,7 @@ return {
     --]
 
     maps.n["<Leader>."] = { ":lcd %:p:h<CR>", desc = "lcd to current file's dir" }
+    maps.n["<Leader>,"] = { ":tcd %:p:h<CR>", desc = "tcd to current file's dir" }
     maps.n["<Leader>F"] = {
       ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/g<Left><Left>",
       desc = "Find and replace",
