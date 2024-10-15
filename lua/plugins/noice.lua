@@ -2,19 +2,17 @@
 return {
   {
     "folke/noice.nvim",
-    init = function() vim.g.lsp_handlers_enabled = false end,
     dependencies = {
       "MunifTanjim/nui.nvim",
     },
     event = "VeryLazy",
     opts = {
-      presets = { lsp_doc_border = true },
       messages = { view_search = false },
       popupmenu = { enabled = false },
       lsp = {
         progress = { enabled = false },
         hover = { enabled = false },
-        signature = { enabled = true },
+        signature = { enabled = false },
       },
       routes = {
         {
