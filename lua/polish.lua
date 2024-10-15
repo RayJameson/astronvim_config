@@ -91,6 +91,4 @@ vim.api.nvim_create_user_command(
   end,
   {}
 )
-for _, v in ipairs { "r", "a", "n" } do
-  vim.api.nvim_del_keymap("n", "gr" .. v)
-end
+vim.tbl_map(function(v) vim.api.nvim_del_keymap("n", "gr" .. v) end, { "r", "a", "n" })
