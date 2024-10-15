@@ -57,7 +57,7 @@ require("autocmds")
 if vim.g.neovide then
   if jit.os == "OSX" then
     vim.g.neovide_input_macos_option_key_is_meta = "both"
-    vim.o.guifont = "Iosevka Nerd Font Mono SemiCondensed Light:h25"
+    vim.o.guifont = "Iosevka Nerd Font Mono Condensed ExtraLight:h25"
     vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
     vim.keymap.set("v", "<D-c>", '"+y') -- Copy
     vim.keymap.set("n", "<D-v>", '"+P') -- Paste normal mode
