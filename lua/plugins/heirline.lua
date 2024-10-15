@@ -94,56 +94,21 @@ return {
       }
     end
 
-    local line_end = function()
-      return status.component.builder {
-        {
-          provider = function()
-            local map = { ["unix"] = "LF", ["mac"] = "CR", ["dos"] = "CRLF" }
-            return map[vim.bo.fileformat]
-          end,
-        },
-        surround = {
-          separator = "right",
-        },
-      }
-    end
-    local function bad_encoding()
-      return status.component.builder {
-        provider = function() return vim.bo.fenc end,
-        surround = {
-          separator = "left",
-        },
-        condition = function() return vim.bo.fenc ~= "utf-8" end,
-        hl = { fg = "orange", bold = true },
-        update = "BufModifiedSet",
-      }
-    end
-
     opts.tabline = nil
     opts.statusline = {
       -- statusline
       hl = { fg = "fg", bg = "bg" },
-      status.component.mode {
-        mode_text = { padding = { left = 1, right = 1 } },
-      }, -- add the mode text
-      status.component.file_info {
-        filetype = {},
-        filename = false,
-      },
-      bad_encoding(),
-      status.component.git_branch(),
+      status.component.mode(),
       grapple(),
       status.component.diagnostics(),
       overseer(),
       status.component.fill(),
-      -- lsp causes issue on mac with tokyonight(https://discord.com/channels/939594913560031363/1100223017017163826)
       status.component.cmd_info(),
       status.component.fill(),
       dap_ui_component(),
       active_venv(),
       status.component.lsp(),
       status.component.treesitter(),
-      line_end(),
       status.component.nav(),
     }
     opts.tabline = {}
