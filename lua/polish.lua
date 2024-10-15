@@ -18,7 +18,7 @@ vim.opt.langmap = vim.fn.join({
   escape(ru) .. ";" .. escape(en),
 }, ",")
 
-if vim.fn.has("mac") then
+if jit.os == "OSX" then
   vim.cmd([[
       " function OpenMarkdownPreview (url)
       "     execute "silent ! open -a 'Brave Browser' -n --args --new-window " . a:url
