@@ -48,6 +48,7 @@ return {
   grey_8 = "#252931",
   grey_9 = "#787e87",
   grey_10 = "#D3D3D3",
+  grey_11 = "#292f39",
   gold = "#ffcc00",
   bright_turquoise = "#1BF9C4",
   cyan = "#56b6c2",
