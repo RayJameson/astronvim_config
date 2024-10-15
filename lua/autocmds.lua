@@ -52,7 +52,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 
 vim.api.nvim_create_autocmd("BufWinEnter", {
   pattern = "*",
-  callback = function() vim.api.nvim_win_set_option(0, "foldcolumn", "1") end,
+  callback = function() vim.api.nvim_set_option_value("foldcolumn", "1", { win = 0 }) end,
 })
 
 -- remove colorcolumn for qf
