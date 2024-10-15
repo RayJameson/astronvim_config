@@ -34,11 +34,10 @@ end
 vim.filetype.add {
   filename = {
     ["poetry.lock"] = "toml",
-    ["%.?zshrc"] = "sh",
+    ["%.?zshrc"] = "zsh",
   },
   extension = {
     tlua = "lua",
-    zsh = "sh",
   },
   pattern = {
     -- ["~/%.config/foo/.*"] = "fooscript",
