@@ -24,7 +24,7 @@ return {
         rendered = 3,
       },
       concealcursor = {
-        rendered = "nciv",
+        rendered = "nci",
       },
     },
     anti_conceal = {
