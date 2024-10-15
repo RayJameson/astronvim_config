@@ -18,6 +18,15 @@ return {
     },
   },
   opts = {
+    render_modes = { "n", "c", "i", "v" },
+    win_options = {
+      conceallevel = {
+        rendered = 3,
+      },
+      concealcursor = {
+        rendered = "nciv",
+      },
+    },
     anti_conceal = {
       enabled = false,
     },
