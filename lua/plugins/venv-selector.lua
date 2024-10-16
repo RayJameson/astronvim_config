@@ -19,4 +19,24 @@ return {
   },
   opts = {},
   cmd = "VenvSelect",
+  specs = {
+    "AstroNvim/astrocore",
+    ---@type AstroCoreOpts
+    opts = {
+      autocmds = {
+        VenvSelector = {
+          {
+            event = "DirChanged",
+            desc = "Disable venv on change dir",
+            callback = function()
+              local venv_selector = require("venv-selector")
+              if not venv_selector.venv() then return end
+              venv_selector.deactivate()
+              venv_selector.stop_lsp_servers()
+            end,
+          },
+        },
+      },
+    },
+  },
 }
