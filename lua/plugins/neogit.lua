@@ -20,6 +20,44 @@ return {
       ---@type CatppuccinOptions
       opts = { integrations = { neogit = true } },
     },
+    {
+      ---@type AstroCoreOpts
+      "AstroNvim/astrocore",
+      opts = {
+        autocmds = {
+          NeogitLogRefresh = {
+            {
+              event = "User",
+              pattern = {
+                "NeogitCherryPick",
+                "NeogitBranchCheckout",
+                "NeogitBranchCreated",
+                "NeogitBranchDelete",
+                "NeogitBranchReset",
+                "NeogitBranchRename",
+                "NeogitRebase",
+                "NeogitReset",
+                "NeogitTagCreate",
+                "NeogitTagDelete",
+                "NeogitCommitComplete",
+                "NeogitPushComplete",
+                "NeogitPullComplete",
+                "NeogitFetchComplete",
+              },
+              callback = function(args)
+                if vim.bo[args.buf].filetype ~= "NeogitLogView" then return end
+                vim.fn.feedkeys("q", "n")
+                require("neogit").action(
+                  "log",
+                  "log_current",
+                  { "--graph", "--decorate", "--max-count=256", "--topo-order" }
+                )()
+              end,
+            },
+          },
+        },
+      },
+    },
   },
   event = "User AstroGitFile",
   opts = function(_, opts)
