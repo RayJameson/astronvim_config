@@ -74,7 +74,7 @@ return {
               "repl",
               "console",
             },
-            size = 9,
+            size = vim.g.neovide and 8 or 9,
             position = "bottom", -- Can be "bottom" or "top"
           },
         }
