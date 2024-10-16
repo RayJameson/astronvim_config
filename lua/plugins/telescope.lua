@@ -39,15 +39,13 @@ return {
         },
       },
     }
-    return opts
   end,
   config = function(plugin, opts)
     -- require telescope and load extensions as necessary
+    require("astronvim.plugins.configs.telescope")(plugin, opts)
     local telescope = require("telescope")
     local conditional_func = require("astrocore").conditional_func
     conditional_func(telescope.load_extension, pcall(require, "telescope-undo"), "undo")
-    conditional_func(telescope.load_extension, pcall(require, "yaml_schema"), "yaml_schema")
-    require("astronvim.plugins.configs.telescope")(plugin, opts)
 
     local actions = require("telescope.actions")
     local from_entry = require("telescope.from_entry")
