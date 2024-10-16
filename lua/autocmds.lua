@@ -107,6 +107,8 @@ end
 vim.api.nvim_create_autocmd("BufEnter", {
   group = vim.api.nvim_create_augroup("HelpPages", {}),
   callback = function(args)
-    if vim.bo[args.buf].buftype == "help" then vim.cmd.wincmd { "T", mods = { silent = true } } end
+    if vim.bo[args.buf].buftype == "help" or vim.bo[args.buf].filetype == "man" then
+      vim.cmd.wincmd { "T", mods = { silent = true } }
+    end
   end,
 })
