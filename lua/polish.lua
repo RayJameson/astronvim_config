@@ -57,7 +57,6 @@ require("autocmds")
 if vim.g.neovide then
   if jit.os == "OSX" then
     vim.g.neovide_input_macos_option_key_is_meta = "both"
-    vim.g.neovide_scale_factor = 1.6
     vim.o.guifont = "Iosevka Nerd Font Mono Condensed ExtraLight:h16"
     vim.keymap.set("v", "<D-c>", '"+y') -- Copy
     vim.keymap.set("n", "<D-v>", '"+p') -- Paste normal mode
@@ -65,7 +64,7 @@ if vim.g.neovide then
     vim.keymap.set("c", "<D-v>", "<C-r>+") -- Paste command mode
     vim.keymap.set("i", "<D-v>", '<C-r>+"') -- Paste insert mode
   else
-    vim.o.guifont = "Iosevka Nerd Font Mono SemiCondensed Light:h16"
+    vim.o.guifont = "Iosevka Nerd Font Mono Condensed ExtraLight:h14"
     vim.keymap.set("x", "<C-S-C>", '"+y', { desc = "Copy to system clipboard" })
     vim.keymap.set("n", "<C-S-V>", '"+p', { desc = "Paste from system clipboard" })
     vim.keymap.set("i", "<C-S-V>", "<C-r>+", { desc = "Paste from system clipboard" })
@@ -73,6 +72,7 @@ if vim.g.neovide then
   end
   vim.g.neovide_cursor_antialiasing = true
   vim.o.linespace = -1
+  vim.g.neovide_scale_factor = 1.6
   vim.g.neovide_floating_blur_amount_x = 2.0
   vim.g.neovide_floating_blur_amount_y = 2.0
   vim.g.neovide_refresh_rate_idle = 5
