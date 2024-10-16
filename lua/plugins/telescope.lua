@@ -11,10 +11,12 @@ return {
     opts.extensions = {
       zoxide = {
         mappings = {
-          ["<CR>"] = { action = function(selection)
-            vim.cmd.edit(selection.path)
-            vim.cmd.lcd(selection.path)
-          end },
+          ["<CR>"] = {
+            action = function(selection)
+              vim.cmd.edit(selection.path)
+              vim.cmd.lcd(selection.path)
+            end,
+          },
           ["<C-t>"] = {
             action = function(selection)
               vim.cmd.tabedit(selection.path)
