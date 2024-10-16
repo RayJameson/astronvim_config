@@ -8,12 +8,20 @@ return {
   -- the second is the table of options as set up in Lazy with the `opts` key
   dependencies = { "debugloop/telescope-undo.nvim" },
   opts = function(_, opts)
-    local create_command = require("telescope._extensions.zoxide.utils").create_basic_command
     opts.extensions = {
       zoxide = {
         mappings = {
-          ["<CR>"] = { action = create_command("lcd") }
-        }
+          ["<CR>"] = { action = function(selection)
+            vim.cmd.edit(selection.path)
+            vim.cmd.lcd(selection.path)
+          end },
+          ["<C-t>"] = {
+            action = function(selection)
+              vim.cmd.tabedit(selection.path)
+              vim.cmd.tcd(selection.path)
+            end,
+          },
+        },
       },
       undo = {
         use_delta = false,
@@ -46,6 +54,7 @@ return {
     local telescope = require("telescope")
     local conditional_func = require("astrocore").conditional_func
     conditional_func(telescope.load_extension, pcall(require, "telescope-undo"), "undo")
+    conditional_func(telescope.load_extension, pcall(require, "telescope._extensions.zoxide"), "zoxide")
 
     local actions = require("telescope.actions")
     local from_entry = require("telescope.from_entry")
