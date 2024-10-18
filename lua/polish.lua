@@ -63,6 +63,7 @@ if vim.g.neovide then
     vim.keymap.set("v", "<D-v>", '"+p') -- Paste visual mode
     vim.keymap.set("c", "<D-v>", "<C-r>+") -- Paste command mode
     vim.keymap.set("i", "<D-v>", '<C-r>+"') -- Paste insert mode
+    vim.keymap.set("t", "<D-v>", '<C-\\><C-n>"+pi', { desc = "Paste from system clipboard" })
   else
     vim.o.guifont = "Iosevka Nerd Font Mono Condensed ExtraLight:h14"
     vim.keymap.set("x", "<C-S-C>", '"+y', { desc = "Copy to system clipboard" })
