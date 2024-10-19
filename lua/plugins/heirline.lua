@@ -99,6 +99,12 @@ return {
       -- statusline
       hl = { fg = "fg", bg = "bg" },
       status.component.mode(),
+      status.component.file_info {
+        filetype = false,
+        filename = false,
+        file_icon = false,
+        surround = false,
+      },
       grapple(),
       status.component.diagnostics(),
       overseer(),
