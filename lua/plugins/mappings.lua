@@ -74,11 +74,11 @@ return {
     --]
 
     maps.n["<Leader>C"] = {
-      "<Cmd>%bdelete|edit#<Cr>",
+      "<Cmd>%bdelete!|edit#<Cr>",
       desc = "Close all other buffers",
     }
     maps.n["<Leader>a"] = {
-      "<Cmd>%bdelete<Cr>",
+      "<Cmd>%bdelete!<Cr>",
       desc = "Close all buffers",
     }
     maps.n["<Leader>c"] = {
