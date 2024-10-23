@@ -74,5 +74,4 @@ return {
   { import = "astrocommunity.neovim-lua-development.helpview-nvim" },
   { import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
   { import = "astrocommunity.recipes.neovide" },
-  { import = "astrocommunity.terminal-integration.flatten-nvim" },
 }
