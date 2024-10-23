@@ -103,6 +103,7 @@ return {
         ["<CR>"] = select_one_or_multi,
         ["<C-y>"] = yank_path_or_content(":."),
         ["<C-Y>"] = yank_path_or_content(),
+        ["<C-g>"] = actions.delete_buffer,
       })
     end
   end,
