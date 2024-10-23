@@ -31,7 +31,7 @@ return {
                 [prefix .. "r"] = { "<Cmd>OverseerRun<CR>", desc = "Open tasks" },
                 [prefix .. "<CR>"] = { "<Cmd>OverseerToggle<CR>", desc = "Open Panel" },
                 [prefix .. "s"] = { "<Cmd>OverseerRun shell<CR>", desc = "Run shell" },
-                [prefix .. "f"] = { "<Cmd>OverseerRun file-run<CR>", desc = "Run file in split" },
+                [prefix .. "f"] = { "<Cmd>OverseerRun file-run<CR>", desc = "Run file" },
                 [prefix .. "F"] = { "<Cmd>OverseerRun file-run-background<CR>", desc = "Run file in background" },
                 [prefix .. "t"] = { "<Cmd>OverseerRun file-run-tab<CR>", desc = "Run file in new tab" },
                 [prefix .. "l"] = { "<Cmd>OverseerLoadBundle<CR>", desc = "Load task bundle" },
@@ -42,10 +42,14 @@ return {
       },
     },
     opts = {
+      strategy = "toggleterm",
       task_list = {
         direction = "bottom",
         max_height = { 100, 0.99 },
         height = 100,
+        max_width = { 100, 0.2 },
+        min_width = { 10, 0.1 },
+        width = 20,
         bindings = {
           ["<C-l>"] = false,
           ["<C-h>"] = false,
@@ -91,52 +95,44 @@ return {
         go = run_with { "go", "run" },
       }
 
-      ---@return overseer.TaskDefinition
-      local function tab_builder()
-        local file = vim.fn.expand("%:p")
-        local cmd = filetype_to_cmd[vim.bo.filetype](file)
-        return {
-          cmd = cmd,
-          strategy = {
-            "toggleterm",
-            direction = "tab",
-            open_on_start = true,
-            on_create = function() vim.cmd.stopinsert() end,
-          },
-          components = {
-            { "display_duration", detail_level = 2 },
-            "on_output_summarize",
-            "on_exit_set_status",
-            { "on_complete_dispose", require_view = { "SUCCESS", "FAILURE" } },
-          },
-        }
-      end
-
       ---@param run_in_foreground boolean
-      ---@return overseer.TaskDefinition
-      local function builder(run_in_foreground)
-        local file = vim.fn.expand("%:p")
-        local cmd = filetype_to_cmd[vim.bo.filetype](file)
-        local task = {
-          cmd = cmd,
-          strategy = {
-            "terminal",
-          },
-          components = {
-            { "display_duration", detail_level = 2 },
-            "on_output_summarize",
-            "on_exit_set_status",
-            { "on_complete_dispose", require_view = { "SUCCESS", "FAILURE" } },
-          },
-        }
-        if run_in_foreground then vim.list_extend(task.components, { { "open_output", focus = true } }) end
-        return task
+      ---@param direction "dock"|"float"|"tab"|"vertical"|"horizontal"
+      ---@return fun(): overseer.TaskDefinition
+      local function create_builder(run_in_foreground, direction)
+
+        ---@return overseer.TaskDefinition
+        local function builder()
+          local file = vim.fn.expand("%:p")
+          local cmd = filetype_to_cmd[vim.bo.filetype](file)
+          local task = {
+            cmd = cmd,
+            strategy = {
+              "toggleterm",
+              on_create = function() vim.cmd.stopinsert() end,
+              direction = direction,
+            },
+            components = {
+              { "display_duration", detail_level = 2 },
+              "on_output_summarize",
+              "on_exit_set_status",
+              { "on_complete_dispose", require_view = { "SUCCESS", "FAILURE" } },
+            },
+          }
+          if run_in_foreground then
+            task.strategy.open_on_start = true
+          else
+            task.strategy.open_on_start = false
+          end
+          return task
+        end
+
+        return builder
       end
       require("overseer").setup(opts)
       vim.tbl_map(require("overseer").register_template, {
         {
           name = "file-run-background",
-          builder = function() return builder(false) end,
+          builder = create_builder(false, "dock"),
           condition = {
             filetype = vim.tbl_keys(filetype_to_cmd),
           },
@@ -144,7 +140,7 @@ return {
         },
         {
           name = "file-run",
-          builder = function() return builder(true) end,
+          builder = create_builder(true, "float"),
           condition = {
             filetype = vim.tbl_keys(filetype_to_cmd),
           },
@@ -152,7 +148,7 @@ return {
         },
         {
           name = "file-run-tab",
-          builder = tab_builder,
+          builder = create_builder(true, "tab"),
           condition = {
             filetype = vim.tbl_keys(filetype_to_cmd),
           },
