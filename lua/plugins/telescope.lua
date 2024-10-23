@@ -23,13 +23,13 @@ return {
               vim.cmd.tcd(selection.path)
             end,
           },
-          ["<C-s>"] = { action = function(selection)
-            vim.cmd.split(selection)
-            vim.cmd.lcd(selection)
+          ["<C-x>"] = { action = function(selection)
+            vim.cmd.split(selection.path)
+            vim.cmd.lcd(selection.path)
           end },
           ["<C-v>"] = { action = function(selection)
-            vim.cmd.vsplit(selection)
-            vim.cmd.lcd(selection)
+            vim.cmd.vsplit(selection.path)
+            vim.cmd.lcd(selection.path)
           end },
         },
       },
