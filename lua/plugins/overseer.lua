@@ -42,7 +42,7 @@ return {
       },
     },
     opts = {
-      strategy = "toggleterm",
+      strategy = "terminal",
       task_list = {
         direction = "bottom",
         max_height = { 100, 0.99 },
@@ -107,7 +107,7 @@ return {
           local task = {
             cmd = cmd,
             strategy = {
-              "toggleterm",
+              "terminal",
               on_create = function() vim.cmd.stopinsert() end,
               direction = direction,
             },
@@ -163,7 +163,7 @@ return {
               args = { "-m", python_module },
               env = { PYTHONPATH = "src" .. ":" .. vim.uv.cwd() },
               strategy = {
-                "toggleterm",
+                "terminal",
                 open_on_start = true,
                 direction = "tab",
               },
