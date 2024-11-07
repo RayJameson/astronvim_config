@@ -55,22 +55,27 @@ vim.api.nvim_create_user_command(
 require("autocmds")
 
 if vim.g.neovide then
+  local copy_shortcut
+  local paste_shortcut
   if jit.os == "OSX" then
+    copy_shortcut = "<D-c>"
+    paste_shortcut = "<D-v>"
     vim.g.neovide_input_macos_option_key_is_meta = "both"
     vim.o.guifont = "Iosevka Nerd Font Mono Condensed ExtraLight:h16"
-    vim.keymap.set("v", "<D-c>", '"+y') -- Copy
-    vim.keymap.set("n", "<D-v>", '"+p') -- Paste normal mode
-    vim.keymap.set("v", "<D-v>", '"+p') -- Paste visual mode
-    vim.keymap.set("c", "<D-v>", "<C-r>+") -- Paste command mode
-    vim.keymap.set("i", "<D-v>", '<C-r>+"') -- Paste insert mode
-    vim.keymap.set("t", "<D-v>", '<C-\\><C-n>"+pi', { desc = "Paste from system clipboard" })
   else
+    copy_shortcut = "<C-S-C>"
+    paste_shortcut = "<C-S-V>"
     vim.o.guifont = "Iosevka Nerd Font Mono Condensed ExtraLight:h14"
-    vim.keymap.set("x", "<C-S-C>", '"+y', { desc = "Copy to system clipboard" })
-    vim.keymap.set("n", "<C-S-V>", '"+p', { desc = "Paste from system clipboard" })
-    vim.keymap.set("i", "<C-S-V>", "<C-r>+", { desc = "Paste from system clipboard" })
-    vim.keymap.set("t", "<C-S-V>", '<C-\\><C-n>"+pi', { desc = "Paste from system clipboard" })
   end
+  for _, mode in ipairs { "n", "i", "x", "v", "t", "c" } do
+    vim.keymap.set(
+      mode,
+      paste_shortcut,
+      function() vim.api.nvim_paste(vim.fn.getreg("+"), true, -1) end,
+      { desc = "Paste from system clipboard" }
+    )
+  end
+  vim.keymap.set("x", copy_shortcut, '"+y', { desc = "Copy to system clipboard" })
   vim.g.neovide_cursor_antialiasing = true
   vim.o.linespace = -1
   vim.g.neovide_scale_factor = 1.6
