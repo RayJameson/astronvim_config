@@ -1,3 +1,5 @@
+if vim.fn.executable("npm") == 0 then return {} end
+
 local list_insert_unique = require("astrocore").list_insert_unique
 -- customize mason plugins
 ---@type LazySpec
@@ -36,8 +38,12 @@ return {
       -- add more things to the ensure_installed table protecting against community packs modifying it
       local servers = {
         "lua_ls",
+        "vimls",
+        "jsonls",
+        "yamlls",
       }
-      if vim.fn.executable("python3") == 1 then table.insert(servers, "ruff_lsp") end
+      if vim.fn.executable("python3") == 1 then list_insert_unique(servers, { "ruff", "basedpyright" }) end
+      if vim.fn.executable("go") == 1 then list_insert_unique(servers, { "gopls" }) end
       opts.ensure_installed = list_insert_unique(opts.ensure_installed, servers)
     end,
   },
@@ -67,10 +73,7 @@ return {
     },
     init = function() end,
     opts = function(_, opts)
-      -- add more things to the ensure_installed table protecting against community packs modifying it
-      opts.ensure_installed = list_insert_unique(opts.ensure_installed, {
-        -- "python",
-      })
+      if vim.fn.executable("python3") == 1 then list_insert_unique(opts.ensure_installed, { "python" }) end
       opts.handlers = {
         python = function(config)
           config.configurations = list_insert_unique(config.configurations, {
