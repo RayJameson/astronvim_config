@@ -35,19 +35,19 @@ return {
               }
             },
             cargo = {
-              allFeatures = true,
+              features = "all"
             },
             completion = {
               postfix = {
                 enable = false,
               },
             },
-            checkOnSave = {
-              -- default: `cargo check`
-              allFeatures = true,
+            check = {
               command = "clippy",
               extraArgs = { "--no-deps" },
+              features = "all",
             },
+            checkOnSave = true,
           },
         },
       },
