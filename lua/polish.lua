@@ -57,6 +57,7 @@ require("autocmds")
 if vim.g.neovide then
   local copy_shortcut
   local paste_shortcut
+  vim.g.neovide_scale_factor = 1.6
   if jit.os == "OSX" then
     copy_shortcut = "<D-c>"
     paste_shortcut = "<D-v>"
@@ -66,6 +67,7 @@ if vim.g.neovide then
     copy_shortcut = "<C-S-C>"
     paste_shortcut = "<C-S-V>"
     vim.o.guifont = "Iosevka Nerd Font Mono Condensed ExtraLight:h14"
+    vim.g.neovide_scale_factor = 1.4
   end
   for _, mode in ipairs { "n", "i", "x", "v", "t", "c" } do
     vim.keymap.set(
@@ -78,7 +80,6 @@ if vim.g.neovide then
   vim.keymap.set("x", copy_shortcut, '"+y', { desc = "Copy to system clipboard" })
   vim.g.neovide_cursor_antialiasing = true
   vim.o.linespace = -1
-  vim.g.neovide_scale_factor = 1.6
   vim.g.neovide_floating_blur_amount_x = 2.0
   vim.g.neovide_floating_blur_amount_y = 2.0
   vim.g.neovide_refresh_rate_idle = 5
