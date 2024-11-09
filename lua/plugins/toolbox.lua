@@ -1,5 +1,6 @@
 return {
   "DanWlker/toolbox.nvim",
+  lazy = true,
   specs = {
     {
       "AstroNvim/astroui",
