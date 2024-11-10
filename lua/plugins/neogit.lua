@@ -65,6 +65,7 @@ return {
     local disable_builtin_notifications = utils.is_available("nvim-notify") or utils.is_available("noice.nvim")
 
     return utils.extend_tbl(opts, {
+      process_spinner = false,
       disable_builtin_notifications = disable_builtin_notifications,
       disable_signs = true,
       graph_style = "unicode",
