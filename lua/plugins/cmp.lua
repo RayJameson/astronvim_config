@@ -2,9 +2,14 @@
 return {
   -- override nvim-cmp plugin
   "hrsh7th/nvim-cmp",
+  optional = true,
   keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
   dependencies = {
-    "hrsh7th/cmp-cmdline",
+    { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+    { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
+    { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
+    { "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
+    { "https://codeberg.org/FelipeLema/cmp-async-path", name = "cmp-path" },
   },
   ---@param opts cmp.ConfigSchema
   opts = function(_, opts)

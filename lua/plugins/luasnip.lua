@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
   "L3MON4D3/LuaSnip",
+  optional = true,
   specs = {
     {
       "rafamadriz/friendly-snippets",
