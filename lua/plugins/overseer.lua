@@ -97,8 +97,9 @@ return {
 
       ---@param run_in_foreground boolean
       ---@param direction "dock"|"float"|"tab"|"vertical"|"horizontal"
+      ---@param on_create? function
       ---@return fun(): overseer.TaskDefinition
-      local function create_builder(run_in_foreground, direction)
+      local function create_builder(run_in_foreground, direction, on_create)
 
         ---@return overseer.TaskDefinition
         local function builder()
@@ -107,9 +108,10 @@ return {
           local task = {
             cmd = cmd,
             strategy = {
-              "terminal",
-              on_create = function() vim.cmd.stopinsert() end,
+              "toggleterm",
+              on_create = on_create,
               direction = direction,
+              hidden = true,
             },
             components = {
               { "display_duration", detail_level = 2 },
@@ -132,7 +134,7 @@ return {
       vim.tbl_map(require("overseer").register_template, {
         {
           name = "file-run-background",
-          builder = create_builder(false, "dock"),
+          builder = create_builder(false, "dock", function() vim.cmd.stopinsert() end),
           condition = {
             filetype = vim.tbl_keys(filetype_to_cmd),
           },
@@ -163,9 +165,10 @@ return {
               args = { "-m", python_module },
               env = { PYTHONPATH = "src" .. ":" .. vim.uv.cwd() },
               strategy = {
-                "terminal",
+                "toggleterm",
                 open_on_start = true,
                 direction = "tab",
+                hidden = true,
               },
             }
           end,
