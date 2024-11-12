@@ -49,7 +49,6 @@ return {
         titlestring = "%<%F%=%l/%L - nvim",
         listchars = {
           tab = "→ ",
-          eol = "↲",
           nbsp = "␣",
           trail = "•",
           extends = "⟩",
