@@ -3,7 +3,6 @@ return {
   "gbprod/yanky.nvim",
   dependencies = {
     "nvim-telescope/telescope.nvim",
-    { "kkharji/sqlite.lua", enabled = not jit.os:find("Windows") },
   },
   event = "UIEnter",
   opts = function()
@@ -17,7 +16,7 @@ return {
       },
       ring = {
         history_length = 1000,
-        storage = jit.os:find("Windows") and "shada" or "sqlite",
+        storage = "shada",
         sync_with_numbered_registers = true,
         cancel_event = "update",
         ignore_registers = { "_" },
