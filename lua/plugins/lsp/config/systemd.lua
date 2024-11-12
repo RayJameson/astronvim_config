@@ -1,4 +1,4 @@
-if not vim.fn.executable("systemd-language-server") then return {} end
+if not vim.fn.executable("systemd_ls") then return {} end
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
@@ -8,7 +8,7 @@ return {
     table.insert(opts.servers, "systemd_ls")
     opts.config = require("astrocore").extend_tbl(opts.config or {}, {
       systemd_ls = {
-        cmd = { "systemd-language-server" },
+        cmd = { "systemd_ls" },
         filetypes = { "systemd" },
         root_dir = function() return nil end,
         single_file_support = true,
