@@ -76,12 +76,12 @@ return {
           }
           if require("astrocore").is_available("todo-comments.nvim") then
             maps.n[prefix .. "t"] = {
-              function() trouble.toggle { mode = "todo", focus = true } end,
+              function() trouble.toggle { mode = "todo", focus = true, filter = { tag = { "TODO" } } } end,
               desc = "Todo [T]",
             }
             maps.n[prefix .. "T"] = {
-              function() trouble.toggle { mode = "todo", focus = true, filter = { tag = { "TODO", "FIXME", "FIX" } } } end,
-              desc = "Todo/Fix/Fixme [T]",
+              function() trouble.toggle { mode = "todo", focus = true } end,
+              desc = "[T]rouble (all)",
             }
           end
           opts.autocmds.TroubleView = {
