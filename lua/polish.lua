@@ -38,6 +38,7 @@ vim.filetype.add {
   },
   extension = {
     tlua = "lua",
+    rasi = "rasi",
   },
   pattern = {
     -- ["~/%.config/foo/.*"] = "fooscript",
