@@ -34,7 +34,7 @@ return {
     commands = {
       {
         name = "Format Json",
-        execute = "%!jq '.'",
+        execute = "!jq",
       },
       {
         name = "Print Lua table",
@@ -53,6 +53,16 @@ return {
           local path = vim.fn.expand("%:p")
           vim.fn.setreg("+", path)
         end,
+      },
+      {
+        name = "Substitute limited to visual selection",
+        execute = [[:s/\%V]],
+        require_input = true,
+      },
+      {
+        name = "Substitute in `very magic` mode",
+        execute = [[:s/\v]],
+        require_input = true,
       },
     },
   },
