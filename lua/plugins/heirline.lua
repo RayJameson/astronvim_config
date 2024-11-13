@@ -94,7 +94,6 @@ return {
       }
     end
 
-    opts.tabline = nil
     opts.statusline = {
       -- statusline
       hl = { fg = "fg", bg = "bg" },
