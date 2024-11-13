@@ -103,7 +103,6 @@ return {
         filetype = false,
         filename = false,
         file_icon = false,
-        surround = false,
       },
       grapple(),
       status.component.diagnostics(),
