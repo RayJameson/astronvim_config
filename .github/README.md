@@ -1,4 +1,4 @@
-# Neovim config moved to [dotfiles](https://github.com/RayJameson/dotfiles/tree/main/dot_config/nvim) repo
+# ⚠️ Neovim config moved to [dotfiles](https://github.com/RayJameson/dotfiles/tree/main/dot_config/nvim) repo ⚠️
 <!--toc:start-->
 - [AstroNvim user configuration](#astronvim-user-configuration)  
       - [Make a backup of your current nvim folder](#make-a-backup-of-your-current-nvim-folder)  
